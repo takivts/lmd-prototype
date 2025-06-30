@@ -35,7 +35,7 @@ export default function InsightsSidebar() {
             isMap ? "border-vts-purple-700 bg-white" : ""
           }`}
         >
-          <Link href="/vts/insights/market-heat-maps">Market heat maps</Link>
+          <Link href="/vts/insights/heat-maps">Heat maps</Link>
         </li>
       </ul>
 

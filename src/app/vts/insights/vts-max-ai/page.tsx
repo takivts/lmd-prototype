@@ -114,7 +114,7 @@ const VTSAI = () => {
       <div className="mb-8 flex">
         <div>
           <h3 className="mb-2">Select a market</h3>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 text-gray-700">
             <span className="flex w-fit cursor-pointer rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-xs">
               All markets
             </span>

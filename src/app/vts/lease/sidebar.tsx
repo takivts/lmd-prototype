@@ -1,12 +1,21 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 export default function LeaseSidebar() {
+  const url = usePathname();
+  const isDeals = url?.includes("deals");
+
   return (
-    <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col bg-gray-100">
+    <div className="flex h-full min-h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col bg-gray-100">
       <div className="bg-vts-purple-300 mx-4 my-6 flex h-[135px] rounded-lg" />
 
       <ul className="mb-8 text-sm">
-        <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
+        <li
+          className={`border-l-8 border-transparent px-4 py-2 text-gray-700 ${
+            isDeals ? "border-vts-purple-700 bg-white" : ""
+          }`}
+        >
           Deals
         </li>
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
