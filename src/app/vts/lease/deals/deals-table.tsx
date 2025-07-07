@@ -28,16 +28,13 @@ export default function DealsTable({ data }: DealsTableProps) {
   });
 
   return (
-    <div className="w-full overflow-x-auto">
-      <table className="w-full table-auto border-collapse border border-gray-200 text-sm text-gray-700">
+    <div className="w-full overflow-hidden overflow-x-auto rounded-md border border-gray-200">
+      <table className="w-full text-sm text-gray-700">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th
-                  key={header.id}
-                  className="border-b border-gray-200 bg-gray-100 px-3 py-2 text-left"
-                >
+                <th key={header.id} className="bg-gray-100 px-3 py-2 text-left">
                   <div className="truncate">
                     {header.isPlaceholder
                       ? null
@@ -51,13 +48,16 @@ export default function DealsTable({ data }: DealsTableProps) {
             </tr>
           ))}
         </thead>
-        <tbody className="border-gray-200">
+        <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <tr
+              key={row.id}
+              className="border-b border-gray-200 last:border-b-0"
+            >
               {row.getVisibleCells().map((cell) => (
                 <td
                   key={cell.id}
-                  className="border-b border-gray-200 px-3 py-2"
+                  className="px-3 py-2"
                   title={cell.getValue() as string}
                 >
                   <div className="truncate">

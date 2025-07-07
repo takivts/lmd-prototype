@@ -40,24 +40,30 @@ export default function GlobalHeader() {
       <span className="mx-3 border-r border-white/50 py-3" />
       <span
         className={`flex h-full items-center border-t-6 border-transparent px-3 text-xs font-bold text-white uppercase ${
-          isMarket ? "border-vts-purple-500 bg-white/20" : ""
+          isMarket ? "border-vts-primary bg-white/10" : ""
         }`}
       >
-        <Link href="/vts/market">Market</Link>
+        <Link className="py-2" href="/vts/market">
+          Market
+        </Link>
       </span>
       <span
         className={`flex h-full items-center border-t-6 border-transparent px-3 text-xs font-bold text-white uppercase ${
-          isLease ? "border-vts-purple-500 bg-white/20" : ""
+          isLease ? "border-vts-primary bg-white/10" : ""
         }`}
       >
-        <Link href="/vts/lease">Lease</Link>
+        <Link className="py-2" href="/vts/lease">
+          Lease
+        </Link>
       </span>
       <span
         className={`flex h-full items-center border-t-6 border-transparent px-3 text-xs font-bold text-white uppercase ${
-          isInsights ? "border-vts-purple-500 bg-white/20" : ""
+          isInsights ? "border-vts-primary bg-white/10" : ""
         }`}
       >
-        <Link href="/vts/insights">Insights</Link>
+        <Link className="py-2" href="/vts/insights">
+          Insights
+        </Link>
       </span>
       <span className="flex h-full items-center border-t-6 border-transparent px-3 text-xs font-bold text-white uppercase">
         <svg

@@ -9,7 +9,7 @@ export default function InsightsSidebar() {
   const isMap = url?.includes("map");
 
   return (
-    <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col bg-gray-100">
+    <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col border-r border-gray-300">
       <div className="bg-vts-purple-300 mx-4 my-6 flex h-[135px] rounded-lg" />
       <h5 className="mb-2 ml-6 text-xs font-semibold text-gray-700 uppercase">
         Portfolio insights

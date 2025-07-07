@@ -2,36 +2,30 @@
 
 export default function MarketSidebar() {
   return (
-    <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col bg-gray-100">
+    <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col border-r border-gray-300">
       <div className="bg-vts-purple-300 mx-4 my-6 flex h-[135px] rounded-lg" />
 
       <ul className="mb-8 text-sm">
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Deals
+          Leads
         </li>
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Deal tasks
+          Buildings
         </li>
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Tenant coordination
+          Listings
         </li>
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Leases
+          My Tourbooks
         </li>
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Options
+          My shares
         </li>
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Budgets
+          Marketing analytics
         </li>
         <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Appraisals
-        </li>
-        <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Comps
-        </li>
-        <li className="border-l-8 border-transparent px-4 py-2 text-gray-700">
-          Tenants
+          Inquiries
         </li>
       </ul>
 

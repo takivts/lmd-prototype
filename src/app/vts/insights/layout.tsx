@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import GlobalHeader from "../_shared/global-header";
-import InsightsSidebar from "./sidebar.tsx";
+import InsightsSidebar from "./left-nav";
 
 export default function VtsInsightsLayout({
   children,

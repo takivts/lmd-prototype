@@ -1,5 +1,5 @@
 import GlobalHeader from "../_shared/global-header";
-import MarketSidebar from "./sidebar.tsx";
+import MarketSidebar from "./left-nav";
 
 export default function VtsMarketLayout({
   children,

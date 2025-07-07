@@ -168,18 +168,18 @@ export const dealData = [
 
 export const pipelineData = [
   { label: "Inquiries", value: 12 },
-  { label: "Touring", value: 2 },
-  { label: "Proposals", value: 6 },
-  { label: "LOI", value: 0 },
-  { label: "Legal", value: 1 },
-  { label: "Lease Out", value: 0 },
+  { label: "Touring", value: 7 },
+  { label: "Proposals", value: 5 },
+  { label: "LOI", value: 5 },
+  { label: "Legal", value: 2 },
+  { label: "Lease Out", value: 2 },
   { label: "Executed", value: 1 },
-  { label: "Dead", value: 0 },
+  { label: "Dead", value: 8 },
 ];
 
 export const lastUpdatedData = [
   { label: "< 30 days", value: 12 },
-  { label: "30-60 days", value: 2 },
-  { label: "60-90 days", value: 6 },
+  { label: "30 - 60 days", value: 2 },
+  { label: "60 - 90 days", value: 6 },
   { label: "90+ days", value: 3 },
 ];

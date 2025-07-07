@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { exploreMarkets, Market, markets, marketTooltips } from "./data/data";
-import InsightsSidebar from "../sidebar.tsx";
+import InsightsSidebar from "../left-nav";
 
 const VTSAI = () => {
   const [activePingIndex, setActivePingIndex] = useState(0);

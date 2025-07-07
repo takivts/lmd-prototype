@@ -6,7 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { mockData } from "./data/mockData";
 import type { Feature, FeatureCollection, Point } from "geojson";
 import Link from "next/link";
-import InsightsSidebar from "../sidebar.tsx";
+import InsightsSidebar from "../left-nav";
 
 // Define property data type for mockData
 interface PropertyData {

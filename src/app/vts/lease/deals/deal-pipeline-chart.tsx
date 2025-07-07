@@ -30,7 +30,7 @@ function DealPipelineChartInner({
   const maxValue = Math.max(...data.map((d) => d.value));
   const scale = Math.min(5, (height - 60) / maxValue);
 
-  const spacing = 10;
+  const spacing = 8;
   const totalSpacing = (data.length - 1) * spacing;
   const availableWidth = width - totalSpacing;
   const barWidth = Math.max(50, availableWidth / data.length);

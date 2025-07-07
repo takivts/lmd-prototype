@@ -5,7 +5,6 @@ import { Group } from "@visx/group";
 import { ParentSize } from "@visx/responsive";
 import { DealPipelineChartProps } from "./_types";
 
-// Utility function to truncate text to fit within maxWidth
 function truncateText(
   text: string,
   maxWidth: number,
@@ -28,7 +27,7 @@ function LastUpdatedChartInner({
   const maxValue = Math.max(...data.map((d) => d.value));
   const scale = Math.min(5, (height - 60) / maxValue);
 
-  const spacing = 10;
+  const spacing = 8;
   const totalSpacing = (data.length - 1) * spacing;
   const availableWidth = width - totalSpacing;
   const barWidth = Math.max(50, availableWidth / data.length);

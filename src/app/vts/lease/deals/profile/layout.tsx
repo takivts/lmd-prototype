@@ -1,4 +1,4 @@
-export default function DealsLayout({
+export default function DealsProfileLayout({
   children,
 }: {
   children: React.ReactNode;
