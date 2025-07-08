@@ -127,8 +127,9 @@ export default function DealProfilePage() {
         <div className="flex min-h-full flex-col gap-2 rounded-lg border border-gray-300 bg-white">
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
 
-          <div className="flex flex-col gap-2 overflow-auto p-4">
-            <div className="flex gap-2 overflow-auto pr-4 pb-4 text-xs">
+          <div className="relative flex flex-col gap-2 overflow-auto p-4">
+            <div className="flex gap-2 overflow-auto pr-16 pb-4 text-xs">
+              <div className="pointer-events-none absolute top-0 right-8 h-[calc(100%-32px)] w-16 bg-gradient-to-r from-transparent to-white" />
               <div className="flex w-48 shrink-0 flex-col rounded-lg">
                 <div className="min-h-30" />
                 <div className="flex min-h-6 items-center gap-2">
