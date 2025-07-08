@@ -36,26 +36,28 @@ export default function ProposalCard({
   onMenuClick,
 }: ProposalCardProps) {
   return (
-    <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
+    <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300 hover:shadow-md">
       <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
         <h5 className="flex items-center justify-center gap-1 text-base font-bold">
           {title}
           {showMenuIcon && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="text-vts-purple-700 size-6 cursor-pointer"
-              onClick={onMenuClick}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-              />
-            </svg>
+            <span className="hover:bg-vts-purple-100 cursor-pointer rounded-lg px-1 py-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="text-vts-purple-700 size-6 cursor-pointer"
+                onClick={onMenuClick}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                />
+              </svg>
+            </span>
           )}
         </h5>
         {actions.map((action, index) => (
@@ -76,35 +78,43 @@ export default function ProposalCard({
         <span className="h-1 w-full bg-gray-200" />
       </div>
       <div className="flex h-full flex-col text-right text-gray-700">
-        <span className="border-b border-gray-200 px-2 pb-2">{data.label}</span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 pb-2">
+          {data.label}
+        </span>
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.dateEntered}
         </span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.leaseType}
         </span>
-        <span className="border-b border-gray-200 px-2 py-2">{data.type}</span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 py-2">
+          {data.type}
+        </span>
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.spaces}
         </span>
-        <span className="border-b border-gray-200 px-2 py-2">{data.size}</span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 py-2">
+          {data.size}
+        </span>
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.downtime}
         </span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.tenantPossessionDate}
         </span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.tenantBuildoutPeriodDays}
         </span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.tenantBuildoutPeriodMonths}
         </span>
-        <span className="border-b border-gray-200 px-2 py-2">{data.lcd}</span>
-        <span className="border-b border-gray-200 px-2 py-2">
+        <span className="truncate border-b border-gray-200 px-3 py-2">
+          {data.lcd}
+        </span>
+        <span className="truncate border-b border-gray-200 px-3 py-2">
           {data.lockInEnd}
         </span>
-        <span className="border-gray-200 px-2 py-2">{data.term}</span>
+        <span className="truncate border-gray-200 px-3 py-2">{data.term}</span>
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ export default function FloatingCTA() {
       <VtsAiTenantProfile
         className="absolute right-24 bottom-16"
         isOpen={isOpen}
+        setIsOpen={setIsOpen}
       />
     </>
   );

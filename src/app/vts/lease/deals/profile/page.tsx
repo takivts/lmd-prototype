@@ -128,10 +128,10 @@ export default function DealProfilePage() {
         <div className="flex min-h-full flex-col gap-4 rounded-lg border border-gray-300 bg-white">
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
           <div className="flex w-full justify-end gap-2 px-4">
-            <div className="text-vts-purple-700 border-vts-purple-700 flex shrink cursor-pointer rounded-lg border px-2 py-1 text-sm">
+            <div className="text-vts-purple-700 border-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer rounded-lg border px-2 py-1 text-sm transition-all duration-300">
               New proposal
             </div>
-            <div className="text-vts-purple-700 border-vts-purple-700 flex shrink cursor-pointer rounded-lg border px-2 py-1 text-sm">
+            <div className="text-vts-purple-700 border-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer rounded-lg border px-2 py-1 text-sm transition-all duration-300">
               Display options
             </div>
           </div>

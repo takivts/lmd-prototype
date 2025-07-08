@@ -9,7 +9,7 @@ export default function SidePanel({
 }) {
   const tabs = [
     { label: "Updates" },
-    { label: "Tasks" },
+    { label: "Relationships" },
     { label: "Documents" },
     { label: "Reminders" },
   ];
@@ -18,7 +18,7 @@ export default function SidePanel({
       className={`relative border-l border-gray-300 transition-all duration-300 ${isSidePanelOpen ? "w-0" : "w-2xl"}`}
     >
       <div
-        className="bg-vts-primary hover:bg-vts-purple-600 absolute top-14 -left-10 z-50 cursor-pointer rounded-tl-md rounded-bl-md p-2 text-white transition-all duration-300"
+        className="bg-vts-primary hover:bg-vts-purple-600 absolute top-14 -left-10 cursor-pointer rounded-tl-md rounded-bl-md p-2 text-white transition-all duration-300"
         onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
       >
         <svg
