@@ -1,6 +1,20 @@
 import ProposalCard from "@/app/vts/_shared/proposal-card";
+import TabRow from "@/app/vts/_shared/tab-row";
 
 export default function DealProfilePage() {
+  const mainTabs = [
+    { label: "Info" },
+    { label: "Proposals", isActive: true },
+    { label: "Approval" },
+    { label: "Tenant Coordination" },
+  ];
+
+  const proposalTabs = [
+    { label: "Proposals", isActive: true },
+    { label: "Analysis" },
+    { label: "Cashflow" },
+  ];
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex flex-col gap-2 p-8">
@@ -104,43 +118,14 @@ export default function DealProfilePage() {
           </span>
         </div>
       </div>
+
       <div className="flex gap-2">
-        <div className="flex w-full gap-8 border-y border-gray-300 px-4 pt-1 text-sm font-bold text-gray-500">
-          <span className="group relative cursor-pointer py-1">
-            <span className="relative z-10">Info</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-          </span>
-          <span className="group relative cursor-pointer py-1">
-            <span className="relative z-10">Proposals</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-full -translate-x-1/2 rounded-lg opacity-100 transition-all duration-300 ease-out"></span>
-          </span>
-          <span className="group relative cursor-pointer py-1">
-            <span className="relative z-10">Approval</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-          </span>
-          <span className="group relative cursor-pointer py-1">
-            <span className="relative z-10">Tenant Coordination</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-          </span>
-        </div>
+        <TabRow tabs={mainTabs} className="border-y border-gray-300" />
       </div>
 
       <div className="flex w-full flex-1 flex-col overflow-auto rounded-lg bg-gray-100 p-6">
         <div className="flex min-h-full flex-col gap-2 rounded-lg border border-gray-300 bg-white">
-          <div className="flex w-full gap-8 border-b border-gray-300 px-4 pt-1 pb-0 text-sm font-bold text-gray-500">
-            <span className="group relative cursor-pointer py-1">
-              <span className="relative z-10">Proposals</span>
-              <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-full -translate-x-1/2 rounded-lg opacity-100 transition-all duration-300 ease-out"></span>
-            </span>
-            <span className="group relative cursor-pointer py-1">
-              <span className="relative z-10">Analysis</span>
-              <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-            </span>
-            <span className="group relative cursor-pointer py-1">
-              <span className="relative z-10">Cashflow</span>
-              <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-            </span>
-          </div>
+          <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
 
           <div className="flex flex-col gap-2 overflow-auto p-4">
             <div className="flex gap-2 overflow-auto pr-4 pb-4 text-xs">
