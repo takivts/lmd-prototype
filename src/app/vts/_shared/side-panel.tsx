@@ -19,7 +19,7 @@ export default function SidePanel({
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`size-6 transition-all duration-300 ${isSidePanelOpen ? "rotate-180" : "translate-x-1"}`}
+          className={`size-6 transition-all duration-300 ${isSidePanelOpen ? "rotate-180" : "translate-x-0.5"}`}
         >
           <path
             strokeLinecap="round"
@@ -29,9 +29,26 @@ export default function SidePanel({
         </svg>
       </div>
       <div
-        className={`h-full bg-gray-100 transition-all duration-300 ${isSidePanelOpen && "hidden"}`}
+        className={`h-full bg-white transition-all duration-300 ${isSidePanelOpen && "hidden"}`}
       >
-        Side Panel
+        <div className="flex w-full justify-between border-t border-b border-gray-300 px-4 pt-1">
+          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
+            <span className="relative z-10">Updates</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
+          </span>
+          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
+            <span className="relative z-10">Tasks</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
+          </span>
+          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
+            <span className="relative z-10">Documents</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
+          </span>
+          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
+            <span className="relative z-10">Reminders</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
+          </span>
+        </div>
       </div>
     </div>
   );

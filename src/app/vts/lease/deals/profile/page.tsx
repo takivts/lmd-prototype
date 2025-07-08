@@ -2,7 +2,7 @@ export default function DealProfilePage() {
   return (
     <div className="flex h-full flex-col">
       <div className="flex flex-col gap-2 p-8">
-        <div className="text-xs text-gray-500">
+        <div className="text-xs text-gray-700">
           <span className="">VTS Lease</span> &gt;{" "}
           <span className="text-gray-700">Deals</span> &gt;{" "}
           <span className="font-bold text-gray-700">Deal Profile</span>
@@ -14,15 +14,15 @@ export default function DealProfilePage() {
             </span>
             <h1 className="truncate text-4xl font-bold">Starbucks Coffee</h1>
           </div>
-          <div className="text-vts-purple-700 flex items-center gap-6 pr-8">
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-md px-2 py-1">
+          <div className="text-vts-purple-700 flex items-center gap-4 pr-8 text-sm">
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6"
+                className="size-4"
               >
                 <path
                   strokeLinecap="round"
@@ -32,14 +32,14 @@ export default function DealProfilePage() {
               </svg>
               Edit Deal
             </span>
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-md px-2 py-1">
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6"
+                className="size-4"
               >
                 <path
                   strokeLinecap="round"
@@ -49,7 +49,7 @@ export default function DealProfilePage() {
               </svg>
               Export
             </span>
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-md px-2 py-1">
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-0.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -68,13 +68,13 @@ export default function DealProfilePage() {
           </div>
         </div>
         <div className="flex flex-col">
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-700">
             Standardized Tenant{" "}
             <span className="text-vts-purple-700 cursor-pointer underline decoration-dotted decoration-2">
               Global Starbucks Coffee
             </span>
           </span>
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-700">
             Deal Lead{" "}
             <span className="text-vts-purple-700 cursor-pointer underline decoration-dotted decoration-2">
               John Doe
@@ -82,8 +82,8 @@ export default function DealProfilePage() {
           </span>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-sm text-gray-500">Stage</span>
-          <span className="flex w-48 items-center justify-between rounded-md border border-gray-300 px-2 py-1 text-sm">
+          <span className="text-sm text-gray-700">Stage</span>
+          <span className="flex w-48 items-center justify-between rounded-lg border border-gray-300 px-2 py-1 text-sm">
             Lease Out
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,33 +103,301 @@ export default function DealProfilePage() {
         </div>
       </div>
       <div className="flex gap-2">
-        <div className="flex w-full gap-4 border-t border-b border-gray-300 px-8 pt-2">
-          <span className="hover:border-b-vts-purple-700 cursor-pointer border-b-4 border-transparent py-1 text-sm font-bold text-gray-500">
-            Info
+        <div className="flex w-full gap-8 border-y border-gray-300 px-4 pt-1 text-sm font-bold text-gray-500">
+          <span className="group relative cursor-pointer py-1">
+            <span className="relative z-10">Info</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
           </span>
-          <span className="hover:border-b-vts-purple-700 cursor-pointer border-b-4 border-transparent py-1 text-sm font-bold text-gray-500">
-            Proposals
+          <span className="group relative cursor-pointer py-1">
+            <span className="relative z-10">Proposals</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-full -translate-x-1/2 rounded-lg opacity-100 transition-all duration-300 ease-out"></span>
           </span>
-          <span className="hover:border-b-vts-purple-700 cursor-pointer border-b-4 border-transparent py-1 text-sm font-bold text-gray-500">
-            Approval
+          <span className="group relative cursor-pointer py-1">
+            <span className="relative z-10">Approval</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
           </span>
-          <span className="hover:border-b-vts-purple-700 cursor-pointer border-b-4 border-transparent py-1 text-sm font-bold text-gray-500">
-            Tenant Coordination
+          <span className="group relative cursor-pointer py-1">
+            <span className="relative z-10">Tenant Coordination</span>
+            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
           </span>
         </div>
       </div>
-      <div className="flex w-full flex-1 flex-col rounded-md bg-gray-100 p-6">
-        <div className="flex h-full flex-col gap-2 rounded-md border border-gray-300 bg-white">
-          <div className="flex w-full gap-4 border-b border-gray-300 px-4 pt-2 pb-0">
-            <span className="hover:border-b-vts-purple-700 cursor-pointer border-b-4 border-transparent py-1 text-sm font-bold text-gray-500">
-              Proposals
+
+      <div className="flex w-full flex-1 flex-col overflow-auto rounded-lg bg-gray-100 p-6">
+        <div className="flex min-h-full flex-col gap-2 rounded-lg border border-gray-300 bg-white">
+          <div className="flex w-full gap-8 border-b border-gray-300 px-4 pt-1 pb-0 text-sm font-bold text-gray-500">
+            <span className="group relative cursor-pointer py-1">
+              <span className="relative z-10">Proposals</span>
+              <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-full -translate-x-1/2 rounded-lg opacity-100 transition-all duration-300 ease-out"></span>
             </span>
-            <span className="hover:border-b-vts-purple-700 cursor-pointer border-b-4 border-transparent py-1 text-sm font-bold text-gray-500">
-              Analysis
+            <span className="group relative cursor-pointer py-1">
+              <span className="relative z-10">Analysis</span>
+              <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
             </span>
-            <span className="hover:border-b-vts-purple-700 cursor-pointer border-b-4 border-transparent py-1 text-sm font-bold text-gray-500">
-              Cashflow
+            <span className="group relative cursor-pointer py-1">
+              <span className="relative z-10">Cashflow</span>
+              <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
             </span>
+          </div>
+
+          <div className="flex flex-col gap-2 overflow-auto p-4">
+            <div className="flex gap-2 overflow-auto pr-4 pb-4 text-xs">
+              <div className="flex w-48 shrink-0 flex-col rounded-lg">
+                <div className="min-h-30" />
+                <div className="flex min-h-6 items-center gap-2">
+                  <h5 className="text-base font-bold">Overview</h5>
+                  <span className="h-1 w-full bg-gray-200" />
+                </div>
+                <div className="flex flex-col text-right text-gray-700">
+                  <span className="border-b border-gray-200 px-2 pb-2">
+                    Label
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Date Entered
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Lease Type
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Type
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Space(s)
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Size (sm)
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Downtime (mo)
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Tenant Possession Date
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Tenant Buildout Period (days)
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Tenant Buildout Period (mo)
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    LCD
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Lock-In End
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Term (mo)
+                  </span>
+                </div>
+              </div>
+              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
+                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
+                  <h5 className="text-base font-bold">Previous Lease</h5>
+                </div>
+                <div className="flex min-h-6 items-center gap-2">
+                  <span className="h-1 w-full bg-gray-200" />
+                </div>
+                <div className="flex h-full flex-col text-right text-gray-700">
+                  <span className="border-b border-gray-200 px-2 pb-2">
+                    TBD
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Jan 10, 2019
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Gross
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Renewal
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Unit 102
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    1,750
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">1</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Feb 1, 2020
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">30</span>
+                  <span className="border-b border-gray-200 px-2 py-2">1</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Feb 1, 2020
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Jan 31, 2025
+                  </span>
+                  <span className="border-gray-200 px-2 py-2">60</span>
+                </div>
+              </div>
+              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
+                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
+                  <h5 className="text-base font-bold">Budget</h5>
+                  <span className="text-vts-purple-700 cursor-pointer text-xs">
+                    Select budget
+                  </span>
+                </div>
+                <div className="flex min-h-6 items-center gap-2">
+                  <span className="h-1 w-full bg-gray-200" />
+                </div>
+                <div className="flex flex-col text-right text-gray-700">
+                  <span className="border-b border-gray-200 px-2 pb-2">
+                    TBD
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Dec 10, 2024
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Gross
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    New
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Unit 102
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    1,800
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">2</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Mar 1, 2025
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">45</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    1.5
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Mar 1, 2025
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Feb 28, 2030
+                  </span>
+                  <span className="border-gray-200 px-2 py-2">60</span>
+                </div>
+              </div>
+              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
+                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
+                  <h5 className="text-base font-bold">Tenant</h5>
+                  <span className="text-vts-purple-700 cursor-pointer text-xs underline decoration-dotted decoration-2">
+                    Analyze proposal
+                  </span>
+                  <span className="text-vts-purple-700 cursor-pointer text-xs">
+                    View details
+                  </span>
+                  <span className="text-vts-purple-700 cursor-pointer text-xs">
+                    Generate LOI
+                  </span>
+                </div>
+                <div className="flex min-h-6 items-center gap-2">
+                  <span className="h-1 w-full bg-gray-200" />
+                </div>
+                <div className="flex flex-col text-right text-gray-700">
+                  <span className="border-b border-gray-200 px-2 pb-2">
+                    Starbucks Coffee
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Dec 15, 2024
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    National
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Coffee Retail
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Unit 102
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    1,800
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">2</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Mar 1, 2025
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">45</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    1.5
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Mar 1, 2025
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Feb 28, 2030
+                  </span>
+                  <span className="border-gray-200 px-2 py-2">60</span>
+                </div>
+              </div>
+              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
+                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
+                  <h5 className="flex items-center justify-center gap-1 text-base font-bold">
+                    Landlord{" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="text-vts-purple-700 size-6 cursor-pointer"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                      />
+                    </svg>
+                  </h5>
+                  <span className="text-vts-purple-700 cursor-pointer text-xs underline decoration-dotted decoration-2">
+                    Analyze proposal
+                  </span>
+                  <span className="text-vts-purple-700 cursor-pointer text-xs">
+                    View details
+                  </span>
+                  <span className="text-vts-purple-700 cursor-pointer text-xs">
+                    Generate LOI
+                  </span>
+                </div>
+                <div className="flex min-h-6 items-center gap-2">
+                  <span className="h-1 w-full bg-gray-200" />
+                </div>
+                <div className="flex flex-col text-right text-gray-700">
+                  <span className="border-b border-gray-200 px-2 pb-2">
+                    Downtown Plaza LLC
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Dec 15, 2024
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Commercial
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Property Owner
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Unit 102
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    1,800
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">2</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Mar 1, 2025
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">45</span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    1.5
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Mar 1, 2025
+                  </span>
+                  <span className="border-b border-gray-200 px-2 py-2">
+                    Feb 28, 2030
+                  </span>
+                  <span className="border-gray-200 px-2 py-2">60</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
