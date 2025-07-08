@@ -3,7 +3,18 @@
 import { Bar } from "@visx/shape";
 import { Group } from "@visx/group";
 import { ParentSize } from "@visx/responsive";
-import { DealPipelineChartProps } from "./_types";
+
+export interface PipelineData {
+  label: string;
+  value: number;
+}
+
+export interface DealPipelineChartProps {
+  data: PipelineData[];
+  width?: number;
+  height?: number;
+  barWidth?: number;
+}
 
 function truncateText(
   text: string,

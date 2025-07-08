@@ -6,10 +6,36 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { Deal, DealsTableProps } from "./_types";
+import Link from "next/link";
 
+export interface Deal {
+  tenant: string;
+  requirementSize: string;
+  totalSize: string;
+  asset: string;
+  stage: string;
+  ner: string;
+  contact: string;
+  comment: string;
+  lastUpdated: string;
+  link: string;
+}
+
+export interface DealsTableProps {
+  data: Deal[];
+}
 const columns: ColumnDef<Deal>[] = [
-  { header: "Tenant", accessorKey: "tenant" },
+  {
+    header: "Tenant",
+    accessorKey: "tenant",
+    cell: ({ row }) => {
+      return (
+        <Link href={row.original.link} className="text-vts-purple-700">
+          {row.original.tenant}
+        </Link>
+      );
+    },
+  },
   { header: "Requirement Size", accessorKey: "requirementSize" },
   { header: "Total Size", accessorKey: "totalSize" },
   { header: "Asset", accessorKey: "asset" },

@@ -9,6 +9,7 @@ export const dealData = [
     contact: "Sarah Johnson",
     comment: "Drive-thru location, high traffic area",
     lastUpdated: "12/15/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "TD Bank",
@@ -20,6 +21,7 @@ export const dealData = [
     contact: "Michael Chen",
     comment: "Full-service branch with ATM vestibule",
     lastUpdated: "12/10/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Shoppers Drug Mart",
@@ -31,6 +33,7 @@ export const dealData = [
     contact: "Jennifer Park",
     comment: "Anchor tenant, pharmacy + retail",
     lastUpdated: "12/08/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "RBC Royal Bank",
@@ -42,6 +45,7 @@ export const dealData = [
     contact: "David Rodriguez",
     comment: "Premium location, ground floor",
     lastUpdated: "12/12/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Tim Hortons",
@@ -53,6 +57,7 @@ export const dealData = [
     contact: "Lisa Thompson",
     comment: "24/7 operation, truck stop access",
     lastUpdated: "12/05/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Walmart Supercenter",
@@ -64,6 +69,7 @@ export const dealData = [
     contact: "Robert Wilson",
     comment: "New market entry, full grocery",
     lastUpdated: "12/14/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Canadian Tire",
@@ -75,6 +81,7 @@ export const dealData = [
     contact: "Amanda Foster",
     comment: "Auto service center included",
     lastUpdated: "12/07/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Loblaw Companies",
@@ -86,6 +93,7 @@ export const dealData = [
     contact: "Kevin O'Brien",
     comment: "No Frills banner, value-focused",
     lastUpdated: "12/11/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "McDonald's",
@@ -97,6 +105,7 @@ export const dealData = [
     contact: "Rachel Green",
     comment: "Student population, delivery hub",
     lastUpdated: "12/09/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Home Depot",
@@ -108,6 +117,7 @@ export const dealData = [
     contact: "Thomas Anderson",
     comment: "Garden center, lumber yard",
     lastUpdated: "12/06/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "PetSmart",
@@ -119,6 +129,7 @@ export const dealData = [
     contact: "Michelle Davis",
     comment: "Grooming salon, vet clinic space",
     lastUpdated: "12/13/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Best Buy",
@@ -130,6 +141,7 @@ export const dealData = [
     contact: "James Miller",
     comment: "Market exit, online shift",
     lastUpdated: "11/28/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Subway",
@@ -141,6 +153,7 @@ export const dealData = [
     contact: "Patricia Lee",
     comment: "Healthcare workers, visitors",
     lastUpdated: "12/01/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "GoodLife Fitness",
@@ -152,6 +165,7 @@ export const dealData = [
     contact: "Christopher Brown",
     comment: "24-hour access, pool facility",
     lastUpdated: "12/03/24",
+    link: "/vts/lease/deals/profile",
   },
   {
     tenant: "Dollarama",
@@ -163,6 +177,7 @@ export const dealData = [
     contact: "Stephanie White",
     comment: "Dollar store format, high volume",
     lastUpdated: "12/04/24",
+    link: "/vts/lease/deals/profile",
   },
 ];
 

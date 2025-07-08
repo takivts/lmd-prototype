@@ -3,9 +3,18 @@
 import { Bar } from "@visx/shape";
 import { Group } from "@visx/group";
 import { ParentSize } from "@visx/responsive";
-import { DealPipelineChartProps } from "./_types";
 
-// Utility function to truncate text to fit within maxWidth
+export interface PipelineData {
+  label: string;
+  value: number;
+}
+export interface DealPipelineChartProps {
+  data: PipelineData[];
+  width?: number;
+  height?: number;
+  barWidth?: number;
+}
+
 function truncateText(
   text: string,
   maxWidth: number,
@@ -18,7 +27,6 @@ function truncateText(
     return text;
   }
 
-  // Truncate and add ellipsis
   return text.substring(0, maxChars - 3) + "...";
 }
 
