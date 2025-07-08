@@ -1,3 +1,5 @@
+import ProposalCard from "@/app/vts/_shared/proposal-card";
+
 export default function DealProfilePage() {
   return (
     <div className="flex h-full flex-col">
@@ -190,213 +192,94 @@ export default function DealProfilePage() {
                   </span>
                 </div>
               </div>
-              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
-                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
-                  <h5 className="text-base font-bold">Previous Lease</h5>
-                </div>
-                <div className="flex min-h-6 items-center gap-2">
-                  <span className="h-1 w-full bg-gray-200" />
-                </div>
-                <div className="flex h-full flex-col text-right text-gray-700">
-                  <span className="border-b border-gray-200 px-2 pb-2">
-                    TBD
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Jan 10, 2019
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Gross
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Renewal
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Unit 102
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    1,750
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">1</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Feb 1, 2020
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">30</span>
-                  <span className="border-b border-gray-200 px-2 py-2">1</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Feb 1, 2020
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Jan 31, 2025
-                  </span>
-                  <span className="border-gray-200 px-2 py-2">60</span>
-                </div>
-              </div>
-              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
-                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
-                  <h5 className="text-base font-bold">Budget</h5>
-                  <span className="text-vts-purple-700 cursor-pointer text-xs">
-                    Select budget
-                  </span>
-                </div>
-                <div className="flex min-h-6 items-center gap-2">
-                  <span className="h-1 w-full bg-gray-200" />
-                </div>
-                <div className="flex flex-col text-right text-gray-700">
-                  <span className="border-b border-gray-200 px-2 pb-2">
-                    TBD
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Dec 10, 2024
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Gross
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    New
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Unit 102
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    1,800
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">2</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Mar 1, 2025
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">45</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    1.5
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Mar 1, 2025
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Feb 28, 2030
-                  </span>
-                  <span className="border-gray-200 px-2 py-2">60</span>
-                </div>
-              </div>
-              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
-                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
-                  <h5 className="text-base font-bold">Tenant</h5>
-                  <span className="text-vts-purple-700 cursor-pointer text-xs underline decoration-dotted decoration-2">
-                    Analyze proposal
-                  </span>
-                  <span className="text-vts-purple-700 cursor-pointer text-xs">
-                    View details
-                  </span>
-                  <span className="text-vts-purple-700 cursor-pointer text-xs">
-                    Generate LOI
-                  </span>
-                </div>
-                <div className="flex min-h-6 items-center gap-2">
-                  <span className="h-1 w-full bg-gray-200" />
-                </div>
-                <div className="flex flex-col text-right text-gray-700">
-                  <span className="border-b border-gray-200 px-2 pb-2">
-                    Starbucks Coffee
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Dec 15, 2024
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    National
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Coffee Retail
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Unit 102
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    1,800
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">2</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Mar 1, 2025
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">45</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    1.5
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Mar 1, 2025
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Feb 28, 2030
-                  </span>
-                  <span className="border-gray-200 px-2 py-2">60</span>
-                </div>
-              </div>
-              <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300">
-                <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
-                  <h5 className="flex items-center justify-center gap-1 text-base font-bold">
-                    Landlord{" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="text-vts-purple-700 size-6 cursor-pointer"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-                      />
-                    </svg>
-                  </h5>
-                  <span className="text-vts-purple-700 cursor-pointer text-xs underline decoration-dotted decoration-2">
-                    Analyze proposal
-                  </span>
-                  <span className="text-vts-purple-700 cursor-pointer text-xs">
-                    View details
-                  </span>
-                  <span className="text-vts-purple-700 cursor-pointer text-xs">
-                    Generate LOI
-                  </span>
-                </div>
-                <div className="flex min-h-6 items-center gap-2">
-                  <span className="h-1 w-full bg-gray-200" />
-                </div>
-                <div className="flex flex-col text-right text-gray-700">
-                  <span className="border-b border-gray-200 px-2 pb-2">
-                    Downtown Plaza LLC
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Dec 15, 2024
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Commercial
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Property Owner
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Unit 102
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    1,800
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">2</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Mar 1, 2025
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">45</span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    1.5
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Mar 1, 2025
-                  </span>
-                  <span className="border-b border-gray-200 px-2 py-2">
-                    Feb 28, 2030
-                  </span>
-                  <span className="border-gray-200 px-2 py-2">60</span>
-                </div>
-              </div>
+
+              <ProposalCard
+                title="Previous Lease"
+                data={{
+                  label: "TBD",
+                  dateEntered: "Jan 10, 2019",
+                  leaseType: "Gross",
+                  type: "Renewal",
+                  spaces: "Unit 102",
+                  size: "1,750",
+                  downtime: "1",
+                  tenantPossessionDate: "Feb 1, 2020",
+                  tenantBuildoutPeriodDays: "30",
+                  tenantBuildoutPeriodMonths: "1",
+                  lcd: "Feb 1, 2020",
+                  lockInEnd: "Jan 31, 2025",
+                  term: "60",
+                }}
+              />
+
+              <ProposalCard
+                title="Budget"
+                actions={[{ text: "Select budget" }]}
+                data={{
+                  label: "TBD",
+                  dateEntered: "Dec 10, 2024",
+                  leaseType: "Gross",
+                  type: "New",
+                  spaces: "Unit 102",
+                  size: "1,800",
+                  downtime: "2",
+                  tenantPossessionDate: "Mar 1, 2025",
+                  tenantBuildoutPeriodDays: "45",
+                  tenantBuildoutPeriodMonths: "1.5",
+                  lcd: "Mar 1, 2025",
+                  lockInEnd: "Feb 28, 2030",
+                  term: "60",
+                }}
+              />
+
+              <ProposalCard
+                title="Tenant"
+                actions={[
+                  { text: "Analyze proposal", isUnderlined: true },
+                  { text: "View details" },
+                  { text: "Generate LOI" },
+                ]}
+                data={{
+                  label: "Starbucks Coffee",
+                  dateEntered: "Dec 15, 2024",
+                  leaseType: "National",
+                  type: "Coffee Retail",
+                  spaces: "Unit 102",
+                  size: "1,800",
+                  downtime: "2",
+                  tenantPossessionDate: "Mar 1, 2025",
+                  tenantBuildoutPeriodDays: "45",
+                  tenantBuildoutPeriodMonths: "1.5",
+                  lcd: "Mar 1, 2025",
+                  lockInEnd: "Feb 28, 2030",
+                  term: "60",
+                }}
+              />
+
+              <ProposalCard
+                title="Landlord"
+                actions={[
+                  { text: "Analyze proposal", isUnderlined: true },
+                  { text: "View details" },
+                  { text: "Generate LOI" },
+                ]}
+                data={{
+                  label: "Downtown Plaza LLC",
+                  dateEntered: "Dec 15, 2024",
+                  leaseType: "Commercial",
+                  type: "Property Owner",
+                  spaces: "Unit 102",
+                  size: "1,800",
+                  downtime: "2",
+                  tenantPossessionDate: "Mar 1, 2025",
+                  tenantBuildoutPeriodDays: "45",
+                  tenantBuildoutPeriodMonths: "1.5",
+                  lcd: "Mar 1, 2025",
+                  lockInEnd: "Feb 28, 2030",
+                  term: "60",
+                }}
+                showMenuIcon={true}
+              />
             </div>
           </div>
         </div>
