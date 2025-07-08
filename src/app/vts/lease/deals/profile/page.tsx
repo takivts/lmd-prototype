@@ -31,7 +31,7 @@ export default function DealProfilePage() {
             <h1 className="truncate text-4xl font-bold">Starbucks Coffee</h1>
           </div>
           <div className="text-vts-purple-700 flex items-center gap-4 pr-8 text-sm">
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1">
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -48,7 +48,7 @@ export default function DealProfilePage() {
               </svg>
               Edit Deal
             </span>
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1">
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -65,7 +65,7 @@ export default function DealProfilePage() {
               </svg>
               Export
             </span>
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-0.5">
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-1 py-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -83,6 +83,7 @@ export default function DealProfilePage() {
             </span>
           </div>
         </div>
+
         <div className="flex flex-col">
           <span className="text-sm text-gray-700">
             Standardized Tenant{" "}
@@ -92,12 +93,12 @@ export default function DealProfilePage() {
           </span>
           <span className="text-sm text-gray-700">
             Deal Lead{" "}
-            <span className="text-vts-purple-700 cursor-pointer underline decoration-dotted decoration-2">
+            <span className="text-vts-purple-700 cursor-pointer underline">
               John Doe
             </span>
           </span>
         </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-2">
           <span className="text-sm text-gray-700">Stage</span>
           <span className="flex w-48 items-center justify-between rounded-lg border border-gray-300 px-2 py-1 text-sm">
             Lease Out
@@ -140,7 +141,7 @@ export default function DealProfilePage() {
               {/* <div className="pointer-events-none absolute top-0 right-0 z-10 h-[calc(100%-32px)] w-16 bg-gradient-to-r from-transparent to-white" /> */}
               <div className="flex w-48 shrink-0 flex-col rounded-lg">
                 <div className="min-h-30" />
-                <div className="flex min-h-6 items-center gap-2">
+                <div className="flex min-h-6.5 items-center gap-2">
                   <h5 className="text-base font-bold">Overview</h5>
                   <span className="h-1 w-full bg-gray-200" />
                 </div>

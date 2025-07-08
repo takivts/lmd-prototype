@@ -15,8 +15,6 @@ export default function VtsLeaseLayout({
   const pathname = usePathname();
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
-  console.log(pathname);
-
   return (
     <div className="flex flex-col">
       <GlobalHeader />

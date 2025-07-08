@@ -7,12 +7,12 @@ export default function FloatingCTA() {
   return (
     <>
       <div
-        className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 h-16 w-16 rounded-full transition-all duration-300`}
+        className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 h-14 w-14 rounded-full transition-all duration-300`}
         onClick={() => setIsOpen(!isOpen)}
       />
 
       <VtsAiTenantProfile
-        className="absolute right-28 bottom-8"
+        className="absolute right-24 bottom-16"
         isOpen={isOpen}
       />
     </>
