@@ -58,106 +58,227 @@ export default function VtsAiTenantProfile({
           </div>
         </div>
 
-        <div className="flex h-128 flex-col overflow-auto p-4">
+        <div className="flex h-128 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
+          <h4 className="mb-2 text-base font-bold">
+            Starbucks – Global Tenant Profile
+          </h4>
+
           <div className="mb-4">
-            Church’s Fried Chicken, founded in 1952, is a leading quick-service
-            restaurant chain with over 1,200 locations globally.
+            <h5 className="mb-1 font-bold">Ticker / Sector / Rating</h5>
+            <p className="mb-4">
+              Starbucks Corp. (Nasdaq: SBUX) – Global specialty-coffee
+              retailer/QSR
+            </p>
+            <p className="mb-2">
+              Investment-grade credit: S&P BBB+ (negative outlook, May 2025) |
+              Moody's Baa1 (negative)
+            </p>
+            <div className="mb-2 text-xs text-gray-600">
+              <a
+                href="https://disclosure.spglobal.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                disclosure.spglobal.com
+              </a>{" "}
+              |
+              <a
+                href="https://investing.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                investing.com
+              </a>
+            </div>
           </div>
 
-          <div className="mb-4 rounded-lg border border-yellow-200 bg-yellow-50 p-4">
-            <div className="mb-1">Key Insights from VTS Data</div>
-            <ul className="list-disc pl-5">
+          <div className="mb-4">
+            <h5 className="mb-1 font-bold">Scale & Footprint</h5>
+            <ul className="mb-2 list-disc pl-5">
               <li>
-                Active retail demand is down 7% QoQ, driven by softening in
-                &lt;5,000 SF quick-service requirements
+                40,789 cafés worldwide at Q2 FY-2025; 53% company-operated / 47%
+                licensed.
               </li>
               <li>
-                Leasing Velocity in Financial District is stable; Hudson Yards
-                saw a 5% increase in food and beverage leasing
+                USA + China remain the anchor markets (≈61% of all units; 16,352
+                U.S. / 6,806 China at FY-2023).
               </li>
               <li>
-                Retail tenant demand has increased 9% in West Loop, led by
-                food-service operators
+                Canada: ~1,400 locations across every province – useful for
+                domestic rent comps.
+              </li>
+              <li>
+                FY-2024 consolidated revenue $36.2 bn (+1% y/y); global comps
+                –2%.
               </li>
             </ul>
+            <div className="mb-2 text-xs text-gray-600">
+              <a
+                href="https://investor.starbucks.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                investor.starbucks.com
+              </a>{" "}
+              |
+              <a
+                href="https://stories.starbucks.ca"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                stories.starbucks.ca
+              </a>
+            </div>
           </div>
 
-          <h5 className="mb-1 font-bold">Current Relationship</h5>
-          <ul className="mb-4 list-disc pl-5">
-            <li>
-              The tenant currently has 12,500 sf. spaces across 5 leases in our
-              portfolio
-            </li>
-            <li>
-              In the past 2 years we have executed deals in{" "}
-              <a href="#" className="text-vts-purple-700 underline">
-                Financial District
+          <div className="mb-4">
+            <h5 className="mb-1 font-bold">Real-Estate Strategy</h5>
+            <ul className="mb-2 list-disc pl-5">
+              <li>
+                2025 plan: slow new-build pipeline to redirect cap-ex toward
+                remodels / throughput upgrades ("Back to Starbucks" turnaround).
+              </li>
+              <li>
+                Exploring minority stake sale of China business while still
+                targeting 9,000 CN cafés by 2025.
+              </li>
+            </ul>
+            <div className="mb-2 text-xs text-gray-600">
+              <a
+                href="https://fermag.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                fermag.com
+              </a>{" "}
+              |
+              <a
+                href="https://6sqft.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                6sqft.com
+              </a>{" "}
+              |
+              <a
+                href="https://costar.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                costar.com
+              </a>{" "}
+              |
+              <a
+                href="https://ft.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                ft.com
               </a>
-              ,{" "}
-              <a href="#" className="text-vts-purple-700 underline">
-                Hudson Yards
-              </a>{" "}
-              and{" "}
-              <a href="#" className="text-vts-purple-700 underline">
-                Chelsea
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <h5 className="mb-1 font-bold">Lease & Credit Characteristics</h5>
+            <ul className="mb-2 list-disc pl-5">
+              <li>
+                Weighted-average remaining lease term: 8.5 years on operating
+                leases (10-K).
+              </li>
+              <li>
+                Corporate guaranty on company-operated sites; licensed‐store
+                leases typically backed by local franchisee covenant.
+              </li>
+              <li>
+                Rent structure: vanilla NNN or NN with base + 5-7% percentage
+                rent kicker above breakpoint; CAM, real-estate tax pass-throughs
+                standard.
+              </li>
+              <li>
+                Occupancy expenses recorded straight-line; FY-2024 cash paid on
+                operating leases ≈ $1.66 bn.
+              </li>
+            </ul>
+            <div className="mb-2 text-xs text-gray-600">
+              <a
+                href="https://investor.starbucks.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                investor.starbucks.com
               </a>
-            </li>
-            <li>
-              Renewal option for{" "}
-              <a href="#" className="text-vts-purple-700 underline">
-                SoHo
-              </a>{" "}
-              executed early in Q1 2025, locking in rent escalations through
-              2032
-            </li>
-            <li>
-              Currently 2 deals actively in the pipeline in{" "}
-              <a href="#" className="text-vts-purple-700 underline">
-                Downtown
-              </a>{" "}
-              and{" "}
-              <a href="#" className="text-vts-purple-700 underline">
-                West Loop
-              </a>{" "}
-              areas Chicago
-            </li>
-          </ul>
-
-          <h5 className="mb-1 font-bold">Performance & Operations</h5>
-          <ul className="mb-4 list-disc pl-5">
-            <li>
-              Work order and service request average completion time 36 hours
-            </li>
-            <li>
-              Monthly NER receipts average $6,250; sales consistently exceed pro
-              forma by 12%
-            </li>
-          </ul>
-
-          <h5 className="mb-1 font-bold">Capital & TI</h5>
-          <ul className="mb-4 list-disc pl-5">
-            <li>
-              $150K tenant improvement allowance for kitchen build-out and
-              facade upgrades
-            </li>
-            <li>
-              Landlord-funded signage package and HVAC replacement in Year 5
-            </li>
-          </ul>
-
-          <h5 className="mb-1 font-bold">Suggestions for follow up:</h5>
-          <div className="space-y-2">
-            <div className="bg-vts-purple-100 text-vts-purple-700 hover:bg-vts-purple-100 border-vts-purple-300 cursor-pointer rounded-lg border px-3 py-2 transition-all duration-300">
-              What is the current demand trend for quick-service retail space in
-              Financial District, Hudson Yards, and Chelsea?
             </div>
-            <div className="bg-vts-purple-100 text-vts-purple-700 hover:bg-vts-purple-100 border-vts-purple-300 cursor-pointer rounded-lg border px-3 py-2 transition-all duration-300">
-              How has large-block retail demand changed in Downtown and West
-              Loop Chicago in the past quarter?
-            </div>
-            <div className="bg-vts-purple-100 text-vts-purple-700 hover:bg-vts-purple-100 border-vts-purple-300 cursor-pointer rounded-lg border px-3 py-2 transition-all duration-300">
-              What submarkets have the strongest leasing velocity for retail
-              tenants of 2,500–5,000 SF?
+          </div>
+
+          <div className="mb-4">
+            <h5 className="mb-1 font-bold">
+              Financial Health Snapshot (FY-2024)
+            </h5>
+            <ul className="mb-4 list-disc pl-5">
+              <li>Revenue $36.2 bn | Operating margin 18.7% (–450 bps y/y)</li>
+              <li>Net income $3.0 bn | EPS $3.31 (–8% y/y)</li>
+              <li>
+                Liquidity: $3.8 bn cash & equivalents; $15 bn total debt;
+                revolving CP program maintained. (10-K, 2024).
+              </li>
+              <li>
+                Negative outlooks reflect traffic softness, higher labor costs
+                and elevated cap-ex.
+              </li>
+            </ul>
+            <div className="mb-2 text-xs text-gray-600">
+              <a
+                href="https://investor.starbucks.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                investor.starbucks.com
+              </a>{" "}
+              |
+              <a
+                href="https://sec.gov"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                sec.gov
+              </a>{" "}
+              |
+              <a
+                href="https://ft.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                ft.com
+              </a>{" "}
+              |
+              <a
+                href="https://investing.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-vts-purple-700 underline"
+              >
+                {" "}
+                investing.com
+              </a>
             </div>
           </div>
         </div>
