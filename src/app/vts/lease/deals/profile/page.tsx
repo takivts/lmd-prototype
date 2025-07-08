@@ -124,12 +124,20 @@ export default function DealProfilePage() {
       </div>
 
       <div className="flex w-full flex-1 flex-col overflow-auto rounded-lg bg-gray-100 p-6">
-        <div className="flex min-h-full flex-col gap-2 rounded-lg border border-gray-300 bg-white">
+        <div className="flex min-h-full flex-col gap-4 rounded-lg border border-gray-300 bg-white">
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
+          <div className="flex w-full justify-end gap-2 px-4">
+            <div className="text-vts-purple-700 border-vts-purple-700 flex shrink cursor-pointer rounded-lg border px-2 py-1 text-sm">
+              New proposal
+            </div>
+            <div className="text-vts-purple-700 border-vts-purple-700 flex shrink cursor-pointer rounded-lg border px-2 py-1 text-sm">
+              Display options
+            </div>
+          </div>
 
-          <div className="relative flex flex-col gap-2 overflow-auto p-4">
-            <div className="flex gap-2 overflow-auto pr-16 pb-4 text-xs">
-              <div className="pointer-events-none absolute top-0 right-8 h-[calc(100%-32px)] w-16 bg-gradient-to-r from-transparent to-white" />
+          <div className="relative flex flex-col gap-2 overflow-auto px-4">
+            <div className="flex gap-2 overflow-auto pr-8 pb-4 text-xs">
+              {/* <div className="pointer-events-none absolute top-0 right-0 z-10 h-[calc(100%-32px)] w-16 bg-gradient-to-r from-transparent to-white" /> */}
               <div className="flex w-48 shrink-0 flex-col rounded-lg">
                 <div className="min-h-30" />
                 <div className="flex min-h-6 items-center gap-2">

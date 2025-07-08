@@ -1,19 +1,24 @@
 interface Tab {
   label: string;
   isActive?: boolean;
+  equalWidth?: boolean;
   onClick?: () => void;
 }
 
 export default function TabRow({
   tabs,
   className,
+  equalWidth,
 }: {
   tabs: Tab[];
   className?: string;
+  equalWidth?: boolean;
 }) {
   return (
     <div
-      className={`flex w-full gap-8 px-4 pt-1 pb-0 text-sm font-bold text-gray-500 ${className}`}
+      className={`flex w-full gap-8 px-4 pt-1 pb-0 text-sm font-bold text-gray-500 ${className} ${
+        equalWidth ? "justify-between" : "justify-start"
+      }`}
     >
       {tabs.map((tab, index) => (
         <span

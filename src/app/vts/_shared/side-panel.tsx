@@ -1,3 +1,5 @@
+import TabRow from "@/app/vts/_shared/tab-row";
+
 export default function SidePanel({
   isSidePanelOpen,
   setIsSidePanelOpen,
@@ -5,6 +7,12 @@ export default function SidePanel({
   isSidePanelOpen: boolean;
   setIsSidePanelOpen: (isSidePanelOpen: boolean) => void;
 }) {
+  const tabs = [
+    { label: "Updates" },
+    { label: "Tasks" },
+    { label: "Documents" },
+    { label: "Reminders" },
+  ];
   return (
     <div
       className={`relative border-l border-gray-300 transition-all duration-300 ${isSidePanelOpen ? "w-0" : "w-2xl"}`}
@@ -31,24 +39,11 @@ export default function SidePanel({
       <div
         className={`h-full bg-white transition-all duration-300 ${isSidePanelOpen && "hidden"}`}
       >
-        <div className="flex w-full justify-between border-t border-b border-gray-300 px-4 pt-1">
-          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
-            <span className="relative z-10">Updates</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-          </span>
-          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
-            <span className="relative z-10">Tasks</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-          </span>
-          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
-            <span className="relative z-10">Documents</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-          </span>
-          <span className="group relative cursor-pointer py-1 text-sm font-semibold text-gray-500">
-            <span className="relative z-10">Reminders</span>
-            <span className="bg-vts-purple-700 absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 rounded-lg opacity-0 transition-all duration-300 ease-out group-hover:w-full group-hover:opacity-100"></span>
-          </span>
-        </div>
+        <TabRow
+          tabs={tabs}
+          className="border-b border-gray-300"
+          equalWidth={true}
+        />
       </div>
     </div>
   );
