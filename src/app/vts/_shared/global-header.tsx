@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 
 export default function GlobalHeader() {
   const url = usePathname();
-  const isInsights = url?.includes("insights");
-  const isMarket = url?.includes("market");
-  const isLease = url?.includes("lease");
+  const isInsights = url?.includes("/vts/insights");
+  const isMarket = url?.includes("/vts/market");
+  const isLease = url?.includes("/vts/lease");
 
   return (
     <div className="flex h-[50px] items-center bg-black px-4">

@@ -5,7 +5,7 @@ import GlobalHeader from "../_shared/global-header";
 import SidePanel from "../_shared/side-panel";
 import FloatingCTA from "../_shared/floating-cta";
 import { usePathname } from "next/navigation";
-import LeftNav from "../_shared/left-nav";
+import { LeftNav } from "../_shared/left-nav";
 
 export default function VtsLeaseLayout({
   children,
@@ -14,24 +14,34 @@ export default function VtsLeaseLayout({
 }>) {
   const pathname = usePathname();
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const leaseNavItems = [
     {
       sectionName: "",
       items: [
-        "Deals",
-        "Deal tasks",
-        "Tenant coordination",
-        "Leases",
-        "Options",
-        "Budgets",
-        "Appraisals",
-        "Comps",
-        "Tenants",
+        { label: "Deals", href: "/vts/lease/deals" },
+        { label: "Deal tasks", href: "/vts/lease/deal-tasks" },
+        {
+          label: "Tenant coordination",
+          href: "/vts/lease/tenant-coordination",
+        },
+        { label: "Leases", href: "/vts/lease/leases" },
+        { label: "Options", href: "/vts/lease/options" },
+        { label: "Budgets", href: "/vts/lease/budgets" },
+        { label: "Appraisals", href: "/vts/lease/appraisals" },
+        { label: "Comps", href: "/vts/lease/comps" },
+        { label: "Tenants", href: "/vts/lease/tenants" },
       ],
     },
     {
       sectionName: "Inventory",
-      items: ["Assets", "Spaces", "Stacking plan", "Site plan"],
+      items: [
+        { label: "Assets", href: "/vts/lease/assets" },
+        { label: "Spaces", href: "/vts/lease/spaces" },
+        { label: "Stacking plan", href: "/vts/lease/stacking-plan" },
+        { label: "Site plan", href: "/vts/lease/site-plan" },
+      ],
     },
   ];
 
@@ -47,7 +57,7 @@ export default function VtsLeaseLayout({
             setIsSidePanelOpen={setIsSidePanelOpen}
           />
         )}
-        <FloatingCTA />
+        <FloatingCTA isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </div>
   );

@@ -1,7 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import GlobalHeader from "../_shared/global-header";
-import LeftNav from "../_shared/left-nav";
+import { LeftNav } from "../_shared/left-nav";
 
 export default function VtsInsightsLayout({
   children,
@@ -12,24 +10,42 @@ export default function VtsInsightsLayout({
     {
       sectionName: "",
       items: [
-        "Deals",
-        "Deal tasks",
-        "Tenant coordination",
-        "Leases",
-        "Options",
-        "Budgets",
-        "Appraisals",
-        "Comps",
-        "Tenants",
+        {
+          label: "Portfolio insights",
+          href: "/vts/insights/portfolio-insights",
+        },
+        {
+          label: "Leasing activity report",
+          href: "/vts/insights/leasing-activity-report",
+        },
+        {
+          label: "Portfolio dashboards",
+          href: "/vts/insights/portfolio-dashboards",
+        },
+        { label: "Portfolio alerts", href: "/vts/insights/portfolio-alerts" },
+        { label: "Portfolio reports", href: "/vts/insights/portfolio-reports" },
+        { label: "Lease charts", href: "/vts/insights/lease-charts" },
+        { label: "Market Heatmap", href: "/vts/insights/market-heatmap" },
       ],
     },
     {
       sectionName: "VTS Data",
-      items: ["Data dashboards", "Data extract", "Data reports", "VODI"],
+      items: [
+        { label: "VTS Max AI", href: "/vts/insights/vts-max-ai" },
+        { label: "Data dashboards", href: "/vts/insights/data-dashboards" },
+        { label: "Data extract", href: "/vts/insights/data-extract" },
+        { label: "Data reports", href: "/vts/insights/data-reports" },
+        { label: "VODI", href: "/vts/insights/vodi" },
+      ],
     },
     {
       sectionName: "Inventory",
-      items: ["Assets", "Spaces", "Stacking plan", "Site plan"],
+      items: [
+        { label: "Assets", href: "/vts/insights/assets" },
+        { label: "Spaces", href: "/vts/insights/spaces" },
+        { label: "Stacking plan", href: "/vts/insights/stacking-plan" },
+        { label: "Site plan", href: "/vts/insights/site-plan" },
+      ],
     },
   ];
 

@@ -3,10 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { mockData } from "./data/mockData";
+import { mockData } from "./data/mockData.js";
 import type { Feature, FeatureCollection, Point } from "geojson";
-import Link from "next/link";
-import InsightsSidebar from "../left-nav";
 
 // Define property data type for mockData
 interface PropertyData {

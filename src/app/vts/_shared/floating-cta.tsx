@@ -1,9 +1,12 @@
-import { useState } from "react";
 import VtsAiTenantProfile from "./vts-ai-tenant-profile";
 
-export default function FloatingCTA() {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function FloatingCTA({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}) {
   return (
     <>
       <div
