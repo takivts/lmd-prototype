@@ -1,5 +1,4 @@
 import ProposalCard from "@/app/vts/_shared/proposal-card";
-import SparklesPreview from "@/app/vts/_shared/sparkle";
 import TabRow from "@/app/vts/_shared/tab-row";
 
 export default function DealProfilePage() {
@@ -93,7 +92,7 @@ export default function DealProfilePage() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="size-4"
+                className="text-vts-purple-600 size-4"
               >
                 <path
                   fillRule="evenodd"
@@ -112,7 +111,7 @@ export default function DealProfilePage() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="size-4"
+                className="text-vts-purple-600 size-4"
               >
                 <path
                   fillRule="evenodd"

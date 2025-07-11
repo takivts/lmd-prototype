@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { vtsAiPrompts } from "./data/vts-ai-prompts";
+import Typewriter from "typewriter-effect";
 
 export default function VtsAiDefault({
   className,
@@ -55,7 +56,7 @@ export default function VtsAiDefault({
 
   return (
     <div
-      className={`w-lg text-gray-700 shadow-lg transition-all duration-300 select-none ${className} ${
+      className={`w-lg rounded-lg text-gray-700 shadow-lg transition-all duration-300 select-none ${className} ${
         isOpen
           ? "opacity-100 select-text"
           : "pointer-events-none opacity-0 select-none"
@@ -66,13 +67,31 @@ export default function VtsAiDefault({
         onClick={() => setIsOpen(false)}
       />
       <div className="relative z-50 rounded-lg border border-gray-300 bg-white text-sm">
-        <div className="bg-vts-purple-700 flex items-center border-b border-gray-300 px-4 py-4 text-white">
-          <span className="bg-vts-purple-100 mr-3 h-12 w-12 rounded-full" />
+        <div className="flex items-center border-b border-gray-300 px-4 py-4">
+          <div className="bg-vts-purple-700 mr-2 flex size-12 flex-col items-center justify-center rounded-full text-[10px] font-bold text-white">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.3186 8.44355L10.0082 6.24573L10 6.25098L6.68731 8.44939L4.23807 6.83031L10 3.00524L10.0082 3L15.7684 6.82389L13.3186 8.44355Z"
+                fill="currentColor"
+              />
+              <path
+                d="M0 6.97529L9.99826 13.2394L10 13.2383L20 6.97296V11.1518L10 17.4165L9.99826 17.4177L0 11.1535V6.97529Z"
+                fill="currentColor"
+              />
+            </svg>
+            VTS AI
+          </div>
           <div className="flex flex-col">
             <h5 className="text-lg font-bold">VTS MAX AI</h5>
             <span className="text-vts-primary"></span>
           </div>
-          <div className="flex grow justify-end">
+          <div className="flex grow justify-end gap-2">
             <span className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end rounded-lg px-1 py-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,26 +108,41 @@ export default function VtsAiDefault({
                 />
               </svg>
             </span>
+            <span className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end rounded-lg px-1 py-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                />
+              </svg>
+            </span>
           </div>
         </div>
 
         <div className="flex h-156 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
-          <div className="flex h-full flex-col gap-2">
+          <div className="flex h-fit flex-col gap-2">
             <p className="mb-2 text-left">
-              Hi, I'm Max. Let me know how I can help you with the options
-              below:
+              Hi, I'm Max. Let me know how I can help you:
             </p>
-            <div className={`flex flex-col gap-2`}>
+            <div className={`mb-2 flex flex-col gap-2`}>
               {(selectedPrompt ? [selectedPrompt] : prompts).map((prompt) => (
                 <button
                   key={prompt}
-                  className={`transform rounded-lg border px-3 py-2 text-left transition-all duration-500 ease-in-out ${
+                  className={`rounded-lg border px-3 py-2 text-left duration-1000 ease-in-out ${
                     isTransitioning && !selectedPrompt
                       ? `opacity-0`
                       : "opacity-100"
                   } ${
                     selectedPrompt === prompt
-                      ? "bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 border-gray-200"
+                      ? "bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right self-end border-gray-200"
                       : "bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer"
                   }`}
                   onClick={() => handlePromptClick(prompt)}
@@ -147,7 +181,18 @@ export default function VtsAiDefault({
                 </svg>
               </div>
             ) : (
-              <p className="mb-4 text-sm text-gray-600">{response}</p>
+              <div className="mb-4 text-sm text-gray-600">
+                <Typewriter
+                  options={{
+                    strings: response ? [response] : [],
+                    autoStart: true,
+                    loop: false,
+                    deleteSpeed: Infinity,
+                    delay: 0,
+                    cursorClassName: "hidden",
+                  }}
+                />
+              </div>
             )}
           </div>
         </div>

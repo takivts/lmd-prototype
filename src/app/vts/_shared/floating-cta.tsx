@@ -84,7 +84,7 @@ export default function FloatingCTA({
             />
           </svg>
         ) : (
-          <div className="gap-05 flex flex-col items-center text-[10px] font-bold text-white">
+          <div className="flex flex-col items-center gap-0 text-[10px] font-bold text-white">
             <svg
               width="20"
               height="20"

@@ -16,6 +16,9 @@ export default function VtsLeaseLayout({
   const pathname = usePathname();
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [vtsAiContentType, setVtsAiContentType] = useState<
+    "default" | "tenant" | "marketAnalysis" | "upsell"
+  >("default");
 
   const leaseNavItems = [
     {
@@ -53,7 +56,7 @@ export default function VtsLeaseLayout({
         <FloatingCTA
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          vtsAiContentType="default"
+          vtsAiContentType={vtsAiContentType}
         />
       </div>
     </div>
