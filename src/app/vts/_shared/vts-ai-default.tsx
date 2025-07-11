@@ -14,23 +14,43 @@ export default function VtsAiDefault({
   const [response, setResponse] = useState<string | null>();
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [prompts, setPrompts] = useState<string[]>(vtsAiPrompts);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setSelectedPrompt(null);
+        setResponse(null);
+        setIsLoading(false);
+        setIsTransitioning(false);
+      }, 500);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (selectedPrompt) {
       setIsLoading(true);
-      console.log(selectedPrompt);
       setResponse(
         "Total requirements dropped by 8.3%, with total square footage demand down 12.1%. This suggests a cooling in tenant activity, particularly in the 50k+ SF segment, which saw the steepest decline. While demand remains above 2023 lows, the current trajectory points to increasing tenant selectivity and extended decision timelines.",
       );
     }
   }, [selectedPrompt]);
 
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    }
+  }, [isLoading]);
+
   const handlePromptClick = (prompt: string) => {
     setIsTransitioning(true);
     setTimeout(() => {
       setSelectedPrompt(prompt);
+      setPrompts(vtsAiPrompts.filter((p) => p !== prompt));
       setIsTransitioning(false);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -78,31 +98,25 @@ export default function VtsAiDefault({
               Hi, I'm Max. Let me know how I can help you with the options
               below:
             </p>
-            {selectedPrompt ? (
-              <div
-                className={`border-vts-purple-200 bg-vts-purple-100 text-vts-purple-700 rounded-lg border px-3 py-2 text-left transition-all duration-300 ease-in-out ${
-                  isTransitioning ? "opacity-0" : "opacity-100"
-                }`}
-              >
-                {selectedPrompt}
-              </div>
-            ) : (
-              <div className={`flex flex-col gap-2`}>
-                {vtsAiPrompts.map((prompt, index) => (
-                  <button
-                    key={prompt}
-                    className={`border-vts-purple-200 bg-vts-purple-100 text-vts-purple-700 hover:bg-vts-purple-200 transform cursor-pointer rounded-lg border px-3 py-2 text-left transition-all duration-500 ease-in-out ${
-                      isTransitioning
-                        ? `delay-[${index * 200}ms] translate-x-1 opacity-0`
-                        : "opacity-100"
-                    }`}
-                    onClick={() => handlePromptClick(prompt)}
-                  >
-                    {prompt}
-                  </button>
-                ))}
-              </div>
-            )}
+            <div className={`flex flex-col gap-2`}>
+              {(selectedPrompt ? [selectedPrompt] : prompts).map((prompt) => (
+                <button
+                  key={prompt}
+                  className={`transform rounded-lg border px-3 py-2 text-left transition-all duration-500 ease-in-out ${
+                    isTransitioning && !selectedPrompt
+                      ? `opacity-0`
+                      : "opacity-100"
+                  } ${
+                    selectedPrompt === prompt
+                      ? "bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 border-gray-200"
+                      : "bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer"
+                  }`}
+                  onClick={() => handlePromptClick(prompt)}
+                >
+                  {prompt}
+                </button>
+              ))}
+            </div>
             {isLoading ? (
               <div className="h-fill flex grow items-center justify-center">
                 <svg
@@ -133,7 +147,7 @@ export default function VtsAiDefault({
                 </svg>
               </div>
             ) : (
-              <p className="mb-6 text-base text-gray-600">{response}</p>
+              <p className="mb-4 text-sm text-gray-600">{response}</p>
             )}
           </div>
         </div>
