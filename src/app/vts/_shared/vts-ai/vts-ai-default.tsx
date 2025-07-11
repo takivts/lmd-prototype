@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { vtsAiPrompts } from "./data/vts-ai-prompts";
+import { vtsAiPrompts } from "../data/vts-ai-prompts";
 import Typewriter from "typewriter-effect";
 
 export default function VtsAiDefault({

@@ -1,7 +1,9 @@
-import VtsAiDefault from "./vts-ai-default";
-import VtsAiTenantProfile from "./vts-ai-tenant-profile";
+import VtsAiDefault from "./vts-ai/vts-ai-default";
+import VtsAiTenantProfile from "./vts-ai/vts-ai-tenant-profile";
 import { usePromptCycle } from "./hooks/usePromptCycle";
 import { vtsAiPrompts } from "./data/vts-ai-prompts";
+import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
+import VtsAiMarketAnalysis from "./vts-ai/vts-ai-market-analysis";
 
 export default function FloatingCTA({
   isOpen,
@@ -10,7 +12,7 @@ export default function FloatingCTA({
 }: {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  vtsAiContentType: "default" | "tenant";
+  vtsAiContentType: "default" | "tenant" | "marketAnalysis" | "upsell";
 }) {
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
@@ -21,6 +23,10 @@ export default function FloatingCTA({
           setIsOpen={setIsOpen}
         />
       );
+    } else if (vtsAiContentType === "marketAnalysis") {
+      return <VtsAiMarketAnalysis />;
+    } else if (vtsAiContentType === "upsell") {
+      return <VtsAiUpsell />;
     } else {
       return (
         <VtsAiDefault

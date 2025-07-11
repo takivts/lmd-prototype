@@ -1,12 +1,9 @@
 import TabRow from "@/app/vts/_shared/tab-row";
+import { useAppContext } from "@/app/context/AppContext";
 
-export default function SidePanel({
-  isSidePanelOpen,
-  setIsSidePanelOpen,
-}: {
-  isSidePanelOpen: boolean;
-  setIsSidePanelOpen: (isSidePanelOpen: boolean) => void;
-}) {
+export default function SidePanel() {
+  const { isSidePanelOpen, setIsSidePanelOpen } = useAppContext();
+
   const tabs = [
     { label: "Updates" },
     { label: "Relationships" },

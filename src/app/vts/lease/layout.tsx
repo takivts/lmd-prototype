@@ -14,7 +14,6 @@ export default function VtsLeaseLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [vtsAiContentType, setVtsAiContentType] = useState<
     "default" | "tenant" | "marketAnalysis" | "upsell"
@@ -47,12 +46,7 @@ export default function VtsLeaseLayout({
       <div className="mx-auto flex min-h-[calc(100vh-50px)] w-full">
         <LeftNav navItems={leaseNavItems} />
         {children}
-        {pathname === "/vts/lease/deals/profile" && (
-          <SidePanel
-            isSidePanelOpen={isSidePanelOpen}
-            setIsSidePanelOpen={setIsSidePanelOpen}
-          />
-        )}
+        <SidePanel />
         <FloatingCTA
           isOpen={isOpen}
           setIsOpen={setIsOpen}
