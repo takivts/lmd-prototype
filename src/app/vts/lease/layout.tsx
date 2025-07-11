@@ -13,12 +13,6 @@ export default function VtsLeaseLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-  const [vtsAiContentType, setVtsAiContentType] = useState<
-    "default" | "tenant" | "marketAnalysis" | "upsell"
-  >("default");
-
   const leaseNavItems = [
     {
       sectionName: "",
@@ -47,11 +41,7 @@ export default function VtsLeaseLayout({
         <LeftNav navItems={leaseNavItems} />
         {children}
         <SidePanel />
-        <FloatingCTA
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          vtsAiContentType={vtsAiContentType}
-        />
+        <FloatingCTA />
       </div>
     </div>
   );

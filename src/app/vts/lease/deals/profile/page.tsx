@@ -1,7 +1,12 @@
+"use client";
+
+import { useAppContext } from "@/app/context/AppContext";
 import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 
 export default function DealProfilePage() {
+  const { setVtsAiContentType, setIsVtsAiOpen } = useAppContext();
+
   const mainTabs = [
     { label: "Info" },
     { label: "Proposals", isActive: true },
@@ -14,6 +19,11 @@ export default function DealProfilePage() {
     { label: "Analysis" },
     { label: "Cashflow" },
   ];
+
+  const handleVtsAiContentType = (contentType: string) => {
+    setVtsAiContentType(contentType);
+    setIsVtsAiOpen(true);
+  };
 
   return (
     <div className="flex h-full flex-col">
@@ -85,8 +95,11 @@ export default function DealProfilePage() {
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2 text-sm">
-            <span className="text-gray-500">Standardized Tenant </span>
-            <span className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2">
+            <span className="text-gray-500">Standardized Tenant</span>
+            <span
+              className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
+              onClick={() => handleVtsAiContentType("tenant")}
+            >
               Global Starbucks Coffee
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +115,10 @@ export default function DealProfilePage() {
               </svg>
             </span>
           </div>
-          <div className="flex items-center gap-2 text-sm">
+          <div
+            className="flex items-center gap-2 text-sm"
+            onClick={() => handleVtsAiContentType("marketAnalysis")}
+          >
             <span className="gap-2 text-gray-500">Market</span>
             <span className="">New York</span>
             <span className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2">

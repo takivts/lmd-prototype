@@ -4,23 +4,19 @@ import { usePromptCycle } from "./hooks/usePromptCycle";
 import { vtsAiPrompts } from "./data/vts-ai-prompts";
 import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import VtsAiMarketAnalysis from "./vts-ai/vts-ai-market-analysis";
+import { useAppContext } from "../../context/AppContext";
 
-export default function FloatingCTA({
-  isOpen,
-  setIsOpen,
-  vtsAiContentType,
-}: {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  vtsAiContentType: "default" | "tenant" | "marketAnalysis" | "upsell";
-}) {
+export default function FloatingCTA() {
+  const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
+    useAppContext();
+
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
       return (
         <VtsAiTenantProfile
           className="absolute right-24 bottom-16"
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
+          isOpen={isVtsAiOpen}
+          setIsOpen={setIsVtsAiOpen}
         />
       );
     } else if (vtsAiContentType === "marketAnalysis") {
@@ -31,11 +27,16 @@ export default function FloatingCTA({
       return (
         <VtsAiDefault
           className="absolute right-24 bottom-16"
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
+          isOpen={isVtsAiOpen}
+          setIsOpen={setIsVtsAiOpen}
         />
       );
     }
+  };
+
+  const handleFloatingCTAClick = () => {
+    setVtsAiContentType("default");
+    setIsVtsAiOpen(!isVtsAiOpen);
   };
 
   const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
@@ -43,14 +44,14 @@ export default function FloatingCTA({
     cycleInterval: 20000,
     fadeDelay: 5000,
     initialDelay: 5000,
-    isActive: !isOpen,
+    isActive: !isVtsAiOpen,
   });
 
   return (
     <>
       <div
         className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm transition-all duration-300`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleFloatingCTAClick}
       >
         {/* <video
           autoPlay
@@ -61,7 +62,7 @@ export default function FloatingCTA({
         >
           <source src="/gradient-mesh-converted.mp4" type="video/mp4" />
         </video> */}
-        {!isOpen && (
+        {!isVtsAiOpen && (
           <div
             className={`absolute top-2 right-18 w-fit rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap shadow-sm backdrop-blur-sm transition-opacity duration-600 ease-in-out ${
               currentPrompt && isPromptVisible ? "opacity-100" : "opacity-0"
@@ -74,7 +75,7 @@ export default function FloatingCTA({
             )}
           </div>
         )}
-        {isOpen ? (
+        {isVtsAiOpen ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
