@@ -13,16 +13,16 @@ export default function DealsPage() {
         </div>
         <h1 className="text-4xl font-bold">Deals</h1>
       </div>
-      <div className="bg-vts-purple-300 flex h-10">Filters</div>
+      <div className="bg-vts-purple-300 flex rounded-lg p-4">Filters</div>
       <div className="flex w-full">
         <div className="w-2/3 pr-6">
-          <div className="bg-vts-purple-300 h-32 text-sm text-gray-500">
+          <div className="bg-vts-purple-300 rounded-lg p-4 text-sm">
             Deal pipeline Chart
           </div>
           {/* <DealPipelineChart data={pipelineData} /> */}
         </div>
         <div className="w-1/3 pl-6">
-          <div className="bg-vts-purple-300 h-32 text-sm text-gray-500">
+          <div className="bg-vts-purple-300 rounded-lg p-4 text-sm">
             Last updated Chart
           </div>
           {/* <LastUpdatedChart data={lastUpdatedData} /> */}
