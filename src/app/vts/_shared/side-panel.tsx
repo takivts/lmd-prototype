@@ -44,6 +44,66 @@ export default function SidePanel({
           className="border-b border-gray-300"
           equalWidth={true}
         />
+        <div className="text-sm text-gray-700">
+          <div className="border-b border-gray-300 px-4 py-4 text-sm">
+            <input
+              type="text"
+              placeholder="Add an update"
+              className="w-full rounded-md border border-gray-300 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+
+          <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500 text-sm text-white">
+              DC
+            </div>
+            <div className="flex flex-col">
+              <p className="">
+                <span>John Doe</span> attached a file
+              </p>
+              <span className="text-vts-purple-700 text-sm">
+                black-swatch.png
+              </span>
+              <span className="text-xs text-gray-500">3 days ago</span>
+            </div>
+          </div>
+
+          <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500 text-white"></div>
+            <div className="flex flex-col">
+              <p className="">
+                <span className="text-vts-purple-700">David Chan </span>
+                <span className="">moved this deal to </span>
+                <span className="">Legal</span>
+              </p>
+              <span className="text-xs text-gray-500">50 days ago</span>
+            </div>
+          </div>
+
+          <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500 text-white"></div>
+            <div className="flex flex-col">
+              <p className="">
+                <span className="text-vts-purple-700">David Chan </span>
+                <span className="">moved this deal to </span>
+                <span className="">Proposal</span>
+              </p>
+              <span className="text-xs text-gray-500">295 days ago</span>
+            </div>
+          </div>
+
+          <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500 text-white"></div>
+            <div className="flex flex-col">
+              <p className="flex items-center space-x-2">
+                <span className="text-vts-purple-700">David Chan </span>
+                <span className="">moved this deal to </span>
+                <span className="">Inquiry</span>
+              </p>
+              <span className="text-xs text-gray-500">359 days ago</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

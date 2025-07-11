@@ -1,3 +1,4 @@
+import { inventoryNavItems } from "../_shared/data/navigation";
 import GlobalHeader from "../_shared/global-header";
 import { LeftNav } from "../_shared/left-nav";
 
@@ -10,7 +11,7 @@ export default function VtsMarketLayout({
     {
       sectionName: "",
       items: [
-        { label: "Leads", href: "/vts/market/leads" },
+        { label: "Leads", href: "/vts/market/" },
         { label: "Buildings", href: "/vts/market/" },
         { label: "Listings", href: "/vts/market/" },
         { label: "My Tourbooks", href: "/vts/market/" },
@@ -19,15 +20,7 @@ export default function VtsMarketLayout({
         { label: "Inquiries", href: "/vts/market/" },
       ],
     },
-    {
-      sectionName: "Inventory",
-      items: [
-        { label: "Assets", href: "/vts/market/assets" },
-        { label: "Spaces", href: "/vts/market/spaces" },
-        { label: "Stacking plan", href: "/vts/market/stacking-plan" },
-        { label: "Site plan", href: "/vts/market/site-plan" },
-      ],
-    },
+    inventoryNavItems,
   ];
 
   return (

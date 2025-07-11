@@ -3,9 +3,10 @@
 import { useState } from "react";
 import GlobalHeader from "../_shared/global-header";
 import SidePanel from "../_shared/side-panel";
-import FloatingCTA from "../_shared/floating-cta";
 import { usePathname } from "next/navigation";
 import { LeftNav } from "../_shared/left-nav";
+import { inventoryNavItems } from "../_shared/data/navigation";
+import FloatingCTA from "../_shared/floating-cta";
 
 export default function VtsLeaseLayout({
   children,
@@ -21,28 +22,20 @@ export default function VtsLeaseLayout({
       sectionName: "",
       items: [
         { label: "Deals", href: "/vts/lease/deals" },
-        { label: "Deal tasks", href: "/vts/lease/deal-tasks" },
+        { label: "Deal tasks", href: "/vts/lease/" },
         {
           label: "Tenant coordination",
-          href: "/vts/lease/tenant-coordination",
+          href: "/vts/lease/",
         },
-        { label: "Leases", href: "/vts/lease/leases" },
-        { label: "Options", href: "/vts/lease/options" },
-        { label: "Budgets", href: "/vts/lease/budgets" },
-        { label: "Appraisals", href: "/vts/lease/appraisals" },
-        { label: "Comps", href: "/vts/lease/comps" },
-        { label: "Tenants", href: "/vts/lease/tenants" },
+        { label: "Leases", href: "/vts/lease/" },
+        { label: "Options", href: "/vts/lease/" },
+        { label: "Budgets", href: "/vts/lease/" },
+        { label: "Appraisals", href: "/vts/lease/" },
+        { label: "Comps", href: "/vts/lease/" },
+        { label: "Tenants", href: "/vts/lease/" },
       ],
     },
-    {
-      sectionName: "Inventory",
-      items: [
-        { label: "Assets", href: "/vts/lease/assets" },
-        { label: "Spaces", href: "/vts/lease/spaces" },
-        { label: "Stacking plan", href: "/vts/lease/stacking-plan" },
-        { label: "Site plan", href: "/vts/lease/site-plan" },
-      ],
-    },
+    inventoryNavItems,
   ];
 
   return (
@@ -57,7 +50,11 @@ export default function VtsLeaseLayout({
             setIsSidePanelOpen={setIsSidePanelOpen}
           />
         )}
-        <FloatingCTA isOpen={isOpen} setIsOpen={setIsOpen} />
+        <FloatingCTA
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          vtsAiContentType="default"
+        />
       </div>
     </div>
   );

@@ -58,7 +58,7 @@ export default function VtsAiTenantProfile({
           </div>
         </div>
 
-        <div className="flex h-128 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
+        <div className="flex h-156 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
           <h4 className="mb-2 text-base font-bold">
             Starbucks – Global Tenant Profile
           </h4>

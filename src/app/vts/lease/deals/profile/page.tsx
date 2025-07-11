@@ -84,39 +84,45 @@ export default function DealProfilePage() {
           </div>
         </div>
 
-        <div className="flex flex-col">
-          <span className="text-sm text-gray-700">
-            Standardized Tenant{" "}
-            <span className="text-vts-purple-700 cursor-pointer underline decoration-dotted decoration-2">
-              Global Starbucks Coffee
-            </span>
-          </span>
-          <span className="text-sm text-gray-700">
-            Deal Lead{" "}
-            <span className="text-vts-purple-700 cursor-pointer underline">
-              John Doe
-            </span>
+        <div className="flex items-center gap-2 text-sm">
+          <span className="text-gray-500">Standardized Tenant </span>
+          <span className="text-vts-purple-700 cursor-pointer underline decoration-dotted decoration-2">
+            Global Starbucks Coffee
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-700">Stage</span>
-          <span className="flex w-48 items-center justify-between rounded-lg border border-gray-300 px-2 py-1 text-sm">
-            Lease Out
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m19.5 8.25-7.5 7.5-7.5-7.5"
-              />
-            </svg>
+        <div className="flex items-center gap-2 text-sm">
+          <span className="gap-2 text-gray-500">Market</span>
+          <span className="">New York</span>
+          <span className="text-vts-purple-700 cursor-pointer underline decoration-dotted decoration-2">
+            Market analysis
           </span>
+        </div>
+
+        <div className="flex items-center gap-8">
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-sm text-gray-500">Deal Lead </span>
+            <span className="text-vts-purple-700 cursor-pointer">John Doe</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-gray-500">Stage</span>
+            <span className="flex w-32 items-center justify-between rounded-lg border border-transparent px-2 py-0 transition-all duration-300 hover:border-gray-300">
+              Lease Out
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
 
@@ -230,7 +236,7 @@ export default function DealProfilePage() {
               <ProposalCard
                 title="Tenant"
                 actions={[
-                  { text: "Analyze proposal", isUnderlined: true },
+                  // { text: "Analyze proposal", isUnderlined: true },
                   { text: "View details" },
                   { text: "Generate LOI" },
                 ]}
@@ -254,7 +260,7 @@ export default function DealProfilePage() {
               <ProposalCard
                 title="Landlord"
                 actions={[
-                  { text: "Analyze proposal", isUnderlined: true },
+                  // { text: "Analyze proposal", isUnderlined: true },
                   { text: "View details" },
                   { text: "Generate LOI" },
                 ]}
