@@ -34,7 +34,7 @@ export default function FloatingCTA({
 
   const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
     prompts: vtsAiPrompts,
-    cycleInterval: 10000,
+    cycleInterval: 20000,
     fadeDelay: 5000,
     initialDelay: 5000,
     isActive: !isOpen,
@@ -51,7 +51,7 @@ export default function FloatingCTA({
           loop
           muted
           playsInline
-          className="absolute inset-0 -z-10 h-full w-full overflow-clip rounded-full object-cover backdrop-blur-md"
+          className="absolute inset-0 -z-10 h-full w-full overflow-clip rounded-full object-cover"
         >
           <source src="/gradient-mesh-converted.mp4" type="video/mp4" />
         </video> */}
