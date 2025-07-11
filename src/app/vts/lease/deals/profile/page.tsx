@@ -5,7 +5,7 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 
 export default function DealProfilePage() {
-  const { setVtsAiContentType, setIsVtsAiOpen } = useAppContext();
+  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
 
   const mainTabs = [
     { label: "Info" },
@@ -21,8 +21,14 @@ export default function DealProfilePage() {
   ];
 
   const handleVtsAiContentType = (contentType: string) => {
-    setVtsAiContentType(contentType);
-    setIsVtsAiOpen(true);
+    if (isVtsAiOpen) {
+      setVtsAiContentType(contentType);
+    } else {
+      setVtsAiContentType(contentType);
+      setTimeout(() => {
+        setIsVtsAiOpen(true);
+      }, 0);
+    }
   };
 
   return (

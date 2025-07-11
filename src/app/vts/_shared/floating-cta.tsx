@@ -20,7 +20,13 @@ export default function FloatingCTA() {
         />
       );
     } else if (vtsAiContentType === "marketAnalysis") {
-      return <VtsAiMarketAnalysis />;
+      return (
+        <VtsAiMarketAnalysis
+          className="absolute right-24 bottom-16"
+          isOpen={isVtsAiOpen}
+          setIsOpen={setIsVtsAiOpen}
+        />
+      );
     } else if (vtsAiContentType === "upsell") {
       return <VtsAiUpsell />;
     } else {
@@ -41,9 +47,9 @@ export default function FloatingCTA() {
 
   const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
     prompts: vtsAiPrompts,
-    cycleInterval: 20000,
-    fadeDelay: 5000,
-    initialDelay: 5000,
+    cycleInterval: 8000,
+    fadeDelay: 80000,
+    initialDelay: 8000,
     isActive: !isVtsAiOpen,
   });
 

@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import GlobalHeader from "../_shared/global-header";
 import SidePanel from "../_shared/side-panel";
-import { usePathname } from "next/navigation";
 import { LeftNav } from "../_shared/left-nav";
 import { inventoryNavItems } from "../_shared/data/navigation";
 import FloatingCTA from "../_shared/floating-cta";
+import { useAppContext } from "@/app/context/AppContext";
 
 export default function VtsLeaseLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
+
   const leaseNavItems = [
     {
       sectionName: "",
@@ -43,6 +44,12 @@ export default function VtsLeaseLayout({
         <SidePanel />
         <FloatingCTA />
       </div>
+      {isVtsAiOpen && (
+        <div
+          className="fixed top-0 left-0 h-full w-full bg-black/0"
+          onClick={() => setIsVtsAiOpen(false)}
+        />
+      )}
     </div>
   );
 }

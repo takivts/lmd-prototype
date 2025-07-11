@@ -15,10 +15,6 @@ export default function VtsAiTenantProfile({
           : "pointer-events-none opacity-0 select-none"
       }`}
     >
-      <div
-        className="fixed top-0 left-0 h-full w-full bg-black/0"
-        onClick={() => setIsOpen(false)}
-      />
       <div className="relative z-50 rounded-lg border border-gray-300 bg-white text-sm">
         <div className="flex items-center border-b border-gray-300 px-4 py-4">
           <img
