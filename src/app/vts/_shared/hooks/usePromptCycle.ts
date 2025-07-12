@@ -20,21 +20,20 @@ export const usePromptCycle = ({
   const [currentPrompt, setCurrentPrompt] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const wasActiveRef = useRef(isActive);
-  const [prompts, setPrompts] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (pathname === "/vts/lease/deals/profile") {
-      setPrompts(vtsAiPromptsWithContext);
-    } else {
-      setPrompts(vtsAiPromptsWithoutContext);
-    }
-  }, [pathname]);
+  const prompts =
+    pathname === "/vts/lease/deals/profile"
+      ? vtsAiPromptsWithContext
+      : vtsAiPromptsWithoutContext;
 
   useEffect(() => {
     if (!isActive) {
       setIsVisible(false);
       setCurrentPrompt(null);
       wasActiveRef.current = false;
+      return;
+    }
+
+    if (prompts.length === 0) {
       return;
     }
 

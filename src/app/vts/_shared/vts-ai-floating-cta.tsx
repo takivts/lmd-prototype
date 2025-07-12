@@ -1,20 +1,17 @@
 import VtsAiDefault from "./vts-ai/vts-ai-default";
 import VtsAiTenantProfile from "./vts-ai/vts-ai-tenant-profile";
 import { usePromptCycle } from "./hooks/usePromptCycle";
-import { vtsAiPromptsWithContext } from "./data/vts-ai-prompts";
 import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import VtsAiMarketAnalysis from "./vts-ai/vts-ai-market-analysis";
 import { useAppContext } from "../../context/AppContext";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
-import { usePathname } from "next/navigation";
 
 export default function VtsAiFloatingCTA({
   className,
 }: {
   className?: string;
 }) {
-  const pathname = usePathname();
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
     useAppContext();
   const vtsAiDefaultRef = useRef<VtsAiDefaultRef>(null);

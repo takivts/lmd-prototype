@@ -24,25 +24,22 @@ const VtsAiDefault = forwardRef<
   const [response, setResponse] = useState<string | null>();
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [prompts, setPrompts] = useState<string[]>(
-    pathname === "/vts/lease/deals/profile"
-      ? vtsAiPromptsWithContext
-      : vtsAiPromptsWithoutContext,
-  );
+  const [prompts, setPrompts] = useState<string[]>([]);
+
+  useEffect(() => {
+    setPrompts(
+      pathname === "/vts/lease/deals/profile"
+        ? vtsAiPromptsWithContext
+        : vtsAiPromptsWithoutContext,
+    );
+  }, [pathname]);
 
   const resetConversation = () => {
     setSelectedPrompt(null);
     setResponse(null);
     setIsLoading(false);
     setIsTransitioning(false);
-    setPrompts(
-      pathname === "/vts/lease/deals/profile"
-        ? vtsAiPromptsWithContext
-        : vtsAiPromptsWithoutContext,
-    );
   };
-
-  useEffect(() => {}, [pathname]);
 
   useImperativeHandle(ref, () => ({
     resetConversation,
