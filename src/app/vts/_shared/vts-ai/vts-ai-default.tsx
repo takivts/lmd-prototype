@@ -39,6 +39,11 @@ const VtsAiDefault = forwardRef<
     setResponse(null);
     setIsLoading(false);
     setIsTransitioning(false);
+    setPrompts(
+      pathname === "/vts/lease/deals/profile"
+        ? vtsAiPromptsWithContext
+        : vtsAiPromptsWithoutContext,
+    );
   };
 
   useImperativeHandle(ref, () => ({
