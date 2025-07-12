@@ -15,7 +15,7 @@ export default function SidePanel() {
       className={`relative flex h-[100dvh-50px] border-l border-gray-300 transition-all duration-300 ${isSidePanelOpen ? "w-0" : "w-2xl"}`}
     >
       <div
-        className="bg-vts-primary hover:bg-vts-purple-600 absolute top-14 -left-10 cursor-pointer rounded-tl-md rounded-bl-md p-2 text-white transition-all duration-300"
+        className={`hover:bg-vts-purple-600 absolute top-14 -left-10 cursor-pointer rounded-tl-md rounded-bl-md p-2 text-white transition-all duration-300 ${isSidePanelOpen ? "bg-vts-primary" : "bg-vts-purple-700"}`}
         onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
       >
         <svg
@@ -52,12 +52,12 @@ export default function SidePanel() {
         </div>
         <div className="text-sm text-gray-700">
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-sm text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-sm text-white">
               JD
             </div>
             <div className="flex flex-col">
               <p>
-                <span className="text-vts-purple-700">John Doe</span>
+                <span className="cursor-pointer text-gray-700">John Doe</span>
                 <span className=""> attached a file</span>
               </p>
               <span className="text-vts-purple-700 cursor-pointer text-sm">
@@ -68,12 +68,12 @@ export default function SidePanel() {
           </div>
 
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white">
               JD
             </div>
             <div className="flex flex-col">
               <p className="">
-                <span className="text-vts-purple-700">Jane Doe</span>
+                <span className="cursor-pointer text-gray-700">Jane Doe</span>
                 <span className=""> moved this deal to Legal</span>
               </p>
               <span className="text-xs text-gray-500">50 days ago</span>
@@ -81,12 +81,12 @@ export default function SidePanel() {
           </div>
 
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white">
               JD
             </div>
             <div className="flex flex-col">
               <p className="">
-                <span className="text-vts-purple-700">John Doe</span>
+                <span className="cursor-pointer text-gray-700">John Doe</span>
                 <span className=""> moved this deal to Proposal</span>
               </p>
               <span className="text-xs text-gray-500">295 days ago</span>
@@ -94,12 +94,12 @@ export default function SidePanel() {
           </div>
 
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white">
               JD
             </div>
             <div className="flex flex-col">
               <p className="flex items-center space-x-2">
-                <span className="text-vts-purple-700">Jane Doe</span>
+                <span className="cursor-pointer text-gray-700">Jane Doe</span>
                 <span className=""> moved this deal to </span>
                 <span className="">Inquiry</span>
               </p>

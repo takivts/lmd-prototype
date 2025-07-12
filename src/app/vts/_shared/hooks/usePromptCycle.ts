@@ -1,7 +1,9 @@
+import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
+import { vtsAiPromptsWithoutContext } from "../data/vts-ai-prompts";
+import { vtsAiPromptsWithContext } from "../data/vts-ai-prompts";
 
 interface PromptCycleConfig {
-  prompts: string[];
   cycleInterval?: number;
   fadeDelay?: number;
   initialDelay?: number;
@@ -9,15 +11,24 @@ interface PromptCycleConfig {
 }
 
 export const usePromptCycle = ({
-  prompts,
   cycleInterval = 8000,
   fadeDelay = 8000,
   initialDelay = 2000,
   isActive,
 }: PromptCycleConfig) => {
+  const pathname = usePathname();
   const [currentPrompt, setCurrentPrompt] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const wasActiveRef = useRef(isActive);
+  const [prompts, setPrompts] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (pathname === "/vts/lease/deals/profile") {
+      setPrompts(vtsAiPromptsWithContext);
+    } else {
+      setPrompts(vtsAiPromptsWithoutContext);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (!isActive) {

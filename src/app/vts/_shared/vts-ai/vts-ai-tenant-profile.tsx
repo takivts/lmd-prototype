@@ -9,7 +9,7 @@ export default function VtsAiTenantProfile({
 }) {
   return (
     <div
-      className={`w-lg text-gray-700 shadow-lg transition-all duration-300 select-none ${className} ${
+      className={`w-lg rounded-lg text-gray-700 shadow-lg transition-all duration-300 select-none ${className} ${
         isOpen
           ? "opacity-100 select-text"
           : "pointer-events-none opacity-0 select-none"

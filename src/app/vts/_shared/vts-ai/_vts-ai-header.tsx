@@ -1,4 +1,13 @@
-export default function VtsAiHeader() {
+import { useAppContext } from "../../../context/AppContext";
+
+export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
+  const { setVtsAiContentType } = useAppContext();
+
+  const handleResetVtsAi = () => {
+    setVtsAiContentType("default");
+    onReset?.();
+  };
+
   return (
     <div className="flex items-center border-b border-gray-300 px-4 py-4">
       <div className="bg-vts-purple-700 mr-2 flex size-12 flex-col items-center justify-center rounded-full text-[10px] font-bold text-white">
@@ -25,14 +34,14 @@ export default function VtsAiHeader() {
         <span className="text-vts-primary"></span>
       </div>
       <div className="flex grow justify-end gap-2">
-        <span className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end rounded-lg px-1 py-1">
+        {/* <span className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end rounded-lg px-1 py-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6"
+            className="size-5"
           >
             <path
               strokeLinecap="round"
@@ -40,15 +49,18 @@ export default function VtsAiHeader() {
               d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
             />
           </svg>
-        </span>
-        <span className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end rounded-lg px-1 py-1">
+        </span> */}
+        <span
+          className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end rounded-lg px-1 py-1"
+          onClick={handleResetVtsAi}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6"
+            className="size-5"
           >
             <path
               strokeLinecap="round"

@@ -1,8 +1,14 @@
 "use client";
 
-export default function SupportFloatingCTA() {
+export default function SupportFloatingCTA({
+  className,
+}: {
+  className?: string;
+}) {
   return (
-    <div className="fixed right-9 bottom-24 z-50 flex size-12 cursor-pointer items-center justify-center rounded-full bg-teal-700 shadow-md backdrop-blur-sm transition-all duration-300 hover:bg-teal-800">
+    <div
+      className={`fixed right-10 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-teal-700 shadow-md backdrop-blur-sm transition-all duration-500 ease-in-out hover:bg-teal-800 hover:shadow-lg ${className} bottom-24 opacity-100`}
+    >
       <div className="flex flex-col items-center gap-0 text-[10px] font-bold text-white">
         <svg
           xmlns="http://www.w3.org/2000/svg"

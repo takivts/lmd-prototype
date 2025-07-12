@@ -1,14 +1,23 @@
 import VtsAiDefault from "./vts-ai/vts-ai-default";
 import VtsAiTenantProfile from "./vts-ai/vts-ai-tenant-profile";
 import { usePromptCycle } from "./hooks/usePromptCycle";
-import { vtsAiPrompts } from "./data/vts-ai-prompts";
+import { vtsAiPromptsWithContext } from "./data/vts-ai-prompts";
 import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import VtsAiMarketAnalysis from "./vts-ai/vts-ai-market-analysis";
 import { useAppContext } from "../../context/AppContext";
+import { useEffect, useRef } from "react";
+import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
+import { usePathname } from "next/navigation";
 
-export default function VtsAiFloatingCTA() {
+export default function VtsAiFloatingCTA({
+  className,
+}: {
+  className?: string;
+}) {
+  const pathname = usePathname();
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
     useAppContext();
+  const vtsAiDefaultRef = useRef<VtsAiDefaultRef>(null);
 
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
@@ -32,6 +41,7 @@ export default function VtsAiFloatingCTA() {
     } else {
       return (
         <VtsAiDefault
+          ref={vtsAiDefaultRef}
           className="absolute right-24 bottom-16"
           isOpen={isVtsAiOpen}
           setIsOpen={setIsVtsAiOpen}
@@ -46,7 +56,6 @@ export default function VtsAiFloatingCTA() {
   };
 
   const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
-    prompts: vtsAiPrompts,
     cycleInterval: 16000,
     fadeDelay: 8000,
     initialDelay: 5000,
@@ -56,7 +65,7 @@ export default function VtsAiFloatingCTA() {
   return (
     <>
       <div
-        className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full shadow-md transition-all duration-300`}
+        className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full shadow-md transition-all duration-300 hover:shadow-lg ${className}`}
         onClick={handleFloatingCTAClick}
       >
         {/* <video

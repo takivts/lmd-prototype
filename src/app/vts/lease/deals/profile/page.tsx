@@ -121,13 +121,13 @@ export default function DealProfilePage() {
               </svg>
             </span>
           </div>
-          <div
-            className="flex items-center gap-2 text-sm"
-            onClick={() => handleVtsAiContentType("marketAnalysis")}
-          >
+          <div className="flex items-center gap-2 text-sm">
             <span className="gap-2 text-gray-500">Market</span>
             <span className="">New York</span>
-            <span className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2">
+            <span
+              className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
+              onClick={() => handleVtsAiContentType("marketAnalysis")}
+            >
               Market analysis
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +180,7 @@ export default function DealProfilePage() {
         <TabRow tabs={mainTabs} className="border-y border-gray-300" />
       </div>
 
-      <div className="flex w-full flex-1 flex-col overflow-auto rounded-lg bg-gray-100 p-6">
+      <div className="flex w-full flex-1 flex-col overflow-auto bg-gray-100 p-6">
         <div className="flex min-h-full flex-col gap-4 rounded-lg border border-gray-300 bg-white">
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
           <div className="flex w-full justify-end gap-2 px-4">

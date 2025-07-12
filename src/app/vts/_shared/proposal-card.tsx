@@ -36,12 +36,12 @@ export default function ProposalCard({
   onMenuClick,
 }: ProposalCardProps) {
   return (
-    <div className="flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300 hover:shadow-md">
+    <div className="relative flex h-fit w-48 shrink-0 flex-col rounded-lg border border-gray-300 hover:shadow-md">
       <div className="flex min-h-30 flex-col gap-2 rounded-tl-lg rounded-tr-lg p-2 text-center">
         <h5 className="flex items-center justify-center gap-1 text-base font-bold">
           {title}
           {showMenuIcon && (
-            <span className="hover:bg-vts-purple-100 cursor-pointer rounded-lg px-1 py-1">
+            <span className="hover:bg-vts-purple-100 absolute top-1.5 right-1.5 cursor-pointer rounded-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

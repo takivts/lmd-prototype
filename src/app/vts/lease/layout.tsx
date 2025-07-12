@@ -7,14 +7,15 @@ import { inventoryNavItems } from "../_shared/data/navigation";
 import { useAppContext } from "@/app/context/AppContext";
 import VtsAiFloatingCTA from "../_shared/vts-ai-floating-cta";
 import SupportFloatingCTA from "../_shared/support-floating-cta";
+import { usePathname } from "next/navigation";
 
 export default function VtsLeaseLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
   const { setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
-
   const leaseNavItems = [
     {
       sectionName: "",
@@ -42,7 +43,7 @@ export default function VtsLeaseLayout({
       <div className="mx-auto flex min-h-[calc(100vh-50px)] w-full">
         <LeftNav navItems={leaseNavItems} />
         {children}
-        <SidePanel />
+        {pathname?.includes("vts/lease/deals/profile") && <SidePanel />}
         <VtsAiFloatingCTA />
         <SupportFloatingCTA />
       </div>

@@ -1,22 +1,52 @@
-import { useEffect, useState } from "react";
-import { vtsAiPrompts } from "../data/vts-ai-prompts";
+import { useEffect, useState, useImperativeHandle, forwardRef } from "react";
+import {
+  vtsAiPromptsWithContext,
+  vtsAiPromptsWithoutContext,
+} from "../data/vts-ai-prompts";
 import Typewriter from "typewriter-effect";
 import VtsAiHeader from "./_vts-ai-header";
+import { usePathname } from "next/navigation";
 
-export default function VtsAiDefault({
-  className,
-  isOpen,
-  setIsOpen,
-}: {
-  className?: string;
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-}) {
+export interface VtsAiDefaultRef {
+  resetConversation: () => void;
+}
+
+const VtsAiDefault = forwardRef<
+  VtsAiDefaultRef,
+  {
+    className?: string;
+    isOpen: boolean;
+    setIsOpen: (isOpen: boolean) => void;
+  }
+>(({ className, isOpen, setIsOpen }, ref) => {
+  const pathname = usePathname();
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
   const [response, setResponse] = useState<string | null>();
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [prompts, setPrompts] = useState<string[]>(vtsAiPrompts);
+  const [prompts, setPrompts] = useState<string[]>(
+    pathname === "/vts/lease/deals/profile"
+      ? vtsAiPromptsWithContext
+      : vtsAiPromptsWithoutContext,
+  );
+
+  const resetConversation = () => {
+    setSelectedPrompt(null);
+    setResponse(null);
+    setIsLoading(false);
+    setIsTransitioning(false);
+    setPrompts(
+      pathname === "/vts/lease/deals/profile"
+        ? vtsAiPromptsWithContext
+        : vtsAiPromptsWithoutContext,
+    );
+  };
+
+  useEffect(() => {}, [pathname]);
+
+  useImperativeHandle(ref, () => ({
+    resetConversation,
+  }));
 
   useEffect(() => {
     if (!isOpen) {
@@ -50,7 +80,7 @@ export default function VtsAiDefault({
     setIsTransitioning(true);
     setTimeout(() => {
       setSelectedPrompt(prompt);
-      setPrompts(vtsAiPrompts.filter((p) => p !== prompt));
+      setPrompts(vtsAiPromptsWithContext.filter((p) => p !== prompt));
       setIsTransitioning(false);
     }, 500);
   };
@@ -64,7 +94,7 @@ export default function VtsAiDefault({
       }`}
     >
       <div className="relative z-50 rounded-lg border border-gray-300 bg-white text-sm">
-        <VtsAiHeader />
+        <VtsAiHeader onReset={resetConversation} />
         <div className="flex h-156 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
           <div className="flex h-fit flex-col gap-2">
             <p className="mb-2 text-left">
@@ -72,7 +102,7 @@ export default function VtsAiDefault({
             </p>
             <div className={`mb-2 flex flex-col gap-2`}>
               {(selectedPrompt ? [selectedPrompt] : prompts).map((prompt) => (
-                <button
+                <div
                   key={prompt}
                   className={`rounded-lg border px-3 py-2 text-left duration-1000 ease-in-out ${
                     isTransitioning && !selectedPrompt
@@ -80,13 +110,13 @@ export default function VtsAiDefault({
                       : "opacity-100"
                   } ${
                     selectedPrompt === prompt
-                      ? "bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right self-end border-gray-200"
+                      ? "bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right w-4/5 self-end border-gray-200"
                       : "bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer"
                   }`}
                   onClick={() => handlePromptClick(prompt)}
                 >
                   {prompt}
-                </button>
+                </div>
               ))}
             </div>
             {isLoading ? (
@@ -119,7 +149,7 @@ export default function VtsAiDefault({
                 </svg>
               </div>
             ) : (
-              <div className="mb-4 text-sm text-gray-600">
+              <div className="mb-4 text-sm text-gray-700">
                 <Typewriter
                   options={{
                     strings: response ? [response] : [],
@@ -137,4 +167,8 @@ export default function VtsAiDefault({
       </div>
     </div>
   );
-}
+});
+
+VtsAiDefault.displayName = "VtsAiDefault";
+
+export default VtsAiDefault;
