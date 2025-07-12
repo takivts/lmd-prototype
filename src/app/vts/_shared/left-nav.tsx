@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavItem {
   sectionName: string;
@@ -17,7 +18,21 @@ interface NavSectionProps {
 }
 
 export const LeftNav = ({ navItems }: NavSectionProps) => {
+  const url = usePathname();
   const leftNav = navItems;
+
+  const isActiveNavItem = (itemHref: string) => {
+    if (url === itemHref) {
+      return true;
+    }
+
+    if (url?.startsWith(itemHref) && url?.charAt(itemHref.length) === "/") {
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col border-r border-gray-300">
       <div className="bg-vts-purple-300 mx-4 my-6 flex min-h-[135px] rounded-lg" />
@@ -33,7 +48,9 @@ export const LeftNav = ({ navItems }: NavSectionProps) => {
               {section.items?.map((item: any, index: number) => {
                 return (
                   <li
-                    className="border-l-8 border-transparent px-4 py-2 text-gray-700"
+                    className={`border-l-8 border-transparent px-4 py-2 text-gray-700 ${
+                      isActiveNavItem(item.href) ? "border-vts-purple-700" : ""
+                    }`}
                     key={index}
                   >
                     <Link href={item.href} className="block">

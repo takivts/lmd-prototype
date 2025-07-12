@@ -52,14 +52,15 @@ export default function SidePanel() {
         </div>
         <div className="text-sm text-gray-700">
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500 text-sm text-white">
-              DC
+            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-sm text-white">
+              JD
             </div>
             <div className="flex flex-col">
-              <p className="">
-                <span>John Doe</span> attached a file
+              <p>
+                <span className="text-vts-purple-700">John Doe</span>
+                <span className=""> attached a file</span>
               </p>
-              <span className="text-vts-purple-700 text-sm">
+              <span className="text-vts-purple-700 cursor-pointer text-sm">
                 black-swatch.png
               </span>
               <span className="text-xs text-gray-500">3 days ago</span>
@@ -67,35 +68,39 @@ export default function SidePanel() {
           </div>
 
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500 text-white"></div>
+            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-white">
+              JD
+            </div>
             <div className="flex flex-col">
               <p className="">
-                <span className="text-vts-purple-700">David Chan </span>
-                <span className="">moved this deal to </span>
-                <span className="">Legal</span>
+                <span className="text-vts-purple-700">Jane Doe</span>
+                <span className=""> moved this deal to Legal</span>
               </p>
               <span className="text-xs text-gray-500">50 days ago</span>
             </div>
           </div>
 
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500 text-white"></div>
+            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-white">
+              JD
+            </div>
             <div className="flex flex-col">
               <p className="">
-                <span className="text-vts-purple-700">David Chan </span>
-                <span className="">moved this deal to </span>
-                <span className="">Proposal</span>
+                <span className="text-vts-purple-700">John Doe</span>
+                <span className=""> moved this deal to Proposal</span>
               </p>
               <span className="text-xs text-gray-500">295 days ago</span>
             </div>
           </div>
 
           <div className="flex gap-2 border-b border-gray-300 px-4 py-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500 text-white"></div>
+            <div className="bg-vts-purple-700 flex h-8 w-8 items-center justify-center rounded-full text-white">
+              JD
+            </div>
             <div className="flex flex-col">
               <p className="flex items-center space-x-2">
-                <span className="text-vts-purple-700">David Chan </span>
-                <span className="">moved this deal to </span>
+                <span className="text-vts-purple-700">Jane Doe</span>
+                <span className=""> moved this deal to </span>
                 <span className="">Inquiry</span>
               </p>
               <span className="text-xs text-gray-500">359 days ago</span>

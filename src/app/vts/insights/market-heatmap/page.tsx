@@ -41,19 +41,6 @@ const HEATMAP_COLOR_STOPS = [
   [0.9, "rgba(255,0,0,0.9)"], // Vibrant red, highest opacity
 ];
 
-// Opaque color equivalents for legend display
-const LEGEND_COLOR_STOPS = [
-  [0, "rgb(80,0,0)"], // Dark red (same as heatmap but opaque)
-  [0.1, "rgb(100,0,0)"], // Very dark red
-  [0.3, "rgb(150,0,0)"], // Dark red
-  [0.5, "rgb(180,0,0)"], // Medium red
-  [0.7, "rgb(220,0,0)"], // Bright red
-  [0.9, "rgb(255,0,0)"], // Vibrant red
-];
-
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoidnRzLWRhdmlkY2hhbiIsImEiOiJjbWFiNzNia2QyYmd4MmpwemhpZGNkejdlIn0.XMgL13hROYcjMmAf3O8_zw";
-
 export default function MapPage() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
@@ -63,6 +50,8 @@ export default function MapPage() {
   const [zoom, setZoom] = useState(12);
   const [propertyCount, setPropertyCount] = useState(0);
   const [showPoints, setShowPoints] = useState(false);
+  const [isMapLoaded, setIsMapLoaded] = useState(false); // Add loading state
+  const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
   // Toggle point visibility
   const togglePointVisibility = () => {
@@ -370,35 +359,54 @@ export default function MapPage() {
   };
 
   useEffect(() => {
-    if (map.current || !mapContainer.current) return; // initialize map only once
+    if (map.current || !mapContainer.current) return;
 
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v12",
-      center: [lng, lat],
-      zoom: zoom,
-      maxZoom: city === "toronto" ? 16 : 14.5,
-      minZoom: 12,
-    });
+    // Ensure container has dimensions
+    if (
+      mapContainer.current.offsetWidth === 0 ||
+      mapContainer.current.offsetHeight === 0
+    ) {
+      // Retry after a short delay if container isn't ready
+      const timer = setTimeout(() => {
+        if (mapContainer.current && mapContainer.current.offsetWidth > 0) {
+          initializeMap();
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
 
-    const mapInstance = map.current;
+    const initializeMap = () => {
+      mapboxgl.accessToken = MAPBOX_TOKEN;
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current!,
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: [lng, lat],
+        zoom: zoom,
+        maxZoom: city === "toronto" ? 16 : 14.5,
+        minZoom: 12,
+      });
 
-    mapInstance.on("load", () => {
-      loadCityData(mapInstance, city);
-    });
+      const mapInstance = map.current;
 
-    mapInstance.on("move", () => {
-      const center = mapInstance.getCenter();
-      setLng(Number(center.lng.toFixed(4)));
-      setLat(Number(center.lat.toFixed(4)));
-      setZoom(Number(mapInstance.getZoom().toFixed(2)));
-    });
+      mapInstance.on("load", () => {
+        setIsMapLoaded(true);
+        loadCityData(mapInstance, city);
+      });
 
-    // Clean up on unmount
+      mapInstance.on("move", () => {
+        const center = mapInstance.getCenter();
+        setLng(Number(center.lng.toFixed(4)));
+        setLat(Number(center.lat.toFixed(4)));
+        setZoom(Number(mapInstance.getZoom().toFixed(2)));
+      });
+    };
+
+    initializeMap();
+
     return () => {
       if (map.current) {
         map.current.remove();
+        map.current = null;
       }
     };
   }, []); // Only run once on mount
@@ -491,7 +499,16 @@ export default function MapPage() {
           </button>
         </div>
       </div>
-      <div ref={mapContainer} className="h-[800px] w-full rounded-lg" />
+      <div ref={mapContainer} className="h-[800px] w-full rounded-lg">
+        {!isMapLoaded && (
+          <div className="flex h-full items-center justify-center rounded-lg bg-gray-100">
+            <div className="text-center">
+              <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600"></div>
+              <p className="text-sm text-gray-600">Loading map...</p>
+            </div>
+          </div>
+        )}
+      </div>
       <div className="mt-3 rounded-lg border border-slate-200 bg-slate-100 p-2">
         <div className="flex items-center justify-between">
           <div className="text-xs font-medium">

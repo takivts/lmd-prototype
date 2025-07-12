@@ -4,8 +4,9 @@ import GlobalHeader from "../_shared/global-header";
 import SidePanel from "../_shared/side-panel";
 import { LeftNav } from "../_shared/left-nav";
 import { inventoryNavItems } from "../_shared/data/navigation";
-import FloatingCTA from "../_shared/floating-cta";
 import { useAppContext } from "@/app/context/AppContext";
+import VtsAiFloatingCTA from "../_shared/vts-ai-floating-cta";
+import SupportFloatingCTA from "../_shared/support-floating-cta";
 
 export default function VtsLeaseLayout({
   children,
@@ -42,7 +43,8 @@ export default function VtsLeaseLayout({
         <LeftNav navItems={leaseNavItems} />
         {children}
         <SidePanel />
-        <FloatingCTA />
+        <VtsAiFloatingCTA />
+        <SupportFloatingCTA />
       </div>
       {isVtsAiOpen && (
         <div

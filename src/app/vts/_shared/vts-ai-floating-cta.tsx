@@ -6,7 +6,7 @@ import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import VtsAiMarketAnalysis from "./vts-ai/vts-ai-market-analysis";
 import { useAppContext } from "../../context/AppContext";
 
-export default function FloatingCTA() {
+export default function VtsAiFloatingCTA() {
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
     useAppContext();
 
@@ -47,16 +47,16 @@ export default function FloatingCTA() {
 
   const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
     prompts: vtsAiPrompts,
-    cycleInterval: 8000,
-    fadeDelay: 80000,
-    initialDelay: 8000,
+    cycleInterval: 16000,
+    fadeDelay: 8000,
+    initialDelay: 5000,
     isActive: !isVtsAiOpen,
   });
 
   return (
     <>
       <div
-        className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full backdrop-blur-sm transition-all duration-300`}
+        className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full shadow-md transition-all duration-300`}
         onClick={handleFloatingCTAClick}
       >
         {/* <video
