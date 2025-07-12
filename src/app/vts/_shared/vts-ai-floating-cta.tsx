@@ -65,9 +65,19 @@ export default function VtsAiFloatingCTA({
   return (
     <>
       <div
-        className={`bg-vts-primary hover:bg-vts-purple-800 fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full shadow-md transition-all duration-300 hover:shadow-lg ${className}`}
+        className={`fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full ${className}`}
         onClick={handleFloatingCTAClick}
       >
+        <div
+          className={`to-vts-purple-900 animate-gradient from-vts-purple-700 absolute -inset-1 -z-10 scale-50 rounded-full bg-gradient-to-r via-teal-700 opacity-0 blur transition-all duration-600 ease-in-out ${
+            isVtsAiOpen ? "scale-90 opacity-100" : "scale-0 opacity-0"
+          }`}
+        />
+        <div
+          className={`absolute z-50 size-14 rounded-full shadow-md ${
+            isVtsAiOpen ? "bg-vts-purple-700/100" : "bg-vts-purple-700/100"
+          }`}
+        />
         {/* <video
           autoPlay
           loop
@@ -79,7 +89,7 @@ export default function VtsAiFloatingCTA({
         </video> */}
         {!isVtsAiOpen && (
           <div
-            className={`absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap transition-all duration-300 ease-in-out hover:shadow-sm ${
+            className={`absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap shadow transition-all duration-300 ease-in-out ${
               currentPrompt && isPromptVisible
                 ? "pointer-events-auto translate-x-0 opacity-100"
                 : "pointer-events-none translate-x-5 opacity-0"
@@ -99,7 +109,7 @@ export default function VtsAiFloatingCTA({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6 text-white"
+            className="z-50 size-6 text-white"
           >
             <path
               strokeLinecap="round"
@@ -108,7 +118,7 @@ export default function VtsAiFloatingCTA({
             />
           </svg>
         ) : (
-          <div className="flex flex-col items-center gap-0 text-[10px] font-bold text-white">
+          <div className="z-50 flex flex-col items-center gap-0 text-[10px] font-bold text-white">
             <svg
               width="20"
               height="20"

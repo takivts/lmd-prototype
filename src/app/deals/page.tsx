@@ -5,7 +5,7 @@ async function getApprovalSettings() {
     method: "GET",
     headers: {
       accept: "application/json",
-      authorization: `Basic ${process.env.NEXT_PUBLIC_INTERNAL_API_KEY}`,
+      authorization: `Basic ${process.env.NEXT_PUBLIC_INTERNAL_API_TEST_KEY}`,
     },
   };
 

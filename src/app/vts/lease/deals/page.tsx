@@ -1,11 +1,9 @@
-import { dealData, lastUpdatedData, pipelineData } from "./_data";
-import DealPipelineChart from "./deal-pipeline-chart";
+import { dealData } from "./_data";
 import DealsTable from "./deals-table";
-import LastUpdatedChart from "./last-updated-chart";
 
 export default function DealsPage() {
   return (
-    <div className="flex flex-col gap-4 p-8">
+    <div className="flex flex-col gap-4 overflow-hidden p-8">
       <div className="">
         <div className="text-xs text-gray-500">
           <span className="">VTS Lease</span> &gt;{" "}
@@ -28,7 +26,9 @@ export default function DealsPage() {
           {/* <LastUpdatedChart data={lastUpdatedData} /> */}
         </div>
       </div>
-      <DealsTable data={dealData} />
+      <DealsTable
+        data={dealData.map((deal) => ({ ...deal, isChecked: false }))}
+      />
     </div>
   );
 }

@@ -34,7 +34,7 @@ export const LeftNav = ({ navItems }: NavSectionProps) => {
   };
 
   return (
-    <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col border-r border-gray-300">
+    <div className="flex h-[calc(100dvh-50px)] w-[225px] shrink-0 flex-col overflow-y-auto border-r border-gray-300">
       <div className="bg-vts-purple-300 mx-4 my-6 flex min-h-[135px] rounded-lg" />
       {leftNav?.map((section: any, index: number) => {
         return (

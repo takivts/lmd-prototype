@@ -143,37 +143,37 @@ export default function DealProfilePage() {
               </svg>
             </span>
           </div>
-        </div>
-        <div className="flex gap-8">
-          <div className="flex items-center gap-8">
+          <div className="flex gap-8">
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-sm text-gray-500">Deal lead</span>
+                <span className="text-vts-purple-700 cursor-pointer">
+                  John Doe
+                </span>
+              </div>
+            </div>
             <div className="flex items-center gap-2 text-sm">
-              <span className="text-sm text-gray-500">Deal lead</span>
-              <span className="text-vts-purple-700 cursor-pointer">
-                John Doe
+              <span className="text-gray-500">Stage</span>
+              <span className="flex w-32 items-center justify-between rounded-lg border border-transparent px-2 py-0 transition-all duration-300 hover:border-gray-300">
+                Lease out
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="text-gray-500">Stage</span>
-            <span className="flex w-32 items-center justify-between rounded-lg border border-transparent px-2 py-0 transition-all duration-300 hover:border-gray-300">
-              Lease out
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                />
-              </svg>
-            </span>
-          </div>
-        </div>{" "}
+        </div>
       </div>
 
       <div className="flex gap-2">

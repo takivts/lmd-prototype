@@ -16,7 +16,7 @@ export default function TabRow({
 }) {
   return (
     <div
-      className={`flex w-full gap-8 px-4 pt-1 pb-0 text-sm text-gray-500 ${className} ${
+      className={`flex w-full gap-8 px-4 pt-1 pb-0 text-sm text-gray-700 ${className} ${
         equalWidth ? "justify-between" : "justify-start"
       }`}
     >

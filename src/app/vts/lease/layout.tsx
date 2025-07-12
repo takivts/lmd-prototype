@@ -40,7 +40,7 @@ export default function VtsLeaseLayout({
   return (
     <div className="flex flex-col">
       <GlobalHeader />
-      <div className="mx-auto flex min-h-[calc(100vh-50px)] w-full">
+      <div className="mx-auto flex min-h-[calc(100dvh-50px)] w-full">
         <LeftNav navItems={leaseNavItems} />
         {children}
         {pathname?.includes("vts/lease/deals/profile") && <SidePanel />}

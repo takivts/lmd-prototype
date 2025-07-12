@@ -132,7 +132,7 @@ export default function DealsTable({ data }: DealsTableProps) {
   });
 
   return (
-    <div className="w-full overflow-hidden overflow-x-auto rounded-md border border-gray-200">
+    <div className="w-full overflow-auto rounded-md border border-gray-200">
       <table className="w-full text-sm text-gray-700">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
