@@ -1,4 +1,5 @@
 export const vtsAiPromptsWithContext = [
+  "Give me a market overview for New York",
   "How is active demand trending up the past quarter in New York?",
   "What's the current total active demand in New York?",
   "What's the leasing velocity over the past 6 months in New York?",

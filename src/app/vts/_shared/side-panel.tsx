@@ -15,7 +15,7 @@ export default function SidePanel() {
       className={`relative flex h-[100dvh-50px] border-l border-gray-300 transition-all duration-300 ${isSidePanelOpen ? "w-0" : "w-2xl"}`}
     >
       <div
-        className={`hover:bg-vts-purple-600 absolute top-14 -left-10 cursor-pointer rounded-tl-md rounded-bl-md p-2 text-white transition-all duration-300 ${isSidePanelOpen ? "bg-vts-primary" : "bg-vts-purple-700"}`}
+        className={`hover:bg-vts-purple-600 bg-vts-purple-700 absolute top-14 -left-10 cursor-pointer rounded-tl-md rounded-bl-md p-2 text-white transition-all duration-300`}
         onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
       >
         <svg
@@ -34,7 +34,7 @@ export default function SidePanel() {
         </svg>
       </div>
       <div
-        className={`h-[calc(100dvh-50px)] overflow-auto bg-white transition-all duration-300 ${isSidePanelOpen ? "hidden" : ""}`}
+        className={`h-[calc(100dvh-50px)] w-full overflow-auto bg-white transition-all duration-300 ${isSidePanelOpen ? "hidden" : ""}`}
       >
         <div className="sticky top-0 bg-white">
           <TabRow

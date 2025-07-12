@@ -76,8 +76,10 @@ export default function VtsAiFloatingCTA({
         </video> */}
         {!isVtsAiOpen && (
           <div
-            className={`absolute top-2 right-18 w-fit rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap shadow-sm backdrop-blur-sm transition-opacity duration-600 ease-in-out ${
-              currentPrompt && isPromptVisible ? "opacity-100" : "opacity-0"
+            className={`absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap transition-all duration-300 ease-in-out hover:shadow-sm ${
+              currentPrompt && isPromptVisible
+                ? "pointer-events-auto translate-x-0 opacity-100"
+                : "pointer-events-none translate-x-5 opacity-0"
             }`}
           >
             {currentPrompt && (

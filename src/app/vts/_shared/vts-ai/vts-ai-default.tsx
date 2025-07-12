@@ -112,7 +112,7 @@ const VtsAiDefault = forwardRef<
                       : "opacity-100"
                   } ${
                     selectedPrompt === prompt
-                      ? "bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right w-4/5 self-end border-gray-200"
+                      ? "bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right max-w-4/5 self-end border-gray-200"
                       : "bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer"
                   }`}
                   onClick={() => handlePromptClick(prompt)}
