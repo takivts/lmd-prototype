@@ -1,13 +1,18 @@
 "use client";
 
+import { useAppContext } from "@/app/context/AppContext";
+
 export default function SupportFloatingCTA({
   className,
 }: {
   className?: string;
 }) {
+  const { isVtsAiOpen } = useAppContext();
   return (
     <div
-      className={`fixed right-10 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-teal-700 shadow-md backdrop-blur-sm transition-all duration-500 ease-in-out hover:bg-teal-800 hover:shadow-lg ${className} bottom-24 opacity-100`}
+      className={`fixed right-10 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-teal-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-teal-800 hover:shadow-lg ${className} ${
+        isVtsAiOpen ? "bottom-24 opacity-100" : "bottom-10 opacity-0"
+      }`}
     >
       <div className="flex flex-col items-center gap-0 text-[10px] font-bold text-white">
         <svg

@@ -98,10 +98,10 @@ export default function SidePanel() {
               JD
             </div>
             <div className="flex flex-col">
-              <p className="flex items-center space-x-2">
+              <p className="">
                 <span className="cursor-pointer text-gray-700">Jane Doe</span>
-                <span className=""> moved this deal to </span>
-                <span className="">Inquiry</span>
+                <span className=""> moved this deal to</span>
+                <span className=""> Inquiry</span>
               </p>
               <span className="text-xs text-gray-500">359 days ago</span>
             </div>

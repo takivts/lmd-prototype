@@ -47,7 +47,7 @@ export default function DealProfilePage() {
             <h1 className="truncate text-4xl font-bold">Starbucks Coffee</h1>
           </div>
           <div className="text-vts-purple-700 flex items-center gap-4 pr-8 text-sm">
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1.5">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -63,8 +63,8 @@ export default function DealProfilePage() {
                 />
               </svg>
               Edit Deal
-            </span>
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-2 py-1.5">
+            </div>
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -80,8 +80,8 @@ export default function DealProfilePage() {
                 />
               </svg>
               Export
-            </span>
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-1 py-1">
+            </div>
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-1 py-1 transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -184,14 +184,14 @@ export default function DealProfilePage() {
         <div className="flex min-h-full flex-col gap-4 rounded-lg border border-gray-300 bg-white">
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
           <div className="flex w-full justify-end gap-2 px-4">
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1 text-sm transition-all duration-300">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6"
+                className="size-4"
               >
                 <path
                   strokeLinecap="round"
@@ -201,14 +201,14 @@ export default function DealProfilePage() {
               </svg>
               New proposal
             </div>
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1 text-sm transition-all duration-300">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6"
+                className="size-4"
               >
                 <path
                   strokeLinecap="round"

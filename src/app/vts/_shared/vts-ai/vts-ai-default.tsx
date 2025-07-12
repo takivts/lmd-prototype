@@ -82,7 +82,7 @@ const VtsAiDefault = forwardRef<
     setIsTransitioning(true);
     setTimeout(() => {
       setSelectedPrompt(prompt);
-      setPrompts(vtsAiPromptsWithContext.filter((p) => p !== prompt));
+      setPrompts(prompts.filter((p) => p !== prompt));
       setIsTransitioning(false);
     }, 500);
   };
