@@ -50,9 +50,9 @@ export default function VtsAiFloatingCTA({
   const handleFloatingCTAClick = () => {
     setVtsAiContentType("default");
     setIsVtsAiOpen(!isVtsAiOpen);
-    if (!isVtsAiOpen) {
+    setTimeout(() => {
       vtsAiDefaultRef.current?.resetConversation();
-    }
+    }, 500);
   };
 
   const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
