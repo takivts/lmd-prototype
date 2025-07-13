@@ -4,6 +4,7 @@ import { useAppContext } from "@/app/context/AppContext";
 import { MarketAnalysisData } from "@/app/context/AppContext";
 import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
+import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
@@ -20,35 +21,6 @@ export default function DealProfilePage() {
     { label: "Analysis" },
     { label: "Cashflow" },
   ];
-
-  const newYorkMarketData: MarketAnalysisData = {
-    marketMetadata: {
-      title: "New York",
-      buildingClass: "A",
-    },
-    marketData: [
-      { label: "Avg. Gross NER", value: "$45.50 PSF" },
-      { label: "Avg. TI", value: "$65.00 PSF" },
-      { label: "Avg. Free Rent", value: "4.2 months" },
-      { label: "# active proposals", value: "1,247" },
-      { label: "Avg. Lease Term", value: "7.1 years" },
-      { label: "Concession Value", value: "$88.50 PSF" },
-    ],
-    keyInsights: [
-      "Manhattan retail market shows strong recovery with 15% increase in leasing activity Q4 2024.",
-      "Ground floor spaces in prime locations commanding premium rents, up 8% year-over-year.",
-      "Coffee shops and food service tenants driving demand in midtown and financial districts.",
-      "Landlords offering more flexible lease terms to attract quality tenants.",
-      "Foot traffic has returned to 95% of pre-pandemic levels in key retail corridors.",
-    ],
-    suggestedFollowUps: [
-      "How is active demand trending in the past quarter in New York?",
-      "What are the average lease terms for coffee shops in Manhattan?",
-      "Show me comparable deals for retail spaces in this submarket.",
-    ],
-    summary:
-      "The New York retail market demonstrates robust recovery with increased leasing velocity and stabilizing rents. Prime ground-floor retail spaces continue to command premium pricing, while landlords are becoming more flexible with lease structures. The coffee and food service sectors are particularly active, benefiting from strong foot traffic recovery and evolving consumer preferences for experiential retail.",
-  };
 
   const handleVtsAiContentType = (
     contentType: string,
@@ -160,7 +132,10 @@ export default function DealProfilePage() {
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
               onClick={() =>
-                handleVtsAiContentType("marketAnalysis", newYorkMarketData)
+                handleVtsAiContentType(
+                  "marketAnalysis",
+                  vtsAiPromptsWithContext[0].payload,
+                )
               }
             >
               Market overview

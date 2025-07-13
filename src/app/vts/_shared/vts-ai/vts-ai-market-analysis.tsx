@@ -20,7 +20,6 @@ export default function VtsAiMarketAnalysis({
   const { vtsAiData } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
-
   const marketData = vtsAiData?.marketData;
   const marketMetadata = vtsAiData?.marketMetadata;
   const keyInsights = vtsAiData?.keyInsights;
@@ -44,7 +43,6 @@ export default function VtsAiMarketAnalysis({
 
       const timer = setTimeout(() => {
         setIsLoading(false);
-        // Start the flow by showing metadata
         setCompletedSteps(["start"]);
       }, 3000);
 
