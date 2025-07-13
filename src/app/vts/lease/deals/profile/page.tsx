@@ -1,6 +1,7 @@
 "use client";
 
 import { useAppContext } from "@/app/context/AppContext";
+import { MarketAnalysisData } from "@/app/context/AppContext";
 import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 
@@ -20,11 +21,42 @@ export default function DealProfilePage() {
     { label: "Cashflow" },
   ];
 
-  const handleVtsAiContentType = (contentType: string) => {
+  // Sample market data for New York
+  const newYorkMarketData: MarketAnalysisData = {
+    marketMetadata: {
+      title: "New York",
+      buildingClass: "A",
+    },
+    marketData: [
+      { label: "Avg. Gross NER", value: "$45.50 PSF" },
+      { label: "Avg. TI", value: "$65.00 PSF" },
+      { label: "Avg. Free Rent", value: "4.2 months" },
+      { label: "# active proposals", value: "1,247" },
+    ],
+    keyInsights: [
+      "Manhattan retail market shows strong recovery with 15% increase in leasing activity Q4 2024.",
+      "Ground floor spaces in prime locations commanding premium rents, up 8% year-over-year.",
+      "Coffee shops and food service tenants driving demand in midtown and financial districts.",
+      "Landlords offering more flexible lease terms to attract quality tenants.",
+      "Foot traffic has returned to 95% of pre-pandemic levels in key retail corridors.",
+    ],
+    suggestedFollowUps: [
+      "How is active demand trending in the past quarter in New York?",
+      "What are the average lease terms for coffee shops in Manhattan?",
+      "Show me comparable deals for retail spaces in this submarket.",
+    ],
+    summary:
+      "The New York retail market demonstrates robust recovery with increased leasing velocity and stabilizing rents. Prime ground-floor retail spaces continue to command premium pricing, while landlords are becoming more flexible with lease structures. The coffee and food service sectors are particularly active, benefiting from strong foot traffic recovery and evolving consumer preferences for experiential retail.",
+  };
+
+  const handleVtsAiContentType = (
+    contentType: string,
+    data?: MarketAnalysisData,
+  ) => {
     if (isVtsAiOpen) {
-      setVtsAiContentType(contentType);
+      setVtsAiContentType(contentType, data);
     } else {
-      setVtsAiContentType(contentType);
+      setVtsAiContentType(contentType, data);
       setTimeout(() => {
         setIsVtsAiOpen(true);
       }, 0);
@@ -126,7 +158,9 @@ export default function DealProfilePage() {
             <span className="">New York</span>
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
-              onClick={() => handleVtsAiContentType("marketAnalysis")}
+              onClick={() =>
+                handleVtsAiContentType("marketAnalysis", newYorkMarketData)
+              }
             >
               Market overview
               <svg

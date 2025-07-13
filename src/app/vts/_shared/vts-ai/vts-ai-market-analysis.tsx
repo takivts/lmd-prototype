@@ -1,8 +1,12 @@
+import { useState, useEffect } from "react";
 import VtsAiDataGrid from "./_vts-ai-data-grid";
 import VtsAiHeader from "./_vts-ai-header";
 import VtsAiKeyInsights from "./_vts-ai-key-insights";
 import VtsAiSummary from "./vts-ai-summary";
 import VtsAiSuggestedFollowUps from "./_vts-ai-suggested-follow-ups";
+import VtsAiMetadata from "./_vts-ai-metadata";
+import VtsAiLoader from "./_vts-ai-loader";
+import { useAppContext } from "@/app/context/AppContext";
 
 export default function VtsAiMarketAnalysis({
   className,
@@ -13,29 +17,25 @@ export default function VtsAiMarketAnalysis({
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }) {
-  const marketData = [
-    { label: "Avg. Gross NER", value: "description" },
-    { label: "Avg. TI", value: "description" },
-    { label: "Avg. Free Rent", value: "description" },
-    { label: "# active proposals", value: "description" },
-  ];
+  const { vtsAiData } = useAppContext();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const keyInsights = [
-    "New York is a city in the United States.",
-    "New York is a city in the United States.",
-    "New York is a city in the United States.",
-    "New York is a city in the United States.",
-    "New York is a city in the United States.",
-  ];
+  const marketData = vtsAiData?.marketData;
+  const marketMetadata = vtsAiData?.marketMetadata;
+  const keyInsights = vtsAiData?.keyInsights;
+  const suggestedFollowUps = vtsAiData?.suggestedFollowUps;
+  const marketSummary = vtsAiData?.summary;
 
-  const suggestedFollowUps = [
-    "How is active demand trending up the past quarter in New York?",
-    "How is active demand trending up the past quarter in New York?",
-    "How is active demand trending up the past quarter in New York?",
-  ];
+  useEffect(() => {
+    if (isOpen) {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
 
-  const marketSummary =
-    "New York is a city in the United States. New York is a city in the United States. New York is a city in the United States. New York is a city in the United States. New York is a city in the United States.";
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   return (
     <div
@@ -53,19 +53,26 @@ export default function VtsAiMarketAnalysis({
           >
             Give me a market overview for New York
           </div>
-          <div className="flex h-fit flex-col gap-4">
-            <h5 className="text-lg font-bold">New York</h5>
-            <VtsAiDataGrid data={marketData} className="mb-4" />
-            <VtsAiKeyInsights data={keyInsights} className="mb-4" />
-            <VtsAiSummary
-              data={{ title: "Market Summary", summary: marketSummary }}
-              className="mb-4"
-            />
-            <VtsAiSuggestedFollowUps
-              data={suggestedFollowUps}
-              className="mb-4"
-            />
-          </div>
+          {isLoading ? (
+            <VtsAiLoader isVisible={true} />
+          ) : (
+            <div className="flex h-fit flex-col gap-4">
+              <VtsAiMetadata data={marketMetadata} />
+              <VtsAiDataGrid data={marketData || []} className="mb-4" />
+              <VtsAiKeyInsights data={keyInsights || []} className="mb-4" />
+              <VtsAiSummary
+                data={{
+                  title: "Market Summary",
+                  summary: marketSummary || "",
+                }}
+                className="mb-4"
+              />
+              <VtsAiSuggestedFollowUps
+                data={suggestedFollowUps || []}
+                className="mb-4"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
