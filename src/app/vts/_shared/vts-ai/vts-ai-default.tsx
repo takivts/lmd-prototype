@@ -9,7 +9,6 @@ import {
   vtsAiPromptsWithContext,
   vtsAiPromptsWithoutContext,
 } from "../data/vts-ai-prompts";
-import Typewriter from "typewriter-effect";
 import VtsAiHeader from "./_vts-ai-header";
 import { usePathname } from "next/navigation";
 import VtsAiLoader from "./_vts-ai-loader";
@@ -99,32 +98,6 @@ const VtsAiDefault = forwardRef<
     });
   }, []);
 
-  const responsePayload = selectedPrompt?.payload;
-
-  useEffect(() => {
-    if (completedSteps.includes("start") && !responsePayload?.marketMetadata) {
-      handleStepComplete("metadata");
-    }
-  }, [completedSteps, responsePayload, handleStepComplete]);
-
-  useEffect(() => {
-    if (completedSteps.includes("metadata") && !responsePayload?.marketData) {
-      handleStepComplete("dataGrid");
-    }
-  }, [completedSteps, responsePayload, handleStepComplete]);
-
-  useEffect(() => {
-    if (completedSteps.includes("dataGrid") && !responsePayload?.keyInsights) {
-      handleStepComplete("keyInsights");
-    }
-  }, [completedSteps, responsePayload, handleStepComplete]);
-
-  useEffect(() => {
-    if (completedSteps.includes("keyInsights") && !responsePayload?.summary) {
-      handleStepComplete("summary");
-    }
-  }, [completedSteps, responsePayload, handleStepComplete]);
-
   const handlePromptClick = (prompt: VtsAiPrompt) => {
     setIsTransitioning(true);
     setTimeout(() => {
@@ -134,16 +107,13 @@ const VtsAiDefault = forwardRef<
     }, 500);
   };
 
-  const shouldShowMetadata =
-    completedSteps.includes("start") && responsePayload?.marketMetadata;
-  const shouldShowDataGrid =
-    completedSteps.includes("metadata") && responsePayload?.marketData;
-  const shouldShowKeyInsights =
-    completedSteps.includes("dataGrid") && responsePayload?.keyInsights;
-  const shouldShowSummary =
-    completedSteps.includes("keyInsights") && responsePayload?.summary;
-  const shouldShowFollowUps =
-    completedSteps.includes("summary") && responsePayload?.suggestedFollowUps;
+  const responsePayload = selectedPrompt?.payload;
+
+  const shouldShowMetadata = completedSteps.includes("start");
+  const shouldShowDataGrid = completedSteps.includes("metadata");
+  const shouldShowKeyInsights = completedSteps.includes("dataGrid");
+  const shouldShowSummary = completedSteps.includes("keyInsights");
+  const shouldShowFollowUps = completedSteps.includes("summary");
 
   return (
     <div
@@ -191,59 +161,63 @@ const VtsAiDefault = forwardRef<
               selectedPrompt &&
               responsePayload && (
                 <div className="flex flex-col gap-4">
-                  {responsePayload.marketMetadata && (
-                    <div
-                      className={`transition-all duration-500 ${
-                        shouldShowMetadata
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-4 opacity-0"
-                      }`}
-                    >
+                  <div
+                    className={`transition-all duration-500 ${
+                      shouldShowMetadata
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }`}
+                  >
+                    {responsePayload.marketMetadata && shouldShowMetadata && (
                       <VtsAiMetadata
                         data={responsePayload.marketMetadata}
                         onComplete={() => handleStepComplete("metadata")}
                       />
-                    </div>
-                  )}
-                  {responsePayload.marketData && (
-                    <div
-                      className={`transition-all duration-500 ${
-                        shouldShowDataGrid
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-4 opacity-0"
-                      }`}
-                    >
-                      <VtsAiDataGrid
-                        data={responsePayload.marketData}
-                        className="mb-4"
-                        onComplete={() => handleStepComplete("dataGrid")}
-                      />
-                    </div>
-                  )}
-                  {responsePayload.keyInsights && (
-                    <div
-                      className={`transition-all duration-500 ${
-                        shouldShowKeyInsights
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-4 opacity-0"
-                      }`}
-                    >
-                      <VtsAiKeyInsights
-                        data={responsePayload.keyInsights}
-                        className="mb-4"
-                        shouldTypewrite={true}
-                        onComplete={() => handleStepComplete("keyInsights")}
-                      />
-                    </div>
-                  )}
-                  {responsePayload.summary && (
-                    <div
-                      className={`transition-all duration-500 ${
-                        shouldShowSummary
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-4 opacity-0"
-                      }`}
-                    >
+                    )}
+                  </div>
+                  <div
+                    className={`transition-all duration-500 ${
+                      shouldShowDataGrid
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }`}
+                  >
+                    {responsePayload.marketData &&
+                      responsePayload.marketData.length > 0 &&
+                      shouldShowDataGrid && (
+                        <VtsAiDataGrid
+                          data={responsePayload.marketData}
+                          className="mb-4"
+                          onComplete={() => handleStepComplete("dataGrid")}
+                        />
+                      )}
+                  </div>
+                  <div
+                    className={`transition-all duration-500 ${
+                      shouldShowKeyInsights
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }`}
+                  >
+                    {responsePayload.keyInsights &&
+                      responsePayload.keyInsights.length > 0 &&
+                      shouldShowKeyInsights && (
+                        <VtsAiKeyInsights
+                          data={responsePayload.keyInsights}
+                          className="mb-4"
+                          shouldTypewrite={true}
+                          onComplete={() => handleStepComplete("keyInsights")}
+                        />
+                      )}
+                  </div>
+                  <div
+                    className={`transition-all duration-500 ${
+                      shouldShowSummary
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }`}
+                  >
+                    {responsePayload.summary && shouldShowSummary && (
                       <VtsAiSummary
                         data={{
                           title: "Summary",
@@ -253,22 +227,24 @@ const VtsAiDefault = forwardRef<
                         shouldTypewrite={true}
                         onComplete={() => handleStepComplete("summary")}
                       />
-                    </div>
-                  )}
-                  {responsePayload.suggestedFollowUps && (
-                    <div
-                      className={`transition-all duration-500 ${
-                        shouldShowFollowUps
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-4 opacity-0"
-                      }`}
-                    >
-                      <VtsAiSuggestedFollowUps
-                        data={responsePayload.suggestedFollowUps}
-                        className="mb-4"
-                      />
-                    </div>
-                  )}
+                    )}
+                  </div>
+                  <div
+                    className={`transition-all duration-500 ${
+                      shouldShowFollowUps
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                    }`}
+                  >
+                    {responsePayload.suggestedFollowUps &&
+                      responsePayload.suggestedFollowUps.length > 0 &&
+                      shouldShowFollowUps && (
+                        <VtsAiSuggestedFollowUps
+                          data={responsePayload.suggestedFollowUps}
+                          className="mb-4"
+                        />
+                      )}
+                  </div>
                 </div>
               )
             )}
