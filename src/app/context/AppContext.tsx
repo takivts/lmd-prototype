@@ -36,7 +36,7 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     data?: MarketAnalysisData,
   ) => {
     setVtsAiContentType(contentType);
-    if (contentType === "marketAnalysis" && data) {
+    if (data) {
       setVtsAiData(data);
     } else {
       setVtsAiData(null);

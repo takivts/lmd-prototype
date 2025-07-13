@@ -1,9 +1,11 @@
 export default function VtsAiSuggestedFollowUps({
   data,
   className,
+  onFollowUpClick,
 }: {
   data: string[];
   className?: string;
+  onFollowUpClick: (followUp: string) => void;
 }) {
   return (
     <div className={className}>
@@ -13,6 +15,7 @@ export default function VtsAiSuggestedFollowUps({
           <div
             key={index}
             className="bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer rounded-lg border px-3 py-2 text-left duration-1000 ease-in-out"
+            onClick={() => onFollowUpClick(followUp)}
           >
             {followUp}
           </div>

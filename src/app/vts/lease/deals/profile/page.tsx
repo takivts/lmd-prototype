@@ -133,7 +133,7 @@ export default function DealProfilePage() {
               className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
               onClick={() =>
                 handleVtsAiContentType(
-                  "marketAnalysis",
+                  "default",
                   vtsAiPromptsWithContext[0].payload,
                 )
               }

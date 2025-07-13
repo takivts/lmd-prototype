@@ -18,6 +18,7 @@ import VtsAiSuggestedFollowUps from "./_vts-ai-suggested-follow-ups";
 import VtsAiMetadata from "./_vts-ai-metadata";
 import { VtsAiPrompt } from "../data/vts-ai-prompts";
 import VtsAiDataGrid from "./_vts-ai-data-grid";
+import { useAppContext } from "@/app/context/AppContext";
 
 export interface VtsAiDefaultRef {
   resetConversation: () => void;
@@ -32,6 +33,7 @@ const VtsAiDefault = forwardRef<
   }
 >(({ className, isOpen, setIsOpen }, ref) => {
   const pathname = usePathname();
+  const { vtsAiData, setVtsAiContentType } = useAppContext();
   const [selectedPrompt, setSelectedPrompt] = useState<VtsAiPrompt | null>(
     null,
   );
@@ -75,6 +77,36 @@ const VtsAiDefault = forwardRef<
     }
   }, [isOpen]);
 
+  const handlePromptClick = useCallback((prompt: VtsAiPrompt) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setSelectedPrompt(prompt);
+      setPrompts((prev) => prev.filter((p) => p.prompt !== prompt.prompt));
+      setIsTransitioning(false);
+    }, 500);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen && vtsAiData) {
+      const allPrompts =
+        pathname === "/vts/lease/deals/profile"
+          ? vtsAiPromptsWithContext
+          : vtsAiPromptsWithoutContext;
+
+      const matchedPrompt = allPrompts.find(
+        (p) => JSON.stringify(p.payload) === JSON.stringify(vtsAiData),
+      );
+
+      if (matchedPrompt) {
+        setSelectedPrompt(matchedPrompt);
+        setPrompts((prev) =>
+          prev.filter((p) => p.prompt !== matchedPrompt.prompt),
+        );
+        setVtsAiContentType("default");
+      }
+    }
+  }, [isOpen, vtsAiData, pathname, setVtsAiContentType]);
+
   useEffect(() => {
     if (selectedPrompt) {
       setIsLoading(true);
@@ -98,13 +130,17 @@ const VtsAiDefault = forwardRef<
     });
   }, []);
 
-  const handlePromptClick = (prompt: VtsAiPrompt) => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setSelectedPrompt(prompt);
-      setPrompts(prompts.filter((p) => p.prompt !== prompt.prompt));
-      setIsTransitioning(false);
-    }, 500);
+  const handleFollowUpClick = (followUp: string) => {
+    const allPrompts =
+      pathname === "/vts/lease/deals/profile"
+        ? vtsAiPromptsWithContext
+        : vtsAiPromptsWithoutContext;
+
+    const prompt = allPrompts.find((p) => p.prompt === followUp);
+
+    if (prompt) {
+      handlePromptClick(prompt);
+    }
   };
 
   const responsePayload = selectedPrompt?.payload;
@@ -194,9 +230,7 @@ const VtsAiDefault = forwardRef<
                   </div>
                   <div
                     className={`transition-all duration-500 ${
-                      shouldShowKeyInsights
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-4 opacity-0"
+                      shouldShowKeyInsights ? "opacity-100" : "opacity-0"
                     }`}
                   >
                     {responsePayload.keyInsights &&
@@ -212,9 +246,7 @@ const VtsAiDefault = forwardRef<
                   </div>
                   <div
                     className={`transition-all duration-500 ${
-                      shouldShowSummary
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-4 opacity-0"
+                      shouldShowSummary ? "opacity-100" : "opacity-0"
                     }`}
                   >
                     {responsePayload.summary && shouldShowSummary && (
@@ -242,6 +274,7 @@ const VtsAiDefault = forwardRef<
                         <VtsAiSuggestedFollowUps
                           data={responsePayload.suggestedFollowUps}
                           className="mb-4"
+                          onFollowUpClick={handleFollowUpClick}
                         />
                       )}
                   </div>

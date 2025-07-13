@@ -23,7 +23,7 @@ export type VtsAiPrompt = {
 
 export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
-    prompt: "Give me a market analysis for New York",
+    prompt: "Give me a market overview for New York",
     payload: {
       marketMetadata: {
         title: "New York",
@@ -45,7 +45,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Foot traffic has returned to 95% of pre-pandemic levels in key retail corridors.",
       ],
       suggestedFollowUps: [
-        "What are the average lease terms for coffee shops in Manhattan?",
+        "What's the leasing velocity over the past 6 months in New York?",
         "How are concessions trending in New York?",
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
       ],
@@ -54,7 +54,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "How is active demand trending up the past quarter in New York?",
+    prompt: "How is active demand trending in the past quarter in New York?",
     payload: {
       marketMetadata: {
         title: "New York",
@@ -316,7 +316,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       suggestedFollowUps: [
         "How is active demand trending in the past quarter in New York?",
         "Break down demand by tenant size ranges in New York.",
-        "Show me comparable deals for retail spaces in this submarket.",
+        "Show me historical rent trends for New York.",
       ],
       summary:
         "Midtown South and the Financial District are currently seeing the most tenant tour activity in New York, signaling likely near-term leasing velocity. Tour growth suggests renewed tenant confidence and competitive leasing posture from landlords.",

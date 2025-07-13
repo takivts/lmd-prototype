@@ -2,7 +2,6 @@ import VtsAiDefault from "./vts-ai/vts-ai-default";
 import VtsAiTenantProfile from "./vts-ai/vts-ai-tenant-profile";
 import { usePromptCycle } from "./hooks/usePromptCycle";
 import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
-import VtsAiMarketAnalysis from "./vts-ai/vts-ai-market-analysis";
 import { useAppContext } from "../../context/AppContext";
 import { useRef } from "react";
 import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
@@ -20,14 +19,6 @@ export default function VtsAiFloatingCTA({
     if (vtsAiContentType === "tenant") {
       return (
         <VtsAiTenantProfile
-          className="absolute right-24 bottom-16"
-          isOpen={isVtsAiOpen}
-          setIsOpen={setIsVtsAiOpen}
-        />
-      );
-    } else if (vtsAiContentType === "marketAnalysis") {
-      return (
-        <VtsAiMarketAnalysis
           className="absolute right-24 bottom-16"
           isOpen={isVtsAiOpen}
           setIsOpen={setIsVtsAiOpen}
