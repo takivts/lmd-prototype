@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import VtsAiDataGrid from "./_vts-ai-data-grid";
 import VtsAiHeader from "./_vts-ai-header";
 import VtsAiKeyInsights from "./_vts-ai-key-insights";
@@ -19,6 +19,7 @@ export default function VtsAiMarketAnalysis({
 }) {
   const { vtsAiData } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
+  const [completedSteps, setCompletedSteps] = useState<string[]>([]);
 
   const marketData = vtsAiData?.marketData;
   const marketMetadata = vtsAiData?.marketMetadata;
@@ -26,16 +27,36 @@ export default function VtsAiMarketAnalysis({
   const suggestedFollowUps = vtsAiData?.suggestedFollowUps;
   const marketSummary = vtsAiData?.summary;
 
+  const handleStepComplete = useCallback((stepName: string) => {
+    setCompletedSteps((prev) => {
+      if (!prev.includes(stepName)) {
+        const newCompleted = [...prev, stepName];
+        return newCompleted;
+      }
+      return prev;
+    });
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
       setIsLoading(true);
+      setCompletedSteps([]);
+
       const timer = setTimeout(() => {
         setIsLoading(false);
+        // Start the flow by showing metadata
+        setCompletedSteps(["start"]);
       }, 3000);
 
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
+
+  const shouldShowMetadata = completedSteps.includes("start");
+  const shouldShowDataGrid = completedSteps.includes("metadata");
+  const shouldShowKeyInsights = completedSteps.includes("dataGrid");
+  const shouldShowSummary = completedSteps.includes("keyInsights");
+  const shouldShowFollowUps = completedSteps.includes("summary");
 
   return (
     <div
@@ -56,21 +77,73 @@ export default function VtsAiMarketAnalysis({
           {isLoading ? (
             <VtsAiLoader isVisible={true} />
           ) : (
-            <div className="flex h-fit flex-col gap-4">
-              <VtsAiMetadata data={marketMetadata} />
-              <VtsAiDataGrid data={marketData || []} className="mb-4" />
-              <VtsAiKeyInsights data={keyInsights || []} className="mb-4" />
-              <VtsAiSummary
-                data={{
-                  title: "Market Summary",
-                  summary: marketSummary || "",
-                }}
-                className="mb-4"
-              />
-              <VtsAiSuggestedFollowUps
-                data={suggestedFollowUps || []}
-                className="mb-4"
-              />
+            <div className="flex flex-col gap-4">
+              <div
+                className={`transition-all duration-500 ${shouldShowMetadata ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+              >
+                {marketMetadata && shouldShowMetadata && (
+                  <VtsAiMetadata
+                    data={marketMetadata}
+                    onComplete={() => handleStepComplete("metadata")}
+                  />
+                )}
+              </div>
+
+              <div
+                className={`transition-all duration-500 ${shouldShowDataGrid ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+              >
+                {marketData && marketData.length > 0 && shouldShowDataGrid && (
+                  <VtsAiDataGrid
+                    data={marketData}
+                    className="mb-4"
+                    onComplete={() => handleStepComplete("dataGrid")}
+                  />
+                )}
+              </div>
+
+              <div
+                className={`transition-all duration-500 ${shouldShowKeyInsights ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+              >
+                {keyInsights &&
+                  keyInsights.length > 0 &&
+                  shouldShowKeyInsights && (
+                    <VtsAiKeyInsights
+                      data={keyInsights}
+                      className="mb-4"
+                      shouldTypewrite={shouldShowKeyInsights}
+                      onComplete={() => handleStepComplete("keyInsights")}
+                    />
+                  )}
+              </div>
+
+              <div
+                className={`transition-all duration-500 ${shouldShowSummary ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+              >
+                {marketSummary && shouldShowSummary && (
+                  <VtsAiSummary
+                    data={{
+                      title: "Market Summary",
+                      summary: marketSummary,
+                    }}
+                    className="mb-4"
+                    shouldTypewrite={shouldShowSummary}
+                    onComplete={() => handleStepComplete("summary")}
+                  />
+                )}
+              </div>
+
+              <div
+                className={`transition-all duration-500 ${shouldShowFollowUps ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+              >
+                {suggestedFollowUps &&
+                  suggestedFollowUps.length > 0 &&
+                  shouldShowFollowUps && (
+                    <VtsAiSuggestedFollowUps
+                      data={suggestedFollowUps}
+                      className="mb-4"
+                    />
+                  )}
+              </div>
             </div>
           )}
         </div>

@@ -21,7 +21,6 @@ export default function DealProfilePage() {
     { label: "Cashflow" },
   ];
 
-  // Sample market data for New York
   const newYorkMarketData: MarketAnalysisData = {
     marketMetadata: {
       title: "New York",
@@ -32,6 +31,8 @@ export default function DealProfilePage() {
       { label: "Avg. TI", value: "$65.00 PSF" },
       { label: "Avg. Free Rent", value: "4.2 months" },
       { label: "# active proposals", value: "1,247" },
+      { label: "Avg. Lease Term", value: "7.1 years" },
+      { label: "Concession Value", value: "$88.50 PSF" },
     ],
     keyInsights: [
       "Manhattan retail market shows strong recovery with 15% increase in leasing activity Q4 2024.",

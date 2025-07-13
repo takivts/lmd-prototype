@@ -1,12 +1,27 @@
+import { useEffect } from "react";
+
 interface VtsAiMetadataProps {
   data?: {
     title: string;
     buildingClass: string;
   };
   className?: string;
+  onComplete?: () => void;
 }
 
-export default function VtsAiMetadata({ data, className }: VtsAiMetadataProps) {
+export default function VtsAiMetadata({
+  data,
+  className,
+  onComplete,
+}: VtsAiMetadataProps) {
+  useEffect(() => {
+    if (onComplete) {
+      // Call onComplete after a brief delay to allow for rendering
+      const timer = setTimeout(onComplete, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [onComplete]);
+
   if (!data) {
     return null;
   }

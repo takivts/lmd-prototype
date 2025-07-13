@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 type DataGridItem = {
   label: string;
   value: React.ReactNode;
@@ -6,13 +8,27 @@ type DataGridItem = {
 export default function VtsAiDataGrid({
   data,
   className,
+  onComplete,
 }: {
   data: DataGridItem[];
   className?: string;
+  onComplete?: () => void;
 }) {
+  useEffect(() => {
+    if (onComplete) {
+      // Call onComplete after a brief delay to allow for rendering
+      const timer = setTimeout(onComplete, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [onComplete]);
+
+  if (!data || data.length === 0) {
+    return null;
+  }
+
   return (
     <div
-      className={`grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-700 ${className}`}
+      className={`grid grid-cols-3 gap-x-4 gap-y-2 text-sm text-gray-700 ${className}`}
     >
       {data.map((item) => (
         <div
