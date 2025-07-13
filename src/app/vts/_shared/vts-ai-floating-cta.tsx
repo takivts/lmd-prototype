@@ -97,7 +97,7 @@ export default function VtsAiFloatingCTA({
           >
             {currentPrompt && (
               <p className="text-vts-primary cursor-pointer text-sm underline decoration-dotted decoration-2 underline-offset-2">
-                {currentPrompt}
+                {currentPrompt.prompt}
               </p>
             )}
           </div>

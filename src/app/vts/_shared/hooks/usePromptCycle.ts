@@ -1,6 +1,9 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
-import { vtsAiPromptsWithoutContext } from "../data/vts-ai-prompts";
+import {
+  vtsAiPromptsWithoutContext,
+  VtsAiPrompt,
+} from "../data/vts-ai-prompts";
 import { vtsAiPromptsWithContext } from "../data/vts-ai-prompts";
 
 interface PromptCycleConfig {
@@ -17,7 +20,7 @@ export const usePromptCycle = ({
   isActive,
 }: PromptCycleConfig) => {
   const pathname = usePathname();
-  const [currentPrompt, setCurrentPrompt] = useState<string | null>(null);
+  const [currentPrompt, setCurrentPrompt] = useState<VtsAiPrompt | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const wasActiveRef = useRef(isActive);
   const prompts =

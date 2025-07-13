@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 type DataGridItem = {
   label: string;
-  value: React.ReactNode;
+  value: string;
 };
 
 export default function VtsAiDataGrid({
