@@ -28,10 +28,10 @@ export default function VtsAiMetadata({
 
   return (
     <div className={`flex flex-col ${className}`}>
-      <h3 className="text-lg font-bold">{data.title}</h3>
-      <span className="text-gray-500">
-        Building Class: {data.buildingClass}
-      </span>
+      <div className="flex flex-col">
+        <span className="text-gray-500">Market</span>
+        <h3 className="text-lg font-bold">{data.title}</h3>
+      </div>
     </div>
   );
 }

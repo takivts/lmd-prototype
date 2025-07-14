@@ -45,9 +45,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Foot traffic has returned to 95% of pre-pandemic levels in key retail corridors.",
       ],
       suggestedFollowUps: [
-        "What's the leasing velocity over the past 6 months in New York?",
         "How are concessions trending in New York?",
-        "Which submarkets are seeing the most tenant tour activity right now in New York?",
+        "What's the leasing velocity over the past 6 months in New York?",
+        "Break down demand by tenant size ranges in New York.",
       ],
       summary:
         "The New York retail market demonstrates robust recovery with increased leasing velocity and stabilizing rents. Prime ground-floor retail spaces continue to command premium pricing, while landlords are becoming more flexible with lease structures. The coffee and food service sectors are particularly active, benefiting from strong foot traffic recovery and evolving consumer preferences for experiential retail.",
@@ -72,7 +72,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How are concessions trending in New York?",
-        "What’s the leasing velocity over the past 6 months in New York?",
+        "What's the leasing velocity over the past 6 months in New York?",
         "Break down demand by tenant size ranges in New York.",
       ],
       summary:
@@ -98,7 +98,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Break down demand by tenant size ranges in New York.",
-        "What’s the average rent right now for small tenants? Large tenants in New York?",
+        "What's the average rent right now for small tenants? Large tenants in New York?",
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
       ],
       summary:
@@ -150,7 +150,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Are large-block spaces (50k+ sf) seeing activity here in New York?",
-        "What’s the average rent right now for small tenants? Large tenants in New York?",
+        "What's the average rent right now for small tenants? Large tenants in New York?",
         "How is active demand trending in the past quarter in New York?",
       ],
       summary:
@@ -176,7 +176,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How are concessions trending in New York?",
-        "What’s the average rent right now for small tenants? Large tenants in New York?",
+        "What's the average rent right now for small tenants? Large tenants in New York?",
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
       ],
       summary:
@@ -202,7 +202,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fewer new large-scale requirements compared to same time last year.",
       ],
       suggestedFollowUps: [
-        "What’s the leasing velocity over the past 6 months in New York?",
+        "What's the leasing velocity over the past 6 months in New York?",
         "Break down demand by tenant size ranges in New York.",
         "How is active demand trending in the past quarter in New York?",
       ],
@@ -257,39 +257,12 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Hudson Yards remains the most aggressive with concessions to attract anchor tenants.",
       ],
       suggestedFollowUps: [
-        "What’s the average rent right now for small tenants? Large tenants in New York?",
+        "What's the average rent right now for small tenants? Large tenants in New York?",
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
         "How is active demand trending in the past quarter in New York?",
       ],
       summary:
         "Concession trends in New York show stabilization, with average TI allowances around $80 PSF and free rent periods averaging 4.2 months. Landlords continue using incentives strategically to compete in slower submarkets.",
-    },
-  },
-  {
-    prompt:
-      "How does the average free rent period compare across New York for leases in the [Finance] industry ?",
-    payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
-      marketData: [
-        { label: "Avg. Free Rent (Finance)", value: "5.5 months" },
-        { label: "Avg. Free Rent (Overall)", value: "4.2 months" },
-        { label: "Finance vs Market Delta", value: "+1.3 months" },
-      ],
-      keyInsights: [
-        "Finance tenants are negotiating longer free rent periods than market average.",
-        "Midtown shows the highest generosity toward finance leases (6 months avg).",
-        "Smaller finance users (<10k SF) still receive market-average terms.",
-      ],
-      suggestedFollowUps: [
-        "What’s the average rent right now for small tenants? Large tenants in New York?",
-        "How are concessions trending in New York?",
-        "Which submarkets are seeing the most tenant tour activity right now in New York?",
-      ],
-      summary:
-        "Finance sector tenants in New York are receiving above-average free rent periods, particularly in Midtown, where average terms reach 6 months. This reflects landlords’ prioritization of stable, long-term occupiers.",
     },
   },
   {
