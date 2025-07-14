@@ -81,11 +81,11 @@ const VtsAiDefault = forwardRef<
 
   const handlePromptClick = useCallback((prompt: VtsAiPrompt) => {
     setIsTransitioning(true);
+    setSelectedPrompt(prompt);
+    setPrompts((prev) => prev.filter((p) => p.prompt !== prompt.prompt));
     setTimeout(() => {
-      setSelectedPrompt(prompt);
-      setPrompts((prev) => prev.filter((p) => p.prompt !== prompt.prompt));
       setIsTransitioning(false);
-    }, 500);
+    }, 0);
   }, []);
 
   useEffect(() => {
@@ -113,10 +113,13 @@ const VtsAiDefault = forwardRef<
       setIsLoading(true);
       setCompletedSteps([]);
 
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-        setCompletedSteps(["start"]);
-      }, 2000);
+      const timer = setTimeout(
+        () => {
+          setIsLoading(false);
+          setCompletedSteps(["start"]);
+        },
+        Math.random() * 1000 + 1500,
+      );
 
       return () => clearTimeout(timer);
     }
@@ -201,14 +204,18 @@ const VtsAiDefault = forwardRef<
                   </div>
                 )}
                 <div
-                  className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left duration-1000 ease-in-out`}
+                  className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left duration-300 ease-in-out ${
+                    isTransitioning ? `opacity-0` : "opacity-100"
+                  }`}
                 >
                   {selectedPrompt.prompt}
                 </div>
               </>
             )}
             {isLoading ? (
-              <VtsAiLoader isVisible={!isTransitioning} />
+              <VtsAiLoader
+                className={` ${isTransitioning ? "opacity-0" : "opacity-100"}`}
+              />
             ) : (
               selectedPrompt &&
               responsePayload && (
