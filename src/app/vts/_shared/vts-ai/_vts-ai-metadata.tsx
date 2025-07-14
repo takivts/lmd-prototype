@@ -2,8 +2,9 @@ import { useEffect } from "react";
 
 interface VtsAiMetadataProps {
   data?: {
-    title: string;
-    buildingClass: string;
+    category: string;
+    market: string;
+    buildingClass?: string;
   };
   className?: string;
   onComplete?: () => void;
@@ -29,8 +30,8 @@ export default function VtsAiMetadata({
   return (
     <div className={`flex flex-col ${className}`}>
       <div className="flex flex-col">
-        <span className="-mb-1 text-gray-400">Market:</span>
-        <h3 className="text-lg font-bold">{data.title}</h3>
+        <span className="-mb-1 text-gray-400">{data.category}</span>
+        <h3 className="text-lg font-bold">{data.market}</h3>
       </div>
     </div>
   );

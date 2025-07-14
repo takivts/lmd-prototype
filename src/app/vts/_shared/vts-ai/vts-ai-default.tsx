@@ -40,7 +40,7 @@ const VtsAiDefault = forwardRef<
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
-  const [isUpsell] = useState(true);
+  const [isUpsell] = useState(false);
 
   useEffect(() => {
     setPrompts(
@@ -179,23 +179,25 @@ const VtsAiDefault = forwardRef<
 
             {selectedPrompt && (
               <>
-                <div className="bg-vts-purple-100 border-vts-purple-300 mb-2 flex flex-col gap-2 rounded-lg border p-4">
-                  <h3 className="font-bold">
-                    Unlock the full potential of VTS AI
-                  </h3>
-                  <p>
-                    You are seeing a preview of VTS AI. To get full access to
-                    AI-powered market data and insights{" "}
-                    <a
-                      className="underline"
-                      href="https://www.vts.com/vts-data"
-                      target="_blank"
-                    >
-                      upgrade to VTS
-                    </a>
-                    .
-                  </p>
-                </div>
+                {isUpsell && (
+                  <div className="bg-vts-purple-100 border-vts-purple-300 mb-2 flex flex-col gap-2 rounded-lg border p-4">
+                    <h3 className="font-bold">
+                      Unlock the full potential of VTS AI
+                    </h3>
+                    <p>
+                      You are seeing a preview of VTS AI. To get full access to
+                      AI-powered market data and insights{" "}
+                      <a
+                        className="underline"
+                        href="https://www.vts.com/vts-data"
+                        target="_blank"
+                      >
+                        upgrade to VTS
+                      </a>
+                      .
+                    </p>
+                  </div>
+                )}
                 <div
                   className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left duration-1000 ease-in-out`}
                 >
@@ -209,10 +211,15 @@ const VtsAiDefault = forwardRef<
               selectedPrompt &&
               responsePayload && (
                 <div className="flex flex-col gap-2">
-                  <VtsAiMetadata
-                    data={responsePayload.marketMetadata}
-                    onComplete={() => handleStepComplete("metadata")}
-                  />
+                  {responsePayload.marketMetadata?.category && (
+                    <VtsAiMetadata
+                      data={{
+                        ...responsePayload.marketMetadata,
+                        category: responsePayload.marketMetadata.category,
+                      }}
+                      onComplete={() => handleStepComplete("metadata")}
+                    />
+                  )}
 
                   <div
                     className={`transition-all duration-500 ${

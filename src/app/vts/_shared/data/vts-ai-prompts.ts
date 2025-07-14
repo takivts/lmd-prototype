@@ -1,7 +1,8 @@
 export type MarketAnalysisData = {
   marketMetadata?: {
-    title: string;
-    buildingClass: string;
+    category?: string;
+    market: string;
+    buildingClass?: string;
   };
   marketData?: {
     label: string;
@@ -26,7 +27,8 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     prompt: "Give me a market overview for New York",
     payload: {
       marketMetadata: {
-        title: "New York",
+        category: "Market overview",
+        market: "New York",
         buildingClass: "A",
       },
       marketData: [
@@ -54,7 +56,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "How is active demand trending in the past quarter in New York?",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Active demand",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "QoQ Chg", value: "-3.4%" },
         { label: "Active Reqs", value: "1,705" },
@@ -77,7 +83,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "What's the current total active demand in New York?",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Active demand",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "Total Demand", value: "11.6M SF" },
         { label: "Active Reqs", value: "1,705" },
@@ -100,7 +110,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "What's the leasing velocity over the past 6 months in New York?",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Leasing velocity",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "Velocity", value: "5.4M SF" },
         { label: "Avg Deal", value: "6.9k SF" },
@@ -123,7 +137,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "Break down demand by tenant size ranges in New York.",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Demand",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "<5k SF", value: "3.9M SF" },
         { label: "5–20k SF", value: "5.0M SF" },
@@ -146,7 +164,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "Show me historical rent trends for New York.",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Historical trends",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "YoY Rent Growth", value: "+4.2%" },
         { label: "Class A Buildings", value: "+5.1%" },
@@ -170,7 +192,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     prompt:
       "Are large-block spaces (50k+ sf) seeing activity here in New York?",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Demand",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "Active 50k+ Reqs", value: "14" },
         { label: "Signed 50k+ Deals", value: "2" },
@@ -194,7 +220,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     prompt:
       "What's the average rent right now for small tenants? Large tenants in New York?",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Market rent",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "<5k SF", value: "$56 PSF" },
         { label: "5–10k SF", value: "$68 PSF" },
@@ -219,7 +249,11 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "How are concessions trending in New York?",
     payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
+      marketMetadata: {
+        category: "Market concessions",
+        market: "New York",
+        buildingClass: "A",
+      },
       marketData: [
         { label: "TI", value: "$78 PSF" },
         { label: "Free Rent", value: "4.0 mo" },
@@ -237,30 +271,6 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       summary:
         "Concessions remain elevated but flat, averaging $93 PSF in total value. Landlords are using TI to secure renewals and long-term leases.",
-    },
-  },
-  {
-    prompt:
-      "Which submarkets are seeing the most tenant tour activity right now in New York?",
-    payload: {
-      marketMetadata: { title: "New York", buildingClass: "A" },
-      marketData: [
-        { label: "Tour Volume", value: "↑ in Q2 2025" },
-        { label: "QoQ Change", value: "+14%" },
-        { label: "Trend", value: "Steady" },
-      ],
-      keyInsights: [
-        "Touring levels improved after seasonal dip in Q1.",
-        "Activity is strongest in submarkets with newer inventory.",
-        "Tenant decision windows remain prolonged despite higher tour counts.",
-      ],
-      suggestedFollowUps: [
-        "How is active demand trending in the past quarter in New York?",
-        "Break down demand by tenant size ranges in New York.",
-        "Show me historical rent trends for New York.",
-      ],
-      summary:
-        "Tour volume rose 14% QoQ, reflecting increased tenant engagement. Activity is driven by interest in updated buildings and flexible layouts.",
     },
   },
 ];

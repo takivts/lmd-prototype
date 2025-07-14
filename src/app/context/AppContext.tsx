@@ -5,8 +5,9 @@ import { createContext, useContext, useState, ReactNode } from "react";
 // Define the data structure for market analysis
 interface VtsAiDefaultData {
   marketMetadata?: {
-    title: string;
-    buildingClass: string;
+    category?: string;
+    market: string;
+    buildingClass?: string;
   };
   marketData?: Array<{ label: string; value: string }>;
   keyInsights?: string[];
