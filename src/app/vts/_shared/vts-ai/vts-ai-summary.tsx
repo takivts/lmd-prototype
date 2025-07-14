@@ -9,7 +9,7 @@ export default function VtsAiSummary({
 }: {
   data: {
     title: string;
-    summary: string;
+    summary: string[];
   };
   className?: string;
   shouldTypewrite?: boolean;
@@ -19,19 +19,19 @@ export default function VtsAiSummary({
   onCompleteRef.current = onComplete;
 
   // Return null if no data or empty summary
-  if (!data || !data.summary || data.summary.trim() === "") {
+  if (!data || !data.summary || data.summary.join("").trim() === "") {
     return null;
   }
 
   return (
     <div className={className}>
       <h5 className="mb-1 text-sm font-bold">{data.title}</h5>
-      <span>
+      <div>
         {shouldTypewrite ? (
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-                .typeString(data.summary)
+                .typeString(data.summary.join("<br /><br />"))
                 .callFunction(() => {
                   if (onCompleteRef.current) {
                     setTimeout(() => {
@@ -47,9 +47,13 @@ export default function VtsAiSummary({
             }}
           />
         ) : (
-          data.summary
+          data.summary.map((p, i) => (
+            <p key={i} className="mb-2 last:mb-0">
+              {p}
+            </p>
+          ))
         )}
-      </span>
+      </div>
     </div>
   );
 }

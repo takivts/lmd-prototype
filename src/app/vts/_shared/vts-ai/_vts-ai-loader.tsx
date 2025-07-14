@@ -3,10 +3,7 @@ interface VtsAiLoaderProps {
   className?: string;
 }
 
-export default function VtsAiLoader({
-  isVisible = true,
-  className = "",
-}: VtsAiLoaderProps) {
+export default function VtsAiLoader({ className = "" }: VtsAiLoaderProps) {
   return (
     <div
       className={`flex items-center justify-center transition-all duration-300 ease-in-out ${className}`}

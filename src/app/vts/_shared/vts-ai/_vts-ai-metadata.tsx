@@ -1,11 +1,8 @@
 import { useEffect } from "react";
+import { MarketMetadata } from "../data/vts-ai-prompts";
 
 interface VtsAiMetadataProps {
-  data?: {
-    category: string;
-    market: string;
-    buildingClass?: string;
-  };
+  data?: MarketMetadata;
   className?: string;
   onComplete?: () => void;
 }
@@ -28,11 +25,22 @@ export default function VtsAiMetadata({
   }
 
   return (
-    <div className={`flex flex-col ${className}`}>
-      <div className="flex flex-col">
-        <span className="-mb-1 text-gray-400">{data.category}</span>
-        <h3 className="text-lg font-bold">{data.market}</h3>
-      </div>
+    <div className={`mb-2 flex flex-col ${className}`}>
+      <h3 className="text-lg font-bold">
+        {data.submarket && `${data.submarket} | `} {data.market}
+      </h3>
+      {data.industry && (
+        <span className="text-gray-400">
+          Industry:{" "}
+          <span className="font-bold text-gray-700">{data.industry}</span>
+        </span>
+      )}
+      {data.buildingClass && (
+        <span className="text-gray-400">
+          Building Class:{" "}
+          <span className="font-bold text-gray-700">{data.buildingClass}</span>
+        </span>
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppContext } from "@/app/context/AppContext";
-import { VtsAiDefaultData } from "@/app/context/AppContext";
+import { MarketAnalysisData } from "@/app/vts/_shared/data/vts-ai-prompts";
 import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
@@ -24,7 +24,7 @@ export default function DealProfilePage() {
 
   const handleVtsAiContentType = (
     contentType: string,
-    data?: VtsAiDefaultData,
+    data?: MarketAnalysisData,
   ) => {
     if (isVtsAiOpen) {
       setVtsAiContentType(contentType, data);
@@ -128,7 +128,7 @@ export default function DealProfilePage() {
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="gap-2 text-gray-500">Market</span>
-            <span className="">New York</span>
+            <span className="">Manhattan | New York</span>
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
               onClick={() =>
@@ -138,7 +138,7 @@ export default function DealProfilePage() {
                 )
               }
             >
-              Market overview
+              Submarket overview
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

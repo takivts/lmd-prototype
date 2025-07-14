@@ -57,7 +57,6 @@ export const usePromptCycle = ({
       setIsVisible(true);
     };
 
-    const isInitialLoad = !wasActiveRef.current;
     if (isActive) {
       wasActiveRef.current = true;
     }
