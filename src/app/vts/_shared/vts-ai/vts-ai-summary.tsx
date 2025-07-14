@@ -18,6 +18,11 @@ export default function VtsAiSummary({
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
 
+  // Return null if no data or empty summary
+  if (!data || !data.summary || data.summary.trim() === "") {
+    return null;
+  }
+
   return (
     <div className={className}>
       <h5 className="mb-1 text-sm font-bold">{data.title}</h5>

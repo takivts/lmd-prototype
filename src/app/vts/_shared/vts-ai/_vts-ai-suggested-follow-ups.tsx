@@ -7,6 +7,11 @@ export default function VtsAiSuggestedFollowUps({
   className?: string;
   onFollowUpClick: (followUp: string) => void;
 }) {
+  // Return null if no data
+  if (!data || data.length === 0) {
+    return null;
+  }
+
   return (
     <div className={className}>
       <h5 className="mb-2 text-sm font-bold">Suggested Follow-Ups</h5>

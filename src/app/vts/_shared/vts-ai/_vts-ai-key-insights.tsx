@@ -48,6 +48,11 @@ export default function VtsAiKeyInsights({
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
 
+  // Return null if no data
+  if (!data || data.length === 0) {
+    return null;
+  }
+
   useEffect(() => {
     if (shouldTypewrite && data.length > 0) {
       setTypingIndex(0);
