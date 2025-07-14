@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LMD POC",
-  description: "LMD POC",
+  title: "LMD Prototype",
+  description: "LMD Prototype",
 };
 
 export default function RootLayout({
