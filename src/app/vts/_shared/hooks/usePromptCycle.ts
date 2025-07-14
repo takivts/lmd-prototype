@@ -58,18 +58,27 @@ export const usePromptCycle = ({
     };
 
     const isInitialLoad = !wasActiveRef.current;
-    const delayToUse = isInitialLoad ? initialDelay : 0;
     wasActiveRef.current = true;
 
+    let interval: ReturnType<typeof setInterval> | undefined;
+
     const initialTimer = setTimeout(
-      isInitialLoad ? showInitialPrompt : showRandomPrompt,
-      delayToUse,
+      () => {
+        if (isInitialLoad) {
+          showInitialPrompt();
+        } else {
+          showRandomPrompt();
+        }
+        interval = setInterval(showRandomPrompt, cycleInterval);
+      },
+      isInitialLoad ? initialDelay : 0,
     );
-    const interval = setInterval(showRandomPrompt, cycleInterval);
 
     return () => {
       clearTimeout(initialTimer);
-      clearInterval(interval);
+      if (interval) {
+        clearInterval(interval);
+      }
     };
   }, [isActive, prompts, cycleInterval, fadeDelay, initialDelay]);
 

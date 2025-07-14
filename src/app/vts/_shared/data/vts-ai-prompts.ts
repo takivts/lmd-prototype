@@ -30,10 +30,10 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         buildingClass: "A",
       },
       marketData: [
-        { label: "Avg. Gross NER", value: "$45.50 PSF" },
+        { label: "Avg. NER", value: "$45.50 PSF" },
         { label: "Avg. TI", value: "$65.00 PSF" },
         { label: "Avg. Free Rent", value: "4.2 months" },
-        { label: "# active proposals", value: "1,247" },
+        { label: "Active proposals", value: "1,247" },
         { label: "Avg. Lease Term", value: "7.1 years" },
         { label: "Concession Value", value: "$88.50 PSF" },
       ],
@@ -61,8 +61,8 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         buildingClass: "A",
       },
       marketData: [
-        { label: "QoQ Demand Change", value: "+2.5%" },
-        { label: "Total Active Requirements", value: "1,813" },
+        { label: "QoQ Demand Chg", value: "+2.5%" },
+        { label: "Active Requirements", value: "1,813" },
         { label: "Total SF of Demand", value: "12.3M SF" },
       ],
       keyInsights: [
@@ -192,7 +192,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         buildingClass: "A",
       },
       marketData: [
-        { label: "Active 50k+ SF Requirements", value: "17" },
+        { label: "Active 50k+ SF Reqs", value: "17" },
         { label: "Signed Leases (50k+)", value: "3 this quarter" },
         { label: "Largest Deal", value: "120k SF – Hudson Yards" },
       ],
@@ -302,14 +302,15 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     prompt: "How is active demand trending in the past quarter?",
     payload: {
       summary:
-        "Active demand has seen a slight increase of 2.5% in the last quarter, driven by small to medium-sized businesses.",
+        "Active demand has seen a slight increase of 2.5% over the past quarter, primarily driven by small to mid-sized tenants.",
     },
   },
   {
     prompt: "What's the current total active demand?",
     payload: {
       marketData: [{ label: "Total Active Demand", value: "12.3M SF" }],
-      summary: "The current total active demand is 12.3 million square feet.",
+      summary:
+        "The current total active demand across the market is 12.3 million square feet.",
     },
   },
   {
@@ -317,7 +318,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     payload: {
       marketData: [{ label: "Leasing Velocity (6 mo.)", value: "5.8M SF" }],
       summary:
-        "The leasing velocity over the past 6 months was 5.8 million square feet.",
+        "Leasing velocity over the last 6 months reached 5.8 million square feet, reflecting consistent tenant activity.",
     },
   },
   {
@@ -329,21 +330,21 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
         { label: "> 20k SF", value: "3.0M SF" },
       ],
       summary:
-        "Demand is strongest in the 5k-20k SF range, indicating a healthy mid-market.",
+        "Mid-sized tenants in the 5k–20k SF range represent the largest portion of active demand, suggesting strong activity in that segment.",
     },
   },
   {
     prompt: "Show me historical rent trends.",
     payload: {
       summary:
-        "Historical rent trends show a 5% year-over-year increase, with a more pronounced spike in Class A properties.",
+        "Rents have increased 5% year-over-year, with stronger growth observed in higher-quality assets.",
     },
   },
   {
     prompt: "Are large-block spaces (50k+ sf) seeing activity?",
     payload: {
       summary:
-        "Yes, large-block spaces are seeing renewed interest, with three major leases signed in the last quarter.",
+        "Large-block space activity has picked up, with several notable leases signed in the past quarter.",
     },
   },
   {
@@ -354,13 +355,15 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
         { label: "Avg. Rent (Small Tenants)", value: "$55.00 PSF" },
         { label: "Avg. Rent (Large Tenants)", value: "$72.00 PSF" },
       ],
+      summary:
+        "The average rent for small tenants is $55 PSF, while large tenants average $72 PSF, with rates varying by submarket and asset quality.",
     },
   },
   {
     prompt: "How are concessions trending?",
     payload: {
       summary:
-        "Concessions are stabilizing after a period of increase, with TI allowances averaging $80 PSF for new leases.",
+        "Concessions have stabilized, with tenant improvement allowances averaging $80 PSF and free rent periods holding steady.",
     },
   },
   {
@@ -368,7 +371,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       "Which submarkets are seeing the most tenant tour activity right now?",
     payload: {
       summary:
-        "Midtown South and the Financial District are leading in tenant tour activity, suggesting strong future leasing in these areas.",
+        "Key submarkets are showing elevated tenant tour activity, which may signal increased leasing momentum ahead.",
     },
   },
 ];

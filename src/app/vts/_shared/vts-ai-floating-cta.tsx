@@ -87,7 +87,7 @@ export default function VtsAiFloatingCTA({
             }`}
           >
             {currentPrompt && (
-              <p className="text-vts-primary cursor-pointer text-sm underline decoration-dotted decoration-2 underline-offset-2">
+              <p className="text-vts-primary cursor-pointer text-sm underline decoration-dotted decoration-2 underline-offset-2 select-none">
                 {currentPrompt.prompt}
               </p>
             )}
@@ -109,7 +109,7 @@ export default function VtsAiFloatingCTA({
             />
           </svg>
         ) : (
-          <div className="z-50 flex flex-col items-center gap-0 text-[10px] font-bold text-white">
+          <div className="z-50 flex flex-col items-center gap-0 text-[10px] font-bold text-white select-none">
             <svg
               width="20"
               height="20"
