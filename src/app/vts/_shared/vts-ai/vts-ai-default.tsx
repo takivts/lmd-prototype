@@ -1,3 +1,5 @@
+"use client";
+
 import {
   useEffect,
   useState,
@@ -165,9 +167,9 @@ const VtsAiDefault = forwardRef<
                   {prompts.map((prompt) => (
                     <div
                       key={prompt.prompt}
-                      className={`rounded-lg border px-3 py-2 text-left duration-1000 ease-in-out ${
+                      className={`rounded-lg border px-3 py-2 text-left duration-300 ease-in-out ${
                         isTransitioning ? `opacity-0` : "opacity-100"
-                      } bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer`}
+                      } bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer`}
                       onClick={() => handlePromptClick(prompt)}
                     >
                       {prompt.prompt}
