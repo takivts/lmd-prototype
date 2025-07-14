@@ -29,7 +29,7 @@ export default function VtsAiMetadata({
   return (
     <div className={`flex flex-col ${className}`}>
       <div className="flex flex-col">
-        <span className="text-gray-500">Market</span>
+        <span className="-mb-1 text-gray-400">Market:</span>
         <h3 className="text-lg font-bold">{data.title}</h3>
       </div>
     </div>

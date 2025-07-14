@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppContext } from "@/app/context/AppContext";
-import { MarketAnalysisData } from "@/app/context/AppContext";
+import { VtsAiDefaultData } from "@/app/context/AppContext";
 import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
@@ -24,7 +24,7 @@ export default function DealProfilePage() {
 
   const handleVtsAiContentType = (
     contentType: string,
-    data?: MarketAnalysisData,
+    data?: VtsAiDefaultData,
   ) => {
     if (isVtsAiOpen) {
       setVtsAiContentType(contentType, data);
@@ -52,7 +52,7 @@ export default function DealProfilePage() {
             <h1 className="truncate text-4xl font-bold">Starbucks Coffee</h1>
           </div>
           <div className="text-vts-purple-700 flex items-center gap-4 pr-8 text-sm">
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -69,7 +69,7 @@ export default function DealProfilePage() {
               </svg>
               Edit Deal
             </div>
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -245,7 +245,15 @@ export default function DealProfilePage() {
                   <span className="h-1 w-full bg-gray-200" />
                 </div>
                 <div className="flex flex-col text-right text-gray-700">
-                  <span className="border-b border-gray-200 px-2 pb-2">
+                  <span
+                    className="border-b border-gray-200 px-2 pb-2"
+                    onClick={() =>
+                      handleVtsAiContentType(
+                        "upsell",
+                        vtsAiPromptsWithContext[0].payload,
+                      )
+                    }
+                  >
                     Label
                   </span>
                   <span className="border-b border-gray-200 px-2 py-2">

@@ -33,11 +33,13 @@ const SingleTypingLine = ({
 };
 
 export default function VtsAiKeyInsights({
+  isUpsell,
   data,
   className,
   shouldTypewrite = false,
   onComplete,
 }: {
+  isUpsell?: boolean;
   data: string[];
   className?: string;
   shouldTypewrite?: boolean;
@@ -82,9 +84,15 @@ export default function VtsAiKeyInsights({
   // When not typing, or when finished, we want to show all data as static text.
   if (!shouldTypewrite || isFinished) {
     return (
-      <div className={`rounded-lg bg-yellow-300/25 p-3 ${className}`}>
+      <div
+        className={`h-fit rounded-lg border border-yellow-200 bg-yellow-100/75 p-3 transition-all duration-300 ${className}`}
+      >
         <h5 className="mb-1 text-sm font-bold">Key Insights</h5>
-        <ul className="flex list-disc flex-col gap-0.5 pl-5">
+        <ul
+          className={`flex list-disc flex-col gap-0.5 pl-5 ${
+            isUpsell ? "blur-xs" : ""
+          }`}
+        >
           {data.map((text, index) => (
             <li key={`final-${index}`}>{text}</li>
           ))}
@@ -95,9 +103,15 @@ export default function VtsAiKeyInsights({
 
   // This is the "in-progress" view while typing.
   return (
-    <div className={`rounded-lg bg-yellow-300/25 p-3 ${className}`}>
+    <div
+      className={`h-fit rounded-lg border border-yellow-200 bg-yellow-100/75 p-3 transition-all duration-300 ${className}`}
+    >
       <h5 className="mb-1 text-sm font-bold">Key Insights</h5>
-      <ul className="flex list-disc flex-col gap-0.5 pl-5">
+      <ul
+        className={`flex list-disc flex-col gap-0.5 pl-5 ${
+          isUpsell ? "blur-xs" : ""
+        }`}
+      >
         {data.map((text, index) => {
           if (index < typingIndex) {
             return <li key={`completed-${index}`}>{text}</li>;

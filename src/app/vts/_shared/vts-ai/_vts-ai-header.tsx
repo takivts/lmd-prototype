@@ -30,7 +30,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
         VTS AI
       </div>
       <div className="flex flex-col">
-        <h5 className="text-lg font-bold">VTS MAX AI</h5>
+        <h5 className="text-lg font-bold">VTS AI</h5>
         <span className="text-vts-primary"></span>
       </div>
       <div className="flex grow justify-end gap-2">

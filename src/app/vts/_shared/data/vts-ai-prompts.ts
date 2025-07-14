@@ -41,8 +41,6 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Manhattan retail market shows strong recovery with 15% increase in leasing activity Q4 2024.",
         "Ground floor spaces in prime locations commanding premium rents, up 8% year-over-year.",
         "Coffee shops and food service tenants driving demand in midtown and financial districts.",
-        "Landlords offering more flexible lease terms to attract quality tenants.",
-        "Foot traffic has returned to 95% of pre-pandemic levels in key retail corridors.",
       ],
       suggestedFollowUps: [
         "How are concessions trending in New York?",
@@ -150,9 +148,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     payload: {
       marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "YoY Rent", value: "+4.2%" },
-        { label: "Class A", value: "+5.1%" },
-        { label: "Class B", value: "+2.6%" },
+        { label: "YoY Rent Growth", value: "+4.2%" },
+        { label: "Class A Buildings", value: "+5.1%" },
+        { label: "Class B Buildings", value: "+2.6%" },
       ],
       keyInsights: [
         "Class A growth remains strong despite slight demand pullback.",

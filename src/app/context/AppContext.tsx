@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 // Define the data structure for market analysis
-interface MarketAnalysisData {
+interface VtsAiDefaultData {
   marketMetadata?: {
     title: string;
     buildingClass: string;
@@ -19,8 +19,8 @@ const AppContext = createContext<{
   isVtsAiOpen: boolean;
   setIsVtsAiOpen: (value: boolean) => void;
   vtsAiContentType: string;
-  setVtsAiContentType: (value: string, data?: MarketAnalysisData) => void;
-  vtsAiData: MarketAnalysisData | null;
+  setVtsAiContentType: (value: string, data?: VtsAiDefaultData) => void;
+  vtsAiData: VtsAiDefaultData | null;
   isSidePanelOpen: boolean;
   setIsSidePanelOpen: (value: boolean) => void;
 } | null>(null);
@@ -28,12 +28,12 @@ const AppContext = createContext<{
 export function AppContextProvider({ children }: { children: ReactNode }) {
   const [isVtsAiOpen, setIsVtsAiOpen] = useState(false);
   const [vtsAiContentType, setVtsAiContentType] = useState("default");
-  const [vtsAiData, setVtsAiData] = useState<MarketAnalysisData | null>(null);
+  const [vtsAiData, setVtsAiData] = useState<VtsAiDefaultData | null>(null);
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
 
   const handleSetVtsAiContentType = (
     contentType: string,
-    data?: MarketAnalysisData,
+    data?: VtsAiDefaultData,
   ) => {
     setVtsAiContentType(contentType);
     if (data) {
@@ -70,4 +70,4 @@ export function useAppContext() {
 }
 
 // Export the type for use in other components
-export type { MarketAnalysisData };
+export type { VtsAiDefaultData };

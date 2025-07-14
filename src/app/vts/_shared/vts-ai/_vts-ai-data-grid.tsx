@@ -3,15 +3,18 @@ import { useEffect } from "react";
 type DataGridItem = {
   label: string;
   value: string;
+  isUpsell?: boolean;
 };
 
 export default function VtsAiDataGrid({
   data,
   className,
+  isUpsell,
   onComplete,
 }: {
   data: DataGridItem[];
   className?: string;
+  isUpsell?: boolean;
   onComplete?: () => void;
 }) {
   useEffect(() => {
@@ -33,10 +36,12 @@ export default function VtsAiDataGrid({
       {data.map((item) => (
         <div
           key={item.label}
-          className="bg-vts-gray-200 flex flex-col justify-between rounded-lg border border-gray-300 px-3 py-2 text-left"
+          className="flex flex-col justify-between rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 text-left"
         >
           <span className="text-xs font-bold text-gray-400">{item.label}</span>
-          <span className="text-gray-700">{item.value}</span>
+          <span className={`text-gray-700 ${isUpsell ? "blur-xs" : ""}`}>
+            {item.value}
+          </span>
         </div>
       ))}
     </div>

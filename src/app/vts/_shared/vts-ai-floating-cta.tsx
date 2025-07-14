@@ -5,8 +5,6 @@ import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import { useAppContext } from "../../context/AppContext";
 import { useRef } from "react";
 import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
-import { vtsAiPromptsWithContext } from "./data/vts-ai-prompts";
-import { usePathname } from "next/navigation";
 
 export default function VtsAiFloatingCTA({
   className,
@@ -16,7 +14,6 @@ export default function VtsAiFloatingCTA({
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
     useAppContext();
   const vtsAiDefaultRef = useRef<VtsAiDefaultRef>(null);
-  const pathname = usePathname();
 
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
@@ -28,7 +25,13 @@ export default function VtsAiFloatingCTA({
         />
       );
     } else if (vtsAiContentType === "upsell") {
-      return <VtsAiUpsell />;
+      return (
+        <VtsAiUpsell
+          className="absolute right-24 bottom-16"
+          isOpen={isVtsAiOpen}
+          setIsOpen={setIsVtsAiOpen}
+        />
+      );
     } else {
       return (
         <VtsAiDefault
