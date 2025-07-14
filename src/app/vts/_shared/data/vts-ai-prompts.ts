@@ -4,6 +4,7 @@ export type MarketMetadata = {
   submarket?: string;
   industry?: string;
   buildingClass?: string;
+  size?: string;
 };
 
 export type MarketData = {
@@ -34,6 +35,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         submarket: "Manhattan",
         industry: "FIRE",
         buildingClass: "A",
+        size: "10k - 25k",
       },
       marketData: [
         { label: "Avg. NER", value: "$52.75 PSF" },
@@ -68,6 +70,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         submarket: "Manhattan",
         industry: "FIRE",
         buildingClass: "A",
+        size: "10k - 25k",
       },
       marketData: [
         { label: "QoQ Chg", value: "-3.4%" },
@@ -98,6 +101,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         submarket: "Manhattan",
         industry: "FIRE",
         buildingClass: "A",
+        size: "10k - 25k",
       },
       marketData: [
         { label: "Total Demand", value: "11.6M SF" },
@@ -129,6 +133,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         submarket: "Manhattan",
         industry: "FIRE",
         buildingClass: "A",
+        size: "10k - 25k",
       },
       marketData: [
         { label: "Velocity", value: "5.4M SF" },
@@ -159,6 +164,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         submarket: "Manhattan",
         industry: "FIRE",
         buildingClass: "A",
+        size: "10k - 25k",
       },
       marketData: [
         { label: "<5k SF", value: "3.9M SF" },
@@ -189,6 +195,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         submarket: "Manhattan",
         industry: "FIRE",
         buildingClass: "A",
+        size: "10k - 25k",
       },
       marketData: [
         { label: "YoY Rent Growth", value: "+4.2%" },
@@ -243,7 +250,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   },
   {
     prompt:
-      "What's the average rent right now for small tenants? Large tenants in New York?",
+      "What's the average rent right now for small tenants? Large tenants in Manhattan, New York?",
     payload: {
       marketMetadata: {
         category: "Average rents",
@@ -284,6 +291,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         submarket: "Manhattan",
         industry: "FIRE",
         buildingClass: "A",
+        size: "10k - 25k",
       },
       marketData: [
         { label: "TI", value: "$78 PSF" },

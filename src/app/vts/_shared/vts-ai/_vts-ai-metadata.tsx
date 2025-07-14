@@ -35,10 +35,9 @@ export default function VtsAiMetadata({
           <span className="font-bold text-gray-700">{data.industry}</span>
         </span>
       )}
-      {data.buildingClass && (
+      {data.size && (
         <span className="text-gray-400">
-          Building Class:{" "}
-          <span className="font-bold text-gray-700">{data.buildingClass}</span>
+          Size: <span className="font-bold text-gray-700">{data.size}</span>
         </span>
       )}
     </div>
