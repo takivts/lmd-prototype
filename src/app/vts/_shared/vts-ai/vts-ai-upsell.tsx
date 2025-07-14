@@ -1,11 +1,9 @@
 export default function VtsAiUpsell({
   className,
   isOpen,
-  setIsOpen,
 }: {
   className?: string;
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
 }) {
   return (
     <div

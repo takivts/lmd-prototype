@@ -29,9 +29,8 @@ const VtsAiDefault = forwardRef<
   {
     className?: string;
     isOpen: boolean;
-    setIsOpen: (isOpen: boolean) => void;
   }
->(({ className, isOpen, setIsOpen }, ref) => {
+>(({ className, isOpen }, ref) => {
   const pathname = usePathname();
   const { vtsAiData, setVtsAiContentType } = useAppContext();
   const [selectedPrompt, setSelectedPrompt] = useState<VtsAiPrompt | null>(
@@ -41,7 +40,7 @@ const VtsAiDefault = forwardRef<
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
-  const [isUpsell, setIsUpsell] = useState(true);
+  const [isUpsell] = useState(true);
 
   useEffect(() => {
     setPrompts(
@@ -160,7 +159,7 @@ const VtsAiDefault = forwardRef<
             {!selectedPrompt && (
               <>
                 <p className="mb-2 text-left">
-                  Hi, I'm Max. Let me know how I can help you:
+                  Hi, I&apos;m Max. Let me know how I can help you:
                 </p>
                 <div className={`mb-2 flex flex-col gap-2`}>
                   {prompts.map((prompt) => (

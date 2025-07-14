@@ -1,11 +1,11 @@
+import Image from "next/image";
+
 export default function VtsAiTenantProfile({
   className,
   isOpen,
-  setIsOpen,
 }: {
   className?: string;
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
 }) {
   return (
     <div
@@ -17,10 +17,12 @@ export default function VtsAiTenantProfile({
     >
       <div className="relative z-50 rounded-lg border border-gray-300 bg-white text-sm">
         <div className="flex items-center border-b border-gray-300 px-4 py-4">
-          <img
+          <Image
             src="/logo-starbucks.svg"
             alt="Starbucks Logo"
             className="mr-3 h-12 w-12 rounded-full"
+            width={48}
+            height={48}
           />
           <div className="flex flex-col">
             <h5 className="text-lg">Starbucks</h5>
@@ -67,7 +69,7 @@ export default function VtsAiTenantProfile({
             </p>
             <p className="mb-2">
               Investment-grade credit: S&P BBB+ (negative outlook, May 2025) |
-              Moody's Baa1 (negative)
+              Moody&apos;s Baa1 (negative)
             </p>
             <div className="mb-2 text-xs text-gray-600">
               <a
@@ -138,7 +140,8 @@ export default function VtsAiTenantProfile({
             <ul className="mb-2 list-disc pl-5">
               <li>
                 2025 plan: slow new-build pipeline to redirect cap-ex toward
-                remodels / throughput upgrades ("Back to Starbucks" turnaround).
+                remodels / throughput upgrades (&quot;Back to Starbucks&quot;
+                turnaround).
               </li>
               <li>
                 Exploring minority stake sale of China business while still

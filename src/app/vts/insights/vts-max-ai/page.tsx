@@ -2,11 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { exploreMarkets, Market, markets, marketTooltips } from "./data/data";
-import InsightsSidebar from "../left-nav";
 
 const VTSAI = () => {
   const [activePingIndex, setActivePingIndex] = useState(0);
-  const [activeMarket, setActiveMarket] = useState(markets[0]);
   const [exploreMarketIndex, setExploreMarketIndex] = useState(0);
 
   useEffect(() => {

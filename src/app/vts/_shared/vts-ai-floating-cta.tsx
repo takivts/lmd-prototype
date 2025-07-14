@@ -21,7 +21,6 @@ export default function VtsAiFloatingCTA({
         <VtsAiTenantProfile
           className="absolute right-24 bottom-16"
           isOpen={isVtsAiOpen}
-          setIsOpen={setIsVtsAiOpen}
         />
       );
     } else if (vtsAiContentType === "upsell") {
@@ -29,7 +28,6 @@ export default function VtsAiFloatingCTA({
         <VtsAiUpsell
           className="absolute right-24 bottom-16"
           isOpen={isVtsAiOpen}
-          setIsOpen={setIsVtsAiOpen}
         />
       );
     } else {
@@ -38,7 +36,6 @@ export default function VtsAiFloatingCTA({
           ref={vtsAiDefaultRef}
           className="absolute right-24 bottom-16"
           isOpen={isVtsAiOpen}
-          setIsOpen={setIsVtsAiOpen}
         />
       );
     }

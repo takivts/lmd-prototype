@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { mockData } from "./data/mockData.js";
@@ -107,214 +107,235 @@ export default function MapPage() {
     }
   };
 
-  // Function to load city data
-  const loadCityData = (
-    mapInstance: mapboxgl.Map,
-    cityName: "toronto" | "new-york",
-  ) => {
-    // Filter data by city based on coordinates
-    const filteredData = mockData.filter((property: PropertyData) => {
-      if (!property.Coordinates) return false;
+  // Helper function to categorize property types (for heatmap weighting)
+  const getPropertyTypeCategory = useCallback(
+    (propertyType: string): number => {
+      if (!propertyType) return 0;
 
-      const [lat, lng] = property.Coordinates.split(",").map(parseFloat);
-      if (isNaN(lat) || isNaN(lng)) return false;
-      // Determine city based on coordinates
-      if (cityName === "toronto" && lat > 43.0 && lng < -79.0) {
-        return true;
-      } else if (cityName === "new-york" && lat < 41.0 && lng > -75.0) {
-        return true;
+      if (propertyType.includes("Finance")) {
+        return 1; // Finance
+      } else if (
+        propertyType.includes("Retail") ||
+        propertyType.includes("Consumer")
+      ) {
+        return 2; // Retail
+      } else if (propertyType.includes("Healthcare")) {
+        return 3; // Healthcare
+      } else if (propertyType.includes("Technology")) {
+        return 4; // Technology
       }
 
-      return false;
-    });
+      return 0; // Other/Unknown
+    },
+    [],
+  );
 
-    // Count occurrences of each property name/address as ID
-    const propertyIdCounts: Record<string, number> = {};
+  // Function to load city data
+  const loadCityData = useCallback(
+    (mapInstance: mapboxgl.Map, cityName: "toronto" | "new-york") => {
+      // Filter data by city based on coordinates
+      const filteredData = mockData.filter((property: PropertyData) => {
+        if (!property.Coordinates) return false;
 
-    filteredData.forEach((property: PropertyData) => {
-      const id = property["Property Name"] || "unknown";
-      propertyIdCounts[id] = (propertyIdCounts[id] || 0) + 1;
-    });
+        const [lat, lng] = property.Coordinates.split(",").map(parseFloat);
+        if (isNaN(lat) || isNaN(lng)) return false;
+        // Determine city based on coordinates
+        if (cityName === "toronto" && lat > 43.0 && lng < -79.0) {
+          return true;
+        } else if (cityName === "new-york" && lat < 41.0 && lng > -75.0) {
+          return true;
+        }
 
-    const countValues = Object.values(propertyIdCounts);
-    const maxCount = Math.max(1, ...countValues);
+        return false;
+      });
 
-    const sortedCounts = [...countValues].sort((a, b) => a - b);
-    const median = sortedCounts[Math.floor(sortedCounts.length / 2)];
+      // Count occurrences of each property name/address as ID
+      const propertyIdCounts: Record<string, number> = {};
 
-    const p75Index = Math.floor(sortedCounts.length * 0.75);
-    const p90Index = Math.floor(sortedCounts.length * 0.9);
-    const p75Value = sortedCounts[p75Index] || maxCount;
-    const p90Value = sortedCounts[p90Index] || maxCount;
-
-    // Convert data to GeoJSON format with ID counts
-    const points: Feature<Point, PropertyProps>[] = filteredData.map(
-      (property: PropertyData) => {
-        // Parse coordinates from "lat,lng" format to [lng, lat] format required by mapbox
-        const [latStr, lngStr] = property.Coordinates.split(",");
-        const latitude = parseFloat(latStr);
-        const longitude = parseFloat(lngStr);
+      filteredData.forEach((property: PropertyData) => {
         const id = property["Property Name"] || "unknown";
-        const countOfDeals = parseInt(property["Count of Deals"] || "1", 10);
+        propertyIdCounts[id] = (propertyIdCounts[id] || 0) + 1;
+      });
 
-        return {
-          type: "Feature" as const,
-          properties: {
-            name: property["Property Name"] || "",
-            address: property["Street Address"] || "",
-            type: property["Industry Name Tier 2"] || "",
-            owner: property["Industry Name Tier 1"] || "",
-            propertyId: id,
-            typeCategory: getPropertyTypeCategory(
-              property["Industry Name Tier 2"] || "",
-            ),
-            idCount: countOfDeals || 1,
-            city: cityName,
-          },
-          geometry: {
-            type: "Point" as const,
-            coordinates: [longitude, latitude],
-          },
-        };
-      },
-    );
+      const countValues = Object.values(propertyIdCounts);
+      const maxCount = Math.max(1, ...countValues);
 
-    setPropertyCount(points.length);
+      const sortedCounts = [...countValues].sort((a, b) => a - b);
+      const median = sortedCounts[Math.floor(sortedCounts.length / 2)];
 
-    // Add source for heatmap
-    const geoJsonData: FeatureCollection<Point, PropertyProps> = {
-      type: "FeatureCollection",
-      features: points,
-    };
+      const p75Index = Math.floor(sortedCounts.length * 0.75);
+      const p90Index = Math.floor(sortedCounts.length * 0.9);
+      const p75Value = sortedCounts[p75Index] || maxCount;
+      const p90Value = sortedCounts[p90Index] || maxCount;
 
-    mapInstance.addSource("properties-source", {
-      type: "geojson",
-      data: geoJsonData,
-    });
+      // Convert data to GeoJSON format with ID counts
+      const points: Feature<Point, PropertyProps>[] = filteredData.map(
+        (property: PropertyData) => {
+          // Parse coordinates from "lat,lng" format to [lng, lat] format required by mapbox
+          const [latStr, lngStr] = property.Coordinates.split(",");
+          const latitude = parseFloat(latStr);
+          const longitude = parseFloat(lngStr);
+          const id = property["Property Name"] || "unknown";
+          const countOfDeals = parseInt(property["Count of Deals"] || "1", 10);
 
-    // Add heatmap layer with optimized settings
-    mapInstance.addLayer({
-      id: "heatmap-layer",
-      type: "heatmap",
-      source: "properties-source",
-      paint: {
-        "heatmap-weight": [
-          "interpolate",
-          ["exponential", 2],
-          ["get", "idCount"],
-          1,
-          0.2,
-          median,
-          0.4,
-          p75Value,
-          0.6,
-          p90Value,
-          0.8,
-          maxCount,
-          1.0,
-        ],
-        "heatmap-intensity": [
-          "interpolate",
-          ["exponential", 2],
-          ["zoom"],
-          12,
-          0.8,
-          14,
-          1.0,
-          16,
-          1.2,
-        ],
-        "heatmap-color": [
-          "interpolate",
-          ["exponential", 2],
-          ["heatmap-density"],
-          ...HEATMAP_COLOR_STOPS.flat(),
-        ],
-        "heatmap-radius": [
-          "interpolate",
-          ["exponential", 2],
-          ["zoom"],
-          12,
-          32,
-          14,
-          48,
-          16,
-          64,
-        ],
-        "heatmap-opacity": [
-          "interpolate",
-          ["exponential", 2],
-          ["zoom"],
-          12,
-          0.4,
-          14,
-          0.45,
-          16,
-          0.5,
-        ],
-      },
-    });
+          return {
+            type: "Feature" as const,
+            properties: {
+              name: property["Property Name"] || "",
+              address: property["Street Address"] || "",
+              type: property["Industry Name Tier 2"] || "",
+              owner: property["Industry Name Tier 1"] || "",
+              propertyId: id,
+              typeCategory: getPropertyTypeCategory(
+                property["Industry Name Tier 2"] || "",
+              ),
+              idCount: countOfDeals || 1,
+              city: cityName,
+            },
+            geometry: {
+              type: "Point" as const,
+              coordinates: [longitude, latitude],
+            },
+          };
+        },
+      );
 
-    // Add enhanced circle layer for individual properties
-    mapInstance.addLayer({
-      id: "property-point",
-      type: "circle",
-      source: "properties-source",
-      minzoom: 12,
-      layout: {
-        visibility: showPoints ? "visible" : "none",
-      },
-      paint: {
-        "circle-radius": [
-          "interpolate",
-          ["exponential", 1.5],
-          ["zoom"],
-          12,
-          ["*", 6, ["sqrt", ["get", "idCount"]]],
-          16,
-          ["*", 4, ["sqrt", ["get", "idCount"]]],
-        ],
-        "circle-color": [
-          "match",
-          ["get", "typeCategory"],
-          1,
-          "rgba(33, 150, 243, 1)",
-          2,
-          "rgba(76, 175, 80, 1)",
-          3,
-          "rgba(244, 67, 54, 1)",
-          4,
-          "rgba(255, 152, 0, 1)",
-          "rgba(156, 39, 176, 1)",
-        ],
-        "circle-opacity": ["interpolate", ["linear"], ["zoom"], 12, 1, 16, 1],
-        "circle-blur": ["interpolate", ["linear"], ["zoom"], 12, 1, 16, 1],
-      },
-    });
+      setPropertyCount(points.length);
 
-    // Helper function to calculate percentile rank
-    function calculatePercentile(value: number, sortedArr: number[]): number {
-      const index = sortedArr.findIndex((x) => x >= value);
-      if (index === -1) return 100;
-      return Math.floor((index / sortedArr.length) * 100);
-    }
+      // Add source for heatmap
+      const geoJsonData: FeatureCollection<Point, PropertyProps> = {
+        type: "FeatureCollection",
+        features: points,
+      };
 
-    // Add popup on circle click with enhanced info
-    mapInstance.on("click", "property-point", (e) => {
-      if (!e.features || !e.features[0] || !e.features[0].properties) return;
+      mapInstance.addSource("properties-source", {
+        type: "geojson",
+        data: geoJsonData,
+      });
 
-      const props = e.features[0].properties as PropertyProps;
-      const percentile = calculatePercentile(props.idCount, sortedCounts);
+      // Add heatmap layer with optimized settings
+      mapInstance.addLayer({
+        id: "heatmap-layer",
+        type: "heatmap",
+        source: "properties-source",
+        paint: {
+          "heatmap-weight": [
+            "interpolate",
+            ["exponential", 2],
+            ["get", "idCount"],
+            1,
+            0.2,
+            median,
+            0.4,
+            p75Value,
+            0.6,
+            p90Value,
+            0.8,
+            maxCount,
+            1.0,
+          ],
+          "heatmap-intensity": [
+            "interpolate",
+            ["exponential", 2],
+            ["zoom"],
+            12,
+            0.8,
+            14,
+            1.0,
+            16,
+            1.2,
+          ],
+          "heatmap-color": [
+            "interpolate",
+            ["exponential", 2],
+            ["heatmap-density"],
+            ...HEATMAP_COLOR_STOPS.flat(),
+          ],
+          "heatmap-radius": [
+            "interpolate",
+            ["exponential", 2],
+            ["zoom"],
+            12,
+            32,
+            14,
+            48,
+            16,
+            64,
+          ],
+          "heatmap-opacity": [
+            "interpolate",
+            ["exponential", 2],
+            ["zoom"],
+            12,
+            0.4,
+            14,
+            0.45,
+            16,
+            0.5,
+          ],
+        },
+      });
 
-      new mapboxgl.Popup({
-        closeButton: true,
-        closeOnClick: true,
-        maxWidth: "300px",
-        className: "custom-popup",
-      })
-        .setLngLat(e.lngLat)
-        .setHTML(
-          `
+      // Add enhanced circle layer for individual properties
+      mapInstance.addLayer({
+        id: "property-point",
+        type: "circle",
+        source: "properties-source",
+        minzoom: 12,
+        layout: {
+          visibility: showPoints ? "visible" : "none",
+        },
+        paint: {
+          "circle-radius": [
+            "interpolate",
+            ["exponential", 1.5],
+            ["zoom"],
+            12,
+            ["*", 6, ["sqrt", ["get", "idCount"]]],
+            16,
+            ["*", 4, ["sqrt", ["get", "idCount"]]],
+          ],
+          "circle-color": [
+            "match",
+            ["get", "typeCategory"],
+            1,
+            "rgba(33, 150, 243, 1)",
+            2,
+            "rgba(76, 175, 80, 1)",
+            3,
+            "rgba(244, 67, 54, 1)",
+            4,
+            "rgba(255, 152, 0, 1)",
+            "rgba(156, 39, 176, 1)",
+          ],
+          "circle-opacity": ["interpolate", ["linear"], ["zoom"], 12, 1, 16, 1],
+          "circle-blur": ["interpolate", ["linear"], ["zoom"], 12, 1, 16, 1],
+        },
+      });
+
+      // Helper function to calculate percentile rank
+      function calculatePercentile(value: number, sortedArr: number[]): number {
+        const index = sortedArr.findIndex((x) => x >= value);
+        if (index === -1) return 100;
+        return Math.floor((index / sortedArr.length) * 100);
+      }
+
+      // Add popup on circle click with enhanced info
+      mapInstance.on("click", "property-point", (e) => {
+        if (!e.features || !e.features[0] || !e.features[0].properties) return;
+
+        const props = e.features[0].properties as PropertyProps;
+        const percentile = calculatePercentile(props.idCount, sortedCounts);
+
+        new mapboxgl.Popup({
+          closeButton: true,
+          closeOnClick: true,
+          maxWidth: "300px",
+          className: "custom-popup",
+        })
+          .setLngLat(e.lngLat)
+          .setHTML(
+            `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: white; padding: 12px; border-radius: 6px;">
             <div style="font-weight: 600; font-size: 14px; margin-bottom: 5px; color: #fff;">${props.name || props.address}</div>
             <div style="font-size: 12px; color: #aaa; margin-bottom: 10px;">${props.address}</div>
@@ -344,19 +365,21 @@ export default function MapPage() {
             </div>
           </div>
         `,
-        )
-        .addTo(mapInstance);
-    });
+          )
+          .addTo(mapInstance);
+      });
 
-    // Change cursor on hover
-    mapInstance.on("mouseenter", "property-point", () => {
-      mapInstance.getCanvas().style.cursor = "pointer";
-    });
+      // Change cursor on hover
+      mapInstance.on("mouseenter", "property-point", () => {
+        mapInstance.getCanvas().style.cursor = "pointer";
+      });
 
-    mapInstance.on("mouseleave", "property-point", () => {
-      mapInstance.getCanvas().style.cursor = "";
-    });
-  };
+      mapInstance.on("mouseleave", "property-point", () => {
+        mapInstance.getCanvas().style.cursor = "";
+      });
+    },
+    [showPoints, getPropertyTypeCategory],
+  );
 
   useEffect(() => {
     if (map.current || !mapContainer.current) return;
@@ -409,27 +432,7 @@ export default function MapPage() {
         map.current = null;
       }
     };
-  }, []); // Only run once on mount
-
-  // Helper function to categorize property types (for heatmap weighting)
-  const getPropertyTypeCategory = (propertyType: string): number => {
-    if (!propertyType) return 0;
-
-    if (propertyType.includes("Finance")) {
-      return 1; // Finance
-    } else if (
-      propertyType.includes("Retail") ||
-      propertyType.includes("Consumer")
-    ) {
-      return 2; // Retail
-    } else if (propertyType.includes("Healthcare")) {
-      return 3; // Healthcare
-    } else if (propertyType.includes("Technology")) {
-      return 4; // Technology
-    }
-
-    return 0; // Other/Unknown
-  };
+  }, [MAPBOX_TOKEN, city, lat, lng, zoom, loadCityData]); // Add missing dependencies
 
   return (
     <div className="mx-auto flex h-[calc(100dvh-50px)] w-full flex-col rounded-lg bg-white/25 p-16">
