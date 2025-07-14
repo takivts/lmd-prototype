@@ -306,7 +306,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "What's the current total active demand?",
+    prompt: "What is the current total active demand?",
     payload: {
       marketData: [{ label: "Total Active Demand", value: "12.3M SF" }],
       summary:
