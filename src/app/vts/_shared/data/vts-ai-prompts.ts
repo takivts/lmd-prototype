@@ -56,19 +56,16 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "How is active demand trending in the past quarter in New York?",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "QoQ Demand Chg", value: "+2.5%" },
-        { label: "Active Requirements", value: "1,813" },
-        { label: "Total SF of Demand", value: "12.3M SF" },
+        { label: "QoQ Chg", value: "-3.4%" },
+        { label: "Active Reqs", value: "1,705" },
+        { label: "Total SF", value: "11.6M SF" },
       ],
       keyInsights: [
-        "Tenant demand increased modestly, led by tech and finance sectors.",
-        "Mid-sized requirements (5k–20k SF) drove the bulk of growth.",
-        "Tour activity in Midtown South aligns with upward trend in active demand.",
+        "Active demand dipped as finance and media segments slowed.",
+        "Mid-size (10k–50k SF) activity saw the steepest decline.",
+        "Tour activity leveled off after a strong Q1.",
       ],
       suggestedFollowUps: [
         "How are concessions trending in New York?",
@@ -76,25 +73,22 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Break down demand by tenant size ranges in New York.",
       ],
       summary:
-        "Active demand in New York has risen 2.5% quarter-over-quarter, largely due to activity in the mid-market segment. Tenant tours and active proposals suggest improving confidence among occupiers.",
+        "Demand softened by 3.4% QoQ, driven by reduced mid-size tenant activity. Tour volumes are stabilizing, indicating cautious optimism.",
     },
   },
   {
     prompt: "What's the current total active demand in New York?",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "Total Active Demand", value: "12.3M SF" },
-        { label: "Total Active Requirements", value: "1,813" },
-        { label: "Average Deal Size", value: "6.8k SF" },
+        { label: "Total Demand", value: "11.6M SF" },
+        { label: "Active Reqs", value: "1,705" },
+        { label: "Avg Deal Size", value: "6.8k SF" },
       ],
       keyInsights: [
-        "Demand remains strongest in Midtown and Midtown South submarkets.",
-        "Smaller tenants (<10k SF) continue to dominate activity.",
-        "Growth in professional services sector driving short-term space needs.",
+        "Demand is concentrated in spaces under 10k SF.",
+        "Professional services are driving new short-term needs.",
+        "Leasing activity is broadening beyond core corridors.",
       ],
       suggestedFollowUps: [
         "Break down demand by tenant size ranges in New York.",
@@ -102,25 +96,22 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
       ],
       summary:
-        "The current total active demand in New York stands at 12.3 million square feet, led by mid-sized tenant interest and strong Midtown market engagement.",
+        "New York’s active demand totals 11.6M SF, dominated by small and mid-size tenants exploring flexible term options.",
     },
   },
   {
     prompt: "What's the leasing velocity over the past 6 months in New York?",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "Leasing Velocity (6 mo.)", value: "5.8M SF" },
-        { label: "Avg. Deal Size", value: "7.4k SF" },
-        { label: "# of Deals", value: "785" },
+        { label: "Velocity", value: "5.4M SF" },
+        { label: "Avg Deal", value: "6.9k SF" },
+        { label: "Deals", value: "780" },
       ],
       keyInsights: [
-        "Leasing velocity remains stable following a surge in Q4 2024.",
-        "Hudson Yards and Midtown South contributed most to activity.",
-        "Tech and legal tenants have resumed space commitments above 20k SF.",
+        "Velocity declined slightly after Q4 spike.",
+        "Legal and healthcare users are supporting large-block activity.",
+        "Tour-to-deal conversion tightened, signaling longer decision cycles.",
       ],
       suggestedFollowUps: [
         "Are large-block spaces (50k+ sf) seeing activity here in New York?",
@@ -128,25 +119,22 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "How are concessions trending in New York?",
       ],
       summary:
-        "New York has recorded 5.8 million square feet in leasing velocity over the past six months, with steady deal volume and strong activity in Hudson Yards and Midtown South.",
+        "Leasing velocity hit 5.4M SF over six months, showing steady but slightly slower deal flow as larger tenants deliberate.",
     },
   },
   {
     prompt: "Break down demand by tenant size ranges in New York.",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "< 5k SF", value: "4.1M SF" },
-        { label: "5k - 20k SF", value: "5.2M SF" },
-        { label: "> 20k SF", value: "3.0M SF" },
+        { label: "<5k SF", value: "3.9M SF" },
+        { label: "5–20k SF", value: "5.0M SF" },
+        { label: ">20k SF", value: "2.7M SF" },
       ],
       keyInsights: [
-        "5k–20k SF range represents 42% of total demand.",
-        "Demand for large blocks has plateaued, with few new requirements above 50k SF.",
-        "Smaller tenants are moving more quickly to tour and transact.",
+        "5–20k SF segment holds 43% of total demand.",
+        "Smaller tenants are highly active in early-stage tours.",
+        "Large-block demand is down 11% from last quarter.",
       ],
       suggestedFollowUps: [
         "Are large-block spaces (50k+ sf) seeing activity here in New York?",
@@ -154,25 +142,22 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "How is active demand trending in the past quarter in New York?",
       ],
       summary:
-        "Mid-market tenant demand is dominating the landscape, particularly in the 5k–20k SF range. Small tenants are active, while larger occupiers remain cautious.",
+        "Mid-size tenants (5–20k SF) account for the bulk of current demand. Smaller occupiers are driving tour activity and short-term deal volume.",
     },
   },
   {
     prompt: "Show me historical rent trends for New York.",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "YoY Rent Change", value: "+5.0%" },
-        { label: "Class A YoY Change", value: "+6.3%" },
-        { label: "Class B YoY Change", value: "+3.1%" },
+        { label: "YoY Rent", value: "+4.2%" },
+        { label: "Class A", value: "+5.1%" },
+        { label: "Class B", value: "+2.6%" },
       ],
       keyInsights: [
-        "Rent growth is led by Class A product, especially in Plaza District.",
-        "Financial District saw the lowest growth, dragged by older inventory.",
-        "Midtown South experiencing above-average rent increases due to tech tenant interest.",
+        "Class A growth remains strong despite slight demand pullback.",
+        "Older inventory lags in pricing power, especially for non-renovated space.",
+        "Momentum is highest in areas favored by tech and finance tenants.",
       ],
       suggestedFollowUps: [
         "How are concessions trending in New York?",
@@ -180,26 +165,23 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
       ],
       summary:
-        "New York rents have grown 5% year-over-year, with stronger momentum in Class A buildings. Midtown South and Plaza District continue to outperform.",
+        "Rents in New York are up 4.2% YoY, supported by resilient Class A performance. Rent growth is narrowing between asset classes.",
     },
   },
   {
     prompt:
       "Are large-block spaces (50k+ sf) seeing activity here in New York?",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "Active 50k+ SF Reqs", value: "17" },
-        { label: "Signed Leases (50k+)", value: "3 this quarter" },
-        { label: "Largest Deal", value: "120k SF – Hudson Yards" },
+        { label: "Active 50k+ Reqs", value: "14" },
+        { label: "Signed 50k+ Deals", value: "2" },
+        { label: "Largest Deal", value: "110k SF" },
       ],
       keyInsights: [
-        "Renewed interest in large blocks as hybrid workplace plans stabilize.",
-        "Hudson Yards and Downtown attracting large users in media and law.",
-        "Fewer new large-scale requirements compared to same time last year.",
+        "Enterprise demand is recovering slowly with fewer net new reqs.",
+        "New leases are driven by consolidation, not expansion.",
+        "Larger tenants continue to push for outsized concessions.",
       ],
       suggestedFollowUps: [
         "What's the leasing velocity over the past 6 months in New York?",
@@ -207,28 +189,25 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "How is active demand trending in the past quarter in New York?",
       ],
       summary:
-        "Large-block leasing is gaining traction with a handful of significant deals signed recently, suggesting a cautious return of enterprise tenants.",
+        "Large-block leasing remains muted, with only two major deals signed this quarter. Decision-making among enterprise users remains elongated.",
     },
   },
   {
     prompt:
       "What's the average rent right now for small tenants? Large tenants in New York?",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "<5k SF", value: "$55.00 PSF" },
-        { label: "5–10k SF", value: "$72.00 PSF" },
-        { label: "10–20k SF", value: "$55.00 PSF" },
-        { label: "20–50k SF", value: "$72.00 PSF" },
-        { label: ">50k SF", value: "$72.00 PSF" },
+        { label: "<5k SF", value: "$56 PSF" },
+        { label: "5–10k SF", value: "$68 PSF" },
+        { label: "10–20k SF", value: "$64 PSF" },
+        { label: "20–50k SF", value: "$70 PSF" },
+        { label: ">50k SF", value: "$73 PSF" },
       ],
       keyInsights: [
-        "Smaller tenants (<5k SF) are securing rents below the market average, particularly in Midtown South.",
-        "Large tenants (>50k SF) are often paying a premium due to limited availability of contiguous space.",
-        "Mid-range tenants (5–20k SF) experience higher variability depending on submarket and building class.",
+        "Small tenants are securing discounts in older inventory.",
+        "Premium rates persist in trophy assets above 20k SF.",
+        "Concessions are helping offset rising face rates.",
       ],
       suggestedFollowUps: [
         "How are concessions trending in New York?",
@@ -236,25 +215,22 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "How does the average free rent period compare across New York for leases in the [Finance] industry ?",
       ],
       summary:
-        "Small tenants in New York average around $55 PSF, while larger tenants typically pay closer to $72 PSF. Rent differences reflect both space availability and location within Class A assets.",
+        "Average rents range from $56 PSF for small tenants to $73 PSF for large blocks. Pricing continues to reflect product quality and scarcity.",
     },
   },
   {
     prompt: "How are concessions trending in New York?",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "Avg. TI", value: "$80.00 PSF" },
-        { label: "Avg. Free Rent", value: "4.2 months" },
-        { label: "Concession Value", value: "$96.00 PSF" },
+        { label: "TI", value: "$78 PSF" },
+        { label: "Free Rent", value: "4.0 mo" },
+        { label: "Total Value", value: "$93 PSF" },
       ],
       keyInsights: [
-        "Tenant improvement packages are holding steady across most submarkets.",
-        "Free rent periods have leveled off following post-pandemic spikes.",
-        "Hudson Yards remains the most aggressive with concessions to attract anchor tenants.",
+        "Concession packages remain steady amid slower demand.",
+        "Free rent terms are stabilizing after prior inflation.",
+        "TI levels are being used to target long-term commitments.",
       ],
       suggestedFollowUps: [
         "What's the average rent right now for small tenants? Large tenants in New York?",
@@ -262,29 +238,23 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "How is active demand trending in the past quarter in New York?",
       ],
       summary:
-        "Concession trends in New York show stabilization, with average TI allowances around $80 PSF and free rent periods averaging 4.2 months. Landlords continue using incentives strategically to compete in slower submarkets.",
+        "Concessions remain elevated but flat, averaging $93 PSF in total value. Landlords are using TI to secure renewals and long-term leases.",
     },
   },
   {
     prompt:
       "Which submarkets are seeing the most tenant tour activity right now in New York?",
     payload: {
-      marketMetadata: {
-        title: "New York",
-        buildingClass: "A",
-      },
+      marketMetadata: { title: "New York", buildingClass: "A" },
       marketData: [
-        { label: "Tour Volume (Midtown South)", value: "Highest in Q2 2025" },
-        { label: "Tour Volume Change (Financial District)", value: "+18% QoQ" },
-        {
-          label: "Tour Volume Trend (Hudson Yards)",
-          value: "Moderate & Stable",
-        },
+        { label: "Tour Volume", value: "↑ in Q2 2025" },
+        { label: "QoQ Change", value: "+14%" },
+        { label: "Trend", value: "Steady" },
       ],
       keyInsights: [
-        "Midtown South continues to lead the city in tenant tour activity.",
-        "The Financial District is seeing a resurgence, especially among law firms and nonprofits.",
-        "Hudson Yards activity has plateaued after strong growth in the prior year.",
+        "Touring levels improved after seasonal dip in Q1.",
+        "Activity is strongest in submarkets with newer inventory.",
+        "Tenant decision windows remain prolonged despite higher tour counts.",
       ],
       suggestedFollowUps: [
         "How is active demand trending in the past quarter in New York?",
@@ -292,7 +262,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Show me historical rent trends for New York.",
       ],
       summary:
-        "Midtown South and the Financial District are currently seeing the most tenant tour activity in New York, signaling likely near-term leasing velocity. Tour growth suggests renewed tenant confidence and competitive leasing posture from landlords.",
+        "Tour volume rose 14% QoQ, reflecting increased tenant engagement. Activity is driven by interest in updated buildings and flexible layouts.",
     },
   },
 ];
@@ -303,14 +273,23 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     payload: {
       summary:
         "Active demand has seen a slight increase of 2.5% over the past quarter, primarily driven by small to mid-sized tenants.",
+      suggestedFollowUps: [
+        "What is the current total active demand?",
+        "What's the leasing velocity over the past 6 months?",
+        "Break down demand by tenant size ranges.",
+      ],
     },
   },
   {
     prompt: "What is the current total active demand?",
     payload: {
-      marketData: [{ label: "Total Active Demand", value: "12.3M SF" }],
       summary:
         "The current total active demand across the market is 12.3 million square feet.",
+      suggestedFollowUps: [
+        "What's the leasing velocity over the past 6 months?",
+        "Break down demand by tenant size ranges.",
+        "Show me historical rent trends.",
+      ],
     },
   },
   {
@@ -319,6 +298,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       marketData: [{ label: "Leasing Velocity (6 mo.)", value: "5.8M SF" }],
       summary:
         "Leasing velocity over the last 6 months reached 5.8 million square feet, reflecting consistent tenant activity.",
+      suggestedFollowUps: [
+        "Break down demand by tenant size ranges.",
+        "Show me historical rent trends.",
+        "Are large-block spaces (50k+ sf) seeing activity?",
+      ],
     },
   },
   {
@@ -331,6 +315,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       summary:
         "Mid-sized tenants in the 5k–20k SF range represent the largest portion of active demand, suggesting strong activity in that segment.",
+      suggestedFollowUps: [
+        "Show me historical rent trends.",
+        "Are large-block spaces (50k+ sf) seeing activity?",
+        "What's the average rent right now for small tenants? Large tenants?",
+      ],
     },
   },
   {
@@ -338,6 +327,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     payload: {
       summary:
         "Rents have increased 5% year-over-year, with stronger growth observed in higher-quality assets.",
+      suggestedFollowUps: [
+        "Are large-block spaces (50k+ sf) seeing activity?",
+        "What's the average rent right now for small tenants? Large tenants?",
+        "How are concessions trending?",
+      ],
     },
   },
   {
@@ -345,6 +339,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     payload: {
       summary:
         "Large-block space activity has picked up, with several notable leases signed in the past quarter.",
+      suggestedFollowUps: [
+        "What's the average rent right now for small tenants? Large tenants?",
+        "How are concessions trending?",
+        "Which submarkets are seeing the most tenant tour activity right now?",
+      ],
     },
   },
   {
@@ -357,6 +356,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       summary:
         "The average rent for small tenants is $55 PSF, while large tenants average $72 PSF, with rates varying by submarket and asset quality.",
+      suggestedFollowUps: [
+        "How are concessions trending?",
+        "Which submarkets are seeing the most tenant tour activity right now?",
+        "How is active demand trending in the past quarter?",
+      ],
     },
   },
   {
@@ -364,6 +368,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     payload: {
       summary:
         "Concessions have stabilized, with tenant improvement allowances averaging $80 PSF and free rent periods holding steady.",
+      suggestedFollowUps: [
+        "Which submarkets are seeing the most tenant tour activity right now?",
+        "How is active demand trending in the past quarter?",
+        "What is the current total active demand?",
+      ],
     },
   },
   {
@@ -372,6 +381,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     payload: {
       summary:
         "Key submarkets are showing elevated tenant tour activity, which may signal increased leasing momentum ahead.",
+      suggestedFollowUps: [
+        "How is active demand trending in the past quarter?",
+        "What is the current total active demand?",
+        "What's the leasing velocity over the past 6 months?",
+      ],
     },
   },
 ];
