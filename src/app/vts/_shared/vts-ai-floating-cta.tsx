@@ -5,6 +5,8 @@ import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import { useAppContext } from "../../context/AppContext";
 import { useRef } from "react";
 import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
+import { vtsAiPromptsWithContext } from "./data/vts-ai-prompts";
+import { usePathname } from "next/navigation";
 
 export default function VtsAiFloatingCTA({
   className,
@@ -14,6 +16,7 @@ export default function VtsAiFloatingCTA({
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
     useAppContext();
   const vtsAiDefaultRef = useRef<VtsAiDefaultRef>(null);
+  const pathname = usePathname();
 
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
@@ -53,6 +56,14 @@ export default function VtsAiFloatingCTA({
     isActive: !isVtsAiOpen,
   });
 
+  const handlePromptClick = () => {
+    if (currentPrompt) {
+      // Use the current prompt's payload directly, regardless of the page
+      setVtsAiContentType("default", currentPrompt.payload);
+      setIsVtsAiOpen(true);
+    }
+  };
+
   return (
     <>
       <div
@@ -85,6 +96,10 @@ export default function VtsAiFloatingCTA({
                 ? "pointer-events-auto translate-x-0 opacity-100"
                 : "pointer-events-none translate-x-5 opacity-0"
             }`}
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePromptClick();
+            }}
           >
             {currentPrompt && (
               <p className="text-vts-primary cursor-pointer text-sm underline decoration-dotted decoration-2 underline-offset-2 select-none">
