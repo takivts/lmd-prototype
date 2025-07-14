@@ -22,7 +22,7 @@ export const usePromptCycle = ({
   const pathname = usePathname();
   const [currentPrompt, setCurrentPrompt] = useState<VtsAiPrompt | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const wasActiveRef = useRef(isActive);
+  const wasActiveRef = useRef(false);
   const prompts =
     pathname === "/vts/lease/deals/profile"
       ? vtsAiPromptsWithContext
@@ -58,21 +58,21 @@ export const usePromptCycle = ({
     };
 
     const isInitialLoad = !wasActiveRef.current;
-    wasActiveRef.current = true;
+    if (isActive) {
+      wasActiveRef.current = true;
+    }
 
     let interval: ReturnType<typeof setInterval> | undefined;
 
-    const initialTimer = setTimeout(
-      () => {
-        if (isInitialLoad) {
-          showInitialPrompt();
-        } else {
-          showRandomPrompt();
-        }
-        interval = setInterval(showRandomPrompt, cycleInterval);
-      },
-      isInitialLoad ? initialDelay : 0,
-    );
+    // Always wait initialDelay when becoming active, regardless of whether it's the first load
+    const initialTimer = setTimeout(() => {
+      // The distinction between initial and subsequent loads created an
+      // inconsistent delay. We always want to show a prompt right after the
+      // initialDelay, which showInitialPrompt does. showRandomPrompt adds an
+      // extra, undesirable fadeDelay.
+      showInitialPrompt();
+      interval = setInterval(showRandomPrompt, cycleInterval);
+    }, initialDelay);
 
     return () => {
       clearTimeout(initialTimer);
