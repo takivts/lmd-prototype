@@ -113,7 +113,7 @@ const VtsAiDefault = forwardRef<
         () => {
           setIsLoading(false);
         },
-        Math.random() * 1000 + 1500,
+        Math.random() * 2000 + 2000,
       );
 
       return () => clearTimeout(timer);
