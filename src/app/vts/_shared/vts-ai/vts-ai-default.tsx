@@ -7,6 +7,7 @@ import {
   forwardRef,
   useCallback,
 } from "react";
+import { motion } from "framer-motion";
 import {
   vtsAiPromptsWithContext,
   vtsAiPromptsWithoutContext,
@@ -43,6 +44,36 @@ const VtsAiDefault = forwardRef<
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
   const [isUpsell] = useState(false);
 
+  const containerVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const promptContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const promptItemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   useEffect(() => {
     setPrompts(
       pathname === "/vts/lease/deals/profile"
@@ -72,7 +103,7 @@ const VtsAiDefault = forwardRef<
         setSelectedPrompt(null);
         setIsLoading(false);
         setIsTransitioning(false);
-      }, 500);
+      }, 0);
     }
   }, [isOpen]);
 
@@ -152,19 +183,23 @@ const VtsAiDefault = forwardRef<
                 <p className="mb-2 text-left">
                   Hi, I&apos;m Max. Let me know how I can help you:
                 </p>
-                <div className={`mb-2 flex flex-col gap-2`}>
+                <motion.div
+                  className={`mb-2 flex flex-col gap-2`}
+                  variants={promptContainerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
                   {prompts.map((prompt) => (
-                    <div
+                    <motion.div
                       key={prompt.prompt}
-                      className={`rounded-lg border px-3 py-2 text-left duration-300 ease-in-out ${
-                        isTransitioning ? `opacity-0` : "opacity-100"
-                      } bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer`}
+                      variants={promptItemVariants}
+                      className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-lg border px-3 py-2 text-left`}
                       onClick={() => handlePromptClick(prompt)}
                     >
                       {prompt.prompt}
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </>
             )}
 
@@ -205,52 +240,67 @@ const VtsAiDefault = forwardRef<
             ) : (
               selectedPrompt &&
               responsePayload && (
-                <div className="flex flex-col gap-2">
+                <motion.div
+                  className="flex flex-col gap-2"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
                   {responsePayload.marketMetadata?.category &&
                     responsePayload.marketMetadata.category.length > 0 && (
-                      <VtsAiMetadata
-                        data={{
-                          ...responsePayload.marketMetadata,
-                          category: responsePayload.marketMetadata.category,
-                        }}
-                      />
+                      <motion.div variants={itemVariants} className="mb-4">
+                        <VtsAiMetadata
+                          data={{
+                            ...responsePayload.marketMetadata,
+                            category: responsePayload.marketMetadata.category,
+                          }}
+                        />
+                      </motion.div>
                     )}
 
                   {responsePayload.marketData &&
                     responsePayload.marketData.length > 0 && (
-                      <VtsAiDataGrid
-                        isUpsell={isUpsell}
-                        data={responsePayload.marketData || []}
-                        className="mb-4"
-                      />
+                      <motion.div variants={itemVariants} className="mb-4">
+                        <VtsAiDataGrid
+                          isUpsell={isUpsell}
+                          data={responsePayload.marketData || []}
+                        />
+                      </motion.div>
                     )}
 
                   {responsePayload.summary &&
                     responsePayload.summary.length > 0 && (
-                      <VtsAiSummary
-                        data={{
-                          summary: responsePayload.summary,
-                        }}
-                        className="mb-4"
-                      />
+                      <motion.div variants={itemVariants} className="mb-4">
+                        <VtsAiSummary
+                          data={{
+                            summary: responsePayload.summary,
+                          }}
+                        />
+                      </motion.div>
                     )}
 
                   {responsePayload.keyInsights &&
                     responsePayload.keyInsights.length > 0 && (
-                      <VtsAiKeyInsights
-                        isUpsell={isUpsell}
-                        data={{
-                          insights: responsePayload.keyInsights,
-                        }}
-                        className="mb-4"
-                      />
+                      <motion.div variants={itemVariants} className="mb-4">
+                        <VtsAiKeyInsights
+                          isUpsell={isUpsell}
+                          data={{
+                            insights: responsePayload.keyInsights,
+                          }}
+                        />
+                      </motion.div>
                     )}
 
-                  <VtsAiSuggestedFollowUps
-                    data={responsePayload.suggestedFollowUps || []}
-                    onFollowUpClick={handleFollowUpClick}
-                  />
-                </div>
+                  {responsePayload.suggestedFollowUps &&
+                    responsePayload.suggestedFollowUps.length > 0 && (
+                      <motion.div variants={itemVariants}>
+                        <VtsAiSuggestedFollowUps
+                          data={responsePayload.suggestedFollowUps || []}
+                          onFollowUpClick={handleFollowUpClick}
+                        />
+                      </motion.div>
+                    )}
+                </motion.div>
               )
             )}
           </div>
