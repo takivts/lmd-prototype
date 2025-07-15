@@ -99,11 +99,9 @@ const VtsAiDefault = forwardRef<
 
   useEffect(() => {
     if (!isOpen) {
-      setTimeout(() => {
-        setSelectedPrompt(null);
-        setIsLoading(false);
-        setIsTransitioning(false);
-      }, 0);
+      setSelectedPrompt(null);
+      setIsLoading(false);
+      setIsTransitioning(false);
     }
   }, [isOpen]);
 
@@ -111,9 +109,7 @@ const VtsAiDefault = forwardRef<
     setIsTransitioning(true);
     setSelectedPrompt(prompt);
     setPrompts((prev) => prev.filter((p) => p.prompt !== prompt.prompt));
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 0);
+    setIsTransitioning(false);
   }, []);
 
   useEffect(() => {
@@ -139,15 +135,12 @@ const VtsAiDefault = forwardRef<
   useEffect(() => {
     if (selectedPrompt) {
       setIsLoading(true);
-
-      const timer = setTimeout(
+      setTimeout(
         () => {
           setIsLoading(false);
         },
         Math.random() * 2000 + 2000,
       );
-
-      return () => clearTimeout(timer);
     }
   }, [selectedPrompt]);
 
@@ -187,7 +180,7 @@ const VtsAiDefault = forwardRef<
                   className={`mb-2 flex flex-col gap-2`}
                   variants={promptContainerVariants}
                   initial="hidden"
-                  animate="visible"
+                  animate={isOpen ? "visible" : "hidden"}
                 >
                   {prompts.map((prompt) => (
                     <motion.div

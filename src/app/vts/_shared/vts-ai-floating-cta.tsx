@@ -5,6 +5,7 @@ import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import { useAppContext } from "../../context/AppContext";
 import { useRef } from "react";
 import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function VtsAiFloatingCTA({
   className,
@@ -44,9 +45,9 @@ export default function VtsAiFloatingCTA({
   const handleFloatingCTAClick = () => {
     setVtsAiContentType("default");
     setIsVtsAiOpen(!isVtsAiOpen);
-    setTimeout(() => {
+    if (isVtsAiOpen) {
       vtsAiDefaultRef.current?.resetConversation();
-    }, 500);
+    }
   };
 
   const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
@@ -58,7 +59,6 @@ export default function VtsAiFloatingCTA({
 
   const handlePromptClick = () => {
     if (currentPrompt) {
-      // Use the current prompt's payload directly, regardless of the page
       setVtsAiContentType("default", currentPrompt.payload);
       setIsVtsAiOpen(true);
     }
@@ -80,33 +80,26 @@ export default function VtsAiFloatingCTA({
             isVtsAiOpen ? "bg-vts-purple-700/100" : "bg-vts-purple-700/100"
           }`}
         />
-        {/* <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 -z-10 h-full w-full overflow-clip rounded-full object-cover"
-        >
-          <source src="/gradient-mesh-converted.mp4" type="video/mp4" />
-        </video> */}
         {!isVtsAiOpen && (
-          <div
-            className={`absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap shadow transition-all duration-300 ease-in-out ${
-              currentPrompt && isPromptVisible
-                ? "pointer-events-auto translate-x-0 opacity-100"
-                : "pointer-events-none translate-x-5 opacity-0"
-            }`}
-            onClick={(e) => {
-              e.stopPropagation();
-              handlePromptClick();
-            }}
-          >
-            {currentPrompt && (
-              <p className="text-vts-primary cursor-pointer text-sm underline decoration-dotted decoration-2 underline-offset-2 select-none">
-                {currentPrompt.prompt}
-              </p>
+          <AnimatePresence>
+            {currentPrompt && isPromptVisible && (
+              <motion.div
+                initial={{ opacity: 0, x: 5 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 5 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap shadow`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePromptClick();
+                }}
+              >
+                <p className="text-vts-primary cursor-pointer text-sm underline decoration-dotted decoration-2 underline-offset-2 select-none">
+                  {currentPrompt.prompt}
+                </p>
+              </motion.div>
             )}
-          </div>
+          </AnimatePresence>
         )}
         {isVtsAiOpen ? (
           <svg
