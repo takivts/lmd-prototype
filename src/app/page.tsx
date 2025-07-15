@@ -6,7 +6,7 @@ export default function Home() {
       <h1 className="text-2xl font-bold">VTS Playground</h1>
       <ul className="list-disc pl-4">
         <li className="text-vts-purple-700 underline">
-          <Link href="/vts/insights/heat-maps">Heat Maps</Link>
+          <Link href="/vts/insights/market-heatmap">Market Heatmap</Link>
         </li>
         <li className="text-vts-purple-700 underline">
           <Link href="/vts/insights/vts-max-ai">VTS Max AI</Link>
