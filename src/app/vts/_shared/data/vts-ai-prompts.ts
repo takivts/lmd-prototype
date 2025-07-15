@@ -27,7 +27,7 @@ export type VtsAiPrompt = {
 
 export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
-    prompt: "Give me a submarket overview for Manhattan, New York",
+    prompt: "Give me a submarket overview for Manhattan",
     payload: {
       marketMetadata: {
         category: "Overview",
@@ -51,9 +51,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Landlords are tightening concessions slightly as occupancy improves.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending in Manhatten, New York?",
-        "What's the leasing velocity over the past 6 months in Manhatten, New York?",
-        "Break down demand by tenant size ranges in Manhatten, New York.",
+        "How are concessions trending in Manhattan?",
+        "What's the leasing velocity over the past 6 months in Manhattan?",
+        "Break down demand by tenant size ranges in Manhattan.",
       ],
       summary: [
         "Manhattan Class A product is seeing renewed traction, especially from FIRE tenants in Midtown. While concessions are still generous, they're beginning to taper as demand picks up. Net effective rents are stabilizing and trending up in prime corridors.",
@@ -61,8 +61,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt:
-      "How is active demand trending in the past quarter for Manhattan, New York?",
+    prompt: "How is active demand trending in the past quarter for Manhattan?",
     payload: {
       marketMetadata: {
         category: "Active demand",
@@ -83,9 +82,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Tour activity leveled off after a strong Q1.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending in Manhatten, New York?",
-        "What's the leasing velocity over the past 6 months in Manhatten, New York?",
-        "Break down demand by tenant size ranges in Manhatten, New York.",
+        "How are concessions trending in Manhattan?",
+        "What's the leasing velocity over the past 6 months in Manhattan?",
+        "Break down demand by tenant size ranges in Manhattan.",
       ],
       summary: [
         "Active demand in Manhattan ticked up 1.9% this past quarter, with strong engagement from financial and insurance tenants. Tour volumes and proposal activity reflect cautious but improving confidence.",
@@ -93,7 +92,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "What's the current total active demand in Manhatten, New York?",
+    prompt: "What's the current total active demand in Manhattan?",
     payload: {
       marketMetadata: {
         category: "Active demand",
@@ -114,7 +113,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Leasing activity is broadening beyond core corridors.",
       ],
       suggestedFollowUps: [
-        "Break down demand by tenant size ranges in Manhatten, New York.",
+        "Break down demand by tenant size ranges in Manhattan.",
         "What's the average rent right now for small tenants? Large tenants in New York?",
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
       ],
@@ -124,8 +123,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt:
-      "What's the leasing velocity over the past 6 months in Manhatten, New York?",
+    prompt: "What's the leasing velocity over the past 6 months in Manhattan?",
     payload: {
       marketMetadata: {
         category: "Leasing velocity",
@@ -147,8 +145,8 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Are large-block spaces (50k+ sf) seeing activity here in New York?",
-        "How is active demand trending in the past quarter for Manhattan, New York?",
-        "How are concessions trending in Manhatten, New York?",
+        "How is active demand trending in the past quarter for Manhattan?",
+        "How are concessions trending in Manhattan?",
       ],
       summary: [
         "Leasing velocity hit 5.4M SF over six months, showing steady but slightly slower deal flow as larger tenants deliberate.",
@@ -156,7 +154,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "Break down demand by tenant size ranges in Manhatten, New York.",
+    prompt: "Break down demand by tenant size ranges in Manhattan.",
     payload: {
       marketMetadata: {
         category: "Demand",
@@ -179,7 +177,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       suggestedFollowUps: [
         "Are large-block spaces (50k+ sf) seeing activity here in New York?",
         "What's the average rent right now for small tenants? Large tenants in New York?",
-        "How is active demand trending in the past quarter for Manhattan, New York?",
+        "How is active demand trending in the past quarter for Manhattan?",
       ],
       summary: [
         "Mid-size tenants (5–20k SF) account for the bulk of current demand. Smaller occupiers are driving tour activity and short-term deal volume.",
@@ -187,7 +185,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "Show me historical rent trends for Manhattan, New York.",
+    prompt: "Show me historical rent trends for Manhattan.",
     payload: {
       marketMetadata: {
         category: "Historical trends",
@@ -208,7 +206,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Momentum is highest in areas favored by tech and finance tenants.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending in Manhatten, New York?",
+        "How are concessions trending in Manhattan?",
         "What's the average rent right now for small tenants? Large tenants in New York?",
         "Which submarkets are seeing the most tenant tour activity right now in New York?",
       ],
@@ -219,7 +217,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   },
   {
     prompt:
-      "Are large-block spaces (50k+ sf) seeing activity here in Manhattan, New York?",
+      "Are large-block spaces (50k+ sf) seeing activity here in Manhattan?",
     payload: {
       marketMetadata: {
         category: "Large block spaces",
@@ -239,9 +237,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Larger tenants continue to push for outsized concessions.",
       ],
       suggestedFollowUps: [
-        "What's the leasing velocity over the past 6 months in Manhatten, New York?",
-        "Break down demand by tenant size ranges in Manhatten, New York.",
-        "How is active demand trending in the past quarter for Manhattan, New York?",
+        "What's the leasing velocity over the past 6 months in Manhattan?",
+        "Break down demand by tenant size ranges in Manhattan.",
+        "How is active demand trending in the past quarter for Manhattan?",
       ],
       summary: [
         "Large-block leasing remains muted, with only two major deals signed this quarter. Decision-making among enterprise users remains elongated.",
@@ -250,7 +248,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   },
   {
     prompt:
-      "What's the average rent right now for small tenants? Large tenants in Manhattan, New York?",
+      "What's the average rent right now for small tenants? Large tenants in Manhattan?",
     payload: {
       marketMetadata: {
         category: "Average rents",
@@ -272,8 +270,8 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Concessions are helping offset rising face rates.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending in Manhatten, New York?",
-        "Break down demand by tenant size ranges in Manhatten, New York.",
+        "How are concessions trending in Manhattan?",
+        "Break down demand by tenant size ranges in Manhattan.",
         "How does the average free rent period compare across New York for leases in the [Finance] industry ?",
       ],
       summary: [
@@ -282,8 +280,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt:
-      "How are concessions trending in Manhatten submarket of Manhattan, New York?",
+    prompt: "How are concessions trending in Manhattan?",
     payload: {
       marketMetadata: {
         category: "Concessions",
@@ -304,9 +301,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "TI levels are being used to target long-term commitments.",
       ],
       suggestedFollowUps: [
-        "What's the average rent right now for small tenants? Large tenants in Manhattan, New York?",
-        "Which submarkets are seeing the most tenant tour activity right now in Manhattan, New York?",
-        "How is active demand trending in the past quarter for Manhattan, New York?",
+        "What's the average rent right now for small tenants? Large tenants in Manhattan?",
+        "Which submarkets are seeing the most tenant tour activity right now in Manhattan?",
+        "How is active demand trending in the past quarter for Manhattan?",
       ],
       summary: [
         "Concessions remain elevated but flat, averaging $93 PSF in total value. Landlords are using TI to secure renewals and long-term leases.",

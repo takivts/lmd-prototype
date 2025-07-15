@@ -51,7 +51,7 @@ export default function MapPage() {
   const [propertyCount, setPropertyCount] = useState(0);
   const [showPoints, setShowPoints] = useState(false);
   const [isMapLoaded, setIsMapLoaded] = useState(false); // Add loading state
-  const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 
   // Toggle point visibility
   const togglePointVisibility = () => {

@@ -128,7 +128,7 @@ export default function DealProfilePage() {
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="gap-2 text-gray-500">Market</span>
-            <span className="">Manhattan | New York</span>
+            <span className="">New York, Manhattan</span>
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
               onClick={() =>
