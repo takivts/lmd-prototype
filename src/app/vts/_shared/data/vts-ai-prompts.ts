@@ -27,286 +27,113 @@ export type VtsAiPrompt = {
 
 export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
-    prompt: "Give me a submarket overview for Manhattan",
+    prompt: "How are rents trending in [Market] year over year?",
     payload: {
-      marketMetadata: {
-        category: "Overview",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-        size: "10k - 25k",
-      },
-      marketData: [
-        { label: "Avg. NER", value: "$52.75 PSF" },
-        { label: "Avg. TI", value: "$71.00 PSF" },
-        { label: "Avg. Free Rent", value: "3.8 months" },
-        { label: "Active proposals", value: "1,184" },
-        { label: "Avg. Lease Term", value: "6.9 years" },
-        { label: "Concession Value", value: "$88.30 PSF" },
+      summary: [
+        "In [Market], executed leases show average starting gross rent per sqft at $72.92 for 2024 and $69.11 for 2025.",
+        "This reflects a 5.2% year-over-year decrease, highlighting softening rental trends amid evolving market dynamics.",
       ],
       keyInsights: [
-        "Leasing momentum is up 12% YoY, supported by strong finance tenant activity.",
-        "NERs have rebounded, particularly in Midtown East and Flatiron corridors.",
-        "Landlords are tightening concessions slightly as occupancy improves.",
+        "Market Softening Signals: The 5.2% YoY decline from $72.92 in 2024 to $69.11 in 2025 for executed leases in [Market] indicates cooling demand, potentially due to higher vacancies or economic headwinds, creating a tenant-friendly environment for negotiations.",
+        "Investment and Recovery Outlook: This downward trend may pressure short-term property values but could present buying opportunities if demand rebounds, especially in growth sectors; monitoring supply additions will be key for forecasting stabilization.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending in Manhattan?",
-        "What's the leasing velocity over the past 6 months in Manhattan?",
-        "Break down demand by tenant size ranges in Manhattan.",
-      ],
-      summary: [
-        "Manhattan Class A product is seeing renewed traction, especially from FIRE tenants in Midtown. While concessions are still generous, they're beginning to taper as demand picks up. Net effective rents are stabilizing and trending up in prime corridors.",
+        "How are rents trending in [Market] this year?",
+        "How are concessions trending in [submarket] year over year?",
+        "What’s the average rent right now for small tenants? Large tenants in [submarket]",
       ],
     },
   },
   {
-    prompt: "How is active demand trending in the past quarter for Manhattan?",
+    prompt: "How are rents trending in [Market] this year?",
     payload: {
-      marketMetadata: {
-        category: "Active demand",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-        size: "10k - 25k",
-      },
-      marketData: [
-        { label: "QoQ Chg", value: "-3.4%" },
-        { label: "Active Reqs", value: "1,705" },
-        { label: "Total SF", value: "11.6M SF" },
+      summary: [
+        "In [Market] this year, executed leases average $69.11 per sqft per year, while active proposals are at $79.93 per sqft.",
+        "This reflects an upward trend in rental rates from executed deals to ongoing negotiations, pointing to positive momentum.",
       ],
       keyInsights: [
-        "Active demand dipped as finance and media segments slowed.",
-        "Mid-size (10k–50k SF) activity saw the steepest decline.",
-        "Tour activity leveled off after a strong Q1.",
+        "Upward Momentum in Negotiations: Active proposals at $79.93 per sqft show a significant premium over 2025 executed rents ($69.11), indicating strengthening market confidence and potential rent growth this year in [Market], possibly fueled by recovering demand or limited supply.",
+        "Strategic Timing for Deals: This gap suggests tenants could lock in lower rates by executing soon, while landlords benefit from rising proposals; investors should monitor if this translates to higher effective rents amid economic recovery.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending in Manhattan?",
-        "What's the leasing velocity over the past 6 months in Manhattan?",
-        "Break down demand by tenant size ranges in Manhattan.",
-      ],
-      summary: [
-        "Active demand in Manhattan ticked up 1.9% this past quarter, with strong engagement from financial and insurance tenants. Tour volumes and proposal activity reflect cautious but improving confidence.",
-      ],
-    },
-  },
-  {
-    prompt: "What's the current total active demand in Manhattan?",
-    payload: {
-      marketMetadata: {
-        category: "Active demand",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-        size: "10k - 25k",
-      },
-      marketData: [
-        { label: "Total Demand", value: "11.6M SF" },
-        { label: "Active Reqs", value: "1,705" },
-        { label: "Avg Deal Size", value: "6.8k SF" },
-      ],
-      keyInsights: [
-        "Demand is concentrated in spaces under 10k SF.",
-        "Professional services are driving new short-term needs.",
-        "Leasing activity is broadening beyond core corridors.",
-      ],
-      suggestedFollowUps: [
-        "Break down demand by tenant size ranges in Manhattan.",
-        "What's the average rent right now for small tenants? Large tenants in New York?",
-        "Which submarkets are seeing the most tenant tour activity right now in New York?",
-      ],
-      summary: [
-        "New York's total active demand currently sits at 12.1M SF, with a high concentration of small and mid-size users. Large-block demand is quieter, but core FIRE users are keeping pipeline activity resilient.",
-      ],
-    },
-  },
-  {
-    prompt: "What's the leasing velocity over the past 6 months in Manhattan?",
-    payload: {
-      marketMetadata: {
-        category: "Leasing velocity",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-        size: "10k - 25k",
-      },
-      marketData: [
-        { label: "Velocity", value: "5.4M SF" },
-        { label: "Avg Deal", value: "6.9k SF" },
-        { label: "Deals", value: "780" },
-      ],
-      keyInsights: [
-        "Velocity declined slightly after Q4 spike.",
-        "Legal and healthcare users are supporting large-block activity.",
-        "Tour-to-deal conversion tightened, signaling longer decision cycles.",
-      ],
-      suggestedFollowUps: [
-        "Are large-block spaces (50k+ sf) seeing activity here in New York?",
-        "How is active demand trending in the past quarter for Manhattan?",
-        "How are concessions trending in Manhattan?",
-      ],
-      summary: [
-        "Leasing velocity hit 5.4M SF over six months, showing steady but slightly slower deal flow as larger tenants deliberate.",
-      ],
-    },
-  },
-  {
-    prompt: "Break down demand by tenant size ranges in Manhattan.",
-    payload: {
-      marketMetadata: {
-        category: "Demand",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-        size: "10k - 25k",
-      },
-      marketData: [
-        { label: "<5k SF", value: "3.9M SF" },
-        { label: "5–20k SF", value: "5.0M SF" },
-        { label: ">20k SF", value: "2.7M SF" },
-      ],
-      keyInsights: [
-        "5–20k SF segment holds 43% of total demand.",
-        "Smaller tenants are highly active in early-stage tours.",
-        "Large-block demand is down 11% from last quarter.",
-      ],
-      suggestedFollowUps: [
-        "Are large-block spaces (50k+ sf) seeing activity here in New York?",
-        "What's the average rent right now for small tenants? Large tenants in New York?",
-        "How is active demand trending in the past quarter for Manhattan?",
-      ],
-      summary: [
-        "Mid-size tenants (5–20k SF) account for the bulk of current demand. Smaller occupiers are driving tour activity and short-term deal volume.",
-      ],
-    },
-  },
-  {
-    prompt: "Show me historical rent trends for Manhattan.",
-    payload: {
-      marketMetadata: {
-        category: "Historical trends",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-        size: "10k - 25k",
-      },
-      marketData: [
-        { label: "YoY Rent Growth", value: "+4.2%" },
-        { label: "Class A Buildings", value: "+5.1%" },
-        { label: "Class B Buildings", value: "+2.6%" },
-      ],
-      keyInsights: [
-        "Class A growth remains strong despite slight demand pullback.",
-        "Older inventory lags in pricing power, especially for non-renovated space.",
-        "Momentum is highest in areas favored by tech and finance tenants.",
-      ],
-      suggestedFollowUps: [
-        "How are concessions trending in Manhattan?",
-        "What's the average rent right now for small tenants? Large tenants in New York?",
-        "Which submarkets are seeing the most tenant tour activity right now in New York?",
-      ],
-      summary: [
-        "Rents in New York are up 4.2% YoY, supported by resilient Class A performance. Rent growth is narrowing between asset classes.",
+        "How are rents trending in [Market] year over year?",
+        "What’s the average rent right now for small tenants? Large tenants in [submarket]",
+        "How are concessions trending in [submarket] year over year?",
       ],
     },
   },
   {
     prompt:
-      "Are large-block spaces (50k+ sf) seeing activity here in Manhattan?",
+      "What is the average Tenant Improvement (TI) allowance in [Submarket] for leases [size tier] for the [industry] industry?",
     payload: {
-      marketMetadata: {
-        category: "Large block spaces",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-      },
-      marketData: [
-        { label: "Active 50k+ Reqs", value: "14" },
-        { label: "Signed 50k+ Deals", value: "2" },
-        { label: "Largest Deal", value: "110k SF" },
+      summary: [
+        "In Grand Central for the Finance industry (e.g., leases >50k sq ft), the average Tenant Improvement (TI) allowance is $127.86 per sqft.",
+        "This highlights substantial incentives available, potentially varying by deal size and submarket dynamics.",
       ],
       keyInsights: [
-        "Enterprise demand is recovering slowly with fewer net new reqs.",
-        "New leases are driven by consolidation, not expansion.",
-        "Larger tenants continue to push for outsized concessions.",
+        "Competitive Incentives for Finance Tenants: The average TI allowance of $127.86 per sqft in Grand Central for the Finance industry reflects aggressive landlord concessions to attract high-value tenants, likely driven by competition in premium submarkets for large leases (>50k sq ft).",
+        "Industry-Specific Trends: Compared to sectors like Tech (which often see lower TIs due to shorter lease terms), Finance's higher allowances suggest tailored packages for buildouts in financial hubs, offering opportunities for cost savings in negotiations amid stable market conditions.",
       ],
       suggestedFollowUps: [
-        "What's the leasing velocity over the past 6 months in Manhattan?",
-        "Break down demand by tenant size ranges in Manhattan.",
-        "How is active demand trending in the past quarter for Manhattan?",
-      ],
-      summary: [
-        "Large-block leasing remains muted, with only two major deals signed this quarter. Decision-making among enterprise users remains elongated.",
+        "What’s the average rent right now for small tenants? Large tenants in [submarket]",
+        "How are concessions trending in [submarket] year over year?",
+        "How are rents trending in [Market] year over year?",
       ],
     },
   },
   {
     prompt:
-      "What's the average rent right now for small tenants? Large tenants in Manhattan?",
+      "What’s the average rent right now for small tenants? Large tenants in [submarket]",
     payload: {
-      marketMetadata: {
-        category: "Average rents",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-      },
-      marketData: [
-        { label: "<5k SF", value: "$56 PSF" },
-        { label: "5–10k SF", value: "$68 PSF" },
-        { label: "10–20k SF", value: "$64 PSF" },
-        { label: "20–50k SF", value: "$70 PSF" },
-        { label: ">50k SF", value: "$73 PSF" },
+      summary: [
+        "In Grand Central, the average starting gross rent per sqft per year is $72.92 for small tenants (<10k sf), $72.92 for mid-sized (10-20k sf), and $72.92 for large tenants (>20k sf).",
+        "This shows no variation by size tier, highlighting consistent pricing dynamics in the submarket.",
       ],
       keyInsights: [
-        "Small tenants are securing discounts in older inventory.",
-        "Premium rates persist in trophy assets above 20k SF.",
-        "Concessions are helping offset rising face rates.",
+        "Uniform Pricing Across Sizes: The consistent average starting gross rent of $72.92 per sqft across all tenant size tiers in Grand Central indicates a level playing field, with no significant premiums or discounts for small (<10k sf) versus large (>20k sf) tenants, possibly reflecting standardized market rates in a high-demand submarket.",
+        "Market Stability and Tenant Strategy: This uniformity suggests stable rental conditions in Grand Central, where larger tenants might leverage volume for better overall terms (e.g., TI or free rent), while small tenants benefit from accessible pricing without scale penalties.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending in Manhattan?",
-        "Break down demand by tenant size ranges in Manhattan.",
-        "How does the average free rent period compare across New York for leases in the [Finance] industry ?",
-      ],
-      summary: [
-        "Average rents range from $56 PSF for small tenants to $73 PSF for large blocks. Pricing continues to reflect product quality and scarcity.",
+        "How are rents trending in [Market] this year?",
+        "What is the average Tenant Improvement (TI) allowance in [Submarket] for leases [size tier] for the [industry] industry?",
+        "How are concessions trending in [submarket] year over year?",
       ],
     },
   },
   {
-    prompt: "How are concessions trending in Manhattan?",
+    prompt: "How are concessions trending in [submarket] year over year?",
     payload: {
-      marketMetadata: {
-        category: "Concessions",
-        market: "New York",
-        submarket: "Manhattan",
-        industry: "FIRE",
-        buildingClass: "A",
-        size: "10k - 25k",
-      },
-      marketData: [
-        { label: "TI", value: "$78 PSF" },
-        { label: "Free Rent", value: "4.0 mo" },
-        { label: "Total Value", value: "$93 PSF" },
+      summary: [
+        "In [submarket], executed leases show average TI at $108.76 per sqft and free rent at 7.16 months for 2024, dropping to $101.23 per sqft and 7.05 months for 2025.",
+        "This reflects a modest year-over-year decrease in concessions, pointing to a tightening market with less aggressive landlord incentives.",
       ],
       keyInsights: [
-        "Concession packages remain steady amid slower demand.",
-        "Free rent terms are stabilizing after prior inflation.",
-        "TI levels are being used to target long-term commitments.",
+        "Declining Concessions Signal Market Strength: The YoY reduction in average TI (down ~6.9% to $101.23 per sqft) and free rent (down ~1.6% to 7.05 months) suggests landlords in [submarket] are pulling back on incentives, possibly due to improving demand or stabilizing vacancies in executed leases.",
+        "Opportunities for Tenants and Investors: This trend could indicate a shift toward landlord-favorable terms, but tenants negotiating in 2025 might still secure competitive packages in high-demand segments, while investors benefit from potentially higher effective rents.",
       ],
       suggestedFollowUps: [
-        "What's the average rent right now for small tenants? Large tenants in Manhattan?",
-        "Which submarkets are seeing the most tenant tour activity right now in Manhattan?",
-        "How is active demand trending in the past quarter for Manhattan?",
+        "What’s the average rent right now for small tenants? Large tenants in [submarket]",
+        "How are rents trending in [Market] this year?",
+        "What is the average Tenant Improvement (TI) allowance in [Submarket] for leases [size tier] for the [industry] industry?",
       ],
+    },
+  },
+  {
+    prompt:
+      "What is Avg. Gross NER, Avg. TI Avg. Free Rent, Count of active proposals in [submarket] for [industry] for [building class] where size tier is [size]",
+    payload: {
       summary: [
-        "Concessions remain elevated but flat, averaging $93 PSF in total value. Landlords are using TI to secure renewals and long-term leases.",
+        "In [submarket] for [industry] in [building class] properties across size tiers <5k sf, 5-10k sf, 10-20k sf, and >20k sf, the average gross NER is [Value], average TI is [Value], and average free rent is [Value].",
+        "There are [Value] active proposals, highlighting current market incentives and leasing volume in these segments.",
+      ],
+      keyInsights: [
+        "Tenant Incentives Reflect Market Competition: The average TI and free rent values indicate landlord concessions to attract [industry] tenants in [building class] properties, with higher incentives potentially signaling softer demand in smaller size tiers (<5k sf and 5-10k sf) where proposals are more fragmented.",
+        "Proposal Activity and Deal Sizing: With [Value] active proposals across the specified size tiers, this suggests moderate leasing interest in [submarket] for [industry], offering opportunities for scaled deals (>20k sf) where average gross NER could be negotiated lower due to volume.",
+      ],
+      suggestedFollowUps: [
+        "How are concessions trending in [submarket] year over year?",
+        "How are rents trending in [Market] year over year?",
+        "What’s the average rent right now for small tenants? Large tenants in [submarket]",
       ],
     },
   },
