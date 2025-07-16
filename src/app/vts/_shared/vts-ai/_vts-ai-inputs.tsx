@@ -7,8 +7,21 @@ import {
   marketOptions,
   buildingClassOptions,
   sizeOptions,
+  marketSubmarketMap,
 } from "../data/vts-ai-inputs";
-import { useEffect, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
+
+const submarketToMarketMap: Record<string, string> = Object.entries(
+  marketSubmarketMap,
+).reduce(
+  (acc, [market, submarkets]) => {
+    submarkets.forEach((submarket) => {
+      acc[submarket] = market;
+    });
+    return acc;
+  },
+  {} as Record<string, string>,
+);
 
 export default function VtsAiInputs({
   marketContext,
@@ -29,6 +42,12 @@ export default function VtsAiInputs({
   const [buildingClass, setBuildingClass] =
     useState<string>(buildingClassContext);
   const [size, setSize] = useState<string>(sizeContext);
+
+  const availableSubmarkets = useMemo(() => {
+    return submarketOptions.filter((s) =>
+      marketSubmarketMap[market]?.includes(s.value),
+    );
+  }, [market]);
 
   useEffect(() => {
     setMarket(marketContext);
@@ -56,7 +75,11 @@ export default function VtsAiInputs({
             options={marketOptions}
             placeholder="Select market"
             value={marketOptions.find((o) => o.value === market) || null}
-            onChange={(e) => setMarket(e?.value ?? "all")}
+            onChange={(e) => {
+              const newMarket = e?.value ?? "all";
+              setMarket(newMarket);
+              setSubmarket("all");
+            }}
           />
         </label>
 
@@ -66,10 +89,18 @@ export default function VtsAiInputs({
             instanceId="submarket-select"
             classNamePrefix="vts-ai-select"
             className="mb-2 flex-1 rounded-lg text-gray-700"
-            options={submarketOptions}
+            options={availableSubmarkets}
             placeholder="Select submarket"
-            value={submarketOptions.find((o) => o.value === submarket) || null}
-            onChange={(e) => setSubmarket(e?.value ?? "any")}
+            value={
+              availableSubmarkets.find((o) => o.value === submarket) || null
+            }
+            onChange={(e) => {
+              const newSubmarket = e?.value ?? "all";
+              setSubmarket(newSubmarket);
+              if (newSubmarket !== "all") {
+                setMarket(submarketToMarketMap[newSubmarket]);
+              }
+            }}
           />
         </label>
       </div>
