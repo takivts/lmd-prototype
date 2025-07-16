@@ -44,6 +44,17 @@ const VtsAiDefault = forwardRef<
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
   const [isUpsell] = useState(false);
+  const [marketContext, setMarketContext] = useState<string>("all");
+  const [submarketContext, setSubmarketContext] = useState<string>("any");
+  const [industryContext, setIndustryContext] = useState<string>("all");
+
+  useEffect(() => {
+    if (pathname === "/vts/lease/deals/profile") {
+      setMarketContext("new-york");
+      setSubmarketContext("midtown-south");
+      setIndustryContext("other");
+    }
+  }, [pathname]);
 
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -174,16 +185,22 @@ const VtsAiDefault = forwardRef<
           <div className="flex h-fit flex-col gap-2">
             {!selectedPrompt && (
               <>
+                <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
                 <p className="mb-2 text-left">
-                  Hi, I&apos;m Max. Let me know how I can help you:
+                  First choose the market, submarket or industry and then select
+                  a prompt and I will provide you with insights:
                 </p>
+                <VtsAiInputs
+                  marketContext={marketContext}
+                  submarketContext={submarketContext}
+                  industryContext={industryContext}
+                />
                 <motion.div
                   className={`mb-2 flex flex-col gap-2`}
                   variants={promptContainerVariants}
                   initial="hidden"
                   animate={isOpen ? "visible" : "hidden"}
                 >
-                  <VtsAiInputs />
                   {prompts.map((prompt) => (
                     <motion.div
                       key={prompt.prompt}
