@@ -69,7 +69,8 @@ export default function VtsAiFloatingCTA({
   };
 
   const { currentPrompt } = usePromptCycle({
-    cycleInterval: 16000,
+    promptDuration: 4000,
+    promptDelay: 12000,
     initialDelay: 5000,
     isActive: !isVtsAiOpen,
   });
