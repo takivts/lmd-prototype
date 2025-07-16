@@ -41,9 +41,9 @@ const VtsAiDefault = forwardRef<
     null,
   );
   const [isLoading, setIsLoading] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
-  const [isUpsell] = useState(false);
+  const [isUpsell] = useState(true);
   const [marketContext, setMarketContext] = useState<string>("all");
   const [submarketContext, setSubmarketContext] = useState<string>("all");
   const [industryContext, setIndustryContext] = useState<string>("all");
@@ -200,8 +200,8 @@ const VtsAiDefault = forwardRef<
               <>
                 <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
                 <p className="mb-2 text-left">
-                  First choose the market, submarket or industry and then select
-                  a prompt and I will provide you with insights:
+                  Choose the market, submarket or industry and then select a
+                  prompt and I will provide you with insights:
                 </p>
                 <VtsAiInputs
                   marketContext={marketContext}

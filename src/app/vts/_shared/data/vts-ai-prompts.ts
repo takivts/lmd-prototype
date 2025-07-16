@@ -1,6 +1,6 @@
 export type MarketMetadata = {
   category?: string;
-  market: string;
+  market?: string;
   submarket?: string;
   industry?: string;
   buildingClass?: string;
@@ -27,8 +27,32 @@ export type VtsAiPrompt = {
 
 export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
+    prompt: "Give me an overview of the submarket",
+    payload: {
+      marketMetadata: {
+        category: "Demand",
+      },
+      summary: [
+        "In [Market], executed leases show average starting gross rent per sqft at $72.92 for 2024 and $69.11 for 2025.",
+        "This reflects a 5.2% year-over-year decrease, highlighting softening rental trends amid evolving market dynamics.",
+      ],
+      keyInsights: [
+        "Market Softening Signals: The 5.2% YoY decline from $72.92 in 2024 to $69.11 in 2025 for executed leases in [Market] indicates cooling demand, potentially due to higher vacancies or economic headwinds, creating a tenant-friendly environment for negotiations.",
+        "Investment and Recovery Outlook: This downward trend may pressure short-term property values but could present buying opportunities if demand rebounds, especially in growth sectors; monitoring supply additions will be key for forecasting stabilization.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending this year?",
+        "What's the average rent for tenants?",
+        "What is the average Tenant Improvement (TI) allowance?",
+      ],
+    },
+  },
+  {
     prompt: "How are rents trending?",
     payload: {
+      marketMetadata: {
+        category: "Deal Economics",
+      },
       summary: [
         "In [Market], executed leases show average starting gross rent per sqft at $72.92 for 2024 and $69.11 for 2025.",
         "This reflects a 5.2% year-over-year decrease, highlighting softening rental trends amid evolving market dynamics.",
@@ -47,6 +71,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
   {
     prompt: "How are rents trending this year?",
     payload: {
+      marketMetadata: {
+        category: "Deal Economics",
+      },
       summary: [
         "In [Market] this year, executed leases average $69.11 per sqft per year, while active proposals are at $79.93 per sqft.",
         "This reflects an upward trend in rental rates from executed deals to ongoing negotiations, pointing to positive momentum.",
