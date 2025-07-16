@@ -3,8 +3,6 @@ import VtsAiTenantProfile from "./vts-ai/vts-ai-tenant-profile";
 import { usePromptCycle } from "./hooks/usePromptCycle";
 import VtsAiUpsell from "./vts-ai/vts-ai-upsell";
 import { useAppContext } from "../../context/AppContext";
-import { useRef } from "react";
-import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
 import { motion, AnimatePresence } from "framer-motion";
 
 const promptVariants = {
@@ -32,7 +30,6 @@ export default function VtsAiFloatingCTA({
 }) {
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
     useAppContext();
-  const vtsAiDefaultRef = useRef<VtsAiDefaultRef>(null);
 
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
@@ -52,7 +49,6 @@ export default function VtsAiFloatingCTA({
     } else {
       return (
         <VtsAiDefault
-          ref={vtsAiDefaultRef}
           className="absolute right-24 bottom-16"
           isOpen={isVtsAiOpen}
         />
@@ -63,9 +59,6 @@ export default function VtsAiFloatingCTA({
   const handleFloatingCTAClick = () => {
     setVtsAiContentType("default");
     setIsVtsAiOpen(!isVtsAiOpen);
-    if (isVtsAiOpen) {
-      vtsAiDefaultRef.current?.resetConversation();
-    }
   };
 
   const { currentPrompt } = usePromptCycle({

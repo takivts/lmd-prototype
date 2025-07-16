@@ -5,6 +5,7 @@ import { MarketAnalysisData } from "@/app/vts/_shared/data/vts-ai-prompts";
 import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
+import Image from "next/image";
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
@@ -46,10 +47,17 @@ export default function DealProfilePage() {
         </div>
         <div className="flex justify-between gap-2">
           <div className="flex items-center gap-2 truncate">
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gray-700 align-middle font-bold text-white">
-              SC
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-300 align-middle font-bold text-white">
+              <Image
+                src="/logo-google.svg"
+                alt="Google"
+                className="size-8"
+                width={40}
+                height={40}
+                style={{ objectFit: "contain" }}
+              />
             </span>
-            <h1 className="truncate text-4xl font-bold">Starbucks Coffee</h1>
+            <h1 className="truncate text-4xl font-bold">Google</h1>
           </div>
           <div className="text-vts-purple-700 flex items-center gap-4 pr-8 text-sm">
             <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-300">
@@ -107,7 +115,7 @@ export default function DealProfilePage() {
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Standardized tenant</span>
-            <span className="text-vts-purple-700">Global Starbucks Coffee</span>
+            <span className="text-vts-purple-700">Alphabet</span>
             {/* <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
               // onClick={() => handleVtsAiContentType("tenant")}
@@ -129,7 +137,7 @@ export default function DealProfilePage() {
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="gap-2 text-gray-500">Market</span>
-            <span className="">New York, Manhattan</span>
+            <span className="">New York, Midtown</span>
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-1 underline decoration-dotted decoration-2"
               onClick={() =>

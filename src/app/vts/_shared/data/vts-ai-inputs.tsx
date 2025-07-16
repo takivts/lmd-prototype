@@ -33,7 +33,7 @@ export const marketOptions = [
 ];
 
 export const submarketOptions = [
-  { value: "any", label: "Any" },
+  { value: "all", label: "All" },
   { value: "camelback-scottsdale", label: "Camelback / Scottsdale" },
   { value: "back-bay", label: "Back Bay" },
   { value: "fenway", label: "Fenway" },
@@ -126,4 +126,18 @@ export const industriesOptions = [
   { value: "insurance", label: "Insurance" },
   { value: "association-nonprofit", label: "Association / Nonprofit" },
   { value: "finance", label: "Finance" },
+];
+
+export const buildingClassOptions = [
+  { value: "all", label: "All" },
+  { value: "class-a", label: "Class A" },
+  { value: "class-b", label: "Class B" },
+  { value: "trophy", label: "Trophy" },
+];
+
+export const sizeOptions = [
+  { value: "all", label: "All" },
+  { value: "<10k", label: "<10k" },
+  { value: "10-50k", label: "10-50k" },
+  { value: "50k+", label: "50k+" },
 ];

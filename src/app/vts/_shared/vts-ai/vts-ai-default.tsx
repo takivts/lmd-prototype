@@ -45,14 +45,25 @@ const VtsAiDefault = forwardRef<
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
   const [isUpsell] = useState(false);
   const [marketContext, setMarketContext] = useState<string>("all");
-  const [submarketContext, setSubmarketContext] = useState<string>("any");
+  const [submarketContext, setSubmarketContext] = useState<string>("all");
   const [industryContext, setIndustryContext] = useState<string>("all");
+  const [buildingClassContext, setBuildingClassContext] =
+    useState<string>("all");
+  const [sizeContext, setSizeContext] = useState<string>("all");
 
   useEffect(() => {
     if (pathname === "/vts/lease/deals/profile") {
       setMarketContext("new-york");
-      setSubmarketContext("midtown-south");
-      setIndustryContext("other");
+      setSubmarketContext("midtown");
+      setIndustryContext("tech");
+      setBuildingClassContext("trophy");
+      setSizeContext("50k+");
+    } else {
+      setMarketContext("all");
+      setSubmarketContext("all");
+      setIndustryContext("all");
+      setBuildingClassContext("all");
+      setSizeContext("all");
     }
   }, [pathname]);
 
@@ -111,7 +122,9 @@ const VtsAiDefault = forwardRef<
 
   useEffect(() => {
     if (!isOpen) {
-      setSelectedPrompt(null);
+      setTimeout(() => {
+        setSelectedPrompt(null);
+      }, 250);
       setIsLoading(false);
       setIsTransitioning(false);
     }
@@ -194,6 +207,8 @@ const VtsAiDefault = forwardRef<
                   marketContext={marketContext}
                   submarketContext={submarketContext}
                   industryContext={industryContext}
+                  buildingClassContext={buildingClassContext}
+                  sizeContext={sizeContext}
                 />
                 <motion.div
                   className={`mb-2 flex flex-col gap-2`}
