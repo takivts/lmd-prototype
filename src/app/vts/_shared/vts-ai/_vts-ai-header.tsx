@@ -51,7 +51,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
           </svg>
         </span> */}
         <span
-          className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end gap-1 rounded-lg px-1 py-1"
+          className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end gap-1 rounded-lg px-1 py-1 transition-all duration-300 ease-in-out"
           onClick={handleResetVtsAi}
         >
           <svg

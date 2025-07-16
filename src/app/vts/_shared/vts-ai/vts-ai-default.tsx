@@ -18,7 +18,6 @@ import VtsAiLoader from "./_vts-ai-loader";
 import VtsAiKeyInsights from "./_vts-ai-key-insights";
 import VtsAiSummary from "./vts-ai-summary";
 import VtsAiSuggestedFollowUps from "./_vts-ai-suggested-follow-ups";
-import VtsAiMetadata from "./_vts-ai-metadata";
 import { VtsAiPrompt } from "../data/vts-ai-prompts";
 import VtsAiDataGrid from "./_vts-ai-data-grid";
 import { useAppContext } from "@/app/context/AppContext";

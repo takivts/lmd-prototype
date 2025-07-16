@@ -42,7 +42,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How are rents trending this year?",
-        "What's the average rent for tenants?",
+        "What's the average rent for small and large tenants?",
         "What is the average Tenant Improvement (TI) allowance?",
       ],
     },
@@ -63,7 +63,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How are rents trending this year?",
-        "What's the average rent for tenants?",
+        "What's the average rent for small and large tenants?",
         "What is the average Tenant Improvement (TI) allowance?",
       ],
     },
@@ -101,14 +101,14 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Industry-Specific Trends: Compared to sectors like Tech (which often see lower TIs due to shorter lease terms), Finance's higher allowances suggest tailored packages for buildouts in financial hubs, offering opportunities for cost savings in negotiations amid stable market conditions.",
       ],
       suggestedFollowUps: [
-        "What's the average rent for tenants?",
+        "What's the average rent for small and large tenants?",
         "How are rents trending this year?",
         "How are concessions trending year over year?",
       ],
     },
   },
   {
-    prompt: "What's the average rent for tenants?",
+    prompt: "What's the average rent for small and large tenants?",
     payload: {
       summary: [
         "In Grand Central, the average starting gross rent per sqft per year is $72.92 for small tenants (<10k sf), $72.92 for mid-sized (10-20k sf), and $72.92 for large tenants (>20k sf).",
@@ -158,7 +158,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
       suggestedFollowUps: [
         "How are concessions trending year over year?",
         "How are rents trending?",
-        "What's the average rent for tenants?",
+        "What's the average rent for small and large tenants?",
       ],
     },
   },
