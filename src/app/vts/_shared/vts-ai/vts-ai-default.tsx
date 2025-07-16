@@ -43,7 +43,7 @@ const VtsAiDefault = forwardRef<
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
-  const [isUpsell] = useState(true);
+  const [isUpsell] = useState(false);
   const [marketContext, setMarketContext] = useState<string>("all");
   const [submarketContext, setSubmarketContext] = useState<string>("all");
   const [industryContext, setIndustryContext] = useState<string>("all");
@@ -273,7 +273,7 @@ const VtsAiDefault = forwardRef<
                   initial="hidden"
                   animate="visible"
                 >
-                  {responsePayload.marketMetadata?.category &&
+                  {/* {responsePayload.marketMetadata?.category &&
                     responsePayload.marketMetadata.category.length > 0 && (
                       <motion.div variants={itemVariants} className="mb-4">
                         <VtsAiMetadata
@@ -283,7 +283,7 @@ const VtsAiDefault = forwardRef<
                           }}
                         />
                       </motion.div>
-                    )}
+                    )} */}
 
                   {responsePayload.marketData &&
                     responsePayload.marketData.length > 0 && (

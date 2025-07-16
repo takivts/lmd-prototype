@@ -51,6 +51,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.vts-ai-select__control--is-focused {
+  border-color: var(--color-vts-purple-600) !important;
+  box-shadow: 0 0 0 1px var(--color-vts-purple-600) !important;
+}
+
+.vts-ai-select__option--is-focused {
+  background-color: var(--color-vts-purple-100) !important;
+  color: var(--color-vts-purple-700) !important;
+}
+
+.vts-ai-select__option--is-selected {
+  background-color: var(--color-vts-purple-600) !important;
+  color: white !important;
+}
+
 .mapboxgl-popup-content {
   background-color: rgba(0, 0, 0, 0.9) !important;
   color: white !important;

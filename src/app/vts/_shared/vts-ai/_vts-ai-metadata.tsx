@@ -26,9 +26,6 @@ export default function VtsAiMetadata({
 
   return (
     <div className={`mb-2 flex flex-col ${className}`}>
-      <h3 className="text-lg font-bold">
-        {data.submarket && `${data.submarket} | `} {data.market}
-      </h3>
       {data.industry && (
         <span className="text-gray-400">
           Industry:{" "}

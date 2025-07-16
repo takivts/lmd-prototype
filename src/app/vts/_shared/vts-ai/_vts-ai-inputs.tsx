@@ -51,7 +51,8 @@ export default function VtsAiInputs({
           Market
           <Select
             instanceId="market-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700 focus:outline-none"
+            classNamePrefix="vts-ai-select"
+            className="mb-2 flex-1 rounded-lg text-gray-700"
             options={marketOptions}
             placeholder="Select market"
             value={marketOptions.find((o) => o.value === market) || null}
@@ -63,7 +64,8 @@ export default function VtsAiInputs({
           Submarket
           <Select
             instanceId="submarket-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700 focus:outline-none"
+            classNamePrefix="vts-ai-select"
+            className="mb-2 flex-1 rounded-lg text-gray-700"
             options={submarketOptions}
             placeholder="Select submarket"
             value={submarketOptions.find((o) => o.value === submarket) || null}
@@ -76,7 +78,8 @@ export default function VtsAiInputs({
           Industries
           <Select
             instanceId="industries-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700 focus:outline-none"
+            classNamePrefix="vts-ai-select"
+            className="mb-2 flex-1 rounded-lg text-gray-700"
             options={industriesOptions}
             placeholder="Select industry"
             value={industriesOptions.find((o) => o.value === industry) || null}
@@ -87,7 +90,8 @@ export default function VtsAiInputs({
           Building Class
           <Select
             instanceId="building-class-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700 focus:outline-none"
+            classNamePrefix="vts-ai-select"
+            className="mb-2 flex-1 rounded-lg text-gray-700"
             options={buildingClassOptions}
             placeholder="Select class"
             value={
@@ -101,7 +105,8 @@ export default function VtsAiInputs({
           Size
           <Select
             instanceId="size-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700 focus:outline-none"
+            classNamePrefix="vts-ai-select"
+            className="mb-2 flex-1 rounded-lg text-gray-700"
             options={sizeOptions}
             placeholder="Select size"
             value={sizeOptions.find((o) => o.value === size) || null}
