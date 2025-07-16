@@ -183,7 +183,7 @@ const VtsAiDefault = forwardRef<
                   initial="hidden"
                   animate={isOpen ? "visible" : "hidden"}
                 >
-                  <VtsAiInputs variants={promptItemVariants} />
+                  <VtsAiInputs />
                   {prompts.map((prompt) => (
                     <motion.div
                       key={prompt.prompt}
