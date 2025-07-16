@@ -7,6 +7,24 @@ import { useRef } from "react";
 import { VtsAiDefaultRef } from "./vts-ai/vts-ai-default";
 import { motion, AnimatePresence } from "framer-motion";
 
+const promptVariants = {
+  hidden: {
+    opacity: 0,
+    x: 10,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+  },
+  exit: {
+    opacity: 0,
+    x: 10,
+    scale: 0.95,
+  },
+};
+
 export default function VtsAiFloatingCTA({
   className,
 }: {
@@ -50,9 +68,8 @@ export default function VtsAiFloatingCTA({
     }
   };
 
-  const { currentPrompt, isVisible: isPromptVisible } = usePromptCycle({
+  const { currentPrompt } = usePromptCycle({
     cycleInterval: 16000,
-    fadeDelay: 8000,
     initialDelay: 5000,
     isActive: !isVtsAiOpen,
   });
@@ -81,13 +98,18 @@ export default function VtsAiFloatingCTA({
           }`}
         />
         {!isVtsAiOpen && (
-          <AnimatePresence>
-            {currentPrompt && isPromptVisible && (
+          <AnimatePresence mode="wait">
+            {currentPrompt && (
               <motion.div
-                initial={{ opacity: 0, x: 5 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 5 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                key={currentPrompt.prompt}
+                variants={promptVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut",
+                }}
                 className={`absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap shadow`}
                 onClick={(e) => {
                   e.stopPropagation();

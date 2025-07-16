@@ -22,6 +22,7 @@ import VtsAiMetadata from "./_vts-ai-metadata";
 import { VtsAiPrompt } from "../data/vts-ai-prompts";
 import VtsAiDataGrid from "./_vts-ai-data-grid";
 import { useAppContext } from "@/app/context/AppContext";
+import VtsAiInputs from "./_vts-ai-inputs";
 
 export interface VtsAiDefaultRef {
   resetConversation: () => void;
@@ -49,7 +50,7 @@ const VtsAiDefault = forwardRef<
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
       },
     },
   };
@@ -139,7 +140,7 @@ const VtsAiDefault = forwardRef<
         () => {
           setIsLoading(false);
         },
-        Math.random() * 2000 + 2000,
+        Math.random() * 2000 + 3000,
       );
     }
   }, [selectedPrompt]);
@@ -182,6 +183,7 @@ const VtsAiDefault = forwardRef<
                   initial="hidden"
                   animate={isOpen ? "visible" : "hidden"}
                 >
+                  <VtsAiInputs variants={promptItemVariants} />
                   {prompts.map((prompt) => (
                     <motion.div
                       key={prompt.prompt}

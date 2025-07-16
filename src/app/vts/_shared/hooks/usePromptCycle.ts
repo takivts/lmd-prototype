@@ -8,21 +8,21 @@ import { vtsAiPromptsWithContext } from "../data/vts-ai-prompts";
 
 interface PromptCycleConfig {
   cycleInterval?: number;
-  fadeDelay?: number;
   initialDelay?: number;
   isActive: boolean;
 }
 
 export const usePromptCycle = ({
-  cycleInterval = 8000,
-  fadeDelay = 8000,
-  initialDelay = 2000,
+  cycleInterval = 16000,
+  initialDelay = 5000,
   isActive,
 }: PromptCycleConfig) => {
   const pathname = usePathname();
   const [currentPrompt, setCurrentPrompt] = useState<VtsAiPrompt | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const wasActiveRef = useRef(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | undefined>(
+    undefined,
+  );
+
   const prompts =
     pathname === "/vts/lease/deals/profile"
       ? vtsAiPromptsWithContext
@@ -30,9 +30,10 @@ export const usePromptCycle = ({
 
   useEffect(() => {
     if (!isActive) {
-      setIsVisible(false);
       setCurrentPrompt(null);
-      wasActiveRef.current = false;
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
       return;
     }
 
@@ -40,46 +41,26 @@ export const usePromptCycle = ({
       return;
     }
 
-    const showRandomPrompt = () => {
-      setIsVisible(false);
+    const startCycle = () => {
+      const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+      setCurrentPrompt(randomPrompt);
 
-      setTimeout(() => {
+      intervalRef.current = setInterval(() => {
         const randomPrompt =
           prompts[Math.floor(Math.random() * prompts.length)];
         setCurrentPrompt(randomPrompt);
-        setIsVisible(true);
-      }, fadeDelay);
+      }, cycleInterval);
     };
 
-    const showInitialPrompt = () => {
-      const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-      setCurrentPrompt(randomPrompt);
-      setIsVisible(true);
-    };
-
-    if (isActive) {
-      wasActiveRef.current = true;
-    }
-
-    let interval: ReturnType<typeof setInterval> | undefined;
-
-    // Always wait initialDelay when becoming active, regardless of whether it's the first load
-    const initialTimer = setTimeout(() => {
-      // The distinction between initial and subsequent loads created an
-      // inconsistent delay. We always want to show a prompt right after the
-      // initialDelay, which showInitialPrompt does. showRandomPrompt adds an
-      // extra, undesirable fadeDelay.
-      showInitialPrompt();
-      interval = setInterval(showRandomPrompt, cycleInterval);
-    }, initialDelay);
+    const initialTimeout = setTimeout(startCycle, initialDelay);
 
     return () => {
-      clearTimeout(initialTimer);
-      if (interval) {
-        clearInterval(interval);
+      clearTimeout(initialTimeout);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
       }
     };
-  }, [isActive, prompts, cycleInterval, fadeDelay, initialDelay]);
+  }, [isActive, prompts, cycleInterval, initialDelay]);
 
-  return { currentPrompt, isVisible };
+  return { currentPrompt };
 };
