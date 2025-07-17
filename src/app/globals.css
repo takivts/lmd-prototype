@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./stylesheets/heatmaps.css";
 
 @theme {
   --font-display: "Satoshi", "sans-serif";
@@ -14,11 +15,12 @@
   --color-vts-primary: var(--color-vts-purple-700);
 
   /* Add keyframes */
-  --animate-gradient: gradient-shift 4s ease-in-out infinite;
+  --animate-floating-cta-gradient: floating-cta-gradient 5s ease-in-out reverse infinite;
+  --animate-upsell-banner-gradient: upsell-banner-gradient 5s ease-in-out reverse infinite;
 }
 
 /* Define the keyframes outside of @theme */
-@keyframes gradient-shift {
+@keyframes floating-cta-gradient {
   0% {
     background-position: 0% 50%;
     transform: scale(1) rotate(0deg);
@@ -46,6 +48,21 @@
   }
 }
 
+@keyframes upsell-banner-gradient {
+  0% {
+    background-size: 100% 100%;
+    opacity: 0.9;
+  }
+  50% {
+    background-size: 200% 200%;
+    opacity: 1;
+  }
+  100% {
+    background-size: 100% 100%;
+    opacity: 0.9;
+  }
+}
+
 body {
   color: var(--color-gray-700);
   font-family: Arial, Helvetica, sans-serif;
@@ -67,31 +84,4 @@ body {
 .vts-ai-select__option--is-selected {
   background-color: var(--color-vts-purple-600) !important;
   color: white !important;
-}
-
-.mapboxgl-popup-content {
-  background-color: rgba(0, 0, 0, 0.9) !important;
-  color: white !important;
-  padding: 8px !important;
-  border-radius: 4px !important;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-}
-
-/* Close button color */
-.mapboxgl-popup-close-button {
-  color: white !important;
-  font-size: 16px !important;
-  padding: 5px 8px !important;
-}
-
-/* Popup tip color (the arrow) */
-.mapboxgl-popup-tip {
-  border-top-color: rgba(0, 0, 0, 0.85) !important;
-  border-bottom-color: rgba(0, 0, 0, 0.85) !important;
-}
-
-/* Gradient animation utility */
-.animate-gradient {
-  background-size: 150% 150%;
 }

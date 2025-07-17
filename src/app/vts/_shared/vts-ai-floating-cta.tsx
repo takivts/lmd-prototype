@@ -23,29 +23,14 @@ const promptVariants = {
   },
 };
 
-export default function VtsAiFloatingCTA({
-  className,
-}: {
-  className?: string;
-}) {
-  const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } =
-    useAppContext();
+export default function VtsAiFloatingCTA({ className }: { className?: string }) {
+  const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } = useAppContext();
 
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
-      return (
-        <VtsAiTenantProfile
-          className="absolute right-24 bottom-16"
-          isOpen={isVtsAiOpen}
-        />
-      );
+      return <VtsAiTenantProfile className="absolute right-24 bottom-16" isOpen={isVtsAiOpen} />;
     } else {
-      return (
-        <VtsAiDefault
-          className="absolute right-24 bottom-16"
-          isOpen={isVtsAiOpen}
-        />
-      );
+      return <VtsAiDefault className="absolute right-24 bottom-16" isOpen={isVtsAiOpen} />;
     }
   };
 
@@ -75,7 +60,7 @@ export default function VtsAiFloatingCTA({
         onClick={handleFloatingCTAClick}
       >
         <div
-          className={`to-vts-purple-900 animate-gradient from-vts-purple-700 absolute -inset-1 -z-10 scale-50 rounded-full bg-gradient-to-r via-teal-700 opacity-0 blur transition-all duration-600 ease-in-out ${
+          className={`to-vts-purple-800 animate-floating-cta-gradient from-vts-purple-800 absolute -inset-1 -z-10 scale-50 rounded-full bg-gradient-to-r via-pink-900 opacity-0 blur transition-all duration-600 ease-in-out ${
             isVtsAiOpen ? "scale-90 opacity-100" : "scale-0 opacity-0"
           }`}
         />
@@ -119,21 +104,11 @@ export default function VtsAiFloatingCTA({
             stroke="currentColor"
             className="z-50 size-6 text-white"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         ) : (
           <div className="z-50 flex flex-col items-center gap-0 text-[10px] font-bold text-white select-none">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M13.3186 8.44355L10.0082 6.24573L10 6.25098L6.68731 8.44939L4.23807 6.83031L10 3.00524L10.0082 3L15.7684 6.82389L13.3186 8.44355Z"
                 fill="white"
