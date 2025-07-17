@@ -65,8 +65,8 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
           }`}
         />
         <div
-          className={`absolute z-50 size-14 rounded-full shadow-md ${
-            isVtsAiOpen ? "bg-vts-purple-700/100" : "bg-vts-purple-700/100"
+          className={`absolute z-50 rounded-full shadow-md transition-all duration-300 ease-in-out ${
+            isVtsAiOpen ? "bg-vts-purple-900 size-13" : "bg-vts-purple-800 size-14"
           }`}
         />
         {!isVtsAiOpen && (
