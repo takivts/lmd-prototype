@@ -23,6 +23,7 @@ import VtsAiDataGrid from "./_vts-ai-data-grid";
 import { useAppContext } from "@/app/context/AppContext";
 import VtsAiInputs from "./_vts-ai-inputs";
 import { marketSubmarketMap } from "../data/vts-ai-inputs";
+import VtsAiUpsell from "./_vts-ai-upsell";
 
 const submarketToMarketMap: Record<string, string> = Object.entries(
   marketSubmarketMap,
@@ -55,7 +56,7 @@ const VtsAiDefault = forwardRef<
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
-  const [isUpsell] = useState(false);
+  const [isUpsell] = useState(true);
   const [market, setMarket] = useState<string>("all");
   const [submarket, setSubmarket] = useState<string>("all");
   const [industry, setIndustry] = useState<string>("all");
@@ -261,25 +262,7 @@ const VtsAiDefault = forwardRef<
 
             {selectedPrompt && (
               <>
-                {isUpsell && (
-                  <div className="bg-vts-purple-100 border-vts-purple-300 mb-2 flex flex-col gap-2 rounded-lg border p-4">
-                    <h3 className="font-bold">
-                      Unlock the full potential of VTS AI
-                    </h3>
-                    <p>
-                      You are seeing a preview of VTS AI. To get full access to
-                      AI-powered market data and insights{" "}
-                      <a
-                        className="underline"
-                        href="https://www.vts.com/vts-data"
-                        target="_blank"
-                      >
-                        upgrade to VTS
-                      </a>
-                      .
-                    </p>
-                  </div>
-                )}
+                {isUpsell && <VtsAiUpsell />}
                 <div
                   className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left duration-300 ease-in-out ${
                     isTransitioning ? `opacity-0` : "opacity-100"
