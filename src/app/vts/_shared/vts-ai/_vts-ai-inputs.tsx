@@ -9,59 +9,36 @@ import {
   sizeOptions,
   marketSubmarketMap,
 } from "../data/vts-ai-inputs";
-import { useMemo, useEffect, useState } from "react";
-
-const submarketToMarketMap: Record<string, string> = Object.entries(
-  marketSubmarketMap,
-).reduce(
-  (acc, [market, submarkets]) => {
-    submarkets.forEach((submarket) => {
-      acc[submarket] = market;
-    });
-    return acc;
-  },
-  {} as Record<string, string>,
-);
+import { useMemo } from "react";
 
 export default function VtsAiInputs({
-  marketContext,
-  submarketContext,
-  industryContext,
-  buildingClassContext,
-  sizeContext,
+  market,
+  onMarketChange,
+  submarket,
+  onSubmarketChange,
+  industry,
+  onIndustryChange,
+  buildingClass,
+  onBuildingClassChange,
+  size,
+  onSizeChange,
 }: {
-  marketContext: string;
-  submarketContext: string;
-  industryContext: string;
-  buildingClassContext: string;
-  sizeContext: string;
+  market: string;
+  onMarketChange: (value: string) => void;
+  submarket: string;
+  onSubmarketChange: (value: string) => void;
+  industry: string;
+  onIndustryChange: (value: string) => void;
+  buildingClass: string;
+  onBuildingClassChange: (value: string) => void;
+  size: string;
+  onSizeChange: (value: string) => void;
 }) {
-  const [market, setMarket] = useState<string>(marketContext);
-  const [submarket, setSubmarket] = useState<string>(submarketContext);
-  const [industry, setIndustry] = useState<string>(industryContext);
-  const [buildingClass, setBuildingClass] =
-    useState<string>(buildingClassContext);
-  const [size, setSize] = useState<string>(sizeContext);
-
   const availableSubmarkets = useMemo(() => {
-    return submarketOptions.filter((s) =>
-      marketSubmarketMap[market]?.includes(s.value),
+    return submarketOptions.filter(
+      (s) => s.value === "all" || marketSubmarketMap[market]?.includes(s.value),
     );
   }, [market]);
-
-  useEffect(() => {
-    setMarket(marketContext);
-    setSubmarket(submarketContext);
-    setIndustry(industryContext);
-    setBuildingClass(buildingClassContext);
-    setSize(sizeContext);
-  }, [
-    marketContext,
-    submarketContext,
-    industryContext,
-    buildingClassContext,
-    sizeContext,
-  ]);
 
   return (
     <div className="flex flex-col gap-1">
@@ -75,11 +52,7 @@ export default function VtsAiInputs({
             options={marketOptions}
             placeholder="Select market"
             value={marketOptions.find((o) => o.value === market) || null}
-            onChange={(e) => {
-              const newMarket = e?.value ?? "all";
-              setMarket(newMarket);
-              setSubmarket("all");
-            }}
+            onChange={(e) => onMarketChange(e?.value ?? "all")}
           />
         </label>
 
@@ -94,13 +67,7 @@ export default function VtsAiInputs({
             value={
               availableSubmarkets.find((o) => o.value === submarket) || null
             }
-            onChange={(e) => {
-              const newSubmarket = e?.value ?? "all";
-              setSubmarket(newSubmarket);
-              if (newSubmarket !== "all") {
-                setMarket(submarketToMarketMap[newSubmarket]);
-              }
-            }}
+            onChange={(e) => onSubmarketChange(e?.value ?? "all")}
           />
         </label>
       </div>
@@ -114,7 +81,7 @@ export default function VtsAiInputs({
             options={industriesOptions}
             placeholder="Select industry"
             value={industriesOptions.find((o) => o.value === industry) || null}
-            onChange={(e) => setIndustry(e?.value ?? "all")}
+            onChange={(e) => onIndustryChange(e?.value ?? "all")}
           />
         </label>
         <label className="flex flex-1 flex-col text-xs">
@@ -129,7 +96,7 @@ export default function VtsAiInputs({
               buildingClassOptions.find((o) => o.value === buildingClass) ||
               null
             }
-            onChange={(e) => setBuildingClass(e?.value ?? "all")}
+            onChange={(e) => onBuildingClassChange(e?.value ?? "all")}
           />
         </label>
         <label className="flex flex-1 flex-col text-xs">
@@ -141,7 +108,7 @@ export default function VtsAiInputs({
             options={sizeOptions}
             placeholder="Select size"
             value={sizeOptions.find((o) => o.value === size) || null}
-            onChange={(e) => setSize(e?.value ?? "all")}
+            onChange={(e) => onSizeChange(e?.value ?? "all")}
           />
         </label>
       </div>

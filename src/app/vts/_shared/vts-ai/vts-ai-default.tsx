@@ -22,6 +22,19 @@ import { VtsAiPrompt } from "../data/vts-ai-prompts";
 import VtsAiDataGrid from "./_vts-ai-data-grid";
 import { useAppContext } from "@/app/context/AppContext";
 import VtsAiInputs from "./_vts-ai-inputs";
+import { marketSubmarketMap } from "../data/vts-ai-inputs";
+
+const submarketToMarketMap: Record<string, string> = Object.entries(
+  marketSubmarketMap,
+).reduce(
+  (acc, [market, submarkets]) => {
+    submarkets.forEach((submarket) => {
+      acc[submarket] = market;
+    });
+    return acc;
+  },
+  {} as Record<string, string>,
+);
 
 export interface VtsAiDefaultRef {
   resetConversation: () => void;
@@ -43,28 +56,31 @@ const VtsAiDefault = forwardRef<
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
   const [isUpsell] = useState(false);
-  const [marketContext, setMarketContext] = useState<string>("all");
-  const [submarketContext, setSubmarketContext] = useState<string>("all");
-  const [industryContext, setIndustryContext] = useState<string>("all");
-  const [buildingClassContext, setBuildingClassContext] =
-    useState<string>("all");
-  const [sizeContext, setSizeContext] = useState<string>("all");
+  const [market, setMarket] = useState<string>("all");
+  const [submarket, setSubmarket] = useState<string>("all");
+  const [industry, setIndustry] = useState<string>("all");
+  const [buildingClass, setBuildingClass] = useState<string>("all");
+  const [size, setSize] = useState<string>("all");
 
-  useEffect(() => {
+  const initializeInputs = useCallback(() => {
     if (pathname === "/vts/lease/deals/profile") {
-      setMarketContext("new-york");
-      setSubmarketContext("midtown");
-      setIndustryContext("tech");
-      setBuildingClassContext("trophy");
-      setSizeContext("50k+");
+      setMarket("new-york");
+      setSubmarket("midtown");
+      setIndustry("tech");
+      setBuildingClass("trophy");
+      setSize("50k+");
     } else {
-      setMarketContext("all");
-      setSubmarketContext("all");
-      setIndustryContext("all");
-      setBuildingClassContext("all");
-      setSizeContext("all");
+      setMarket("all");
+      setSubmarket("all");
+      setIndustry("all");
+      setBuildingClass("all");
+      setSize("all");
     }
   }, [pathname]);
+
+  useEffect(() => {
+    initializeInputs();
+  }, [initializeInputs]);
 
   const containerVariants = {
     hidden: { opacity: 1 },
@@ -113,6 +129,7 @@ const VtsAiDefault = forwardRef<
         ? vtsAiPromptsWithContext
         : vtsAiPromptsWithoutContext,
     );
+    initializeInputs();
   };
 
   useImperativeHandle(ref, () => ({
@@ -203,11 +220,24 @@ const VtsAiDefault = forwardRef<
                   prompt and I will provide you with insights:
                 </p>
                 <VtsAiInputs
-                  marketContext={marketContext}
-                  submarketContext={submarketContext}
-                  industryContext={industryContext}
-                  buildingClassContext={buildingClassContext}
-                  sizeContext={sizeContext}
+                  market={market}
+                  onMarketChange={(value) => {
+                    setMarket(value);
+                    setSubmarket("all");
+                  }}
+                  submarket={submarket}
+                  onSubmarketChange={(value) => {
+                    setSubmarket(value);
+                    if (value !== "all") {
+                      setMarket(submarketToMarketMap[value]);
+                    }
+                  }}
+                  industry={industry}
+                  onIndustryChange={setIndustry}
+                  buildingClass={buildingClass}
+                  onBuildingClassChange={setBuildingClass}
+                  size={size}
+                  onSizeChange={setSize}
                 />
                 <motion.div
                   className={`mb-2 flex flex-col gap-2`}
