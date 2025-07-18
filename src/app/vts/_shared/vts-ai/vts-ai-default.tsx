@@ -250,18 +250,6 @@ const VtsAiDefault = forwardRef<
                   initial="hidden"
                   animate="visible"
                 >
-                  {/* {responsePayload.marketMetadata?.category &&
-                    responsePayload.marketMetadata.category.length > 0 && (
-                      <motion.div variants={itemVariants} className="mb-4">
-                        <VtsAiMetadata
-                          data={{
-                            ...responsePayload.marketMetadata,
-                            category: responsePayload.marketMetadata.category,
-                          }}
-                        />
-                      </motion.div>
-                    )} */}
-
                   {responsePayload.marketData && responsePayload.marketData.length > 0 && (
                     <motion.div variants={itemVariants} className="mb-4">
                       <VtsAiDataGrid isUpsell={isUpsell} data={responsePayload.marketData || []} />

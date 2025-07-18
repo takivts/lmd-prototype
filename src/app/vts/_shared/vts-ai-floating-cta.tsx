@@ -56,17 +56,19 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
   return (
     <>
       <div
-        className={`fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full ${className}`}
+        className={`group fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full ${className}`}
         onClick={handleFloatingCTAClick}
       >
         <div
-          className={`to-vts-purple-800 animate-floating-cta-gradient from-vts-purple-800 absolute -inset-1 -z-10 scale-50 rounded-full bg-gradient-to-r via-pink-900 blur ${
+          className={`to-vts-purple-800 animate-floating-cta-gradient from-vts-purple-800 pointer-events-none absolute -inset-1 -z-10 scale-50 rounded-full bg-gradient-to-r via-pink-900 blur ${
             isVtsAiOpen ? "scale-90 opacity-100" : "scale-0 opacity-0"
           }`}
         />
         <div
           className={`absolute z-50 rounded-full shadow-md transition-all duration-300 ease-in-out ${
-            isVtsAiOpen ? "bg-vts-purple-900 size-13" : "bg-vts-purple-800 size-14"
+            isVtsAiOpen
+              ? "bg-vts-purple-900 size-12"
+              : "bg-vts-purple-800 group-hover:bg-vts-purple-700 size-14 group-hover:size-15"
           }`}
         />
         {!isVtsAiOpen && (
