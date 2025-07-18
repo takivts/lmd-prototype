@@ -90,11 +90,6 @@ const VtsAiDefault = forwardRef<
     },
   };
 
-  const promptItemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 },
@@ -179,15 +174,21 @@ const VtsAiDefault = forwardRef<
       <div className="relative z-50 rounded-lg border border-gray-300 bg-white text-sm">
         <VtsAiHeader onReset={resetConversation} />
         <div className="flex h-156 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
-          <div className="flex h-fit flex-col gap-2">
+          <motion.div
+            className="flex h-fit flex-col gap-2"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {!selectedPrompt && (
-              <>
+              <motion.div variants={itemVariants}>
                 <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
                 <p className="mb-2 text-left">
                   Choose the market, submarket or industry and then select a prompt and I will provide you with
                   insights:
                 </p>
                 <VtsAiInputs
+                  className="mb-3"
                   market={market}
                   onMarketChange={(value) => {
                     setMarket(value);
@@ -216,7 +217,7 @@ const VtsAiDefault = forwardRef<
                   {prompts.map((prompt) => (
                     <motion.div
                       key={prompt.prompt}
-                      variants={promptItemVariants}
+                      variants={itemVariants}
                       className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-lg border px-3 py-2 text-left transition-all duration-300`}
                       onClick={() => handlePromptClick(prompt)}
                     >
@@ -224,19 +225,22 @@ const VtsAiDefault = forwardRef<
                     </motion.div>
                   ))}
                 </motion.div>
-              </>
+              </motion.div>
             )}
 
             {selectedPrompt && (
               <>
-                {isUpsell && <VtsAiUpsell />}
-                <div
-                  className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left duration-300 ease-in-out ${
-                    isTransitioning ? `opacity-0` : "opacity-100"
-                  }`}
+                {isUpsell && (
+                  <motion.div variants={itemVariants}>
+                    <VtsAiUpsell />
+                  </motion.div>
+                )}
+                <motion.div
+                  className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left`}
+                  variants={itemVariants}
                 >
                   {selectedPrompt.prompt}
-                </div>
+                </motion.div>
               </>
             )}
             {isLoading ? (
@@ -288,7 +292,7 @@ const VtsAiDefault = forwardRef<
                 </motion.div>
               )
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

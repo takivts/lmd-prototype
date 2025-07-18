@@ -270,6 +270,25 @@ export default function DealProfilePage() {
               />
 
               <ProposalCard
+                title="Market comparison"
+                data={{
+                  label: "-",
+                  dateEntered: "Jan, 2025",
+                  leaseType: "-",
+                  type: "-",
+                  spaces: "-",
+                  size: "-",
+                  downtime: "2 avg.",
+                  tenantPossessionDate: "-",
+                  tenantBuildoutPeriodDays: "45 avg.",
+                  tenantBuildoutPeriodMonths: "1.5 avg.",
+                  lcd: "-",
+                  lockInEnd: "-",
+                  term: "60.5 avg.",
+                }}
+              />
+
+              <ProposalCard
                 title="Tenant"
                 actions={[
                   // { text: "Analyze proposal", isUnderlined: true },

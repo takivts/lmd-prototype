@@ -12,6 +12,7 @@ import {
 import { useMemo } from "react";
 
 export default function VtsAiInputs({
+  className,
   market,
   onMarketChange,
   submarket,
@@ -23,6 +24,7 @@ export default function VtsAiInputs({
   size,
   onSizeChange,
 }: {
+  className?: string;
   market: string;
   onMarketChange: (value: string) => void;
   submarket: string;
@@ -35,13 +37,11 @@ export default function VtsAiInputs({
   onSizeChange: (value: string) => void;
 }) {
   const availableSubmarkets = useMemo(() => {
-    return submarketOptions.filter(
-      (s) => s.value === "all" || marketSubmarketMap[market]?.includes(s.value),
-    );
+    return submarketOptions.filter((s) => s.value === "all" || marketSubmarketMap[market]?.includes(s.value));
   }, [market]);
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className={`flex flex-col gap-1 ${className}`}>
       <div className="flex gap-2">
         <label className="flex flex-1 flex-col text-xs">
           Market
@@ -64,9 +64,7 @@ export default function VtsAiInputs({
             className="mb-2 flex-1 rounded-lg text-gray-700"
             options={availableSubmarkets}
             placeholder="Select submarket"
-            value={
-              availableSubmarkets.find((o) => o.value === submarket) || null
-            }
+            value={availableSubmarkets.find((o) => o.value === submarket) || null}
             onChange={(e) => onSubmarketChange(e?.value ?? "all")}
           />
         </label>
@@ -92,10 +90,7 @@ export default function VtsAiInputs({
             className="mb-2 flex-1 rounded-lg text-gray-700"
             options={buildingClassOptions}
             placeholder="Select class"
-            value={
-              buildingClassOptions.find((o) => o.value === buildingClass) ||
-              null
-            }
+            value={buildingClassOptions.find((o) => o.value === buildingClass) || null}
             onChange={(e) => onBuildingClassChange(e?.value ?? "all")}
           />
         </label>

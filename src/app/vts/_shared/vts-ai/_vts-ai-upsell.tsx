@@ -5,7 +5,7 @@ export default function VtsAiUpsell() {
       <p className="text-sm">
         You are seeing a preview of VTS AI. To get full access to AI-powered market data and insights{" "}
         <a className="underline hover:text-purple-200" href="https://www.vts.com/vts-data" target="_blank">
-          upgrade to VTS
+          upgrade to VTS4
         </a>
         .
       </p>
