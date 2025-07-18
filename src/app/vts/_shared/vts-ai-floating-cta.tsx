@@ -41,7 +41,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
 
   const { currentPrompt } = usePromptCycle({
     promptDuration: 8000,
-    promptDelay: 12000,
+    promptDelay: 8000,
     initialDelay: 5000,
     isActive: !isVtsAiOpen,
   });
@@ -60,7 +60,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         onClick={handleFloatingCTAClick}
       >
         <div
-          className={`to-vts-purple-800 animate-floating-cta-gradient from-vts-purple-800 absolute -inset-1 -z-10 scale-50 rounded-full bg-gradient-to-r via-pink-900 opacity-0 blur transition-all duration-600 ease-in-out ${
+          className={`to-vts-purple-800 animate-floating-cta-gradient from-vts-purple-800 absolute -inset-1 -z-10 scale-50 rounded-full bg-gradient-to-r via-pink-900 blur ${
             isVtsAiOpen ? "scale-90 opacity-100" : "scale-0 opacity-0"
           }`}
         />

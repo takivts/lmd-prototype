@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { MarketMetadata } from "../data/vts-ai-prompts";
 
 interface VtsAiMetadataProps {
@@ -7,19 +6,7 @@ interface VtsAiMetadataProps {
   onComplete?: () => void;
 }
 
-export default function VtsAiMetadata({
-  data,
-  className,
-  onComplete,
-}: VtsAiMetadataProps) {
-  useEffect(() => {
-    if (onComplete) {
-      // Call onComplete after a brief delay to allow for rendering
-      const timer = setTimeout(onComplete, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [onComplete]);
-
+export default function VtsAiMetadata({ data, className, onComplete }: VtsAiMetadataProps) {
   if (!data) {
     return null;
   }
@@ -28,8 +15,7 @@ export default function VtsAiMetadata({
     <div className={`mb-2 flex flex-col ${className}`}>
       {data.industry && (
         <span className="text-gray-400">
-          Industry:{" "}
-          <span className="font-bold text-gray-700">{data.industry}</span>
+          Industry: <span className="font-bold text-gray-700">{data.industry}</span>
         </span>
       )}
       {data.size && (

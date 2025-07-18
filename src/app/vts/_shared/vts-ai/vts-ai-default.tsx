@@ -43,7 +43,7 @@ const VtsAiDefault = forwardRef<
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
-  const [isUpsell] = useState(false);
+  const [isUpsell] = useState(true);
   const [market, setMarket] = useState<string>("all");
   const [submarket, setSubmarket] = useState<string>("all");
   const [industry, setIndustry] = useState<string>("all");
@@ -217,7 +217,7 @@ const VtsAiDefault = forwardRef<
                     <motion.div
                       key={prompt.prompt}
                       variants={promptItemVariants}
-                      className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-lg border px-3 py-2 text-left`}
+                      className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-lg border px-3 py-2 text-left transition-all duration-300`}
                       onClick={() => handlePromptClick(prompt)}
                     >
                       {prompt.prompt}

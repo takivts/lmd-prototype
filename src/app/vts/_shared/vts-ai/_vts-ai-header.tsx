@@ -11,13 +11,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
   return (
     <div className="flex items-center border-b border-gray-300 px-4 py-4">
       <div className="bg-vts-purple-700 mr-2 flex size-12 flex-col items-center justify-center rounded-full text-[10px] font-bold text-white">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M13.3186 8.44355L10.0082 6.24573L10 6.25098L6.68731 8.44939L4.23807 6.83031L10 3.00524L10.0082 3L15.7684 6.82389L13.3186 8.44355Z"
             fill="currentColor"
@@ -34,22 +28,6 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
         <span className="text-vts-primary"></span>
       </div>
       <div className="flex grow justify-end gap-2">
-        {/* <span className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end rounded-lg px-1 py-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
-            />
-          </svg>
-        </span> */}
         <span
           className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end gap-1 rounded-lg px-1 py-1 transition-all duration-300 ease-in-out"
           onClick={handleResetVtsAi}
