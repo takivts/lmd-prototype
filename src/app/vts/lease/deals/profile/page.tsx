@@ -6,8 +6,13 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
-import { Player } from "@lottiefiles/react-lottie-player";
+import dynamic from "next/dynamic";
 import { useState } from "react";
+
+// Dynamically import Player with SSR disabled to avoid prerendering errors
+const Player = dynamic(() => import("@lottiefiles/react-lottie-player").then((mod) => ({ default: mod.Player })), {
+  ssr: false,
+});
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
