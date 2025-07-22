@@ -3,10 +3,9 @@ import { MarketMetadata } from "../data/vts-ai-prompts";
 interface VtsAiMetadataProps {
   data?: MarketMetadata;
   className?: string;
-  onComplete?: () => void;
 }
 
-export default function VtsAiMetadata({ data, className, onComplete }: VtsAiMetadataProps) {
+export default function VtsAiMetadata({ data, className }: VtsAiMetadataProps) {
   if (!data) {
     return null;
   }

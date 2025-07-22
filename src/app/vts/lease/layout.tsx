@@ -48,10 +48,7 @@ export default function VtsLeaseLayout({
         <SupportFloatingCTA />
       </div>
       {isVtsAiOpen && (
-        <div
-          className="fixed top-0 left-0 h-full w-full bg-black/0"
-          onClick={() => setIsVtsAiOpen(false)}
-        />
+        <div className="fixed top-0 left-0 h-full w-full bg-black/0" onClick={() => setIsVtsAiOpen(false)} />
       )}
     </div>
   );

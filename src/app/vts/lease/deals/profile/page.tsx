@@ -124,9 +124,9 @@ export default function DealProfilePage() {
               Submarket overview
               <Player
                 key={isHovered ? "playing" : "paused"}
-                src="/sparkle.json"
+                src="/sparkle2.json"
                 autoplay={isHovered}
-                loop={false}
+                keepLastFrame={true}
                 style={{ height: "20px", width: "20px" }}
               />
             </span>
@@ -269,7 +269,7 @@ export default function DealProfilePage() {
                 }}
               />
 
-              <ProposalCard
+              {/* <ProposalCard
                 title="Market comparison"
                 data={{
                   label: "-",
@@ -286,7 +286,7 @@ export default function DealProfilePage() {
                   lockInEnd: "-",
                   term: "60.5 avg.",
                 }}
-              />
+              /> */}
 
               <ProposalCard
                 title="Tenant"

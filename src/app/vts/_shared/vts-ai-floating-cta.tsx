@@ -1,7 +1,6 @@
 import VtsAiDefault from "./vts-ai/vts-ai-default";
 import VtsAiTenantProfile from "./vts-ai/vts-ai-tenant-profile";
 import { usePromptCycle } from "./hooks/usePromptCycle";
-import VtsAiUpsell from "./vts-ai/_vts-ai-upsell";
 import { useAppContext } from "../../context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
 
