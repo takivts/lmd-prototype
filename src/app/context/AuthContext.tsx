@@ -19,7 +19,6 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
       await fetch("/api/auth/logout", { method: "POST" });
       setIsAuthenticated(false);
       router.push("/login");
-      router.refresh();
     } catch (error) {
       console.error("Logout failed:", error);
     }
