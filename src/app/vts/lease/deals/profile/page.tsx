@@ -16,7 +16,8 @@ const Player = dynamic(() => import("@lottiefiles/react-lottie-player").then((mo
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
-  const [isHovered, setIsHovered] = useState(false);
+  const [isSubmarketOverviewHovered, setIsSubmarketOverviewHovered] = useState(false);
+  const [isNewProposalHovered, setIsNewProposalHovered] = useState(false);
 
   const mainTabs = [
     { label: "Info" },
@@ -115,22 +116,22 @@ export default function DealProfilePage() {
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Standardized tenant</span>
-            <span className="text-vts-purple-700">Alphabet</span>
+            <span className="text-vts-purple-700 cursor-pointer">Alphabet</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="gap-2 text-gray-500">Market</span>
             <span className="">New York, Midtown</span>
             <span
-              className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 underline decoration-dotted decoration-2"
+              className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm underline decoration-dotted decoration-2"
               onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              onMouseEnter={() => setIsSubmarketOverviewHovered(true)}
+              onMouseLeave={() => setIsSubmarketOverviewHovered(false)}
             >
               Submarket overview
               <Player
-                key={isHovered ? "playing" : "paused"}
+                key={isSubmarketOverviewHovered ? "playing" : "paused"}
                 src="/sparkle2.json"
-                autoplay={isHovered}
+                autoplay={isSubmarketOverviewHovered}
                 keepLastFrame={true}
                 style={{ height: "20px", width: "20px" }}
               />
@@ -171,7 +172,7 @@ export default function DealProfilePage() {
         <div className="flex min-h-full flex-col gap-4 rounded-lg border border-gray-300 bg-white">
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
           <div className="flex w-full justify-end gap-2 px-4">
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
+            {/* <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -183,7 +184,23 @@ export default function DealProfilePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
               New proposal
+            </div> */}
+            <div
+              className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm underline decoration-dotted decoration-2"
+              onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
+              onMouseEnter={() => setIsNewProposalHovered(true)}
+              onMouseLeave={() => setIsNewProposalHovered(false)}
+            >
+              <Player
+                key={isNewProposalHovered ? "playing" : "paused"}
+                src="/sparkle2.json"
+                autoplay={isNewProposalHovered}
+                keepLastFrame={true}
+                style={{ height: "20px", width: "20px" }}
+              />
+              New proposal
             </div>
+
             <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
