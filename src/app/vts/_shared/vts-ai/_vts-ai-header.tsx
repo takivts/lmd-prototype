@@ -9,7 +9,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
   };
 
   return (
-    <div className="flex items-center px-2 pt-2 pb-4">
+    <div className="flex items-center px-2 pt-1 pb-4">
       <div className="flex items-center gap-1 text-white">
         <div className="mr-2 flex size-8">
           <svg className="h-full w-full" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">

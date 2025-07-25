@@ -64,7 +64,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
           }`}
         />
         <div
-          className={`absolute z-50 rounded-full shadow-md transition-all duration-300 ease-in-out ${
+          className={`layered-shadow absolute z-50 rounded-full transition-all duration-300 ease-in-out ${
             isVtsAiOpen
               ? "via-vts-purple-800 from-vts-purple-900 size-12 bg-linear-to-t to-pink-800"
               : "via-vts-purple-800 from-vts-purple-900 size-13 bg-linear-to-t to-pink-800 group-hover:size-14"
@@ -83,7 +83,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
                   duration: 0.3,
                   ease: "easeOut",
                 }}
-                className={`absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap shadow`}
+                className={`layered-shadow absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap`}
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePromptClick();

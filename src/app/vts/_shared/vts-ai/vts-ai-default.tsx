@@ -43,7 +43,7 @@ const VtsAiDefault = forwardRef<
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
-  const [isUpsell] = useState(false);
+  const [isUpsell] = useState(true);
   const [market, setMarket] = useState<string>("all");
   const [submarket, setSubmarket] = useState<string>("all");
   const [industry, setIndustry] = useState<string>("all");
@@ -178,10 +178,10 @@ const VtsAiDefault = forwardRef<
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`vts-ai-gradient z-50 flex h-172 w-lg flex-col rounded-4xl p-3 text-gray-700 shadow ${className}`}
+          className={`vts-ai-gradient layered-shadow z-50 flex h-172 w-lg flex-col rounded-4xl p-4 text-gray-700 ${className}`}
         >
           <VtsAiHeader onReset={resetConversation} />
-          <div className="relative z-50 h-full w-full overflow-auto rounded-3xl bg-white text-sm shadow">
+          <div className="layered-shadow relative z-50 h-full w-full overflow-auto rounded-3xl bg-white text-sm">
             <div className="flex h-full flex-col overflow-auto p-4">
               <motion.div
                 className="flex h-full flex-col gap-2"
@@ -227,7 +227,7 @@ const VtsAiDefault = forwardRef<
                         <motion.div
                           key={prompt.prompt}
                           variants={itemVariants}
-                          className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-lg border px-3 py-2 text-left transition-all duration-300`}
+                          className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-2xl border px-3 py-2 text-left transition-all duration-300`}
                           onClick={() => handlePromptClick(prompt)}
                         >
                           {prompt.prompt}
@@ -245,7 +245,7 @@ const VtsAiDefault = forwardRef<
                       </motion.div>
                     )}
                     <motion.div
-                      className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left`}
+                      className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-2xl border border-gray-200 px-3 py-2 text-left`}
                       variants={itemVariants}
                     >
                       {selectedPrompt.prompt}
