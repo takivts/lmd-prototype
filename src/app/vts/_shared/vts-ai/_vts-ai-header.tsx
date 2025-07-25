@@ -1,16 +1,18 @@
-import { useAppContext } from "../../../context/AppContext";
+import { useAppContext, VtsAiPersona } from "../../../context/AppContext";
 
 export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
-  const { setVtsAiContentType } = useAppContext();
+  const { setVtsAiContentType, vtsAiPersona, setVtsAiPersona } = useAppContext();
 
   const handleResetVtsAi = () => {
     setVtsAiContentType("default");
     onReset?.();
   };
 
+  const personas: VtsAiPersona[] = ["Analyst", "Assistant"];
+
   return (
-    <div className="flex items-center px-2 pt-1 pb-4">
-      <div className="flex items-center gap-1 text-white">
+    <div className="flex flex-auto items-center px-2 pt-1 pb-4 text-sm text-white">
+      <div className="flex flex-auto items-center gap-1">
         <div className="mr-2 flex size-8">
           <svg className="h-full w-full" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -26,9 +28,23 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
         <h5 className="text-sm font-bold">VTS AI</h5>
       </div>
 
-      <div className="flex grow justify-end gap-2 text-sm">
+      <div className="flex flex-auto justify-center rounded-full bg-black/25 p-1 text-white">
+        {personas.map((persona) => (
+          <button
+            key={persona}
+            onClick={() => setVtsAiPersona(persona)}
+            className={`w-1/2 rounded-full px-2 py-1 text-sm font-medium duration-300 ${
+              vtsAiPersona === persona ? "text-vts-purple-800 bg-white/75" : "text-white hover:bg-white/10"
+            }`}
+          >
+            {persona}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex flex-auto justify-end gap-2">
         <span
-          className="hover:text-vts-purple-800 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 font-medium text-white transition-all duration-300 hover:bg-white/75"
+          className="hover:text-vts-purple-800 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 text-white transition-all duration-300 hover:bg-white/75"
           onClick={handleResetVtsAi}
         >
           <svg
@@ -45,7 +61,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
               d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
             />
           </svg>
-          New prompt
+          Reset
         </span>
       </div>
     </div>

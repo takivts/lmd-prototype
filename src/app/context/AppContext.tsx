@@ -1,10 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import {
-  MarketAnalysisData,
-  MarketMetadata,
-} from "../vts/_shared/data/vts-ai-prompts";
+import { MarketAnalysisData, MarketMetadata } from "../vts/_shared/data/vts-ai-prompts";
 
 // Define the data structure for market analysis
 interface VtsAiDefaultData {
@@ -15,6 +12,9 @@ interface VtsAiDefaultData {
   summary?: string;
 }
 
+// VTS AI Persona
+export type VtsAiPersona = "Analyst" | "Assistant";
+
 // Context
 const AppContext = createContext<{
   isVtsAiOpen: boolean;
@@ -24,6 +24,8 @@ const AppContext = createContext<{
   vtsAiData: MarketAnalysisData | null;
   isSidePanelOpen: boolean;
   setIsSidePanelOpen: (value: boolean) => void;
+  vtsAiPersona: VtsAiPersona;
+  setVtsAiPersona: (value: VtsAiPersona) => void;
 } | null>(null);
 
 export function AppContextProvider({ children }: { children: ReactNode }) {
@@ -31,11 +33,9 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
   const [vtsAiContentType, setVtsAiContentType] = useState("default");
   const [vtsAiData, setVtsAiData] = useState<MarketAnalysisData | null>(null);
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+  const [vtsAiPersona, setVtsAiPersona] = useState<VtsAiPersona>("Analyst");
 
-  const handleSetVtsAiContentType = (
-    contentType: string,
-    data?: MarketAnalysisData,
-  ) => {
+  const handleSetVtsAiContentType = (contentType: string, data?: MarketAnalysisData) => {
     setVtsAiContentType(contentType);
     if (data) {
       setVtsAiData(data);
@@ -54,6 +54,8 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
         vtsAiData,
         isSidePanelOpen,
         setIsSidePanelOpen,
+        vtsAiPersona,
+        setVtsAiPersona,
       }}
     >
       {children}
