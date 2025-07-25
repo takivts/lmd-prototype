@@ -9,7 +9,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
   };
 
   return (
-    <div className="flex items-center px-4 pt-2 pb-4">
+    <div className="flex items-center px-2 pt-2 pb-4">
       <div className="flex items-center gap-1 text-white">
         <div className="mr-2 flex size-8">
           <svg className="h-full w-full" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
 
       <div className="flex grow justify-end gap-2 text-sm">
         <span
-          className="hover:text-vts-purple-800 flex cursor-pointer justify-end gap-1 rounded-full px-2 py-1 font-medium text-white transition-all duration-300 hover:bg-white/75"
+          className="hover:text-vts-purple-800 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 font-medium text-white transition-all duration-300 hover:bg-white/75"
           onClick={handleResetVtsAi}
         >
           <svg
