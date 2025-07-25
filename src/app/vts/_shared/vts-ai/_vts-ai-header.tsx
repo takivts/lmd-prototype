@@ -32,11 +32,12 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
         {personas.map((persona) => (
           <button
             key={persona}
-            disabled={persona === "Assistant"}
             onClick={() => setVtsAiPersona(persona)}
-            className={`w-1/2 rounded-full px-2 py-1 text-sm font-medium duration-300 ${
-              vtsAiPersona === persona ? "text-vts-purple-800 bg-white" : "text-white hover:bg-white/10"
-            } ${persona === "Assistant" ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+            className={`w-1/2 rounded-full px-1 py-1 text-sm duration-300 ${
+              vtsAiPersona === persona
+                ? "text-vts-purple-900 bg-white/75"
+                : "cursor-pointer text-white/50 hover:bg-white/10"
+            }`}
           >
             {persona}
           </button>
@@ -45,7 +46,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
 
       <div className="flex flex-auto justify-end gap-2">
         <span
-          className="hover:text-vts-purple-800 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 text-white transition-all duration-300 hover:bg-white/75"
+          className="hover:text-vts-purple-900 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 text-white transition-all duration-300 hover:bg-white/75"
           onClick={handleResetVtsAi}
         >
           <svg

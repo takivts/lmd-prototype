@@ -67,7 +67,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
           className={`layered-shadow absolute z-50 rounded-full transition-all duration-300 ease-in-out ${
             isVtsAiOpen
               ? "via-vts-purple-800 from-vts-purple-900 size-12 bg-linear-to-t to-pink-800"
-              : "via-vts-purple-800 from-vts-purple-900 size-13 bg-linear-to-t to-pink-800 group-hover:size-14"
+              : "via-vts-purple-800 from-vts-purple-900 size-14 bg-linear-to-t to-pink-800 group-hover:size-15"
           }`}
         />
         {!isVtsAiOpen && (
