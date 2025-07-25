@@ -28,13 +28,13 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
         <h5 className="text-sm font-bold">VTS AI</h5>
       </div>
 
-      <div className="flex flex-auto justify-center rounded-full bg-black/25 p-1 text-white">
+      <div className="flex flex-auto justify-center rounded-full border-2 border-white/25 bg-black/25 p-1 text-white">
         {personas.map((persona) => (
           <button
             key={persona}
             onClick={() => setVtsAiPersona(persona)}
             className={`w-1/2 cursor-pointer rounded-full px-2 py-1 text-sm font-medium duration-300 ${
-              vtsAiPersona === persona ? "text-vts-purple-800 bg-white/75" : "text-white hover:bg-white/10"
+              vtsAiPersona === persona ? "text-vts-purple-800 bg-white" : "text-white hover:bg-white/10"
             }`}
           >
             {persona}
