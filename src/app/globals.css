@@ -14,7 +14,6 @@
   --color-vts-purple-900: #130a76;
   --color-vts-primary: var(--color-vts-purple-700);
 
-  /* Add keyframes */
   --animate-floating-cta-gradient: floating-cta-gradient 5s ease-in-out reverse infinite;
   --animate-upsell-banner-gradient: upsell-banner-gradient 5s ease-in-out reverse infinite;
 }
@@ -47,23 +46,45 @@
   0% {
     background-size: 100% 100%;
     background-position: top left;
-    opacity: 0.9;
   }
   50% {
     background-size: 200% 200%;
-    opacity: 1;
   }
   100% {
     background-size: 100% 100%;
-    background-position: top right;
-    opacity: 0.9;
+    background-position: bottom right;
   }
+}
+
+.vts-ai-gradient {
+  background-image: radial-gradient(
+    circle at top,
+    var(--color-pink-800),
+    var(--color-vts-purple-800),
+    var(--color-vts-purple-900)
+  );
+  background-repeat: no-repeat;
+  animation: upsell-banner-gradient 8s ease-in-out reverse infinite;
+}
+
+.gradient-underline {
+  background-image: linear-gradient(to right, var(--color-pink-600), var(--color-vts-purple-700));
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: 100% 3px;
+  transition: background-position 0.5s ease-in-out;
+}
+
+.gradient-underline:hover {
+  background-position: 0% 100%;
 }
 
 body {
   color: var(--color-gray-700);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* REACT SELECT */
 
 .vts-ai-select__control--is-focused {
   border-color: var(--color-vts-purple-600) !important;

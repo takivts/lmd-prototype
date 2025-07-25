@@ -9,27 +9,26 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
   };
 
   return (
-    <div className="flex items-center border-b border-gray-300 px-4 py-4">
-      <div className="bg-vts-purple-700 mr-2 flex size-12 flex-col items-center justify-center rounded-full text-[10px] font-bold text-white">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M13.3186 8.44355L10.0082 6.24573L10 6.25098L6.68731 8.44939L4.23807 6.83031L10 3.00524L10.0082 3L15.7684 6.82389L13.3186 8.44355Z"
-            fill="currentColor"
-          />
-          <path
-            d="M0 6.97529L9.99826 13.2394L10 13.2383L20 6.97296V11.1518L10 17.4165L9.99826 17.4177L0 11.1535V6.97529Z"
-            fill="currentColor"
-          />
-        </svg>
-        VTS AI
+    <div className="flex items-center px-4 pt-2 pb-4">
+      <div className="flex items-center gap-1 text-white">
+        <div className="mr-2 flex size-8">
+          <svg className="h-full w-full" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M47.9468 29.5968L36.0295 21.6846L36.0001 21.7035L24.0743 29.6178L15.2571 23.7891L36.0001 10.0189L36.0295 10L56.7662 23.766L47.9468 29.5968Z"
+              fill="currentColor"
+            />
+            <path
+              d="M0 24.3111L35.9937 46.862L36 46.8578L72 24.3027V39.3464L36 61.8995L35.9937 61.9037L0 39.3527V24.3111Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <h5 className="text-sm font-bold">VTS AI</h5>
       </div>
-      <div className="flex flex-col">
-        <h5 className="text-lg font-bold">VTS AI</h5>
-        <span className="text-vts-primary"></span>
-      </div>
-      <div className="flex grow justify-end gap-2">
+
+      <div className="flex grow justify-end gap-2 text-sm">
         <span
-          className="hover:bg-vts-purple-100 text-vts-purple-700 flex cursor-pointer justify-end gap-1 rounded-lg px-1 py-1 transition-all duration-300 ease-in-out"
+          className="hover:text-vts-purple-800 flex cursor-pointer justify-end gap-1 rounded-full px-2 py-1 font-medium text-white transition-all duration-300 hover:bg-white/75"
           onClick={handleResetVtsAi}
         >
           <svg

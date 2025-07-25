@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useImperativeHandle, forwardRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { vtsAiPromptsWithContext, vtsAiPromptsWithoutContext } from "../data/vts-ai-prompts";
 import VtsAiHeader from "./_vts-ai-header";
 import { usePathname } from "next/navigation";
@@ -71,7 +71,7 @@ const VtsAiDefault = forwardRef<
   }, [initializeInputs]);
 
   const containerVariants = {
-    hidden: { opacity: 1 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
@@ -91,8 +91,13 @@ const VtsAiDefault = forwardRef<
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
   };
 
   useEffect(() => {
@@ -166,136 +171,142 @@ const VtsAiDefault = forwardRef<
   const responsePayload = selectedPrompt?.payload;
 
   return (
-    <div
-      className={`w-lg rounded-lg text-gray-700 shadow-lg transition-all duration-300 select-none ${className} ${
-        isOpen ? "opacity-100 select-text" : "pointer-events-none opacity-0 select-none"
-      }`}
-    >
-      <div className="relative z-50 rounded-lg border border-gray-300 bg-white text-sm">
-        <VtsAiHeader onReset={resetConversation} />
-        <div className="flex h-156 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
-          <motion.div
-            className="flex h-fit flex-col gap-2"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {!selectedPrompt && (
-              <motion.div variants={itemVariants}>
-                <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
-                <p className="mb-2 text-left">
-                  Choose the market, submarket or industry and then select a prompt and I will provide you with
-                  insights:
-                </p>
-                <VtsAiInputs
-                  className="mb-3"
-                  market={market}
-                  onMarketChange={(value) => {
-                    setMarket(value);
-                    setSubmarket("all");
-                  }}
-                  submarket={submarket}
-                  onSubmarketChange={(value) => {
-                    setSubmarket(value);
-                    if (value !== "all") {
-                      setMarket(submarketToMarketMap[value]);
-                    }
-                  }}
-                  industry={industry}
-                  onIndustryChange={setIndustry}
-                  buildingClass={buildingClass}
-                  onBuildingClassChange={setBuildingClass}
-                  size={size}
-                  onSizeChange={setSize}
-                />
-                <motion.div
-                  className={`mb-2 flex flex-col gap-2`}
-                  variants={promptContainerVariants}
-                  initial="hidden"
-                  animate={isOpen ? "visible" : "hidden"}
-                >
-                  {prompts.map((prompt) => (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className={`vts-ai-gradient z-50 flex h-172 w-lg flex-col rounded-4xl p-3 text-gray-700 shadow ${className}`}
+        >
+          <VtsAiHeader onReset={resetConversation} />
+          <div className="relative z-50 h-full w-full overflow-auto rounded-3xl bg-white text-sm shadow">
+            <div className="flex h-full flex-col overflow-auto p-4">
+              <motion.div
+                className="flex h-full flex-col gap-2"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {!selectedPrompt && (
+                  <div>
+                    <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
+                    <p className="mb-2 text-left">
+                      Choose the market, submarket or industry and then select a prompt and I will provide you with
+                      insights:
+                    </p>
+                    <VtsAiInputs
+                      className="mb-3"
+                      market={market}
+                      onMarketChange={(value) => {
+                        setMarket(value);
+                        setSubmarket("all");
+                      }}
+                      submarket={submarket}
+                      onSubmarketChange={(value) => {
+                        setSubmarket(value);
+                        if (value !== "all") {
+                          setMarket(submarketToMarketMap[value]);
+                        }
+                      }}
+                      industry={industry}
+                      onIndustryChange={setIndustry}
+                      buildingClass={buildingClass}
+                      onBuildingClassChange={setBuildingClass}
+                      size={size}
+                      onSizeChange={setSize}
+                    />
                     <motion.div
-                      key={prompt.prompt}
-                      variants={itemVariants}
-                      className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-lg border px-3 py-2 text-left transition-all duration-300`}
-                      onClick={() => handlePromptClick(prompt)}
+                      className={`mb-2 flex flex-col gap-2`}
+                      variants={promptContainerVariants}
+                      initial="hidden"
+                      animate={isOpen ? "visible" : "hidden"}
                     >
-                      {prompt.prompt}
+                      {prompts.map((prompt) => (
+                        <motion.div
+                          key={prompt.prompt}
+                          variants={itemVariants}
+                          className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-lg border px-3 py-2 text-left transition-all duration-300`}
+                          onClick={() => handlePromptClick(prompt)}
+                        >
+                          {prompt.prompt}
+                        </motion.div>
+                      ))}
                     </motion.div>
-                  ))}
-                </motion.div>
-              </motion.div>
-            )}
-
-            {selectedPrompt && (
-              <>
-                {isUpsell && (
-                  <motion.div variants={itemVariants}>
-                    <VtsAiUpsell />
-                  </motion.div>
+                  </div>
                 )}
-                <motion.div
-                  className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left`}
-                  variants={itemVariants}
-                >
-                  {selectedPrompt.prompt}
-                </motion.div>
-              </>
-            )}
-            {isLoading ? (
-              <VtsAiLoader className={` ${isTransitioning ? "opacity-0" : "opacity-100"}`} />
-            ) : (
-              selectedPrompt &&
-              responsePayload && (
-                <motion.div
-                  className="flex flex-col gap-2"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {responsePayload.marketData && responsePayload.marketData.length > 0 && (
-                    <motion.div variants={itemVariants} className="mb-4">
-                      <VtsAiDataGrid isUpsell={isUpsell} data={responsePayload.marketData || []} />
-                    </motion.div>
-                  )}
 
-                  {responsePayload.summary && responsePayload.summary.length > 0 && (
-                    <motion.div variants={itemVariants} className="mb-4">
-                      <VtsAiSummary
-                        data={{
-                          summary: responsePayload.summary,
-                        }}
-                      />
+                {selectedPrompt && (
+                  <>
+                    {isUpsell && (
+                      <motion.div variants={itemVariants}>
+                        <VtsAiUpsell />
+                      </motion.div>
+                    )}
+                    <motion.div
+                      className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-lg border border-gray-200 px-3 py-2 text-left`}
+                      variants={itemVariants}
+                    >
+                      {selectedPrompt.prompt}
                     </motion.div>
-                  )}
+                  </>
+                )}
+                {isLoading ? (
+                  <VtsAiLoader className={` ${isTransitioning ? "opacity-0" : "opacity-100"}`} />
+                ) : (
+                  selectedPrompt &&
+                  responsePayload && (
+                    <motion.div
+                      className="flex flex-col gap-2 pb-4"
+                      variants={containerVariants}
+                      initial="hidden"
+                      animate="visible"
+                    >
+                      {responsePayload.marketData && responsePayload.marketData.length > 0 && (
+                        <motion.div variants={itemVariants} className="mb-4">
+                          <VtsAiDataGrid isUpsell={isUpsell} data={responsePayload.marketData || []} />
+                        </motion.div>
+                      )}
 
-                  {responsePayload.keyInsights && responsePayload.keyInsights.length > 0 && (
-                    <motion.div variants={itemVariants} className="mb-4">
-                      <VtsAiKeyInsights
-                        isUpsell={isUpsell}
-                        data={{
-                          insights: responsePayload.keyInsights,
-                        }}
-                      />
-                    </motion.div>
-                  )}
+                      {responsePayload.summary && responsePayload.summary.length > 0 && (
+                        <motion.div variants={itemVariants} className="mb-4">
+                          <VtsAiSummary
+                            data={{
+                              summary: responsePayload.summary,
+                            }}
+                          />
+                        </motion.div>
+                      )}
 
-                  {responsePayload.suggestedFollowUps && responsePayload.suggestedFollowUps.length > 0 && (
-                    <motion.div variants={itemVariants}>
-                      <VtsAiSuggestedFollowUps
-                        data={responsePayload.suggestedFollowUps || []}
-                        onFollowUpClick={handleFollowUpClick}
-                      />
+                      {responsePayload.keyInsights && responsePayload.keyInsights.length > 0 && (
+                        <motion.div variants={itemVariants} className="mb-4">
+                          <VtsAiKeyInsights
+                            isUpsell={isUpsell}
+                            data={{
+                              insights: responsePayload.keyInsights,
+                            }}
+                          />
+                        </motion.div>
+                      )}
+
+                      {responsePayload.suggestedFollowUps && responsePayload.suggestedFollowUps.length > 0 && (
+                        <motion.div variants={itemVariants}>
+                          <VtsAiSuggestedFollowUps
+                            data={responsePayload.suggestedFollowUps || []}
+                            onFollowUpClick={handleFollowUpClick}
+                          />
+                        </motion.div>
+                      )}
                     </motion.div>
-                  )}
-                </motion.div>
-              )
-            )}
-          </motion.div>
-        </div>
-      </div>
-    </div>
+                  )
+                )}
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 });
 
