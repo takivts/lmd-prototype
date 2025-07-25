@@ -190,12 +190,14 @@ const VtsAiDefault = forwardRef<
                 animate="visible"
               >
                 {!selectedPrompt && (
-                  <div>
-                    <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
-                    <p className="mb-2 text-left">
-                      Choose the market, submarket or industry and then select a prompt and I will provide you with
-                      insights:
-                    </p>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col">
+                      <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
+                      <p className="text-left">
+                        Choose the market, submarket or industry and then select a prompt and I will provide you with
+                        insights:
+                      </p>
+                    </div>
                     <VtsAiInputs
                       className="mb-3"
                       market={market}

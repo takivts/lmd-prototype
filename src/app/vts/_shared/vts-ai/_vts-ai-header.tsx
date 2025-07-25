@@ -28,15 +28,19 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
         <h5 className="text-sm font-bold">VTS AI</h5>
       </div>
 
-      <div className="flex flex-auto justify-center rounded-full border-2 border-white/25 bg-black/25 p-1 text-white">
+      <div className="relative flex flex-auto justify-center rounded-full border-2 border-white/25 bg-black/25 p-1 text-white">
+        <div
+          className="absolute top-1 left-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-white/75 transition-transform duration-300 ease-in-out"
+          style={{
+            transform: `translateX(${personas.indexOf(vtsAiPersona) * 100}%)`,
+          }}
+        />
         {personas.map((persona) => (
           <button
             key={persona}
             onClick={() => setVtsAiPersona(persona)}
-            className={`w-1/2 rounded-full px-1 py-1 text-sm duration-300 ${
-              vtsAiPersona === persona
-                ? "text-vts-purple-900 bg-white/75"
-                : "cursor-pointer text-white/50 hover:bg-white/10"
+            className={`relative w-1/2 rounded-full px-1 py-1 text-sm duration-300 ${
+              vtsAiPersona === persona ? "text-vts-purple-900" : "cursor-pointer text-white/50 hover:text-white"
             }`}
           >
             {persona}

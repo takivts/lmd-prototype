@@ -83,13 +83,13 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
                   duration: 0.3,
                   ease: "easeOut",
                 }}
-                className={`layered-shadow absolute top-2 right-18 w-fit cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 whitespace-nowrap`}
+                className={`layered-shadow absolute top-2 right-18 w-fit cursor-pointer rounded-2xl border border-gray-300 bg-white px-3 py-2 whitespace-nowrap`}
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePromptClick();
                 }}
               >
-                <p className="text-vts-primary cursor-pointer text-sm underline decoration-dotted decoration-2 underline-offset-2 select-none">
+                <p className="text-vts-primary cursor-pointer text-sm underline-offset-2 select-none">
                   {currentPrompt.prompt}
                 </p>
               </motion.div>
