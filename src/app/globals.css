@@ -48,31 +48,32 @@
   }
 }
 
-@keyframes banner-gradient {
+@keyframes window-gradient {
   0% {
     background-size: 100% 100%;
-    background-position: left 0;
+    background-position: center 0;
   }
   50% {
     background-size: 200% 200%;
+    background-position: center 25%;
   }
   100% {
     background-size: 100% 100%;
-    background-position: right 0;
+    background-position: center 0;
   }
 }
 
 .vts-ai-gradient {
   background-image: radial-gradient(
-    circle at center -15%,
-    var(--color-vts-ai-light) 2.5%,
-    var(--color-vts-ai-medium) 15%,
+    circle at center -10%,
+    var(--color-vts-ai-light) 5%,
+    var(--color-vts-ai-medium) 20%,
     var(--color-vts-purple-800),
     var(--color-vts-purple-900),
     var(--color-vts-ai-gray)
   );
   background-repeat: no-repeat;
-  animation: banner-gradient 15s ease-in-out reverse infinite;
+  animation: window-gradient 15s ease-in-out reverse infinite;
 }
 
 @keyframes upsell-banner-gradient {

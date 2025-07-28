@@ -312,7 +312,7 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
 
 export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
   {
-    prompt: "What’s the average rent right now?",
+    prompt: "What's the average rent right now?",
     payload: {
       marketMetadata: {
         category: "Deal Economics",
@@ -387,7 +387,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       suggestedFollowUps: [
         "How has starting rent changed year-over-year?",
         "Which markets are best for investment per demand trends?",
-        "What’s the average rent right now?",
+        "What's the average rent right now?",
       ],
     },
   },
@@ -431,6 +431,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
     },
   },
+  // Market Demand
   {
     prompt: "Which submarkets are seeing the most tenant tour activity right now?",
     payload: {
@@ -506,7 +507,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which markets are most attractive for investment based on demand trends?",
-        "What’s the average rent right now?",
+        "What's the average rent right now?",
         "How are rents trending year-over-year?",
       ],
     },
@@ -605,7 +606,27 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "What’s the average rent right now?",
+        "What's the average rent right now?",
+        "How are rents trending year-over-year?",
+        "Which markets are most attractive for investment based on demand trends?",
+      ],
+    },
+  },
+  {
+    prompt: "Where to deploy resources for tour-driven growth?",
+    payload: {
+      marketMetadata: {
+        category: "Strategic Planning",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "What's the average rent right now?",
         "How are rents trending year-over-year?",
         "Which markets are most attractive for investment based on demand trends?",
       ],
