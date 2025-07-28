@@ -41,9 +41,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "Where to deploy resources for tour-driven growth?",
-        "What industries are boosting demand?",
         "How are rents trending month-over-month?",
+        "What tenants are driving demand?",
+        "Where to deploy resources for tour-driven growth?",
       ],
     },
   },
@@ -61,9 +61,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "What tenants are driving demand?",
-        "Where should I allocate capital based on current market conditions?",
         "What's the average NER right now?",
+        "What space sizes are most in demand right now?",
+        "Where should I allocate capital based on current market conditions?",
       ],
     },
   },
@@ -81,8 +81,8 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.",
       ],
       suggestedFollowUps: [
-        "What space sizes are most in demand right now?",
-        "Where should I prioritize capital allocation based on current velocity?",
+        "How are lease durations trending?",
+        "What is the average size of active requirements right now?",
         "What is Avg. Gross NER, Avg. TI Avg. Free Rent and Count of active proposals?",
       ],
     },
@@ -102,9 +102,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "How are lease durations trending?",
+        "How are rents trending month-over-month?",
         "What industries are boosting demand?",
-        "What is the average size of active requirements right now?",
+        "Where to allocate capital per lease data?",
       ],
     },
   },
@@ -122,13 +122,12 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "Where should I allocate capital based on current market conditions?",
-        "What is the average size of active requirements right now?",
-        "How are rents trending month-over-month?",
+        "How are concessions trending month-over-month?",
+        "Where should I prioritize capital allocation based on current velocity?",
+        "What space sizes are most in demand right now?",
       ],
     },
   },
-  // Market Demand
   {
     prompt: "What are the top industries driving demand right now?",
     payload: {
@@ -143,9 +142,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "Where to allocate capital per lease data?",
-        "What's the average NER right now?",
-        "How are lease durations trending?",
+        "How are rents trending month-over-month?",
+        "What is the average size of active requirements right now?",
+        "Where to deploy resources for tour-driven growth?",
       ],
     },
   },
@@ -163,9 +162,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "What industries are boosting demand?",
-        "How are concessions trending month-over-month?",
-        "Where to deploy resources for tour-driven growth?",
+        "What tenants are driving demand?",
+        "What's the average NER right now?",
+        "Where should I allocate capital based on current market conditions?",
       ],
     },
   },
@@ -183,8 +182,8 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "What tenants are driving demand?",
         "How are lease durations trending?",
+        "What is Avg. Gross NER, Avg. TI Avg. Free Rent and Count of active proposals?",
         "Where should I prioritize capital allocation based on current velocity?",
       ],
     },
@@ -203,9 +202,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "What is the average size of active requirements right now?",
-        "Where should I allocate capital based on current market conditions?",
-        "Where should I prioritize capital allocation based on current velocity?",
+        "What industries are boosting demand?",
+        "Where to allocate capital per lease data?",
+        "What are the top industries driving demand right now?",
       ],
     },
   },
@@ -223,13 +222,12 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "Where should I allocate capital based on current market conditions?",
-        "Where should I prioritize capital allocation based on current velocity?",
-        "Where to allocate capital per lease data?",
+        "How are concessions trending month-over-month?",
+        "Where to deploy resources for tour-driven growth?",
+        "What space sizes are most in demand right now?",
       ],
     },
   },
-  // Strategic Planning
   {
     prompt: "Where should I allocate capital based on current market conditions?",
     payload: {
@@ -244,9 +242,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending year over year?",
-        "How are rents trending?",
-        "What's the average rent for small and large tenants?",
+        "What is Avg. Gross NER, Avg. TI Avg. Free Rent and Count of active proposals?",
+        "How are rents trending month-over-month?",
+        "What tenants are driving demand?",
       ],
     },
   },
@@ -264,9 +262,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending year over year?",
-        "How are rents trending?",
-        "What's the average rent for small and large tenants?",
+        "Where to allocate capital per lease data?",
+        "What's the average NER right now?",
+        "How are concessions trending month-over-month?",
       ],
     },
   },
@@ -284,9 +282,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending year over year?",
-        "How are rents trending?",
-        "What's the average rent for small and large tenants?",
+        "What is the average size of active requirements right now?",
+        "How are lease durations trending?",
+        "What industries are boosting demand?",
       ],
     },
   },
@@ -304,9 +302,9 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "How are concessions trending year over year?",
-        "How are rents trending?",
-        "What's the average rent for small and large tenants?",
+        "What are the top industries driving demand right now?",
+        "Where should I allocate capital based on current market conditions?",
+        "What space sizes are most in demand right now?",
       ],
     },
   },
@@ -328,8 +326,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How are rents trending year-over-year?",
-        "How are concessions trending year over year?",
-        "How are gross rents trending year-over-year?",
+        "Which markets are most attractive for investment based on demand trends?",
+        "What is the typical TI allowance currently??",
       ],
     },
   },
@@ -348,8 +346,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How are concessions trending year over year?",
-        "How are gross rents trending year-over-year?",
-        "How has starting rent changed year-over-year?",
+        "What tenants are driving demand?",
+        "Which markets are attractive for investment via tour data?",
       ],
     },
   },
@@ -368,8 +366,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How are gross rents trending year-over-year?",
-        "How has starting rent changed year-over-year?",
-        "What is the typical TI allowance currently??",
+        "Which submarkets are leading in active demand this month?",
+        "Which markets show strongest demand growth for investment?",
       ],
     },
   },
@@ -388,8 +386,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "How has starting rent changed year-over-year?",
-        "What is the typical TI allowance currently??",
-        "Which submarkets are seeing the most tenant tour activity right now?",
+        "Which markets are best for investment per demand trends?",
+        "What’s the average rent right now?",
       ],
     },
   },
@@ -408,8 +406,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "What is the typical TI allowance currently??",
-        "Which submarkets are seeing the most tenant tour activity right now?",
-        "Which submarkets have the highest unique tenant tours this month?",
+        "Which markets are attractive for investment based on tour activity?",
+        "How are rents trending year-over-year?",
       ],
     },
   },
@@ -428,12 +426,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which submarkets are seeing the most tenant tour activity right now?",
-        "Which submarkets have the highest unique tenant tours this month?",
-        "Which submarkets are leading in active demand this month?",
+        "How are concessions trending year over year?",
+        "Which markets are best for investment per demand trends?",
       ],
     },
   },
-  // Market Demand
   {
     prompt: "Which submarkets are seeing the most tenant tour activity right now?",
     payload: {
@@ -449,8 +446,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which submarkets have the highest unique tenant tours this month?",
-        "Which submarkets are leading in active demand this month?",
-        "What tenants are driving demand?",
+        "How are gross rents trending year-over-year?",
+        "Which markets are most attractive for investment based on demand trends?",
       ],
     },
   },
@@ -469,8 +466,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which submarkets are leading in active demand this month?",
-        "What tenants are driving demand?",
-        "Which markets are most attractive for investment based on demand trends?",
+        "How has starting rent changed year-over-year?",
+        "Which markets are attractive for investment via tour data?",
       ],
     },
   },
@@ -489,8 +486,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "What tenants are driving demand?",
-        "Which markets are most attractive for investment based on demand trends?",
-        "Which markets are attractive for investment based on tour activity?",
+        "What is the typical TI allowance currently??",
+        "Which markets show strongest demand growth for investment?",
       ],
     },
   },
@@ -509,12 +506,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which markets are most attractive for investment based on demand trends?",
-        "Which markets are attractive for investment based on tour activity?",
-        "Which markets are best for investment per demand trends?",
+        "What’s the average rent right now?",
+        "How are rents trending year-over-year?",
       ],
     },
   },
-  // Strategic Planning
   {
     prompt: "Which markets are most attractive for investment based on demand trends?",
     payload: {
@@ -530,8 +526,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which markets are attractive for investment based on tour activity?",
-        "Which markets are best for investment per demand trends?",
-        "Which markets are attractive for investment via tour data?",
+        "How are concessions trending year over year?",
+        "Which submarkets have the highest unique tenant tours this month?",
       ],
     },
   },
@@ -550,8 +546,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which markets are best for investment per demand trends?",
-        "Which markets are attractive for investment via tour data?",
-        "Which markets show strongest demand growth for investment?",
+        "How are gross rents trending year-over-year?",
+        "What tenants are driving demand?",
       ],
     },
   },
@@ -570,8 +566,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which markets are attractive for investment via tour data?",
-        "Which markets show strongest demand growth for investment?",
-        "What’s the average rent right now?",
+        "How has starting rent changed year-over-year?",
+        "Which submarkets are leading in active demand this month?",
       ],
     },
   },
@@ -590,8 +586,8 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which markets show strongest demand growth for investment?",
-        "What’s the average rent right now?",
-        "How are rents trending year-over-year?",
+        "What is the typical TI allowance currently??",
+        "Which submarkets are seeing the most tenant tour activity right now?",
       ],
     },
   },
@@ -611,7 +607,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       suggestedFollowUps: [
         "What’s the average rent right now?",
         "How are rents trending year-over-year?",
-        "How are concessions trending year over year?",
+        "Which markets are most attractive for investment based on demand trends?",
       ],
     },
   },
