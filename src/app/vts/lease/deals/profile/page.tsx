@@ -116,18 +116,18 @@ export default function DealProfilePage() {
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Standardized tenant</span>
-            <span className="gradient-underline cursor-pointer">Alphabet</span>
+            <span className="cursor-pointer">Alphabet</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="gap-2 text-gray-500">Market</span>
             <span className="">New York, Midtown</span>
             <span
-              className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm underline decoration-dotted decoration-2"
+              className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm"
               onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
               onMouseEnter={() => setIsSubmarketOverviewHovered(true)}
               onMouseLeave={() => setIsSubmarketOverviewHovered(false)}
             >
-              Submarket overview
+              <span className="gradient-underline">Market benchmarks</span>
               <Player
                 key={isSubmarketOverviewHovered ? "playing" : "paused"}
                 src="/sparkle2.json"

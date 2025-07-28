@@ -8,6 +8,8 @@ import { useAppContext } from "@/app/context/AppContext";
 import VtsAiFloatingCTA from "../_shared/vts-ai-floating-cta";
 import SupportFloatingCTA from "../_shared/support-floating-cta";
 import { usePathname } from "next/navigation";
+import { Pane } from "tweakpane";
+import { useEffect } from "react";
 
 export default function VtsLeaseLayout({
   children,
@@ -16,6 +18,7 @@ export default function VtsLeaseLayout({
 }>) {
   const pathname = usePathname();
   const { setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
+
   const leaseNavItems = [
     {
       sectionName: "",
