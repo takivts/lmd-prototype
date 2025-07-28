@@ -231,7 +231,7 @@ const VtsAiDefault = forwardRef<
                           className={`cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-300 ${
                             selectedCategory === category.value
                               ? "border-vts-purple-700 bg-vts-purple-700 text-white"
-                              : "hover:bg-vts-purple-200 hover:border-vts-purple-300 hover:text-vts-purple-700 border-gray-300 text-gray-700"
+                              : "hover:bg-vts-purple-200 hover:border-vts-purple-300 hover:text-vts-purple-700 border-vts-purple-300 text-vts-purple-700"
                           }`}
                           onClick={() => setSelectedCategory(category.value)}
                         >

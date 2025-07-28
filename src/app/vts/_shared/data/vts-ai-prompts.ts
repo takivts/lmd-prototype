@@ -314,10 +314,10 @@ export const vtsAiPromptsWithContext: VtsAiPrompt[] = [
 
 export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
   {
-    prompt: "How are rents trending across markets year over year?",
+    prompt: "What’s the average rent right now?",
     payload: {
       marketMetadata: {
-        category: "Market Demand",
+        category: "Deal Economics",
       },
       summary: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
@@ -334,8 +334,11 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "How are rents trending across markets this year?",
+    prompt: "How are rents trending year-over-year?",
     payload: {
+      marketMetadata: {
+        category: "Deal Economics",
+      },
       summary: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
@@ -351,10 +354,10 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "How are consessions trending across markets year over year?",
+    prompt: "How are concessions trending year over year?",
     payload: {
       marketMetadata: {
-        category: "Market Demand",
+        category: "Deal Economics",
       },
       summary: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
@@ -371,8 +374,233 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
     },
   },
   {
-    prompt: "What's the average rent right now across markets for small tenants? Large tenants?",
+    prompt: "How are gross rents trending year-over-year?",
     payload: {
+      marketMetadata: {
+        category: "Deal Economics",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "How has starting rent changed year-over-year?",
+    payload: {
+      marketMetadata: {
+        category: "Deal Economics",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "What is the typical TI allowance currently??",
+    payload: {
+      marketMetadata: {
+        category: "Deal Economics",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  // Market Demand
+  {
+    prompt: "Which submarkets are seeing the most tenant tour activity right now?",
+    payload: {
+      marketMetadata: {
+        category: "Market Demand",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "Which submarkets have the highest unique tenant tours this month?",
+    payload: {
+      marketMetadata: {
+        category: "Market Demand",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "Which submarkets are leading in active demand this month?",
+    payload: {
+      marketMetadata: {
+        category: "Market Demand",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "What tenants are driving demand?",
+    payload: {
+      marketMetadata: {
+        category: "Market Demand",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  // Strategic Planning
+  {
+    prompt: "Which markets are most attractive for investment based on demand trends?",
+    payload: {
+      marketMetadata: {
+        category: "Strategic Planning",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "Which markets are attractive for investment based on tour activity?",
+    payload: {
+      marketMetadata: {
+        category: "Market Demand",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "Which markets are best for investment per demand trends?",
+    payload: {
+      marketMetadata: {
+        category: "Strategic Planning",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "Which markets are attractive for investment via tour data?",
+    payload: {
+      marketMetadata: {
+        category: "Strategic Planning",
+      },
+      summary: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      keyInsights: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+        "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
+      ],
+      suggestedFollowUps: [
+        "How are rents trending across markets year over year?",
+        "How are rents trending across markets this year?",
+        "How are concessions trending across markets year over year?",
+      ],
+    },
+  },
+  {
+    prompt: "Which markets show strongest demand growth for investment?",
+    payload: {
+      marketMetadata: {
+        category: "Strategic Planning",
+      },
       summary: [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
