@@ -7,7 +7,7 @@ import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Pane } from "tweakpane";
 
 // Dynamically import Player with SSR disabled to avoid prerendering errors
