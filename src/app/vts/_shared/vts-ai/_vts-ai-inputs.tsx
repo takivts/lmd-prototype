@@ -49,6 +49,7 @@ export default function VtsAiInputs({
             instanceId="market-select"
             classNamePrefix="vts-ai-select"
             className="flex-1 rounded-lg text-gray-700"
+            isClearable
             options={marketOptions}
             placeholder="Select market"
             value={marketOptions.find((o) => o.value === market) || null}
@@ -63,6 +64,7 @@ export default function VtsAiInputs({
             classNamePrefix="vts-ai-select"
             className="flex-1 rounded-lg text-gray-700"
             options={availableSubmarkets}
+            isClearable
             placeholder="Select submarket"
             value={availableSubmarkets.find((o) => o.value === submarket) || null}
             onChange={(e) => onSubmarketChange(e?.value ?? "all")}
@@ -76,6 +78,7 @@ export default function VtsAiInputs({
             instanceId="industries-select"
             classNamePrefix="vts-ai-select"
             className="flex-1 rounded-lg text-gray-700"
+            isClearable
             options={industriesOptions}
             placeholder="Select industry"
             value={industriesOptions.find((o) => o.value === industry) || null}
@@ -88,6 +91,7 @@ export default function VtsAiInputs({
             instanceId="building-class-select"
             classNamePrefix="vts-ai-select"
             className="flex-1 rounded-lg text-gray-700"
+            isClearable
             options={buildingClassOptions}
             placeholder="Select class"
             value={buildingClassOptions.find((o) => o.value === buildingClass) || null}
@@ -100,6 +104,7 @@ export default function VtsAiInputs({
             instanceId="size-select"
             classNamePrefix="vts-ai-select"
             className="flex-1 rounded-lg text-gray-700"
+            isClearable
             options={sizeOptions}
             placeholder="Select size"
             value={sizeOptions.find((o) => o.value === size) || null}
