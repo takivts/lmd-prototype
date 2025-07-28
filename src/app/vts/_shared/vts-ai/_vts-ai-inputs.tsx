@@ -42,13 +42,13 @@ export default function VtsAiInputs({
 
   return (
     <div className={`flex flex-col gap-1 ${className}`}>
-      <div className="flex gap-2">
+      <div className="mb-2 flex gap-2">
         <label className="flex flex-1 flex-col text-xs">
           Market
           <Select
             instanceId="market-select"
             classNamePrefix="vts-ai-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700"
+            className="flex-1 rounded-lg text-gray-700"
             options={marketOptions}
             placeholder="Select market"
             value={marketOptions.find((o) => o.value === market) || null}
@@ -61,7 +61,7 @@ export default function VtsAiInputs({
           <Select
             instanceId="submarket-select"
             classNamePrefix="vts-ai-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700"
+            className="flex-1 rounded-lg text-gray-700"
             options={availableSubmarkets}
             placeholder="Select submarket"
             value={availableSubmarkets.find((o) => o.value === submarket) || null}
@@ -75,7 +75,7 @@ export default function VtsAiInputs({
           <Select
             instanceId="industries-select"
             classNamePrefix="vts-ai-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700"
+            className="flex-1 rounded-lg text-gray-700"
             options={industriesOptions}
             placeholder="Select industry"
             value={industriesOptions.find((o) => o.value === industry) || null}
@@ -87,7 +87,7 @@ export default function VtsAiInputs({
           <Select
             instanceId="building-class-select"
             classNamePrefix="vts-ai-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700"
+            className="flex-1 rounded-lg text-gray-700"
             options={buildingClassOptions}
             placeholder="Select class"
             value={buildingClassOptions.find((o) => o.value === buildingClass) || null}
@@ -99,7 +99,7 @@ export default function VtsAiInputs({
           <Select
             instanceId="size-select"
             classNamePrefix="vts-ai-select"
-            className="mb-2 flex-1 rounded-lg text-gray-700"
+            className="flex-1 rounded-lg text-gray-700"
             options={sizeOptions}
             placeholder="Select size"
             value={sizeOptions.find((o) => o.value === size) || null}

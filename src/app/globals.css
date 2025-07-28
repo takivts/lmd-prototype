@@ -133,6 +133,8 @@ body {
 }
 
 .vts-ai-select__control {
+  padding: 0 4px !important;
+  border-radius: 8px !important;
   box-shadow: none !important;
 }
 

@@ -43,12 +43,19 @@ const VtsAiDefault = forwardRef<
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("Deal Economics");
   const [isUpsell] = useState(true);
   const [market, setMarket] = useState<string>("all");
   const [submarket, setSubmarket] = useState<string>("all");
   const [industry, setIndustry] = useState<string>("all");
   const [buildingClass, setBuildingClass] = useState<string>("all");
   const [size, setSize] = useState<string>("all");
+
+  const categories = [
+    { label: "Deal economics", value: "Deal Economics" },
+    { label: "Market demand", value: "Market Demand" },
+    { label: "Strategic planning", value: "Strategic Planning" },
+  ];
 
   const initializeInputs = useCallback(() => {
     if (pathname === "/vts/lease/deals/profile") {
@@ -110,6 +117,7 @@ const VtsAiDefault = forwardRef<
     setIsTransitioning(false);
     setPrompts(pathname === "/vts/lease/deals/profile" ? vtsAiPromptsWithContext : vtsAiPromptsWithoutContext);
     initializeInputs();
+    setSelectedCategory("Deal Economics");
   };
 
   useImperativeHandle(ref, () => ({
@@ -129,7 +137,6 @@ const VtsAiDefault = forwardRef<
   const handlePromptClick = useCallback((prompt: VtsAiPrompt) => {
     setIsTransitioning(true);
     setSelectedPrompt(prompt);
-    setPrompts((prev) => prev.filter((p) => p.prompt !== prompt.prompt));
     setIsTransitioning(false);
   }, []);
 
@@ -141,7 +148,6 @@ const VtsAiDefault = forwardRef<
 
       if (matchedPrompt) {
         setSelectedPrompt(matchedPrompt);
-        setPrompts((prev) => prev.filter((p) => p.prompt !== matchedPrompt.prompt));
       }
     }
   }, [isOpen, vtsAiData, pathname, setVtsAiContentType]);
@@ -181,7 +187,7 @@ const VtsAiDefault = forwardRef<
           className={`vts-ai-gradient layered-shadow z-50 flex h-172 w-lg flex-col rounded-4xl p-4 text-gray-700 ${className}`}
         >
           <VtsAiHeader onReset={resetConversation} />
-          <div className="layered-shadow relative z-50 h-full w-full overflow-auto rounded-3xl bg-white text-sm">
+          <div className="layered-shadow relative z-50 h-full w-full overflow-auto rounded-[1.25rem] bg-white text-sm">
             <div className="flex h-full flex-col overflow-auto p-4">
               <motion.div
                 className="flex h-full flex-col gap-2"
@@ -190,7 +196,7 @@ const VtsAiDefault = forwardRef<
                 animate="visible"
               >
                 {!selectedPrompt && (
-                  <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-4 pb-4">
                     <div className="flex flex-col">
                       <p className="mb-2 text-left">Hi, I&apos;m Max.</p>
                       <p className="text-left">
@@ -199,7 +205,6 @@ const VtsAiDefault = forwardRef<
                       </p>
                     </div>
                     <VtsAiInputs
-                      className="mb-3"
                       market={market}
                       onMarketChange={(value) => {
                         setMarket(value);
@@ -219,22 +224,39 @@ const VtsAiDefault = forwardRef<
                       size={size}
                       onSizeChange={setSize}
                     />
+                    <motion.div variants={itemVariants} className="mt-2 flex justify-center gap-2">
+                      {categories.map((category) => (
+                        <span
+                          key={category.value}
+                          className={`cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-300 ${
+                            selectedCategory === category.value
+                              ? "border-vts-purple-700 bg-vts-purple-700 text-white"
+                              : "hover:bg-vts-purple-200 hover:border-vts-purple-300 hover:text-vts-purple-700 border-gray-300 text-gray-700"
+                          }`}
+                          onClick={() => setSelectedCategory(category.value)}
+                        >
+                          {category.label}
+                        </span>
+                      ))}
+                    </motion.div>
                     <motion.div
                       className={`mb-2 flex flex-col gap-2`}
                       variants={promptContainerVariants}
                       initial="hidden"
                       animate={isOpen ? "visible" : "hidden"}
                     >
-                      {prompts.map((prompt) => (
-                        <motion.div
-                          key={prompt.prompt}
-                          variants={itemVariants}
-                          className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-2xl border px-3 py-2 text-left transition-all duration-300`}
-                          onClick={() => handlePromptClick(prompt)}
-                        >
-                          {prompt.prompt}
-                        </motion.div>
-                      ))}
+                      {prompts
+                        .filter((p) => p.payload.marketMetadata?.category === selectedCategory)
+                        .map((prompt) => (
+                          <motion.div
+                            key={prompt.prompt}
+                            variants={itemVariants}
+                            className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-2xl border px-3 py-2 text-left transition-all duration-300`}
+                            onClick={() => handlePromptClick(prompt)}
+                          >
+                            {prompt.prompt}
+                          </motion.div>
+                        ))}
                     </motion.div>
                   </div>
                 )}
