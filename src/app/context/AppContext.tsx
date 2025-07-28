@@ -26,6 +26,8 @@ const AppContext = createContext<{
   setIsSidePanelOpen: (value: boolean) => void;
   vtsAiPersona: VtsAiPersona;
   setVtsAiPersona: (value: VtsAiPersona) => void;
+  isUpsell: boolean;
+  setIsUpsell: (value: boolean) => void;
 } | null>(null);
 
 export function AppContextProvider({ children }: { children: ReactNode }) {
@@ -34,6 +36,7 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
   const [vtsAiData, setVtsAiData] = useState<MarketAnalysisData | null>(null);
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [vtsAiPersona, setVtsAiPersona] = useState<VtsAiPersona>("Analyst");
+  const [isUpsell, setIsUpsell] = useState(false);
 
   const handleSetVtsAiContentType = (contentType: string, data?: MarketAnalysisData) => {
     setVtsAiContentType(contentType);
@@ -56,6 +59,8 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
         setIsSidePanelOpen,
         vtsAiPersona,
         setVtsAiPersona,
+        isUpsell,
+        setIsUpsell,
       }}
     >
       {children}

@@ -7,7 +7,8 @@ import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { Pane } from "tweakpane";
 
 // Dynamically import Player with SSR disabled to avoid prerendering errors
 const Player = dynamic(() => import("@lottiefiles/react-lottie-player").then((mod) => ({ default: mod.Player })), {
@@ -15,9 +16,46 @@ const Player = dynamic(() => import("@lottiefiles/react-lottie-player").then((mo
 });
 
 export default function DealProfilePage() {
-  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
+  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell } = useAppContext();
   const [isSubmarketOverviewHovered, setIsSubmarketOverviewHovered] = useState(false);
   const [isNewProposalHovered, setIsNewProposalHovered] = useState(false);
+  const paneContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const PARAMS = {
+      isUpsell: false,
+    };
+
+    if (!paneContainerRef.current) {
+      const container = document.createElement("div");
+      container.style.position = "fixed";
+      container.style.bottom = "20px";
+      container.style.left = "75px";
+      container.style.zIndex = "1000";
+      document.body.appendChild(container);
+      paneContainerRef.current = container;
+    }
+
+    const pane = new Pane({
+      container: paneContainerRef.current,
+    });
+
+    pane.addBinding(PARAMS, "isUpsell", {
+      view: "boolean",
+    });
+
+    pane.on("change", (e) => {
+      setIsUpsell(e.value as boolean);
+    });
+
+    return () => {
+      pane.dispose();
+      if (paneContainerRef.current) {
+        document.body.removeChild(paneContainerRef.current);
+        paneContainerRef.current = null;
+      }
+    };
+  }, []);
 
   const mainTabs = [
     { label: "Info" },

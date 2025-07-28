@@ -38,13 +38,12 @@ const VtsAiDefault = forwardRef<
   }
 >(({ className, isOpen }, ref) => {
   const pathname = usePathname();
-  const { vtsAiData, setVtsAiContentType } = useAppContext();
+  const { vtsAiData, setVtsAiContentType, isUpsell } = useAppContext();
   const [selectedPrompt, setSelectedPrompt] = useState<VtsAiPrompt | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [prompts, setPrompts] = useState<VtsAiPrompt[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("Deal Economics");
-  const [isUpsell] = useState(true);
   const [market, setMarket] = useState<string>("all");
   const [submarket, setSubmarket] = useState<string>("all");
   const [industry, setIndustry] = useState<string>("all");
