@@ -21,6 +21,7 @@ export default function DealsPage() {
     const pane = new Pane({
       title: "Prototype Controls",
       container: paneContainer,
+      expanded: false,
     });
 
     pane.addBinding(PARAMS, "isUpsell", {

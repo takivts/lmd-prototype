@@ -327,7 +327,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       suggestedFollowUps: [
         "How are rents trending year-over-year?",
         "Which markets are most attractive for investment based on demand trends?",
-        "What is the typical TI allowance currently??",
+        "What is the typical TI allowance currently?",
       ],
     },
   },
@@ -405,14 +405,14 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
         "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Donec sed odio dui.",
       ],
       suggestedFollowUps: [
-        "What is the typical TI allowance currently??",
+        "What is the typical TI allowance currently?",
         "Which markets are attractive for investment based on tour activity?",
         "How are rents trending year-over-year?",
       ],
     },
   },
   {
-    prompt: "What is the typical TI allowance currently??",
+    prompt: "What is the typical TI allowance currently?",
     payload: {
       marketMetadata: {
         category: "Deal Economics",
@@ -486,7 +486,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "What tenants are driving demand?",
-        "What is the typical TI allowance currently??",
+        "What is the typical TI allowance currently?",
         "Which markets show strongest demand growth for investment?",
       ],
     },
@@ -586,7 +586,7 @@ export const vtsAiPromptsWithoutContext: VtsAiPrompt[] = [
       ],
       suggestedFollowUps: [
         "Which markets show strongest demand growth for investment?",
-        "What is the typical TI allowance currently??",
+        "What is the typical TI allowance currently?",
         "Which submarkets are seeing the most tenant tour activity right now?",
       ],
     },
