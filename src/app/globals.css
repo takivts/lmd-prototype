@@ -59,9 +59,11 @@
 .vts-ai-gradient {
   background-image: radial-gradient(
     circle at top,
+    var(--color-vts-purple-600),
     var(--color-vts-purple-700),
     var(--color-vts-purple-800),
-    var(--color-vts-purple-900)
+    var(--color-vts-purple-900),
+    var(--color-black)
   );
   background-repeat: no-repeat;
   animation: banner-gradient 8s ease-in-out reverse infinite;
