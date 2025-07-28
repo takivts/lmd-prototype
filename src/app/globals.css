@@ -78,7 +78,7 @@
 @keyframes upsell-banner-gradient {
   0% {
     background-size: 100% 100%;
-    background-position: top left;
+    background-position: left 0;
     opacity: 0.9;
   }
   50% {
@@ -87,16 +87,16 @@
   }
   100% {
     background-size: 100% 100%;
-    background-position: bottom right;
+    background-position: right 0;
     opacity: 0.9;
   }
 }
 
 .vts-ai-upsell-gradient {
   background-image: radial-gradient(
-    circle at center -25%,
+    circle at center -40%,
     var(--color-vts-ai-light),
-    var(--color-vts-purple-900),
+    var(--color-vts-purple-800),
     var(--color-vts-ai-gray)
   );
   background-repeat: no-repeat;
@@ -104,7 +104,8 @@
 }
 
 .gradient-underline {
-  background-image: linear-gradient(to right, var(--color-pink-600), var(--color-vts-purple-700));
+  color: var(--color-vts-purple-700);
+  background-image: linear-gradient(to right, var(--color-vts-ai-light), var(--color-vts-purple-800));
   background-repeat: no-repeat;
   background-position: 100% 100%;
   background-size: 100% 3px;

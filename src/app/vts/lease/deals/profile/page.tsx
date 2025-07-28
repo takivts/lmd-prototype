@@ -116,7 +116,7 @@ export default function DealProfilePage() {
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Standardized tenant</span>
-            <span className="text-vts-purple-700 cursor-pointer">Alphabet</span>
+            <span className="gradient-underline cursor-pointer">Alphabet</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="gap-2 text-gray-500">Market</span>
