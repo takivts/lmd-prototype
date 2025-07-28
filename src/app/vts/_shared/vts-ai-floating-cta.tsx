@@ -59,15 +59,15 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         onClick={handleFloatingCTAClick}
       >
         <div
-          className={`from-vts-purple-900 via-vts-purple-800 animate-floating-cta-gradient pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-linear-to-t to-pink-800 blur ${
+          className={`from-vts-purple-900 via-vts-purple-800 animate-floating-cta-gradient to-vts-purple-600 pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-linear-to-t blur ${
             isVtsAiOpen ? "scale-75 opacity-100" : "scale-0 opacity-0"
           }`}
         />
         <div
           className={`layered-shadow absolute z-50 rounded-full transition-all duration-300 ease-in-out ${
             isVtsAiOpen
-              ? "via-vts-purple-800 from-vts-purple-900 size-12 bg-linear-to-t to-pink-800"
-              : "via-vts-purple-800 from-vts-purple-900 size-14 bg-linear-to-t to-pink-800 group-hover:size-15"
+              ? "via-vts-purple-800 from-vts-purple-900 to-vts-purple-600 size-12 bg-linear-to-t"
+              : "via-vts-purple-800 from-vts-purple-900 to-vts-purple-600 size-14 bg-linear-to-t group-hover:size-15"
           }`}
         />
         {!isVtsAiOpen && (
