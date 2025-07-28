@@ -125,9 +125,7 @@ const VtsAiDefault = forwardRef<
 
   useEffect(() => {
     if (!isOpen) {
-      setTimeout(() => {
-        setSelectedPrompt(null);
-      }, 250);
+      setSelectedPrompt(null);
       setIsLoading(false);
       setIsTransitioning(false);
     }
@@ -142,7 +140,6 @@ const VtsAiDefault = forwardRef<
   useEffect(() => {
     if (isOpen && vtsAiData) {
       const allPrompts = pathname === "/vts/lease/deals/profile" ? vtsAiPromptsWithContext : vtsAiPromptsWithoutContext;
-
       const matchedPrompt = allPrompts.find((p) => JSON.stringify(p.payload) === JSON.stringify(vtsAiData));
 
       if (matchedPrompt) {
@@ -165,7 +162,6 @@ const VtsAiDefault = forwardRef<
 
   const handleFollowUpClick = (followUp: string) => {
     const allPrompts = pathname === "/vts/lease/deals/profile" ? vtsAiPromptsWithContext : vtsAiPromptsWithoutContext;
-
     const prompt = allPrompts.find((p) => p.prompt === followUp);
 
     if (prompt) {
