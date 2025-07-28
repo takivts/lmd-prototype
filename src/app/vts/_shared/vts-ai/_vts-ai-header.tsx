@@ -30,7 +30,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
 
       <div className="relative flex flex-auto justify-center rounded-full border-2 border-white/25 bg-black/25 p-1 text-white">
         <div
-          className="absolute top-1 left-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-white/75 transition-transform duration-300 ease-in-out"
+          className="absolute top-1 left-1 h-[calc(100%-0.5rem)] w-[calc(50%-0.25rem)] rounded-full bg-white/80 transition-transform duration-300 ease-in-out"
           style={{
             transform: `translateX(${personas.indexOf(vtsAiPersona) * 100}%)`,
           }}
@@ -50,7 +50,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
 
       <div className="flex flex-auto justify-end gap-2">
         <span
-          className="hover:text-vts-purple-900 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 text-white transition-all duration-300 hover:bg-white/75"
+          className="hover:text-vts-purple-900 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 text-white transition-all duration-300 hover:bg-white/80"
           onClick={handleResetVtsAi}
         >
           <svg
