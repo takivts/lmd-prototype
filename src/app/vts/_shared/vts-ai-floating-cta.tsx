@@ -83,7 +83,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
                   duration: 0.3,
                   ease: "easeOut",
                 }}
-                className={`layered-shadow absolute top-2 right-18 w-fit cursor-pointer rounded-2xl border border-gray-300 bg-white px-3 py-2 whitespace-nowrap`}
+                className={`layered-shadow border-vts-purple-300 bg-vts-purple-100 absolute top-2 right-18 w-fit cursor-pointer rounded-2xl border px-3 py-2 whitespace-nowrap`}
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePromptClick();
