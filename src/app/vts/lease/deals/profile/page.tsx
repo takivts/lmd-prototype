@@ -19,25 +19,19 @@ export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell } = useAppContext();
   const [isSubmarketOverviewHovered, setIsSubmarketOverviewHovered] = useState(false);
   const [isNewProposalHovered, setIsNewProposalHovered] = useState(false);
-  const paneContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const paneContainer = document.createElement("div");
+    paneContainer.className = "fixed bottom-6 left-16 z-50";
+    document.body.appendChild(paneContainer);
+
     const PARAMS = {
       isUpsell: false,
     };
 
-    if (!paneContainerRef.current) {
-      const container = document.createElement("div");
-      container.style.position = "fixed";
-      container.style.bottom = "20px";
-      container.style.left = "75px";
-      container.style.zIndex = "1000";
-      document.body.appendChild(container);
-      paneContainerRef.current = container;
-    }
-
     const pane = new Pane({
-      container: paneContainerRef.current,
+      title: "Prototype Controls",
+      container: paneContainer,
     });
 
     pane.addBinding(PARAMS, "isUpsell", {
@@ -50,12 +44,11 @@ export default function DealProfilePage() {
 
     return () => {
       pane.dispose();
-      if (paneContainerRef.current) {
-        document.body.removeChild(paneContainerRef.current);
-        paneContainerRef.current = null;
+      if (paneContainer.parentNode) {
+        paneContainer.parentNode.removeChild(paneContainer);
       }
     };
-  }, []);
+  }, [setIsUpsell]);
 
   const mainTabs = [
     { label: "Info" },
