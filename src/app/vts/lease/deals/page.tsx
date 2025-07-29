@@ -1,44 +1,39 @@
 "use client";
 
-import { useEffect } from "react";
-import { Pane } from "tweakpane";
 import { dealData } from "./_data";
 import DealsTable from "./deals-table";
-import { useAppContext } from "@/app/context/AppContext";
 
 export default function DealsPage() {
-  const { setIsUpsell } = useAppContext();
+  // useEffect(() => {
+  //   const paneContainer = document.createElement("div");
+  //   paneContainer.className = "fixed bottom-6 left-16 z-50";
+  //   document.body.appendChild(paneContainer);
 
-  useEffect(() => {
-    const paneContainer = document.createElement("div");
-    paneContainer.className = "fixed bottom-6 left-16 z-50";
-    document.body.appendChild(paneContainer);
+  //   const PARAMS = {
+  //     isUpsell: false,
+  //   };
 
-    const PARAMS = {
-      isUpsell: false,
-    };
+  //   const pane = new Pane({
+  //     title: "Prototype Controls",
+  //     container: paneContainer,
+  //     expanded: false,
+  //   });
 
-    const pane = new Pane({
-      title: "Prototype Controls",
-      container: paneContainer,
-      expanded: false,
-    });
+  //   pane.addBinding(PARAMS, "isUpsell", {
+  //     view: "boolean",
+  //   });
 
-    pane.addBinding(PARAMS, "isUpsell", {
-      view: "boolean",
-    });
+  //   pane.on("change", (e) => {
+  //     setIsUpsell(e.value as boolean);
+  //   });
 
-    pane.on("change", (e) => {
-      setIsUpsell(e.value as boolean);
-    });
-
-    return () => {
-      pane.dispose();
-      if (paneContainer.parentNode) {
-        paneContainer.parentNode.removeChild(paneContainer);
-      }
-    };
-  }, [setIsUpsell]);
+  //   return () => {
+  //     pane.dispose();
+  //     if (paneContainer.parentNode) {
+  //       paneContainer.parentNode.removeChild(paneContainer);
+  //     }
+  //   };
+  // }, [setIsUpsell]);
 
   return (
     <div className="flex flex-col gap-4 overflow-hidden p-8">
