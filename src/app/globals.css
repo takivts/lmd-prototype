@@ -65,15 +65,14 @@
 
 .vts-ai-gradient {
   background-image: radial-gradient(
-    circle at center -10%,
-    var(--color-vts-ai-light) 5%,
-    var(--color-vts-ai-medium) 20%,
-    var(--color-vts-purple-800),
-    var(--color-vts-purple-900),
-    var(--color-vts-ai-gray)
+    circle at center -15%,
+    var(--color-vts-ai-light) 2%,
+    var(--color-vts-ai-medium) 25%,
+    var(--color-vts-ai-dark) 40%,
+    var(--color-vts-ai-gray) 100%
   );
   background-repeat: no-repeat;
-  animation: window-gradient 15s ease-in-out reverse infinite;
+  animation: window-gradient 12s ease-in-out reverse infinite;
 }
 
 @keyframes upsell-banner-gradient {

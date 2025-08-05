@@ -6,18 +6,11 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useState } from "react";
-
-// Dynamically import Player with SSR disabled to avoid prerendering errors
-const Player = dynamic(() => import("@lottiefiles/react-lottie-player").then((mod) => ({ default: mod.Player })), {
-  ssr: false,
-});
+import { useState, useRef } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
-  const [isSubmarketOverviewHovered, setIsSubmarketOverviewHovered] = useState(false);
-  const [isNewProposalHovered, setIsNewProposalHovered] = useState(false);
 
   // useEffect(() => {
   //   const paneContainer = document.createElement("div");
@@ -69,6 +62,9 @@ export default function DealProfilePage() {
       }, 0);
     }
   };
+
+  const dotLottieRef = useRef<any>(null);
+  const newProposalRef = useRef<any>(null);
 
   return (
     <div className="flex h-full flex-col">
@@ -155,15 +151,16 @@ export default function DealProfilePage() {
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm"
               onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
-              onMouseEnter={() => setIsSubmarketOverviewHovered(true)}
-              onMouseLeave={() => setIsSubmarketOverviewHovered(false)}
+              onMouseEnter={() => dotLottieRef.current?.play()}
+              onMouseLeave={() => dotLottieRef.current?.stop()}
             >
               <span className="gradient-underline">Market benchmarks</span>
-              <Player
-                key={isSubmarketOverviewHovered ? "playing" : "paused"}
+              <DotLottieReact
                 src="/sparkle2.json"
-                autoplay={isSubmarketOverviewHovered}
-                keepLastFrame={true}
+                loop={false}
+                dotLottieRefCallback={(dotLottie) => {
+                  dotLottieRef.current = dotLottie;
+                }}
                 style={{ height: "20px", width: "20px" }}
               />
             </span>
@@ -205,15 +202,15 @@ export default function DealProfilePage() {
           <div className="flex w-full justify-end gap-2 px-4">
             <span
               className="text-vts-purple-700 hover:bg-vts-purple-100 hover:border-vts-purple-300 border-vts-purple-300 flex cursor-pointer items-center gap-1 rounded-lg border px-2 py-1.5 text-sm"
-              onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
-              onMouseEnter={() => setIsNewProposalHovered(true)}
-              onMouseLeave={() => setIsNewProposalHovered(false)}
+              onMouseEnter={() => newProposalRef.current?.play()}
+              onMouseLeave={() => newProposalRef.current?.stop()}
             >
-              <Player
-                key={isNewProposalHovered ? "playing" : "paused"}
+              <DotLottieReact
                 src="/sparkle2.json"
-                autoplay={isNewProposalHovered}
-                keepLastFrame={true}
+                loop={false}
+                dotLottieRefCallback={(dotLottie) => {
+                  newProposalRef.current = dotLottie;
+                }}
                 style={{ height: "20px", width: "20px" }}
               />
               New proposal
