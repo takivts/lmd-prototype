@@ -225,8 +225,8 @@ const VtsAiDefault = forwardRef<
                           key={category.value}
                           className={`cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-200 ${
                             selectedCategory === category.value
-                              ? "bg-vts-ai-dark/85 hover:bg-vts-ai-dark text-white"
-                              : "text-vts-ai-dark hover:bg-vts-ai-dark/10"
+                              ? "bg-vts-purple-600 hover:bg-vts-purple-700 text-white"
+                              : "text-vts-purple-700 hover:bg-vts-purple-200"
                           }`}
                           onClick={() => setSelectedCategory(category.value)}
                         >
@@ -246,7 +246,7 @@ const VtsAiDefault = forwardRef<
                           <motion.div
                             key={prompt.prompt}
                             variants={itemVariants}
-                            className={`bg-vts-ai-dark/10 text-vts-purple-700 border-vts-ai-dark/20 hover:bg-vts-ai-dark/20 cursor-pointer rounded-2xl border px-3 py-2 text-left transition-all duration-200`}
+                            className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer rounded-2xl border px-3 py-2 text-left transition-all duration-200`}
                             onClick={() => handlePromptClick(prompt)}
                           >
                             {prompt.prompt}
