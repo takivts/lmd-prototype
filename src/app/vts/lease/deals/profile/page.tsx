@@ -6,12 +6,14 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 // import { Pane } from "tweakpane";
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
+  const [marketBenchmarkSegment, setMarketBenchmarkSegment] = useState<[number, number]>([10, 30]);
+  const [newProposalSegment, setNewProposalSegment] = useState<[number, number]>([10, 30]);
 
   // useEffect(() => {
   //   const paneContainer = document.createElement("div");
@@ -66,6 +68,26 @@ export default function DealProfilePage() {
 
   const dotLottieRef = useRef<any>(null);
   const newProposalRef = useRef<any>(null);
+
+  const handleMarketBenchmarkMouseEnter = () => {
+    setMarketBenchmarkSegment([0, 30]);
+    dotLottieRef.current?.play();
+  };
+
+  const handleMarketBenchmarkMouseLeave = () => {
+    dotLottieRef.current?.stop();
+    setMarketBenchmarkSegment([10, 30]);
+  };
+
+  const handleNewProposalMouseEnter = () => {
+    setNewProposalSegment([0, 30]);
+    newProposalRef.current?.play();
+  };
+
+  const handleNewProposalMouseLeave = () => {
+    newProposalRef.current?.stop();
+    setNewProposalSegment([10, 30]);
+  };
 
   return (
     <div className="flex h-full flex-col">
@@ -152,13 +174,15 @@ export default function DealProfilePage() {
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm"
               onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
-              onMouseEnter={() => dotLottieRef.current?.play()}
-              onMouseLeave={() => dotLottieRef.current?.stop()}
+              onMouseEnter={handleMarketBenchmarkMouseEnter}
+              onMouseLeave={handleMarketBenchmarkMouseLeave}
             >
-              <span className="gradient-underline">Market benchmarks</span>
+              <span className="">Market benchmarks</span>
               <DotLottieReact
                 src="/sparkle2.json"
+                segment={marketBenchmarkSegment}
                 loop={false}
+                autoplay={true}
                 dotLottieRefCallback={(dotLottie) => {
                   dotLottieRef.current = dotLottie;
                 }}
@@ -203,12 +227,14 @@ export default function DealProfilePage() {
           <div className="flex w-full justify-end gap-2 px-4">
             <span
               className="text-vts-purple-700 hover:bg-vts-purple-100 hover:border-vts-purple-300 border-vts-purple-300 flex cursor-pointer items-center gap-1 rounded-lg border px-2 py-1.5 text-sm"
-              onMouseEnter={() => newProposalRef.current?.play()}
-              onMouseLeave={() => newProposalRef.current?.stop()}
+              onMouseEnter={handleNewProposalMouseEnter}
+              onMouseLeave={handleNewProposalMouseLeave}
             >
               <DotLottieReact
                 src="/sparkle2.json"
+                segment={newProposalSegment}
                 loop={false}
+                autoplay={true}
                 dotLottieRefCallback={(dotLottie) => {
                   newProposalRef.current = dotLottie;
                 }}
