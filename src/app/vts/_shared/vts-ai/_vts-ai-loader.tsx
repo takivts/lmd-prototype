@@ -27,7 +27,7 @@ export default function VtsAiLoader({ className = "" }: VtsAiLoaderProps) {
           strokeWidth="5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-vts-purple-800"
+          className="text-vts-purple-700"
         ></path>
       </svg>
     </div>

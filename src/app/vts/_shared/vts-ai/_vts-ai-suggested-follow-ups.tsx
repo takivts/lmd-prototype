@@ -18,7 +18,7 @@ export default function VtsAiSuggestedFollowUps({
         {data.map((followUp, index) => (
           <div
             key={index}
-            className="bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer rounded-2xl border px-3 py-2 text-left duration-1000 ease-in-out"
+            className="bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 cursor-pointer rounded-2xl border px-3 py-2 text-left duration-200 ease-in-out"
             onClick={() => onFollowUpClick(followUp)}
           >
             {followUp}

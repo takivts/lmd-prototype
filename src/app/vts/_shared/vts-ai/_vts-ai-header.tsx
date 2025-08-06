@@ -40,7 +40,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
             key={persona}
             onClick={() => setVtsAiPersona(persona)}
             className={`relative w-1/2 rounded-full px-1 py-1 text-sm duration-200 ${
-              vtsAiPersona === persona ? "text-vts-purple-900" : "cursor-pointer text-white/50 hover:text-white"
+              vtsAiPersona === persona ? "text-vts-purple-700" : "cursor-pointer text-white/50 hover:text-white"
             }`}
           >
             {persona}
@@ -50,7 +50,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
 
       <div className="flex flex-auto justify-end gap-2">
         <span
-          className="hover:text-vts-purple-900 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 text-white transition-all duration-200 hover:bg-white/80"
+          className="hover:text-vts-purple-700 flex cursor-pointer justify-end gap-1 rounded-full px-3 py-1 text-white transition-all duration-200 hover:bg-white/80"
           onClick={handleResetVtsAi}
         >
           <svg
