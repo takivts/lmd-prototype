@@ -3,6 +3,9 @@ import VtsAiTenantProfile from "./vts-ai/vts-ai-tenant-profile";
 import { usePromptCycle } from "./hooks/usePromptCycle";
 import { useAppContext } from "../../context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import vtsAiMorph from "../../../../public/vts-ai-morph.json";
+import { useRef } from "react";
 
 const promptVariants = {
   hidden: {
@@ -24,6 +27,7 @@ const promptVariants = {
 
 export default function VtsAiFloatingCTA({ className }: { className?: string }) {
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } = useAppContext();
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
 
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
@@ -36,6 +40,15 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
   const handleFloatingCTAClick = () => {
     setVtsAiContentType("default");
     setIsVtsAiOpen(!isVtsAiOpen);
+    lottieRef.current?.setSpeed(3);
+    if (!isVtsAiOpen) {
+      console.log(lottieRef.current);
+      lottieRef.current?.playSegments([15, 30], true);
+    } else {
+      console.log(lottieRef.current);
+      lottieRef.current?.setDirection(-1);
+      lottieRef.current?.playSegments([30, 15], true);
+    }
   };
 
   const { currentPrompt } = usePromptCycle({
@@ -57,6 +70,19 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
       <div
         className={`group fixed right-8 bottom-8 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full ${className}`}
         onClick={handleFloatingCTAClick}
+        onMouseEnter={() => {
+          if (!isVtsAiOpen) {
+            console.log(lottieRef.current);
+            lottieRef.current?.setSpeed(3);
+            lottieRef.current?.playSegments([0, 15], true);
+          }
+        }}
+        onMouseLeave={() => {
+          if (!isVtsAiOpen) {
+            lottieRef.current?.setSpeed(3);
+            lottieRef.current?.playSegments([15, 0], true);
+          }
+        }}
       >
         <div
           className={`from-vts-ai-dark via-vts-ai-dark animate-floating-cta-gradient to-vts-ai-light pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-linear-to-t blur ${
@@ -96,32 +122,13 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
             )}
           </AnimatePresence>
         )}
-        {isVtsAiOpen ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="z-50 size-6 text-white"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-          </svg>
-        ) : (
-          <div className="z-50 flex flex-col items-center gap-0 text-[10px] font-bold text-white select-none">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M13.3186 8.44355L10.0082 6.24573L10 6.25098L6.68731 8.44939L4.23807 6.83031L10 3.00524L10.0082 3L15.7684 6.82389L13.3186 8.44355Z"
-                fill="white"
-              />
-              <path
-                d="M0 6.97529L9.99826 13.2394L10 13.2383L20 6.97296V11.1518L10 17.4165L9.99826 17.4177L0 11.1535V6.97529Z"
-                fill="white"
-              />
-            </svg>
-            VTS AI
-          </div>
-        )}
+        <Lottie
+          lottieRef={lottieRef}
+          animationData={vtsAiMorph}
+          autoplay={false}
+          loop={false}
+          className="z-50 size-8"
+        />
       </div>
       {FormatVtsAiContent()}
     </>
