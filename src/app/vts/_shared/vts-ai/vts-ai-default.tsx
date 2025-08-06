@@ -263,33 +263,33 @@ const VtsAiDefault = forwardRef<
                         <VtsAiUpsell />
                       </motion.div>
                     )}
-                    <div className="flex justify-between">
-                      <div className="flex flex-col">
-                        <span className="text-xs font-bold text-gray-400">Market</span>
-                        <span className="text-gray-700">{market}</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs font-bold text-gray-400">Submarket</span>
-                        <span className="text-gray-700">{submarket}</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs font-bold text-gray-400">Industry</span>
-                        <span className="text-gray-700">{industry}</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs font-bold text-gray-400">Building Class</span>
-                        <span className="text-gray-700">{buildingClass}</span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-xs font-bold text-gray-400">Size</span>
-                        <span className="text-gray-700">{size}</span>
-                      </div>
-                    </div>
                     <motion.div
                       className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-2xl border border-gray-200 px-3 py-2 text-left`}
                       variants={itemVariants}
                     >
                       {selectedPrompt.prompt}
+                    </motion.div>
+                    <motion.div className="mb-2 flex gap-4" variants={itemVariants}>
+                      <div className="flex grow flex-col overflow-hidden">
+                        <span className="text-xs leading-none text-gray-400">Market</span>
+                        <span className="truncate text-gray-700">{market}</span>
+                      </div>
+                      <div className="flex grow flex-col overflow-hidden">
+                        <span className="text-xs leading-none text-gray-400">Submarket</span>
+                        <span className="truncate text-gray-700">{submarket}</span>
+                      </div>
+                      <div className="flex grow flex-col overflow-hidden">
+                        <span className="text-xs leading-none text-gray-400">Industry</span>
+                        <span className="truncate text-gray-700">{industry}</span>
+                      </div>
+                      <div className="flex grow flex-col overflow-hidden">
+                        <span className="text-xs leading-none text-gray-400">Building Class</span>
+                        <span className="truncate text-gray-700">{buildingClass}</span>
+                      </div>
+                      <div className="flex grow flex-col overflow-hidden">
+                        <span className="text-xs leading-none text-gray-400">Size</span>
+                        <span className="truncate text-gray-700">{size}</span>
+                      </div>
                     </motion.div>
                   </>
                 )}
