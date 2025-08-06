@@ -223,10 +223,10 @@ const VtsAiDefault = forwardRef<
                       {categories.map((category) => (
                         <span
                           key={category.value}
-                          className={`cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-300 ${
+                          className={`cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-200 ${
                             selectedCategory === category.value
-                              ? "border-vts-purple-700 bg-vts-purple-700 text-white"
-                              : "hover:bg-vts-purple-200 hover:border-vts-purple-300 hover:text-vts-purple-700 border-vts-purple-300 text-vts-purple-700"
+                              ? "bg-vts-ai-dark/85 hover:bg-vts-ai-dark text-white"
+                              : "text-vts-ai-dark hover:bg-vts-ai-dark/10"
                           }`}
                           onClick={() => setSelectedCategory(category.value)}
                         >
@@ -246,7 +246,7 @@ const VtsAiDefault = forwardRef<
                           <motion.div
                             key={prompt.prompt}
                             variants={itemVariants}
-                            className={`bg-vts-purple-100 text-vts-purple-700 border-vts-purple-300 hover:bg-vts-purple-200 hover:border-vts-purple-400 cursor-pointer rounded-2xl border px-3 py-2 text-left transition-all duration-300`}
+                            className={`bg-vts-ai-dark/10 text-vts-purple-700 border-vts-ai-dark/20 hover:bg-vts-ai-dark/20 cursor-pointer rounded-2xl border px-3 py-2 text-left transition-all duration-200`}
                             onClick={() => handlePromptClick(prompt)}
                           >
                             {prompt.prompt}

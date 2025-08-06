@@ -1,18 +1,10 @@
 import Image from "next/image";
 
-export default function VtsAiTenantProfile({
-  className,
-  isOpen,
-}: {
-  className?: string;
-  isOpen: boolean;
-}) {
+export default function VtsAiTenantProfile({ className, isOpen }: { className?: string; isOpen: boolean }) {
   return (
     <div
-      className={`w-lg rounded-lg text-gray-700 shadow-lg transition-all duration-300 select-none ${className} ${
-        isOpen
-          ? "opacity-100 select-text"
-          : "pointer-events-none opacity-0 select-none"
+      className={`w-lg rounded-lg text-gray-700 shadow-lg transition-all duration-200 select-none ${className} ${
+        isOpen ? "opacity-100 select-text" : "pointer-events-none opacity-0 select-none"
       }`}
     >
       <div className="relative z-50 rounded-lg border border-gray-300 bg-white text-sm">
@@ -27,11 +19,7 @@ export default function VtsAiTenantProfile({
           <div className="flex flex-col">
             <h5 className="text-lg">Starbucks</h5>
             <span className="text-vts-primary">
-              <a
-                href="https://www.starbucks.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.starbucks.com/" target="_blank" rel="noopener noreferrer">
                 www.starbucks.com
               </a>
             </span>
@@ -57,19 +45,13 @@ export default function VtsAiTenantProfile({
         </div>
 
         <div className="flex h-156 flex-col overflow-auto rounded-br-lg rounded-bl-lg p-4">
-          <h4 className="mb-2 text-base font-bold">
-            Starbucks – Global Tenant Profile
-          </h4>
+          <h4 className="mb-2 text-base font-bold">Starbucks – Global Tenant Profile</h4>
 
           <div className="mb-4">
             <h5 className="mb-1 font-bold">Ticker / Sector / Rating</h5>
-            <p className="mb-4">
-              Starbucks Corp. (Nasdaq: SBUX) – Global specialty-coffee
-              retailer/QSR
-            </p>
+            <p className="mb-4">Starbucks Corp. (Nasdaq: SBUX) – Global specialty-coffee retailer/QSR</p>
             <p className="mb-2">
-              Investment-grade credit: S&P BBB+ (negative outlook, May 2025) |
-              Moody&apos;s Baa1 (negative)
+              Investment-grade credit: S&P BBB+ (negative outlook, May 2025) | Moody&apos;s Baa1 (negative)
             </p>
             <div className="mb-2 text-xs text-gray-600">
               <a
@@ -96,22 +78,10 @@ export default function VtsAiTenantProfile({
           <div className="mb-4">
             <h5 className="mb-1 font-bold">Scale & Footprint</h5>
             <ul className="mb-2 list-disc pl-5">
-              <li>
-                40,789 cafés worldwide at Q2 FY-2025; 53% company-operated / 47%
-                licensed.
-              </li>
-              <li>
-                USA + China remain the anchor markets (≈61% of all units; 16,352
-                U.S. / 6,806 China at FY-2023).
-              </li>
-              <li>
-                Canada: ~1,400 locations across every province – useful for
-                domestic rent comps.
-              </li>
-              <li>
-                FY-2024 consolidated revenue $36.2 bn (+1% y/y); global comps
-                –2%.
-              </li>
+              <li>40,789 cafés worldwide at Q2 FY-2025; 53% company-operated / 47% licensed.</li>
+              <li>USA + China remain the anchor markets (≈61% of all units; 16,352 U.S. / 6,806 China at FY-2023).</li>
+              <li>Canada: ~1,400 locations across every province – useful for domestic rent comps.</li>
+              <li>FY-2024 consolidated revenue $36.2 bn (+1% y/y); global comps –2%.</li>
             </ul>
             <div className="mb-2 text-xs text-gray-600">
               <a
@@ -139,14 +109,10 @@ export default function VtsAiTenantProfile({
             <h5 className="mb-1 font-bold">Real-Estate Strategy</h5>
             <ul className="mb-2 list-disc pl-5">
               <li>
-                2025 plan: slow new-build pipeline to redirect cap-ex toward
-                remodels / throughput upgrades (&quot;Back to Starbucks&quot;
-                turnaround).
+                2025 plan: slow new-build pipeline to redirect cap-ex toward remodels / throughput upgrades (&quot;Back
+                to Starbucks&quot; turnaround).
               </li>
-              <li>
-                Exploring minority stake sale of China business while still
-                targeting 9,000 CN cafés by 2025.
-              </li>
+              <li>Exploring minority stake sale of China business while still targeting 9,000 CN cafés by 2025.</li>
             </ul>
             <div className="mb-2 text-xs text-gray-600">
               <a
@@ -193,23 +159,16 @@ export default function VtsAiTenantProfile({
           <div className="mb-4">
             <h5 className="mb-1 font-bold">Lease & Credit Characteristics</h5>
             <ul className="mb-2 list-disc pl-5">
+              <li>Weighted-average remaining lease term: 8.5 years on operating leases (10-K).</li>
               <li>
-                Weighted-average remaining lease term: 8.5 years on operating
-                leases (10-K).
+                Corporate guaranty on company-operated sites; licensed‐store leases typically backed by local franchisee
+                covenant.
               </li>
               <li>
-                Corporate guaranty on company-operated sites; licensed‐store
-                leases typically backed by local franchisee covenant.
+                Rent structure: vanilla NNN or NN with base + 5-7% percentage rent kicker above breakpoint; CAM,
+                real-estate tax pass-throughs standard.
               </li>
-              <li>
-                Rent structure: vanilla NNN or NN with base + 5-7% percentage
-                rent kicker above breakpoint; CAM, real-estate tax pass-throughs
-                standard.
-              </li>
-              <li>
-                Occupancy expenses recorded straight-line; FY-2024 cash paid on
-                operating leases ≈ $1.66 bn.
-              </li>
+              <li>Occupancy expenses recorded straight-line; FY-2024 cash paid on operating leases ≈ $1.66 bn.</li>
             </ul>
             <div className="mb-2 text-xs text-gray-600">
               <a
@@ -224,20 +183,14 @@ export default function VtsAiTenantProfile({
           </div>
 
           <div className="mb-4">
-            <h5 className="mb-1 font-bold">
-              Financial Health Snapshot (FY-2024)
-            </h5>
+            <h5 className="mb-1 font-bold">Financial Health Snapshot (FY-2024)</h5>
             <ul className="mb-4 list-disc pl-5">
               <li>Revenue $36.2 bn | Operating margin 18.7% (–450 bps y/y)</li>
               <li>Net income $3.0 bn | EPS $3.31 (–8% y/y)</li>
               <li>
-                Liquidity: $3.8 bn cash & equivalents; $15 bn total debt;
-                revolving CP program maintained. (10-K, 2024).
+                Liquidity: $3.8 bn cash & equivalents; $15 bn total debt; revolving CP program maintained. (10-K, 2024).
               </li>
-              <li>
-                Negative outlooks reflect traffic softness, higher labor costs
-                and elevated cap-ex.
-              </li>
+              <li>Negative outlooks reflect traffic softness, higher labor costs and elevated cap-ex.</li>
             </ul>
             <div className="mb-2 text-xs text-gray-600">
               <a

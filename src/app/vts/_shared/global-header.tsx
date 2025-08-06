@@ -124,7 +124,7 @@ export default function GlobalHeader() {
           JD
         </button>
       </div>
-      <span className="absolute top-4 right-4 z-10 flex size-12 cursor-pointer items-center justify-center rounded-full bg-yellow-400 text-2xl font-bold text-black transition-all duration-300 hover:bg-yellow-300">
+      <span className="absolute top-4 right-4 z-10 flex size-12 cursor-pointer items-center justify-center rounded-full bg-yellow-400 text-2xl font-bold text-black transition-all duration-200 hover:bg-yellow-300">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

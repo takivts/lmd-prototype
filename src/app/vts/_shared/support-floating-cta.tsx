@@ -2,15 +2,11 @@
 
 import { useAppContext } from "@/app/context/AppContext";
 
-export default function SupportFloatingCTA({
-  className,
-}: {
-  className?: string;
-}) {
+export default function SupportFloatingCTA({ className }: { className?: string }) {
   const { isVtsAiOpen } = useAppContext();
   return (
     <div
-      className={`fixed right-10 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-teal-700 shadow-md backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-teal-800 hover:shadow-lg ${className} ${
+      className={`fixed right-10 z-40 flex size-10 cursor-pointer items-center justify-center rounded-full bg-teal-700 shadow-md backdrop-blur-sm transition-all duration-200 ease-in-out hover:bg-teal-800 hover:shadow-lg ${className} ${
         isVtsAiOpen ? "bottom-24 opacity-100" : "bottom-10 opacity-0"
       }`}
     >

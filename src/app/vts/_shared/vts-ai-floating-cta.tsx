@@ -64,7 +64,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
           }`}
         />
         <div
-          className={`layered-shadow absolute z-50 rounded-full transition-all duration-300 ease-in-out ${
+          className={`layered-shadow absolute z-50 rounded-full transition-all duration-200 ease-in-out ${
             isVtsAiOpen
               ? "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-12 bg-linear-to-t"
               : "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-14 bg-linear-to-t group-hover:size-15"

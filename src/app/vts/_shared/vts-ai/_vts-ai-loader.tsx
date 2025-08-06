@@ -5,7 +5,7 @@ interface VtsAiLoaderProps {
 
 export default function VtsAiLoader({ className = "" }: VtsAiLoaderProps) {
   return (
-    <div className={`flex items-center justify-center transition-all duration-300 ease-in-out ${className}`}>
+    <div className={`flex items-center justify-center transition-all duration-200 ease-in-out ${className}`}>
       <svg
         className={`text-vts-purple-300 animate-spin`}
         viewBox="0 0 64 64"

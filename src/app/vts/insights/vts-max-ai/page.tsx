@@ -42,18 +42,14 @@ const VTSAI = () => {
 
     return (
       <>
-        <h3 className="mb-1 font-semibold">
-          {`${market.name}: ${marketTooltips[randomNum].header}`}
-        </h3>
+        <h3 className="mb-1 font-semibold">{`${market.name}: ${marketTooltips[randomNum].header}`}</h3>
         <p className="mb-1">{marketTooltips[randomNum].body}</p>
       </>
     );
   };
 
   const ExploreMarkets = () => {
-    const categories = Object.keys(
-      exploreMarkets,
-    ) as (keyof typeof exploreMarkets)[];
+    const categories = Object.keys(exploreMarkets) as (keyof typeof exploreMarkets)[];
     const currentCategory = categories[exploreMarketIndex];
     const currentQuestions = exploreMarkets[currentCategory];
 
@@ -76,10 +72,7 @@ const VTSAI = () => {
         </div>
         <div className="mt-4 flex w-full flex-col">
           {currentQuestions.map((question: string, index: number) => (
-            <span
-              key={index}
-              className="mb-2 cursor-pointer rounded-full border border-gray-300 px-3 py-1 text-sm"
-            >
+            <span key={index} className="mb-2 cursor-pointer rounded-full border border-gray-300 px-3 py-1 text-sm">
               {question}
             </span>
           ))}
@@ -121,13 +114,7 @@ const VTSAI = () => {
         </div>
         <div className="m-auto flex items-center">
           <div className="relative">
-            <svg
-              width="640"
-              height="400"
-              viewBox="0 0 640 400"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="640" height="400" viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_6282_40145)">
                 <path
                   d="M616.468 116.847L617.79 118.168L614.749 119.092L615.674 117.243L616.468 116.847ZM608.007 96.6362L608.668 99.0139L609.593 99.8065L610.518 99.0139L611.047 100.203L608.932 101.656L609.329 102.316L608.271 104.034L608.007 105.751H610.915L613.295 107.732L613.691 109.846L614.617 109.581L615.674 111.563L616.864 112.091L618.847 112.223L620.83 110.638L621.888 109.053L622.813 111.695L617.525 113.941L616.997 115.129L615.41 116.318L614.617 113.28L613.691 114.733L612.369 115.658V116.715L611.312 117.639L610.386 117.771L609.593 115.658H608.932L608.271 115.262L606.817 114.337L605.362 111.167L600.868 112.488L599.546 112.752L590.159 114.997L582.095 116.715L581.698 116.45L581.83 105.883L590.688 103.769L603.379 100.863L606.817 96.9004L608.007 96.6362Z"
@@ -482,13 +469,9 @@ const VTSAI = () => {
             {markets.map((market, index) => {
               const isActive = activePingIndex === index;
               return (
-                <span
-                  key={index}
-                  className="absolute flex size-3"
-                  style={{ top: market.top, left: market.left }}
-                >
+                <span key={index} className="absolute flex size-3" style={{ top: market.top, left: market.left }}>
                   <span
-                    className={`bg-vts-purple-700 relative inline-flex size-3 cursor-pointer rounded-full transition-opacity duration-300 ${
+                    className={`bg-vts-purple-700 relative inline-flex size-3 cursor-pointer rounded-full transition-opacity duration-200 ${
                       isActive ? "opacity-100" : "opacity-50"
                     }`}
                   />
@@ -498,7 +481,7 @@ const VTSAI = () => {
                   )}
 
                   <div
-                    className={`absolute top-3 z-50 w-92 rounded-lg border border-gray-300 bg-white p-2 text-xs text-gray-700 shadow transition-opacity duration-300 ${isActive ? "opacity-100" : "pointer-events-none opacity-0"} ${market.direction === "right" ? "left-3" : "right-3"} `}
+                    className={`absolute top-3 z-50 w-92 rounded-lg border border-gray-300 bg-white p-2 text-xs text-gray-700 shadow transition-opacity duration-200 ${isActive ? "opacity-100" : "pointer-events-none opacity-0"} ${market.direction === "right" ? "left-3" : "right-3"} `}
                   >
                     <MarketTooltip market={market} />
                     <a

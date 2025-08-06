@@ -111,7 +111,7 @@ export default function DealProfilePage() {
             <h1 className="truncate text-4xl font-bold">Google</h1>
           </div>
           <div className="text-vts-purple-700 flex items-center gap-4 pr-8 text-sm">
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-300">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -128,7 +128,7 @@ export default function DealProfilePage() {
               </svg>
               Edit Deal
             </div>
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-300">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -145,7 +145,7 @@ export default function DealProfilePage() {
               </svg>
               Export
             </div>
-            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-1 py-1 transition-all duration-300">
+            <span className="hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 truncate rounded-lg px-1 py-1 transition-all duration-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -199,7 +199,7 @@ export default function DealProfilePage() {
             </div>
             <div className="flex items-center gap-2 text-sm">
               <span className="text-gray-500">Stage</span>
-              <span className="flex w-32 items-center justify-between rounded-lg border border-transparent px-2 py-0 transition-all duration-300 hover:border-gray-300">
+              <span className="flex w-32 items-center justify-between rounded-lg border border-transparent px-2 py-0 transition-all duration-200 hover:border-gray-300">
                 Lease out
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@ export default function DealProfilePage() {
               New proposal
             </span>
 
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 bg-vts border-vts-purple-300 flex cursor-pointer items-center gap-1 rounded-lg border px-2 py-1.5 text-sm transition-all duration-300">
+            <div className="text-vts-purple-700 hover:bg-vts-purple-100 bg-vts border-vts-purple-300 flex cursor-pointer items-center gap-1 rounded-lg border px-2 py-1.5 text-sm transition-all duration-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
