@@ -177,7 +177,7 @@ export default function DealProfilePage() {
               onMouseEnter={handleMarketBenchmarkMouseEnter}
               onMouseLeave={handleMarketBenchmarkMouseLeave}
             >
-              <span className="">Market benchmarks</span>
+              <span className="">Market averages</span>
               <DotLottieReact
                 src="/sparkle2.json"
                 segment={marketBenchmarkSegment}

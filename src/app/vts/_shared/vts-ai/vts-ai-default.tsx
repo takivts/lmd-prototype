@@ -225,7 +225,7 @@ const VtsAiDefault = forwardRef<
                           key={category.value}
                           className={`cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-200 ${
                             selectedCategory === category.value
-                              ? "bg-vts-purple-600 hover:bg-vts-purple-700 text-white"
+                              ? "bg-vts-purple-700 hover:bg-vts-purple-800 text-white"
                               : "text-vts-purple-700 hover:bg-vts-purple-200"
                           }`}
                           onClick={() => setSelectedCategory(category.value)}
@@ -263,12 +263,6 @@ const VtsAiDefault = forwardRef<
                         <VtsAiUpsell />
                       </motion.div>
                     )}
-                    <motion.div
-                      className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-2xl border border-gray-200 px-3 py-2 text-left`}
-                      variants={itemVariants}
-                    >
-                      {selectedPrompt.prompt}
-                    </motion.div>
                     <motion.div className="mb-2 flex gap-4" variants={itemVariants}>
                       <div className="flex grow flex-col overflow-hidden">
                         <span className="text-xs leading-none text-gray-400">Market</span>
@@ -290,6 +284,13 @@ const VtsAiDefault = forwardRef<
                         <span className="text-xs leading-none text-gray-400">Size</span>
                         <span className="truncate text-gray-700">{size}</span>
                       </div>
+                    </motion.div>
+
+                    <motion.div
+                      className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-2xl border border-gray-200 px-3 py-2 text-left`}
+                      variants={itemVariants}
+                    >
+                      {selectedPrompt.prompt}
                     </motion.div>
                   </>
                 )}
