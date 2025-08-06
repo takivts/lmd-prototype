@@ -45,12 +45,22 @@ export default function MapPage() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const [city, setCity] = useState<"toronto" | "new-york">("new-york");
-  const [lng, setLng] = useState(-73.984); // New York midtown Manhattan coordinates
-  const [lat, setLat] = useState(40.7549);
-  const [zoom, setZoom] = useState(12);
+
+  // Use refs for coordinates that are only for display
+  const lngRef = useRef(-73.984);
+  const latRef = useRef(40.7549);
+  const zoomRef = useRef(12);
+
+  // Keep state versions only for display updates
+  const [displayCoords, setDisplayCoords] = useState({
+    lng: -73.984,
+    lat: 40.7549,
+    zoom: 12,
+  });
+
   const [propertyCount, setPropertyCount] = useState(0);
   const [showPoints, setShowPoints] = useState(false);
-  const [isMapLoaded, setIsMapLoaded] = useState(false); // Add loading state
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
   const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 
   // Toggle point visibility
@@ -70,13 +80,14 @@ export default function MapPage() {
     const newCity = city === "new-york" ? "toronto" : "new-york";
     setCity(newCity);
 
-    if (newCity === "toronto") {
-      setLng(-79.3832);
-      setLat(43.6532);
-    } else {
-      setLng(-73.984);
-      setLat(40.7549);
-    }
+    const newCoords = newCity === "toronto" ? { lng: -79.3832, lat: 43.6532 } : { lng: -73.984, lat: 40.7549 };
+
+    // Update refs
+    lngRef.current = newCoords.lng;
+    latRef.current = newCoords.lat;
+
+    // Update display
+    setDisplayCoords((prev) => ({ ...prev, ...newCoords }));
 
     // Update map center
     if (map.current) {
@@ -84,10 +95,7 @@ export default function MapPage() {
       map.current.setMaxZoom(newCity === "toronto" ? 15 : 14.5);
 
       map.current.flyTo({
-        center: [
-          newCity === "toronto" ? -79.3832 : -73.984,
-          newCity === "toronto" ? 43.6532 : 40.7549,
-        ],
+        center: [newCity === "toronto" ? -79.3832 : -73.984, newCity === "toronto" ? 43.6532 : 40.7549],
         duration: 1500,
       });
 
@@ -108,27 +116,21 @@ export default function MapPage() {
   };
 
   // Helper function to categorize property types (for heatmap weighting)
-  const getPropertyTypeCategory = useCallback(
-    (propertyType: string): number => {
-      if (!propertyType) return 0;
+  const getPropertyTypeCategory = useCallback((propertyType: string): number => {
+    if (!propertyType) return 0;
 
-      if (propertyType.includes("Finance")) {
-        return 1; // Finance
-      } else if (
-        propertyType.includes("Retail") ||
-        propertyType.includes("Consumer")
-      ) {
-        return 2; // Retail
-      } else if (propertyType.includes("Healthcare")) {
-        return 3; // Healthcare
-      } else if (propertyType.includes("Technology")) {
-        return 4; // Technology
-      }
+    if (propertyType.includes("Finance")) {
+      return 1; // Finance
+    } else if (propertyType.includes("Retail") || propertyType.includes("Consumer")) {
+      return 2; // Retail
+    } else if (propertyType.includes("Healthcare")) {
+      return 3; // Healthcare
+    } else if (propertyType.includes("Technology")) {
+      return 4; // Technology
+    }
 
-      return 0; // Other/Unknown
-    },
-    [],
-  );
+    return 0; // Other/Unknown
+  }, []);
 
   // Function to load city data
   const loadCityData = useCallback(
@@ -169,36 +171,32 @@ export default function MapPage() {
       const p90Value = sortedCounts[p90Index] || maxCount;
 
       // Convert data to GeoJSON format with ID counts
-      const points: Feature<Point, PropertyProps>[] = filteredData.map(
-        (property: PropertyData) => {
-          // Parse coordinates from "lat,lng" format to [lng, lat] format required by mapbox
-          const [latStr, lngStr] = property.Coordinates.split(",");
-          const latitude = parseFloat(latStr);
-          const longitude = parseFloat(lngStr);
-          const id = property["Property Name"] || "unknown";
-          const countOfDeals = parseInt(property["Count of Deals"] || "1", 10);
+      const points: Feature<Point, PropertyProps>[] = filteredData.map((property: PropertyData) => {
+        // Parse coordinates from "lat,lng" format to [lng, lat] format required by mapbox
+        const [latStr, lngStr] = property.Coordinates.split(",");
+        const latitude = parseFloat(latStr);
+        const longitude = parseFloat(lngStr);
+        const id = property["Property Name"] || "unknown";
+        const countOfDeals = parseInt(property["Count of Deals"] || "1", 10);
 
-          return {
-            type: "Feature" as const,
-            properties: {
-              name: property["Property Name"] || "",
-              address: property["Street Address"] || "",
-              type: property["Industry Name Tier 2"] || "",
-              owner: property["Industry Name Tier 1"] || "",
-              propertyId: id,
-              typeCategory: getPropertyTypeCategory(
-                property["Industry Name Tier 2"] || "",
-              ),
-              idCount: countOfDeals || 1,
-              city: cityName,
-            },
-            geometry: {
-              type: "Point" as const,
-              coordinates: [longitude, latitude],
-            },
-          };
-        },
-      );
+        return {
+          type: "Feature" as const,
+          properties: {
+            name: property["Property Name"] || "",
+            address: property["Street Address"] || "",
+            type: property["Industry Name Tier 2"] || "",
+            owner: property["Industry Name Tier 1"] || "",
+            propertyId: id,
+            typeCategory: getPropertyTypeCategory(property["Industry Name Tier 2"] || ""),
+            idCount: countOfDeals || 1,
+            city: cityName,
+          },
+          geometry: {
+            type: "Point" as const,
+            coordinates: [longitude, latitude],
+          },
+        };
+      });
 
       setPropertyCount(points.length);
 
@@ -234,45 +232,10 @@ export default function MapPage() {
             maxCount,
             1.0,
           ],
-          "heatmap-intensity": [
-            "interpolate",
-            ["exponential", 2],
-            ["zoom"],
-            12,
-            0.8,
-            14,
-            1.0,
-            16,
-            1.2,
-          ],
-          "heatmap-color": [
-            "interpolate",
-            ["exponential", 2],
-            ["heatmap-density"],
-            ...HEATMAP_COLOR_STOPS.flat(),
-          ],
-          "heatmap-radius": [
-            "interpolate",
-            ["exponential", 2],
-            ["zoom"],
-            12,
-            32,
-            14,
-            48,
-            16,
-            64,
-          ],
-          "heatmap-opacity": [
-            "interpolate",
-            ["exponential", 2],
-            ["zoom"],
-            12,
-            0.4,
-            14,
-            0.45,
-            16,
-            0.5,
-          ],
+          "heatmap-intensity": ["interpolate", ["exponential", 2], ["zoom"], 12, 0.8, 14, 1.0, 16, 1.2],
+          "heatmap-color": ["interpolate", ["exponential", 2], ["heatmap-density"], ...HEATMAP_COLOR_STOPS.flat()],
+          "heatmap-radius": ["interpolate", ["exponential", 2], ["zoom"], 12, 32, 14, 48, 16, 64],
+          "heatmap-opacity": ["interpolate", ["exponential", 2], ["zoom"], 12, 0.4, 14, 0.45, 16, 0.5],
         },
       });
 
@@ -381,14 +344,12 @@ export default function MapPage() {
     [showPoints, getPropertyTypeCategory],
   );
 
+  // Main map initialization effect
   useEffect(() => {
     if (map.current || !mapContainer.current) return;
 
     // Ensure container has dimensions
-    if (
-      mapContainer.current.offsetWidth === 0 ||
-      mapContainer.current.offsetHeight === 0
-    ) {
+    if (mapContainer.current.offsetWidth === 0 || mapContainer.current.offsetHeight === 0) {
       // Retry after a short delay if container isn't ready
       const timer = setTimeout(() => {
         if (mapContainer.current && mapContainer.current.offsetWidth > 0) {
@@ -403,8 +364,8 @@ export default function MapPage() {
       map.current = new mapboxgl.Map({
         container: mapContainer.current!,
         style: "mapbox://styles/mapbox/streets-v12",
-        center: [lng, lat],
-        zoom: zoom,
+        center: [lngRef.current, latRef.current],
+        zoom: zoomRef.current,
         maxZoom: city === "toronto" ? 16 : 14.5,
         minZoom: 12,
       });
@@ -414,13 +375,6 @@ export default function MapPage() {
       mapInstance.on("load", () => {
         setIsMapLoaded(true);
         loadCityData(mapInstance, city);
-      });
-
-      mapInstance.on("move", () => {
-        const center = mapInstance.getCenter();
-        setLng(Number(center.lng.toFixed(4)));
-        setLat(Number(center.lat.toFixed(4)));
-        setZoom(Number(mapInstance.getZoom().toFixed(2)));
       });
     };
 
@@ -432,20 +386,40 @@ export default function MapPage() {
         map.current = null;
       }
     };
-  }, [MAPBOX_TOKEN, city, lat, lng, zoom, loadCityData]); // Add missing dependencies
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [MAPBOX_TOKEN, city, loadCityData]);
+
+  // Separate effect for move handler
+  useEffect(() => {
+    if (!map.current) return;
+
+    const handleMove = () => {
+      const center = map.current!.getCenter();
+      setDisplayCoords((prev) => ({
+        ...prev,
+        lng: Number(center.lng.toFixed(4)),
+        lat: Number(center.lat.toFixed(4)),
+        zoom: Number(map.current!.getZoom().toFixed(2)),
+      }));
+    };
+
+    map.current.on("move", handleMove);
+
+    return () => {
+      if (map.current) {
+        map.current.off("move", handleMove);
+      }
+    };
+  }, [isMapLoaded]); // Only run when map is loaded
 
   return (
     <div className="mx-auto flex h-[calc(100dvh-50px)] w-full flex-col rounded-lg bg-white/25 p-16">
       <div className="mb-4">
-        <h1 className="text-xl font-bold">
-          {city === "toronto" ? "Toronto" : "New York"} Properties Heat Map
-        </h1>
-        <h3 className="mb-2 text-sm opacity-80">
-          Based on deals created in the last 6 months
-        </h3>
+        <h1 className="text-xl font-bold">{city === "toronto" ? "Toronto" : "New York"} Properties Heat Map</h1>
+        <h3 className="mb-2 text-sm opacity-80">Based on deals created in the last 6 months</h3>
         <div className="flex justify-between rounded border border-slate-200 bg-slate-100 px-2 py-1 text-sm">
           <span>
-            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+            Longitude: {displayCoords.lng} | Latitude: {displayCoords.lat} | Zoom: {displayCoords.zoom}
           </span>
           <span>Displaying {propertyCount} properties</span>
         </div>
@@ -466,34 +440,16 @@ export default function MapPage() {
             {showPoints ? (
               <>
                 <span className="mr-2 w-20 text-left">Hide Points</span>
-                <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
-                  <line
-                    x1="3"
-                    y1="3"
-                    x2="21"
-                    y2="21"
-                    strokeLinecap="round"
-                  ></line>
+                  <line x1="3" y1="3" x2="21" y2="21" strokeLinecap="round"></line>
                 </svg>
               </>
             ) : (
               <>
                 <span className="mr-2 w-20 text-left">Show Points</span>
-                <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
@@ -514,12 +470,8 @@ export default function MapPage() {
       </div>
       <div className="mt-3 rounded-lg border border-slate-200 bg-slate-100 p-2">
         <div className="flex items-center justify-between">
-          <div className="text-xs font-medium">
-            Heat Map Density (Based on Deal Counts)
-          </div>
-          <div className="text-xs opacity-80">
-            {showPoints ? "Points visible" : "Points hidden (heat map only)"}
-          </div>
+          <div className="text-xs font-medium">Heat Map Density (Based on Deal Counts)</div>
+          <div className="text-xs opacity-80">{showPoints ? "Points visible" : "Points hidden (heat map only)"}</div>
         </div>
         <div className="mt-1 flex h-6 w-full overflow-hidden rounded-md border border-gray-300">
           <div className="relative h-6 w-full bg-gradient-to-r from-transparent via-red-700/50 to-red-600/90"></div>

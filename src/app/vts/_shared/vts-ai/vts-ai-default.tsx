@@ -263,6 +263,11 @@ const VtsAiDefault = forwardRef<
                         <VtsAiUpsell />
                       </motion.div>
                     )}
+                    <div className="flex flex-col">
+                      <span>
+                        {market} | {submarket} | {industry} | {buildingClass} | {size}
+                      </span>
+                    </div>
                     <motion.div
                       className={`bg-vts-gray-200 text-vts-gray-700 hover:bg-vts-gray-200 float-right mb-2 max-w-4/5 self-end rounded-2xl border border-gray-200 px-3 py-2 text-left`}
                       variants={itemVariants}
