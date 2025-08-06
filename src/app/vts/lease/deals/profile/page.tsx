@@ -6,42 +6,43 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useRef, useEffect } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { Pane } from "tweakpane";
 
 export default function DealProfilePage() {
-  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
+  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell } = useAppContext();
 
-  // useEffect(() => {
-  //   const paneContainer = document.createElement("div");
-  //   paneContainer.className = "fixed bottom-6 left-16 z-50";
-  //   document.body.appendChild(paneContainer);
+  useEffect(() => {
+    const paneContainer = document.createElement("div");
+    paneContainer.className = "fixed bottom-6 left-16 z-50";
+    document.body.appendChild(paneContainer);
 
-  //   const PARAMS = {
-  //     isUpsell: false,
-  //   };
+    const PARAMS = {
+      isUpsell: false,
+    };
 
-  //   const pane = new Pane({
-  //     title: "Prototype Controls",
-  //     container: paneContainer,
-  //     expanded: false,
-  //   });
+    const pane = new Pane({
+      title: "Prototype Controls",
+      container: paneContainer,
+      expanded: false,
+    });
 
-  //   pane.addBinding(PARAMS, "isUpsell", {
-  //     view: "boolean",
-  //   });
+    pane.addBinding(PARAMS, "isUpsell", {
+      view: "boolean",
+    });
 
-  //   pane.on("change", (e) => {
-  //     setIsUpsell(e.value as boolean);
-  //   });
+    pane.on("change", (e) => {
+      setIsUpsell(e.value as boolean);
+    });
 
-  //   return () => {
-  //     pane.dispose();
-  //     if (paneContainer.parentNode) {
-  //       paneContainer.parentNode.removeChild(paneContainer);
-  //     }
-  //   };
-  // }, [setIsUpsell]);
+    return () => {
+      pane.dispose();
+      if (paneContainer.parentNode) {
+        paneContainer.parentNode.removeChild(paneContainer);
+      }
+    };
+  }, [setIsUpsell]);
 
   const mainTabs = [
     { label: "Info" },
