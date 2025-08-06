@@ -386,7 +386,6 @@ export default function MapPage() {
         map.current = null;
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [MAPBOX_TOKEN, city, loadCityData]);
 
   // Separate effect for move handler
