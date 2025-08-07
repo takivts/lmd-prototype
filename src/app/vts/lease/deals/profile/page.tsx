@@ -9,41 +9,41 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import vtsAiSparkle from "../../../../../../public/sparkle3.json";
-// import { Pane } from "tweakpane";
+import { Pane } from "tweakpane";
 
 export default function DealProfilePage() {
-  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
+  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell } = useAppContext();
 
-  // useEffect(() => {
-  //   const paneContainer = document.createElement("div");
-  //   paneContainer.className = "fixed bottom-6 left-16 z-50";
-  //   document.body.appendChild(paneContainer);
+  useEffect(() => {
+    const paneContainer = document.createElement("div");
+    paneContainer.className = "fixed bottom-6 left-16 z-50";
+    document.body.appendChild(paneContainer);
 
-  //   const PARAMS = {
-  //     isUpsell: false,
-  //   };
+    const PARAMS = {
+      isUpsell: false,
+    };
 
-  //   const pane = new Pane({
-  //     title: "Prototype Controls",
-  //     container: paneContainer,
-  //     expanded: false,
-  //   });
+    const pane = new Pane({
+      title: "Prototype Controls",
+      container: paneContainer,
+      expanded: false,
+    });
 
-  //   pane.addBinding(PARAMS, "isUpsell", {
-  //     view: "boolean",
-  //   });
+    pane.addBinding(PARAMS, "isUpsell", {
+      view: "boolean",
+    });
 
-  //   pane.on("change", (e) => {
-  //     setIsUpsell(e.value as boolean);
-  //   });
+    pane.on("change", (e) => {
+      setIsUpsell(e.value as boolean);
+    });
 
-  //   return () => {
-  //     pane.dispose();
-  //     if (paneContainer.parentNode) {
-  //       paneContainer.parentNode.removeChild(paneContainer);
-  //     }
-  //   };
-  // }, [setIsUpsell]);
+    return () => {
+      pane.dispose();
+      if (paneContainer.parentNode) {
+        paneContainer.parentNode.removeChild(paneContainer);
+      }
+    };
+  }, [setIsUpsell]);
 
   const mainTabs = [
     { label: "Info" },

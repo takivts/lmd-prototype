@@ -95,7 +95,13 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
               ? "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-12 bg-linear-to-t"
               : "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-13 bg-linear-to-t group-hover:size-14"
           }`}
-        />
+        >
+          {/* <div
+            className={`flex size-14 items-center justify-center overflow-hidden rounded-full ${isVtsAiOpen ? "size-12" : "size-14"}`}
+          >
+            <video src="/vts-ai-swirl.mp4" autoPlay loop muted className="size-14" />
+          </div> */}
+        </div>
         {!isVtsAiOpen && (
           <AnimatePresence mode="wait">
             {currentPrompt && (
