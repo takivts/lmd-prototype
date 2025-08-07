@@ -67,25 +67,25 @@
 @keyframes window-gradient {
   0% {
     background-size: 100% 100%;
-    background-position: center 0;
+    background-position: left 0;
   }
   50% {
-    background-size: 200% 200%;
-    background-position: center 25%;
+    background-size: 150% 150%;
+    background-position: right 0;
   }
   100% {
     background-size: 100% 100%;
-    background-position: center 0;
+    background-position: left 0;
   }
 }
 
 .vts-ai-gradient {
-  background-image: radial-gradient(
-    circle at center -25%,
-    var(--color-vts-ai-light) 2%,
-    var(--color-vts-ai-medium) 25%,
+  background-image: linear-gradient(
+    to right,
+    var(--color-vts-ai-light) 0%,
+    var(--color-vts-ai-medium) 10%,
     var(--color-vts-ai-dark) 50%,
-    var(--color-vts-ai-gray) 125%
+    var(--color-vts-ai-gray) 150%
   );
   background-repeat: no-repeat;
   animation: window-gradient 12s ease-in-out reverse infinite;

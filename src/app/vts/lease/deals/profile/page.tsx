@@ -253,7 +253,7 @@ export default function DealProfilePage() {
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
           <div className="flex w-full justify-end gap-2 px-4">
             <span
-              className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border px-2 py-1.5 text-sm font-medium transition-all duration-200 ${
+              className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border py-1.5 pr-2.5 pl-2 text-sm font-medium transition-all duration-200 ${
                 gradientButtons ? "vts-ai-gradient text-white" : "border-vts-purple-300 text-vts-purple-700"
               }`}
               onMouseEnter={() => {
