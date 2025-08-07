@@ -2,8 +2,6 @@
 @import "./stylesheets/heatmaps.css";
 
 @theme {
-  --font-display: "Satoshi", "sans-serif";
-
   --color-vts-ai-light: #c928ff;
   --color-vts-ai-medium: #8b28ff;
   --color-vts-ai-dark: #5528ff;
@@ -83,11 +81,11 @@
 
 .vts-ai-gradient {
   background-image: radial-gradient(
-    circle at center -15%,
+    circle at center -25%,
     var(--color-vts-ai-light) 2%,
     var(--color-vts-ai-medium) 25%,
-    var(--color-vts-ai-dark) 40%,
-    var(--color-vts-ai-gray) 100%
+    var(--color-vts-ai-dark) 50%,
+    var(--color-vts-ai-gray) 125%
   );
   background-repeat: no-repeat;
   animation: window-gradient 12s ease-in-out reverse infinite;

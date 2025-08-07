@@ -78,7 +78,6 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         onClick={handleFloatingCTAClick}
         onMouseEnter={() => {
           if (!isVtsAiOpen) {
-            console.log(lottieRef.current);
             lottieRef.current?.setSpeed(2);
             lottieRef.current?.playSegments([0, 15], true);
           }
