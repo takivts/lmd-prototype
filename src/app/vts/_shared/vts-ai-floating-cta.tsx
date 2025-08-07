@@ -40,7 +40,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
   const handleFloatingCTAClick = () => {
     setVtsAiContentType("default");
     setIsVtsAiOpen(!isVtsAiOpen);
-    lottieRef.current?.setSpeed(3);
+    lottieRef.current?.setSpeed(2.5);
     if (!isVtsAiOpen) {
       console.log(lottieRef.current);
       lottieRef.current?.playSegments([15, 30], true);
@@ -73,13 +73,13 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         onMouseEnter={() => {
           if (!isVtsAiOpen) {
             console.log(lottieRef.current);
-            lottieRef.current?.setSpeed(3);
+            lottieRef.current?.setSpeed(2.5);
             lottieRef.current?.playSegments([0, 15], true);
           }
         }}
         onMouseLeave={() => {
           if (!isVtsAiOpen) {
-            lottieRef.current?.setSpeed(3);
+            lottieRef.current?.setSpeed(2.5);
             lottieRef.current?.playSegments([15, 0], true);
           }
         }}
@@ -93,7 +93,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
           className={`layered-shadow absolute z-50 rounded-full transition-all duration-200 ease-in-out ${
             isVtsAiOpen
               ? "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-12 bg-linear-to-t"
-              : "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-14 bg-linear-to-t group-hover:size-15"
+              : "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-13 bg-linear-to-t group-hover:size-14"
           }`}
         />
         {!isVtsAiOpen && (
