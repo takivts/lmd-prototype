@@ -254,7 +254,7 @@ export default function DealProfilePage() {
           <div className="flex w-full justify-end gap-2 px-4">
             <span
               className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border py-1.5 pr-2.5 pl-2 text-sm font-medium transition-all duration-200 ${
-                gradientButtons ? "vts-ai-gradient text-white" : "border-vts-purple-300 text-vts-purple-700"
+                gradientButtons ? "vts-ai-gradient-2 text-white" : "border-vts-purple-300 text-vts-purple-700"
               }`}
               onMouseEnter={() => {
                 newProposalRef.current?.setSpeed(0.75);
