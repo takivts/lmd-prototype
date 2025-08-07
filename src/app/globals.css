@@ -20,12 +20,12 @@
   --color-vts-purple-900: #130a76;
   --color-vts-primary: var(--color-vts-purple-700);
 
-  --animate-floating-cta-gradient: floating-cta-gradient 5s ease-in-out reverse infinite;
-  --animate-upsell-banner-gradient: upsell-banner-gradient 5s ease-in-out reverse infinite;
+  --animate-floating-cta-bg-gradient: floating-cta-bg-gradient 6s ease-in-out reverse infinite;
+  --animate-floating-cta-gradient: floating-cta-gradient 12s ease-in-out reverse infinite;
+  --animate-upsell-banner-gradient: upsell-banner-gradient 6s ease-in-out reverse infinite;
 }
 
-/* Define the keyframes outside of @theme */
-@keyframes floating-cta-gradient {
+@keyframes floating-cta-bg-gradient {
   0% {
     transform: scale(1) rotate(0deg);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -45,6 +45,24 @@
   100% {
     transform: scale(1) rotate(360deg);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+@keyframes floating-cta-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -103,17 +121,8 @@
   animation: upsell-banner-gradient 15s ease-in-out infinite;
 }
 
-.gradient-underline {
-  color: var(--color-vts-purple-700);
+.vts-ai-underline {
   background-image: linear-gradient(to right, var(--color-vts-ai-light), var(--color-vts-purple-800));
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
-  background-size: 100% 3px;
-  transition: background-position 0.5s ease-in-out;
-}
-
-.gradient-underline:hover {
-  background-position: 0% 100%;
 }
 
 .layered-shadow {

@@ -67,7 +67,7 @@ export default function GlobalHeader() {
           Insights
         </Link>
       </span>
-      <span className="flex h-full items-center border-t-6 border-transparent px-3 text-xs font-bold text-white uppercase">
+      <span className="flex h-full cursor-pointer items-center border-t-6 border-transparent px-3 text-xs font-bold text-white uppercase">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

@@ -6,13 +6,15 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import vtsAiSparkle from "../../../../../../public/sparkle3.json";
 import { Pane } from "tweakpane";
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell } = useAppContext();
+  const [gradientLinks, setGradientLinks] = useState(false);
+  const [sparkleLinks, setSparkleLinks] = useState(true);
 
   useEffect(() => {
     const paneContainer = document.createElement("div");
@@ -21,6 +23,8 @@ export default function DealProfilePage() {
 
     const PARAMS = {
       isUpsell: false,
+      gradientLinks: false,
+      sparkleLinks: true,
     };
 
     const pane = new Pane({
@@ -29,12 +33,28 @@ export default function DealProfilePage() {
       expanded: false,
     });
 
-    pane.addBinding(PARAMS, "isUpsell", {
-      view: "boolean",
+    const isUpsellBinding = pane.addBinding(PARAMS, "isUpsell", {
+      label: "Show Upsell",
     });
 
-    pane.on("change", (e) => {
-      setIsUpsell(e.value as boolean);
+    const gradientLinksBinding = pane.addBinding(PARAMS, "gradientLinks", {
+      label: "Gradient Links",
+    });
+
+    const sparkleLinksBinding = pane.addBinding(PARAMS, "sparkleLinks", {
+      label: "Sparkle Links",
+    });
+
+    isUpsellBinding.on("change", (e) => {
+      setIsUpsell(e.value);
+    });
+
+    gradientLinksBinding.on("change", (e) => {
+      setGradientLinks(e.value);
+    });
+
+    sparkleLinksBinding.on("change", (e) => {
+      setSparkleLinks(e.value);
     });
 
     return () => {
@@ -43,7 +63,7 @@ export default function DealProfilePage() {
         paneContainer.parentNode.removeChild(paneContainer);
       }
     };
-  }, [setIsUpsell]);
+  }, [setIsUpsell, setGradientLinks, setSparkleLinks]);
 
   const mainTabs = [
     { label: "Info" },
@@ -69,9 +89,9 @@ export default function DealProfilePage() {
   const newProposalRef = useRef<LottieRefCurrentProps>(null);
 
   useEffect(() => {
-    marketAverageRef.current?.playSegments([0, 10], true);
-    newProposalRef.current?.playSegments([0, 10], true);
-  }, []);
+    marketAverageRef.current?.playSegments([0, 25], true);
+    newProposalRef.current?.playSegments([0, 25], true);
+  }, [sparkleLinks]);
 
   return (
     <div className="flex h-full flex-col">
@@ -159,23 +179,24 @@ export default function DealProfilePage() {
               className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm"
               onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
               onMouseEnter={() => {
-                marketAverageRef.current?.playSegments(
-                  [
-                    [10, 20],
-                    [0, 10],
-                  ],
-                  true,
-                );
+                marketAverageRef.current?.playSegments([[10, 25]], true);
               }}
             >
-              <span className="">Market averages</span>
-              <Lottie
-                lottieRef={marketAverageRef}
-                animationData={vtsAiSparkle}
-                autoplay={false}
-                loop={false}
-                className="z-50 size-5"
-              />
+              <span className={`${gradientLinks ? "relative" : ""}`}>
+                Market averages
+                {gradientLinks && (
+                  <span className="vts-ai-underline absolute -bottom-[2px] left-0 h-[3px] w-full rounded-full" />
+                )}
+              </span>
+              {sparkleLinks && (
+                <Lottie
+                  lottieRef={marketAverageRef}
+                  animationData={vtsAiSparkle}
+                  autoplay={false}
+                  loop={false}
+                  className="z-50 size-5"
+                />
+              )}
             </span>
           </div>
           <div className="flex gap-8">
@@ -216,13 +237,7 @@ export default function DealProfilePage() {
             <span
               className="text-vts-purple-700 hover:bg-vts-purple-100 hover:border-vts-purple-300 border-vts-purple-300 flex cursor-pointer items-center gap-1 rounded-lg border px-2 py-1.5 text-sm"
               onMouseEnter={() => {
-                newProposalRef.current?.playSegments(
-                  [
-                    [10, 20],
-                    [0, 10],
-                  ],
-                  true,
-                );
+                newProposalRef.current?.playSegments([[10, 25]], true);
               }}
             >
               <Lottie

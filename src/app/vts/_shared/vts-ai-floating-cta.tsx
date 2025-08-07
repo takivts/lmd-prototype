@@ -5,7 +5,7 @@ import { useAppContext } from "../../context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import vtsAiMorph from "../../../../public/vts-ai-morph.json";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const promptVariants = {
   hidden: {
@@ -36,6 +36,13 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
       return <VtsAiDefault className="absolute right-24 bottom-16" isOpen={isVtsAiOpen} />;
     }
   };
+
+  useEffect(() => {
+    lottieRef.current?.goToAndStop(15, true);
+    setTimeout(() => {
+      lottieRef.current?.playSegments([15, 0], true);
+    }, 1000);
+  }, []);
 
   const handleFloatingCTAClick = () => {
     setVtsAiContentType("default");
@@ -85,12 +92,12 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         }}
       >
         <div
-          className={`from-vts-ai-dark via-vts-ai-dark animate-floating-cta-gradient to-vts-ai-light pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-linear-to-t blur ${
+          className={`from-vts-ai-dark via-vts-ai-dark animate-floating-cta-bg-gradient to-vts-ai-light pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-linear-to-t blur ${
             isVtsAiOpen ? "scale-75 opacity-100" : "scale-0 opacity-0"
           }`}
         />
         <div
-          className={`layered-shadow absolute z-50 rounded-full transition-all duration-200 ease-in-out ${
+          className={`layered-shadow animate-floating-cta-gradient absolute z-50 rounded-full transition-all duration-200 ease-in-out ${
             isVtsAiOpen
               ? "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-12 bg-linear-to-t"
               : "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-13 bg-linear-to-t group-hover:size-14"
