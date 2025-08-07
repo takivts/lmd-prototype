@@ -42,10 +42,8 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
     setIsVtsAiOpen(!isVtsAiOpen);
     lottieRef.current?.setSpeed(2);
     if (!isVtsAiOpen) {
-      console.log(lottieRef.current);
       lottieRef.current?.playSegments([15, 30], true);
     } else {
-      console.log(lottieRef.current);
       lottieRef.current?.setDirection(-1);
       lottieRef.current?.playSegments([30, 15], true);
     }
