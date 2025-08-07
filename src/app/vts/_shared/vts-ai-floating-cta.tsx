@@ -40,7 +40,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
   const handleFloatingCTAClick = () => {
     setVtsAiContentType("default");
     setIsVtsAiOpen(!isVtsAiOpen);
-    lottieRef.current?.setSpeed(2.5);
+    lottieRef.current?.setSpeed(2);
     if (!isVtsAiOpen) {
       console.log(lottieRef.current);
       lottieRef.current?.playSegments([15, 30], true);
@@ -75,13 +75,13 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         onMouseEnter={() => {
           if (!isVtsAiOpen) {
             console.log(lottieRef.current);
-            lottieRef.current?.setSpeed(2.5);
+            lottieRef.current?.setSpeed(2);
             lottieRef.current?.playSegments([0, 15], true);
           }
         }}
         onMouseLeave={() => {
           if (!isVtsAiOpen) {
-            lottieRef.current?.setSpeed(2.5);
+            lottieRef.current?.setSpeed(2);
             lottieRef.current?.playSegments([15, 0], true);
           }
         }}
