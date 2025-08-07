@@ -62,6 +62,8 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
     if (currentPrompt) {
       setVtsAiContentType("default", currentPrompt.payload);
       setIsVtsAiOpen(true);
+      console.log(lottieRef.current);
+      lottieRef.current?.playSegments([15, 30], true);
     }
   };
 

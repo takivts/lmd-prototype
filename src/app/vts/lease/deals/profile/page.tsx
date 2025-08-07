@@ -6,14 +6,13 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
-import { useRef, useState } from "react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useEffect, useRef } from "react";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import vtsAiSparkle from "../../../../../../public/sparkle3.json";
 // import { Pane } from "tweakpane";
 
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
-  const [marketBenchmarkSegment, setMarketBenchmarkSegment] = useState<[number, number]>([10, 30]);
-  const [newProposalSegment, setNewProposalSegment] = useState<[number, number]>([10, 30]);
 
   // useEffect(() => {
   //   const paneContainer = document.createElement("div");
@@ -66,28 +65,13 @@ export default function DealProfilePage() {
     }
   };
 
-  const dotLottieRef = useRef<any>(null);
-  const newProposalRef = useRef<any>(null);
+  const marketAverageRef = useRef<LottieRefCurrentProps>(null);
+  const newProposalRef = useRef<LottieRefCurrentProps>(null);
 
-  const handleMarketBenchmarkMouseEnter = () => {
-    setMarketBenchmarkSegment([0, 30]);
-    dotLottieRef.current?.play();
-  };
-
-  const handleMarketBenchmarkMouseLeave = () => {
-    dotLottieRef.current?.stop();
-    setMarketBenchmarkSegment([10, 30]);
-  };
-
-  const handleNewProposalMouseEnter = () => {
-    setNewProposalSegment([0, 30]);
-    newProposalRef.current?.play();
-  };
-
-  const handleNewProposalMouseLeave = () => {
-    newProposalRef.current?.stop();
-    setNewProposalSegment([10, 30]);
-  };
+  useEffect(() => {
+    marketAverageRef.current?.playSegments([0, 10], true);
+    newProposalRef.current?.playSegments([0, 10], true);
+  }, []);
 
   return (
     <div className="flex h-full flex-col">
@@ -174,19 +158,23 @@ export default function DealProfilePage() {
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm"
               onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
-              onMouseEnter={handleMarketBenchmarkMouseEnter}
-              onMouseLeave={handleMarketBenchmarkMouseLeave}
+              onMouseEnter={() => {
+                marketAverageRef.current?.playSegments(
+                  [
+                    [10, 20],
+                    [0, 10],
+                  ],
+                  true,
+                );
+              }}
             >
               <span className="">Market averages</span>
-              <DotLottieReact
-                src="/sparkle2.json"
-                segment={marketBenchmarkSegment}
+              <Lottie
+                lottieRef={marketAverageRef}
+                animationData={vtsAiSparkle}
+                autoplay={false}
                 loop={false}
-                autoplay={true}
-                dotLottieRefCallback={(dotLottie) => {
-                  dotLottieRef.current = dotLottie;
-                }}
-                style={{ height: "20px", width: "20px" }}
+                className="z-50 size-5"
               />
             </span>
           </div>
@@ -227,18 +215,22 @@ export default function DealProfilePage() {
           <div className="flex w-full justify-end gap-2 px-4">
             <span
               className="text-vts-purple-700 hover:bg-vts-purple-100 hover:border-vts-purple-300 border-vts-purple-300 flex cursor-pointer items-center gap-1 rounded-lg border px-2 py-1.5 text-sm"
-              onMouseEnter={handleNewProposalMouseEnter}
-              onMouseLeave={handleNewProposalMouseLeave}
+              onMouseEnter={() => {
+                newProposalRef.current?.playSegments(
+                  [
+                    [10, 20],
+                    [0, 10],
+                  ],
+                  true,
+                );
+              }}
             >
-              <DotLottieReact
-                src="/sparkle2.json"
-                segment={newProposalSegment}
+              <Lottie
+                lottieRef={newProposalRef}
+                animationData={vtsAiSparkle}
+                autoplay={false}
                 loop={false}
-                autoplay={true}
-                dotLottieRefCallback={(dotLottie) => {
-                  newProposalRef.current = dotLottie;
-                }}
-                style={{ height: "20px", width: "20px" }}
+                className="z-50 size-5"
               />
               New proposal
             </span>
@@ -265,7 +257,6 @@ export default function DealProfilePage() {
 
           <div className="relative flex flex-col gap-2 overflow-auto px-4">
             <div className="flex gap-2 overflow-auto pr-8 pb-4 text-xs">
-              {/* <div className="pointer-events-none absolute top-0 right-0 z-10 h-[calc(100%-32px)] w-16 bg-gradient-to-r from-transparent to-white" /> */}
               <div className="flex w-48 shrink-0 flex-col rounded-lg">
                 <div className="min-h-30" />
                 <div className="flex min-h-6.5 items-center gap-2">
@@ -333,32 +324,9 @@ export default function DealProfilePage() {
                 }}
               />
 
-              {/* <ProposalCard
-                title="Market comparison"
-                data={{
-                  label: "-",
-                  dateEntered: "Jan, 2025",
-                  leaseType: "-",
-                  type: "-",
-                  spaces: "-",
-                  size: "-",
-                  downtime: "2 avg.",
-                  tenantPossessionDate: "-",
-                  tenantBuildoutPeriodDays: "45 avg.",
-                  tenantBuildoutPeriodMonths: "1.5 avg.",
-                  lcd: "-",
-                  lockInEnd: "-",
-                  term: "60.5 avg.",
-                }}
-              /> */}
-
               <ProposalCard
                 title="Tenant"
-                actions={[
-                  // { text: "Analyze proposal", isUnderlined: true },
-                  { text: "View details" },
-                  { text: "Generate LOI" },
-                ]}
+                actions={[{ text: "View details" }, { text: "Generate LOI" }]}
                 data={{
                   label: "Starbucks Coffee",
                   dateEntered: "Dec 15, 2024",
@@ -378,11 +346,7 @@ export default function DealProfilePage() {
 
               <ProposalCard
                 title="Landlord"
-                actions={[
-                  // { text: "Analyze proposal", isUnderlined: true },
-                  { text: "View details" },
-                  { text: "Generate LOI" },
-                ]}
+                actions={[{ text: "View details" }, { text: "Generate LOI" }]}
                 data={{
                   label: "Downtown Plaza LLC",
                   dateEntered: "Dec 15, 2024",
