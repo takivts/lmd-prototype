@@ -18,7 +18,7 @@
   --color-vts-purple-900: #130a76;
   --color-vts-primary: var(--color-vts-purple-700);
 
-  --animate-fab-glow: fab-glow-keyframes 16s ease-in infinite;
+  --animate-fab-glow: fab-glow-keyframes 8s ease-in infinite;
   --animate-fab-gradient: fab-bg-keyframes 16s ease-in infinite;
   --animate-ai-linear-gradient: ai-linear-keyframes 16s ease-in infinite;
 }
@@ -26,23 +26,23 @@
 @keyframes fab-glow-keyframes {
   0% {
     transform: scale(1) rotate(0deg);
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    border-radius: 60% 40% 30% 65% / 60% 30% 65% 40%;
   }
   25% {
     transform: scale(1.05) rotate(90deg);
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    border-radius: 30% 60% 65% 40% / 50% 60% 30% 60%;
   }
   50% {
     transform: scale(0.95) rotate(180deg);
     border-radius: 50% 60% 30% 60% / 60% 30% 60% 40%;
   }
   75% {
-    transform: scale(1.05) rotate(270deg);
-    border-radius: 60% 40% 60% 30% / 30% 60% 40% 70%;
+    transform: scale(1.05) rotate(265deg);
+    border-radius: 60% 40% 60% 30% / 30% 60% 40% 65%;
   }
   100% {
     transform: scale(1) rotate(360deg);
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    border-radius: 60% 40% 30% 65% / 60% 30% 65% 40%;
   }
 }
 
@@ -98,11 +98,11 @@
 
 .layered-shadow {
   box-shadow:
-    0 1px 1px hsl(0deg 0% 0% / 0.05),
-    0 2px 2px hsl(0deg 0% 0% / 0.05),
-    0 4px 4px hsl(0deg 0% 0% / 0.05),
-    0 8px 8px hsl(0deg 0% 0% / 0.05),
-    0 16px 16px hsl(0deg 0% 0% / 0.05);
+    0 1px 1px hsl(0deg 0% 0% / 0.08),
+    0 2px 2px hsl(0deg 0% 0% / 0.08),
+    0 4px 4px hsl(0deg 0% 0% / 0.08),
+    0 8px 8px hsl(0deg 0% 0% / 0.08),
+    0 16px 16px hsl(0deg 0% 0% / 0.08);
 }
 
 body {

@@ -112,19 +112,19 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         }}
       >
         <div
-          className={`animate-fab-glow pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-[radial-gradient(at_top,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_25%,var(--color-vts-ai-dark)_75%,var(--color-vts-ai-gray)_100%)] blur ${
-            isVtsAiOpen ? "scale-80 opacity-100" : "scale-0 opacity-0"
+          className={`animate-fab-glow pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-[radial-gradient(at_top,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_25%,var(--color-vts-ai-dark)_75%,var(--color-vts-ai-gray)_100%)] blur-xs ${
+            isVtsAiOpen ? "scale-85 opacity-75" : "scale-0 opacity-0"
           }`}
         />
         <div
           className={`layered-shadow absolute z-50 overflow-clip rounded-full transition-all duration-200 ease-in-out ${
-            isVtsAiOpen ? "size-12 brightness-90" : "size-13 group-hover:size-14"
+            isVtsAiOpen ? "size-12" : "size-13 group-hover:size-14"
           }`}
         >
-          <div className="absolute -top-4.5 -left-4.5 size-22">
+          {/* <div className="absolute -top-4.5 -left-4.5 size-22">
             <video src="/vts-ai-swirl.mp4" autoPlay loop muted />
-          </div>
-          {/* <div className="animate-fab-glow  absolute -top-2 -left-2 z-50 size-18 rounded-full bg-[linear-gradient(45deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_25%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_100%)] blur-xs" >  */}
+          </div> */}
+          <div className="animate-fab-glow absolute -top-2 -left-2 z-50 size-18 rounded-full bg-[linear-gradient(45deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_125%)]" />
         </div>
         {!isVtsAiOpen && (
           <AnimatePresence mode="wait">
