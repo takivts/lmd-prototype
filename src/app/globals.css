@@ -16,11 +16,12 @@
   --color-vts-purple-700: #4837b9;
   --color-vts-purple-800: #280f96;
   --color-vts-purple-900: #130a76;
+
   --color-vts-primary: var(--color-vts-purple-700);
 
   --animate-fab-glow: fab-glow-keyframes 8s ease-in infinite;
   --animate-fab-gradient: fab-bg-keyframes 16s ease-in infinite;
-  --animate-ai-linear-gradient: ai-linear-keyframes 16s ease-in infinite;
+  --animate-ai-linear-gradient: ai-linear-keyframes 3s ease-in infinite;
 }
 
 @keyframes fab-glow-keyframes {
@@ -78,14 +79,8 @@
   0% {
     background-position: 0% 0%;
   }
-  25% {
-    background-position: 0% 50%;
-  }
   50% {
     background-position: 50% 50%;
-  }
-  75% {
-    background-position: 50% 0%;
   }
   100% {
     background-position: 0% 0%;
