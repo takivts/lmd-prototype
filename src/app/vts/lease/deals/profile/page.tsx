@@ -255,7 +255,7 @@ export default function DealProfilePage() {
             <span
               className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border py-1.5 pr-2.5 pl-2 text-sm font-medium transition-all duration-200 ${
                 gradientButtons
-                  ? "animate-ai-linear-gradient bg-[linear-gradient(45deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] bg-[length:400%_400%] text-white"
+                  ? "animate-ai-linear-gradient bg-[linear-gradient(45deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] bg-[length:400%_400%] text-white transition-all duration-200 hover:brightness-125"
                   : "border-vts-purple-300 text-vts-purple-700"
               }`}
               onMouseEnter={() => {
