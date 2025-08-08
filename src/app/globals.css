@@ -18,9 +18,9 @@
   --color-vts-purple-900: #130a76;
   --color-vts-primary: var(--color-vts-purple-700);
 
-  --animate-fab-glow: fab-glow-keyframes 3s ease-in infinite;
-  --animate-fab-gradient: fab-bg-keyframes 3s ease-in infinite;
-  --animate-ai-linear-gradient: ai-linear-keyframes 3s ease-in infinite;
+  --animate-fab-glow: fab-glow-keyframes 12s ease-in infinite;
+  --animate-fab-gradient: fab-bg-keyframes 12s ease-in infinite;
+  --animate-ai-linear-gradient: ai-linear-keyframes 12s ease-in infinite;
 }
 
 @keyframes fab-glow-keyframes {
