@@ -19,6 +19,7 @@ export type VtsAiPersona = "Analyst" | "Assistant";
 const AppContext = createContext<{
   isVtsAiOpen: boolean;
   setIsVtsAiOpen: (value: boolean) => void;
+  closeVtsAiFromOverlay: () => void;
   vtsAiContentType: string;
   setVtsAiContentType: (value: string, data?: MarketAnalysisData) => void;
   vtsAiData: MarketAnalysisData | null;
@@ -37,6 +38,7 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [vtsAiPersona, setVtsAiPersona] = useState<VtsAiPersona>("Analyst");
   const [isUpsell, setIsUpsell] = useState(false);
+  const [closedFromOverlay, setClosedFromOverlay] = useState(false);
 
   const handleSetVtsAiContentType = (contentType: string, data?: MarketAnalysisData) => {
     setVtsAiContentType(contentType);
@@ -47,11 +49,18 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const closeVtsAiFromOverlay = () => {
+    // Dispatch custom event to trigger animation
+    window.dispatchEvent(new CustomEvent("vts-ai-overlay-close"));
+    setIsVtsAiOpen(false);
+  };
+
   return (
     <AppContext.Provider
       value={{
         isVtsAiOpen,
         setIsVtsAiOpen,
+        closeVtsAiFromOverlay,
         vtsAiContentType,
         setVtsAiContentType: handleSetVtsAiContentType,
         vtsAiData,

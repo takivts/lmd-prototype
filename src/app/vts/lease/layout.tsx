@@ -15,7 +15,7 @@ export default function VtsLeaseLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const { setIsVtsAiOpen, isVtsAiOpen } = useAppContext();
+  const { closeVtsAiFromOverlay, isVtsAiOpen } = useAppContext();
 
   const leaseNavItems = [
     {
@@ -48,9 +48,7 @@ export default function VtsLeaseLayout({
         <VtsAiFloatingCTA />
         <SupportFloatingCTA />
       </div>
-      {isVtsAiOpen && (
-        <div className="fixed top-0 left-0 h-full w-full bg-black/0" onClick={() => setIsVtsAiOpen(false)} />
-      )}
+      {isVtsAiOpen && <div className="fixed top-0 left-0 h-full w-full bg-black/0" onClick={closeVtsAiFromOverlay} />}
     </div>
   );
 }

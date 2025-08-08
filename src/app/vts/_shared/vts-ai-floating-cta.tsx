@@ -5,7 +5,7 @@ import { useAppContext } from "../../context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import vtsAiMorph from "../../../../public/vts-ai-morph.json";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const promptVariants = {
   hidden: {
@@ -28,6 +28,7 @@ const promptVariants = {
 export default function VtsAiFloatingCTA({ className }: { className?: string }) {
   const { isVtsAiOpen, setIsVtsAiOpen, vtsAiContentType, setVtsAiContentType } = useAppContext();
   const lottieRef = useRef<LottieRefCurrentProps>(null);
+  const [wasClosedFromOverlay, setWasClosedFromOverlay] = useState(false);
 
   const FormatVtsAiContent = () => {
     if (vtsAiContentType === "tenant") {
@@ -42,6 +43,27 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
     setTimeout(() => {
       lottieRef.current?.playSegments([15, 0], true);
     }, 1000);
+  }, []);
+
+  // Handle overlay close animation
+  useEffect(() => {
+    if (!isVtsAiOpen && wasClosedFromOverlay) {
+      lottieRef.current?.playSegments([30, 0], true);
+      setWasClosedFromOverlay(false);
+    }
+  }, [isVtsAiOpen, wasClosedFromOverlay]);
+
+  // Listen for overlay close event
+  useEffect(() => {
+    const handleOverlayClose = () => {
+      lottieRef.current?.playSegments([30, 0], true);
+    };
+
+    window.addEventListener("vts-ai-overlay-close", handleOverlayClose);
+
+    return () => {
+      window.removeEventListener("vts-ai-overlay-close", handleOverlayClose);
+    };
   }, []);
 
   const handleFloatingCTAClick = () => {
