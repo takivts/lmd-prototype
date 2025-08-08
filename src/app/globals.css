@@ -18,9 +18,9 @@
   --color-vts-purple-900: #130a76;
   --color-vts-primary: var(--color-vts-purple-700);
 
-  --animate-fab-glow: fab-glow-keyframes 24s ease-in infinite;
-  --animate-fab-gradient: fab-bg-keyframes 24s ease-in infinite;
-  --animate-ai-linear-gradient: ai-linear-keyframes 24s ease-in infinite;
+  --animate-fab-glow: fab-glow-keyframes 16s ease-in infinite;
+  --animate-fab-gradient: fab-bg-keyframes 16s ease-in infinite;
+  --animate-ai-linear-gradient: ai-linear-keyframes 16s ease-in infinite;
 }
 
 @keyframes fab-glow-keyframes {
@@ -48,20 +48,29 @@
 
 @keyframes fab-bg-keyframes {
   0% {
-    transform: rotate(0deg);
-    background-position: 0;
+    transform: scale(1) rotate(0deg);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background-position: 0% 0%;
   }
   25% {
-    transform: rotate(90deg);
+    transform: scale(1.05) rotate(90deg);
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    background-position: 100% 0%;
   }
   50% {
-    transform: rotate(180deg);
+    transform: scale(0.95) rotate(180deg);
+    border-radius: 50% 60% 30% 60% / 60% 30% 60% 40%;
+    background-position: 100% 100%;
   }
   75% {
-    transform: rotate(270deg);
+    transform: scale(1.05) rotate(270deg);
+    border-radius: 60% 40% 60% 30% / 30% 60% 40% 70%;
+    background-position: 0% 100%;
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(1) rotate(360deg);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background-position: 0% 0%;
   }
 }
 
