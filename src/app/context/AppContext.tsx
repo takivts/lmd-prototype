@@ -38,7 +38,6 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
   const [vtsAiPersona, setVtsAiPersona] = useState<VtsAiPersona>("Analyst");
   const [isUpsell, setIsUpsell] = useState(false);
-  const [closedFromOverlay, setClosedFromOverlay] = useState(false);
 
   const handleSetVtsAiContentType = (contentType: string, data?: MarketAnalysisData) => {
     setVtsAiContentType(contentType);
