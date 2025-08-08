@@ -179,7 +179,7 @@ const VtsAiDefault = forwardRef<
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`vts-ai-gradient layered-shadow z-50 flex h-172 w-lg flex-col rounded-4xl p-4 text-gray-700 ${className}`}
+          className={`layered-shadow animate-ai-linear-gradient z-50 flex h-172 w-lg flex-col rounded-4xl bg-[linear-gradient(45deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_25%,var(--color-vts-ai-dark)_75%,var(--color-vts-ai-gray)_200%)] bg-[length:400%_400%] p-4 text-gray-700 ${className}`}
         >
           <VtsAiHeader onReset={resetConversation} />
           <div className="layered-shadow relative z-50 h-full w-full overflow-auto rounded-[1.25rem] bg-white text-sm">

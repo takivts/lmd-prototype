@@ -18,12 +18,12 @@
   --color-vts-purple-900: #130a76;
   --color-vts-primary: var(--color-vts-purple-700);
 
-  --animate-floating-cta-bg-gradient: floating-cta-bg-gradient 6s ease-in-out reverse infinite;
-  --animate-floating-cta-gradient: floating-cta-gradient 12s ease-in-out reverse infinite;
-  --animate-upsell-banner-gradient: upsell-banner-gradient 6s ease-in-out reverse infinite;
+  --animate-fab-glow: fab-glow-keyframes 3s ease-in infinite;
+  --animate-fab-gradient: fab-bg-keyframes 3s ease-in infinite;
+  --animate-ai-linear-gradient: ai-linear-keyframes 3s ease-in infinite;
 }
 
-@keyframes floating-cta-bg-gradient {
+@keyframes fab-glow-keyframes {
   0% {
     transform: scale(1) rotate(0deg);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
@@ -37,7 +37,7 @@
     border-radius: 50% 60% 30% 60% / 60% 30% 60% 40%;
   }
   75% {
-    transform: scale(1.1) rotate(270deg);
+    transform: scale(1.05) rotate(270deg);
     border-radius: 60% 40% 60% 30% / 30% 60% 40% 70%;
   }
   100% {
@@ -46,9 +46,10 @@
   }
 }
 
-@keyframes floating-cta-gradient {
+@keyframes fab-bg-keyframes {
   0% {
     transform: rotate(0deg);
+    background-position: 0;
   }
   25% {
     transform: rotate(90deg);
@@ -64,86 +65,22 @@
   }
 }
 
-@keyframes window-gradient {
+@keyframes ai-linear-keyframes {
   0% {
-    background-size: 100% 100%;
-    background-position: center 0;
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 0% 80%;
   }
   50% {
-    background-size: 200% 200%;
-    background-position: center 25%;
+    background-position: 80% 80%;
+  }
+  75% {
+    background-position: 80% 0%;
   }
   100% {
-    background-size: 100% 100%;
-    background-position: center 0;
+    background-position: 0% 0%;
   }
-}
-
-@keyframes window-gradient-2 {
-  0% {
-    background-size: 100% 100%;
-    background-position: left 0;
-  }
-  50% {
-    background-size: 150% 150%;
-    background-position: right 0;
-  }
-  100% {
-    background-size: 100% 100%;
-    background-position: left 0;
-  }
-}
-
-.vts-ai-gradient {
-  background-image: radial-gradient(
-    circle at center -15%,
-    var(--color-vts-ai-light) 2%,
-    var(--color-vts-ai-medium) 25%,
-    var(--color-vts-ai-dark) 40%,
-    var(--color-vts-ai-gray) 100%
-  );
-  background-repeat: no-repeat;
-  animation: window-gradient 12s ease-in-out reverse infinite;
-}
-
-.vts-ai-gradient-2 {
-  background-image: linear-gradient(
-    to right,
-    var(--color-vts-ai-light) 0%,
-    var(--color-vts-ai-medium) 10%,
-    var(--color-vts-ai-dark) 50%,
-    var(--color-vts-ai-gray) 150%
-  );
-  background-repeat: no-repeat;
-  animation: window-gradient-2 12s ease-in-out reverse infinite;
-}
-
-@keyframes upsell-banner-gradient {
-  0% {
-    background-size: 100% 100%;
-    background-position: left 0;
-    opacity: 0.9;
-  }
-  50% {
-    background-size: 200% 200%;
-    opacity: 1;
-  }
-  100% {
-    background-size: 100% 100%;
-    background-position: right 0;
-    opacity: 0.9;
-  }
-}
-
-.vts-ai-upsell-gradient {
-  background-image: radial-gradient(
-    circle at center -40%,
-    var(--color-vts-ai-light),
-    var(--color-vts-purple-800),
-    var(--color-vts-ai-gray)
-  );
-  background-repeat: no-repeat;
-  animation: upsell-banner-gradient 15s ease-in-out infinite;
 }
 
 .vts-ai-underline {

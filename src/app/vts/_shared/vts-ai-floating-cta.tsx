@@ -90,15 +90,13 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         }}
       >
         <div
-          className={`from-vts-ai-dark via-vts-ai-dark animate-floating-cta-bg-gradient to-vts-ai-light pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-linear-to-t blur ${
+          className={`animate-fab-glow pointer-events-none absolute -inset-1 -z-10 scale-0 rounded-full bg-[radial-gradient(at_top,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_50%,var(--color-vts-ai-dark)_75%,var(--color-vts-ai-gray)_100%)] blur ${
             isVtsAiOpen ? "scale-75 opacity-100" : "scale-0 opacity-0"
           }`}
         />
         <div
-          className={`layered-shadow animate-floating-cta-gradient absolute z-50 rounded-full transition-all duration-200 ease-in-out ${
-            isVtsAiOpen
-              ? "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-12 bg-linear-to-t"
-              : "via-vts-ai-dark from-vts-purple-900 to-vts-ai-light size-13 bg-linear-to-t group-hover:size-14"
+          className={`layered-shadow animate-fab-gradient absolute z-50 rounded-full bg-[radial-gradient(at_top,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_50%,var(--color-vts-ai-dark)_75%,var(--color-vts-ai-gray)_100%)] transition-all duration-200 ease-in-out ${
+            isVtsAiOpen ? "size-12" : "size-13 group-hover:size-14"
           }`}
         >
           {/* <div
