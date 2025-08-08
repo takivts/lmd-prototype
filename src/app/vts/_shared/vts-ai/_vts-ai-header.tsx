@@ -39,7 +39,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
           <button
             key={persona}
             onClick={() => setVtsAiPersona(persona)}
-            className={`relative w-1/2 rounded-full px-1 py-1 text-sm duration-200 ${
+            className={`relative w-1/2 rounded-full px-1 py-1 text-sm font-medium duration-200 ${
               vtsAiPersona === persona ? "text-vts-purple-700" : "cursor-pointer text-white/50 hover:text-white"
             }`}
           >
