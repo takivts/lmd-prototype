@@ -118,7 +118,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
         />
         <div
           className={`layered-shadow absolute z-50 overflow-clip rounded-full transition-all duration-200 ease-in-out ${
-            isVtsAiOpen ? "size-12" : "size-13 group-hover:size-14"
+            isVtsAiOpen ? "size-12 brightness-90" : "size-13 group-hover:size-14"
           }`}
         >
           <div className="absolute -top-4.5 -left-4.5 size-22">
