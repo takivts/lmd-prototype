@@ -18,9 +18,9 @@
   --color-vts-purple-900: #130a76;
   --color-vts-primary: var(--color-vts-purple-700);
 
-  --animate-fab-glow: fab-glow-keyframes 12s ease-in infinite;
-  --animate-fab-gradient: fab-bg-keyframes 12s ease-in infinite;
-  --animate-ai-linear-gradient: ai-linear-keyframes 12s ease-in infinite;
+  --animate-fab-glow: fab-glow-keyframes 24s ease-in infinite;
+  --animate-fab-gradient: fab-bg-keyframes 24s ease-in infinite;
+  --animate-ai-linear-gradient: ai-linear-keyframes 24s ease-in infinite;
 }
 
 @keyframes fab-glow-keyframes {
@@ -70,13 +70,13 @@
     background-position: 0% 0%;
   }
   25% {
-    background-position: 0% 80%;
+    background-position: 0% 50%;
   }
   50% {
-    background-position: 80% 80%;
+    background-position: 50% 50%;
   }
   75% {
-    background-position: 80% 0%;
+    background-position: 50% 0%;
   }
   100% {
     background-position: 0% 0%;
@@ -98,7 +98,8 @@
 
 body {
   color: var(--color-gray-700);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  font-weight: 400;
 }
 
 /* REACT SELECT */
