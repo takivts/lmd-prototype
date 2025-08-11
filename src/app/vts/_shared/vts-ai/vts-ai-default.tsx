@@ -38,7 +38,7 @@ const VtsAiDefault = forwardRef<
   }
 >(({ className, isOpen }, ref) => {
   const pathname = usePathname();
-  const { vtsAiData, setVtsAiContentType, isUpsell, isPromptError, showChatInput } = useAppContext();
+  const { vtsAiData, setVtsAiContentType, isUpsell, isPromptError, setIsPromptError, showChatInput } = useAppContext();
   const [selectedPrompt, setSelectedPrompt] = useState<VtsAiPrompt | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
@@ -117,6 +117,18 @@ const VtsAiDefault = forwardRef<
     setPrompts(pathname === "/vts/lease/deals/profile" ? vtsAiPromptsWithContext : vtsAiPromptsWithoutContext);
     initializeInputs();
     setSelectedCategory("Deal Economics");
+  };
+
+  const retryPrompt = () => {
+    if (selectedPrompt) {
+      setIsLoading(true);
+      setTimeout(
+        () => {
+          setIsLoading(false);
+        },
+        Math.random() * 2000 + 3000,
+      );
+    }
   };
 
   useImperativeHandle(ref, () => ({
@@ -321,9 +333,12 @@ const VtsAiDefault = forwardRef<
                       </svg>
 
                       <p className="text-vts-gray-700 text-center">We are having trouble processing your request.</p>
-                      <p className="text-vts-gray-700 text-vts-purple-700 hover:text-vts-purple-800 cursor-pointer text-center underline transition-all duration-200">
+                      <button
+                        className="text-vts-gray-700 text-vts-purple-700 hover:text-vts-purple-800 cursor-pointer text-center underline transition-all duration-200"
+                        onClick={() => retryPrompt()}
+                      >
                         Try again
-                      </p>
+                      </button>
                     </div>
                   ) : (
                     <motion.div
