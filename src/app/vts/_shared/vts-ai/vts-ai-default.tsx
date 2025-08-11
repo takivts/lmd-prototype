@@ -38,7 +38,7 @@ const VtsAiDefault = forwardRef<
   }
 >(({ className, isOpen }, ref) => {
   const pathname = usePathname();
-  const { vtsAiData, setVtsAiContentType, isUpsell, isPromptError, setIsPromptError, showChatInput } = useAppContext();
+  const { vtsAiData, setVtsAiContentType, isUpsell, isPromptError, showChatInput } = useAppContext();
   const [selectedPrompt, setSelectedPrompt] = useState<VtsAiPrompt | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
