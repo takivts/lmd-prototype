@@ -18,14 +18,11 @@ export default function DealProfilePage() {
 
   useEffect(() => {
     const paneContainer = document.createElement("div");
-    paneContainer.className = "fixed bottom-6 left-16 z-50";
+    paneContainer.className = "fixed bottom-6 left-6 z-50";
     document.body.appendChild(paneContainer);
 
     const PARAMS = {
       isUpsell: false,
-      gradientLinks: false,
-      sparkleLinks: true,
-      gradientButtons: true,
       isPromptError: false,
       showChatInput: false,
     };
