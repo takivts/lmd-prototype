@@ -13,7 +13,8 @@ import vtsAiSparkleWhite from "../../../../../../public/sparkle-white.json";
 import { Pane } from "tweakpane";
 
 export default function DealProfilePage() {
-  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell } = useAppContext();
+  const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell, setIsPromptError, setShowChatInput } =
+    useAppContext();
   const [gradientLinks, setGradientLinks] = useState(false);
   const [sparkleLinks, setSparkleLinks] = useState(true);
   const [gradientButtons, setGradientButtons] = useState(true);
@@ -28,6 +29,8 @@ export default function DealProfilePage() {
       gradientLinks: false,
       sparkleLinks: true,
       gradientButtons: true,
+      isPromptError: false,
+      showChatInput: false,
     };
 
     const pane = new Pane({
@@ -52,6 +55,14 @@ export default function DealProfilePage() {
       label: "Gradient Buttons",
     });
 
+    const isPromptErrorBinding = pane.addBinding(PARAMS, "isPromptError", {
+      label: "Show Prompt Error",
+    });
+
+    const showChatInputBinding = pane.addBinding(PARAMS, "showChatInput", {
+      label: "Show Chat Input",
+    });
+
     isUpsellBinding.on("change", (e) => {
       setIsUpsell(e.value);
     });
@@ -68,13 +79,21 @@ export default function DealProfilePage() {
       setGradientButtons(e.value);
     });
 
+    isPromptErrorBinding.on("change", (e) => {
+      setIsPromptError(e.value);
+    });
+
+    showChatInputBinding.on("change", (e) => {
+      setShowChatInput(e.value);
+    });
+
     return () => {
       pane.dispose();
       if (paneContainer.parentNode) {
         paneContainer.parentNode.removeChild(paneContainer);
       }
     };
-  }, [setIsUpsell, setGradientLinks, setSparkleLinks]);
+  }, [setIsUpsell, setGradientLinks, setSparkleLinks, setIsPromptError, setShowChatInput]);
 
   const mainTabs = [
     { label: "Info" },

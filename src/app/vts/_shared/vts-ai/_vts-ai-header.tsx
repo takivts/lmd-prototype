@@ -11,7 +11,7 @@ export default function VtsAiHeader({ onReset }: { onReset?: () => void }) {
   const personas: VtsAiPersona[] = ["Analyst", "Assistant"];
 
   return (
-    <div className="flex flex-auto items-center px-2 pt-1 pb-4 text-sm text-white">
+    <div className="mb-4 flex flex-auto items-center px-2 text-sm text-white">
       <div className="flex flex-auto items-center gap-1">
         <div className="mr-2 flex size-8">
           <svg className="h-full w-full" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">

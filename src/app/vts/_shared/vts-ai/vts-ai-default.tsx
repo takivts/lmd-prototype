@@ -38,7 +38,7 @@ const VtsAiDefault = forwardRef<
   }
 >(({ className, isOpen }, ref) => {
   const pathname = usePathname();
-  const { vtsAiData, setVtsAiContentType, isUpsell } = useAppContext();
+  const { vtsAiData, setVtsAiContentType, isUpsell, isPromptError, showChatInput } = useAppContext();
   const [selectedPrompt, setSelectedPrompt] = useState<VtsAiPrompt | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(true);
@@ -179,10 +179,14 @@ const VtsAiDefault = forwardRef<
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`layered-shadow animate-ai-linear-gradient z-50 flex h-172 w-lg flex-col rounded-4xl bg-[linear-gradient(45deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_25%,var(--color-vts-ai-dark)_75%,var(--color-vts-ai-gray)_200%)] bg-[length:400%_400%] p-4 text-gray-700 ${className}`}
+          className={`layered-shadow animate-ai-linear-gradient z-50 flex h-180 w-lg flex-col rounded-4xl bg-[linear-gradient(110deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_100%)] bg-[length:200%_200%] p-4 text-gray-700 ${className}`}
         >
           <VtsAiHeader onReset={resetConversation} />
-          <div className="layered-shadow relative z-50 h-full w-full overflow-auto rounded-[1.25rem] bg-white text-sm">
+          <div
+            className={`relative z-50 w-full overflow-auto bg-white text-sm ${
+              showChatInput ? "h-[calc(100%-104px)] rounded-t-[1.25rem]" : "h-[calc(100%-56px)] rounded-[1.25rem]"
+            }`}
+          >
             <div className="flex h-full flex-col overflow-auto p-4">
               <motion.div
                 className="flex h-full flex-col gap-2"
@@ -223,10 +227,10 @@ const VtsAiDefault = forwardRef<
                       {categories.map((category) => (
                         <span
                           key={category.value}
-                          className={`cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-200 ${
+                          className={`border-vts-purple-300 cursor-pointer rounded-full border px-3 py-1 text-center text-xs transition-all duration-200 ${
                             selectedCategory === category.value
-                              ? "bg-vts-purple-700 hover:bg-vts-purple-800 text-white"
-                              : "text-vts-purple-700 hover:bg-vts-purple-200"
+                              ? "bg-[linear-gradient(45deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] text-white transition-all duration-200 hover:brightness-120"
+                              : "text-vts-purple-700 hover:bg-vts-purple-100"
                           }`}
                           onClick={() => setSelectedCategory(category.value)}
                         >
@@ -298,7 +302,30 @@ const VtsAiDefault = forwardRef<
                   <VtsAiLoader className={` ${isTransitioning ? "opacity-0" : "opacity-100"}`} />
                 ) : (
                   selectedPrompt &&
-                  responsePayload && (
+                  responsePayload &&
+                  (isPromptError ? (
+                    <div className="flex flex-col gap-1 pb-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="mx-auto size-8 text-orange-500"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+                        />
+                      </svg>
+
+                      <p className="text-vts-gray-700 text-center">We are having trouble processing your request.</p>
+                      <p className="text-vts-gray-700 text-vts-purple-700 hover:text-vts-purple-800 cursor-pointer text-center underline transition-all duration-200">
+                        Try again
+                      </p>
+                    </div>
+                  ) : (
                     <motion.div
                       className="flex flex-col gap-2 pb-4"
                       variants={containerVariants}
@@ -341,11 +368,35 @@ const VtsAiDefault = forwardRef<
                         </motion.div>
                       )}
                     </motion.div>
-                  )
+                  ))
                 )}
               </motion.div>
             </div>
           </div>
+          {showChatInput && (
+            <div className="relative flex h-12 flex-auto border-t border-gray-300">
+              <input
+                className="w-full resize-none rounded-b-[1.25rem] bg-white py-2 pr-18 pl-4 text-sm focus:outline-none"
+                placeholder="Ask a VTS AI a question..."
+              />
+
+              <button className="absolute right-6 bottom-2 size-8 cursor-pointer rounded-3xl bg-[linear-gradient(110deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] p-2 text-white transition-all duration-200 hover:brightness-120">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </motion.div>
       )}
     </AnimatePresence>
