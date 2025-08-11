@@ -194,7 +194,7 @@ export default function DealProfilePage() {
             >
               <span className="relative">
                 Market averages
-                <span className="vts-ai-underline absolute -bottom-[2px] left-0 h-[3px] w-full rounded-full" />
+                <span className="absolute -bottom-[2px] left-0 h-[3px] w-full rounded-full" />
               </span>
               <Lottie
                 lottieRef={marketAverageRef}
