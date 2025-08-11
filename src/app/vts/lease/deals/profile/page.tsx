@@ -6,7 +6,7 @@ import ProposalCard from "@/app/vts/_shared/proposal-card";
 import TabRow from "@/app/vts/_shared/tab-row";
 import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import vtsAiSparkle from "../../../../../../public/sparkle3.json";
 import vtsAiSparkleWhite from "../../../../../../public/sparkle-white.json";
@@ -15,9 +15,6 @@ import { Pane } from "tweakpane";
 export default function DealProfilePage() {
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell, setIsPromptError, setShowChatInput } =
     useAppContext();
-  const [gradientLinks, setGradientLinks] = useState(false);
-  const [sparkleLinks, setSparkleLinks] = useState(true);
-  const [gradientButtons, setGradientButtons] = useState(true);
 
   useEffect(() => {
     const paneContainer = document.createElement("div");
@@ -43,18 +40,6 @@ export default function DealProfilePage() {
       label: "Show Upsell",
     });
 
-    const gradientLinksBinding = pane.addBinding(PARAMS, "gradientLinks", {
-      label: "Gradient Links",
-    });
-
-    const sparkleLinksBinding = pane.addBinding(PARAMS, "sparkleLinks", {
-      label: "Sparkle Links",
-    });
-
-    const gradientButtonsBinding = pane.addBinding(PARAMS, "gradientButtons", {
-      label: "Gradient Buttons",
-    });
-
     const isPromptErrorBinding = pane.addBinding(PARAMS, "isPromptError", {
       label: "Show Prompt Error",
     });
@@ -65,18 +50,6 @@ export default function DealProfilePage() {
 
     isUpsellBinding.on("change", (e) => {
       setIsUpsell(e.value);
-    });
-
-    gradientLinksBinding.on("change", (e) => {
-      setGradientLinks(e.value);
-    });
-
-    sparkleLinksBinding.on("change", (e) => {
-      setSparkleLinks(e.value);
-    });
-
-    gradientButtonsBinding.on("change", (e) => {
-      setGradientButtons(e.value);
     });
 
     isPromptErrorBinding.on("change", (e) => {
@@ -93,7 +66,7 @@ export default function DealProfilePage() {
         paneContainer.parentNode.removeChild(paneContainer);
       }
     };
-  }, [setIsUpsell, setGradientLinks, setSparkleLinks, setIsPromptError, setShowChatInput]);
+  }, [setIsUpsell, setIsPromptError, setShowChatInput]);
 
   const mainTabs = [
     { label: "Info" },
@@ -121,7 +94,7 @@ export default function DealProfilePage() {
   useEffect(() => {
     marketAverageRef.current?.playSegments([0, 25], true);
     newProposalRef.current?.playSegments([0, 25], true);
-  }, [sparkleLinks]);
+  }, []);
 
   return (
     <div className="flex h-full flex-col">
@@ -219,21 +192,17 @@ export default function DealProfilePage() {
                 );
               }}
             >
-              <span className={`${gradientLinks ? "relative" : ""}`}>
+              <span className="relative">
                 Market averages
-                {gradientLinks && (
-                  <span className="vts-ai-underline absolute -bottom-[2px] left-0 h-[3px] w-full rounded-full" />
-                )}
+                <span className="vts-ai-underline absolute -bottom-[2px] left-0 h-[3px] w-full rounded-full" />
               </span>
-              {sparkleLinks && (
-                <Lottie
-                  lottieRef={marketAverageRef}
-                  animationData={vtsAiSparkle}
-                  autoplay={false}
-                  loop={false}
-                  className="z-50 size-5"
-                />
-              )}
+              <Lottie
+                lottieRef={marketAverageRef}
+                animationData={vtsAiSparkle}
+                autoplay={false}
+                loop={false}
+                className="z-50 size-5"
+              />
             </span>
           </div>
           <div className="flex gap-8">
@@ -272,11 +241,7 @@ export default function DealProfilePage() {
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
           <div className="flex w-full justify-end gap-2 px-4">
             <span
-              className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border py-1.5 pr-2.5 pl-2 text-sm transition-all duration-200 ${
-                gradientButtons
-                  ? "bg-[linear-gradient(110deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] text-white transition-all duration-200 hover:brightness-120"
-                  : "border-vts-purple-300 text-vts-purple-700"
-              }`}
+              className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border py-1.5 pr-2.5 pl-2 text-sm transition-all duration-200 ${"bg-[linear-gradient(110deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] text-white transition-all duration-200 hover:brightness-120"}`}
               onMouseEnter={() => {
                 newProposalRef.current?.setSpeed(0.75);
                 newProposalRef.current?.playSegments(
@@ -290,7 +255,7 @@ export default function DealProfilePage() {
             >
               <Lottie
                 lottieRef={newProposalRef}
-                animationData={gradientButtons ? vtsAiSparkleWhite : vtsAiSparkle}
+                animationData={vtsAiSparkleWhite}
                 autoplay={false}
                 loop={false}
                 className="z-50 size-5"
