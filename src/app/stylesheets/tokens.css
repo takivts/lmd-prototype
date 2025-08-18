@@ -28,5 +28,5 @@
 
   --animate-fab-glow: fab-glow-keyframes 8s ease-in infinite;
   --animate-fab-gradient: fab-bg-keyframes 16s ease-in infinite;
-  --animate-ai-linear-gradient: ai-linear-keyframes 3s ease-in infinite;
+  --animate-ai-linear-gradient: ai-linear-keyframes 12s ease-in infinite;
 }

@@ -145,7 +145,7 @@ export default function VtsAiFloatingCTA({ className }: { className?: string }) 
                   handlePromptClick();
                 }}
               >
-                <p className="text-vts-primary cursor-pointer text-sm underline-offset-2 select-none">
+                <p className="text-vts-purple-700 cursor-pointer text-sm underline-offset-2 select-none">
                   {currentPrompt.prompt}
                 </p>
               </motion.div>

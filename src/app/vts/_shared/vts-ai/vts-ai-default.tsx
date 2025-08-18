@@ -374,6 +374,10 @@ const VtsAiDefault = forwardRef<
                         </motion.div>
                       )}
 
+                      <button className="mb-3 flex w-fit cursor-pointer rounded-lg bg-[linear-gradient(110deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] px-3 py-2 text-white transition-all duration-200 hover:brightness-120">
+                        Download CSV data
+                      </button>
+
                       {responsePayload.suggestedFollowUps && responsePayload.suggestedFollowUps.length > 0 && (
                         <motion.div variants={itemVariants}>
                           <VtsAiSuggestedFollowUps
