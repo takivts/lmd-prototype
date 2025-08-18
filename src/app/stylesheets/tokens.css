@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vts-ai-light: #c928ff;
+  --color-vts-ai-medium: #8b28ff;
+  --color-vts-ai-dark: #5528ff;
+  --color-vts-ai-gray: #181818;
+
+  --color-vts-purple-100: #f5f5ff;
+  --color-vts-purple-200: #ebebff;
+  --color-vts-purple-300: #ccccff;
+  --color-vts-purple-400: #aea9fe;
+  --color-vts-purple-500: #887efc;
+  --color-vts-purple-600: #6253da;
+  --color-vts-purple-700: #4837b9;
+  --color-vts-purple-800: #280f96;
+  --color-vts-purple-900: #130a76;
+
+  --color-brand-primary: var(--color-vts-purple-600);
+  --color-brand-secondary: var(--color-vts-purple-400);
+  --color-brand-tertiary: var(--color-vts-purple-300);
+  --color-brand-quaternary: var(--color-vts-purple-200);
+
+  --color-border-primary: var(--color-gray-900);
+  --color-border-secondary: var(--color-gray-700);
+  --color-border-tertiary: var(--color-gray-500);
+  --color-border-quaternary: var(--color-gray-300);
+
+  --animate-fab-glow: fab-glow-keyframes 8s ease-in infinite;
+  --animate-fab-gradient: fab-bg-keyframes 16s ease-in infinite;
+  --animate-ai-linear-gradient: ai-linear-keyframes 3s ease-in infinite;
+}

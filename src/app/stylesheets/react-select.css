@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+.vts-ai-select__control--is-focused {
+  border-color: var(--color-vts-purple-600) !important;
+}
+
+.vts-ai-select__option--is-focused {
+  background-color: var(--color-vts-purple-100) !important;
+  color: var(--color-vts-purple-700) !important;
+}
+
+.vts-ai-select__control {
+  padding: 0 4px !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.vts-ai-select__option--is-selected {
+  background-color: var(--color-vts-purple-600) !important;
+  color: white !important;
+}

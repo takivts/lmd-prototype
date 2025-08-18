@@ -8,7 +8,7 @@ import { vtsAiPromptsWithContext } from "@/app/vts/_shared/data/vts-ai-prompts";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
-import vtsAiSparkle from "../../../../../../public/sparkle3.json";
+import vtsAiSparkle from "../../../../../../public/sparkle.json";
 import vtsAiSparkleWhite from "../../../../../../public/sparkle-white.json";
 import { Pane } from "tweakpane";
 
@@ -238,7 +238,7 @@ export default function DealProfilePage() {
           <TabRow tabs={proposalTabs} className="border-b border-gray-300" />
           <div className="flex w-full justify-end gap-2 px-4">
             <span
-              className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border py-1.5 pr-2.5 pl-2 text-sm transition-all duration-200 ${"bg-[linear-gradient(110deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] text-white transition-all duration-200 hover:brightness-120"}`}
+              className={`hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg border bg-[linear-gradient(110deg,var(--color-vts-ai-light)_0%,var(--color-vts-ai-medium)_10%,var(--color-vts-ai-dark)_50%,var(--color-vts-ai-gray)_200%)] py-1.5 pr-2.5 pl-2 text-sm text-white transition-all duration-200 hover:brightness-120`}
               onMouseEnter={() => {
                 newProposalRef.current?.setSpeed(0.75);
                 newProposalRef.current?.playSegments(
