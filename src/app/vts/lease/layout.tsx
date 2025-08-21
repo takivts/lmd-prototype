@@ -44,7 +44,7 @@ export default function VtsLeaseLayout({
       <div className="mx-auto flex min-h-[calc(100dvh-50px)] w-full">
         <LeftNav navItems={leaseNavItems} />
         {children}
-        {pathname?.includes("vts/lease/deals/profile") && <SidePanel />}
+
         <VtsAiFloatingCTA />
         <SupportFloatingCTA />
       </div>

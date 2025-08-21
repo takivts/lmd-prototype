@@ -112,23 +112,7 @@ export default function DealProfilePage() {
                 />
               </svg>
             </span>
-            <div className="text-vts-purple-700 hover:bg-vts-purple-100 flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1.5 text-sm whitespace-nowrap transition-all duration-200">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                />
-              </svg>
-              Updates
-            </div>
+
           </div>
         </div>
         <div className="flex flex-col gap-1">
@@ -137,8 +121,8 @@ export default function DealProfilePage() {
             <span className="cursor-pointer">Alphabet</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
-            <span className="gap-2 text-gray-500">Property</span>
-            <span className="">New York, Midtown</span>
+            <span className="gap-2 text-gray-500">Market</span>
+            <span className="">1001 Front Street, New York</span>
             <span
               className="text-vts-purple-700 flex cursor-pointer items-center gap-0.5 rounded-lg text-sm"
               onClick={() => handleVtsAiContentType("default", vtsAiPromptsWithContext[0].payload)}
@@ -176,7 +160,7 @@ export default function DealProfilePage() {
             <div className="flex items-center gap-2 text-sm">
               <span className="text-gray-500">Stage</span>
               <span className="flex w-32 items-center justify-between rounded-lg border border-transparent px-2 py-0 transition-all duration-200 hover:border-gray-300">
-                Lease out
+                New
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
