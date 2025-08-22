@@ -9,13 +9,18 @@ import { useEffect, useRef, useState } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import vtsAiSparkle from "../../../../../../public/sparkle.json";
 import vtsAiSparkleWhite from "../../../../../../public/sparkle-white.json";
+import { useSearchParams } from "next/navigation";
 
 export default function DealProfilePage() {
+  // Note: To show the updates panel with a comment from the assistant flow,
+  // the assistant should generate a URL like: /vts/lease/deals/profile?showUpdates=true&comment=added
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell, setIsPromptError, setShowChatInput } =
     useAppContext();
+  const searchParams = useSearchParams();
 
   const [isUpdatesPanelOpen, setIsUpdatesPanelOpen] = useState(false);
   const [newUpdate, setNewUpdate] = useState("");
+  const [commentAdded, setCommentAdded] = useState(false);
 
   const mainTabs = [
     { label: "Info", isActive: true },
@@ -40,6 +45,22 @@ export default function DealProfilePage() {
     marketAverageRef.current?.playSegments([0, 25], true);
     newProposalRef.current?.playSegments([0, 25], true);
   }, []);
+
+  // Check URL parameters for comment flow
+  useEffect(() => {
+    const showUpdates = searchParams.get('showUpdates');
+    const comment = searchParams.get('comment');
+    
+    if (showUpdates === 'true' && comment) {
+      setIsUpdatesPanelOpen(true);
+      setCommentAdded(true);
+      // Clear the URL parameters after processing
+      const url = new URL(window.location.href);
+      url.searchParams.delete('showUpdates');
+      url.searchParams.delete('comment');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [searchParams]);
 
   const handleAddUpdate = () => {
     if (newUpdate.trim()) {
@@ -420,19 +441,21 @@ export default function DealProfilePage() {
             
             {/* Updates Feed */}
             <div className="flex flex-col gap-4">
-              {/* New Comment Update */}
-              <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-8 h-8 bg-vts-purple-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                  TW
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-sm font-medium text-gray-900">Taki Wong</span>
-                    <span className="text-xs text-gray-500">just now</span>
+              {/* New Comment Update - Only show when comment was added via assistant flow */}
+              {commentAdded && (
+                <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border-l-4 border-vts-purple-500">
+                  <div className="w-8 h-8 bg-vts-purple-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                    TW
                   </div>
-                  <p className="text-sm text-gray-700">Deal is moving forward, tenant enjoyed the showing</p>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-medium text-gray-900">Taki Wong</span>
+                      <span className="text-xs text-gray-500">just now</span>
+                    </div>
+                    <p className="text-sm text-gray-700">Deal is moving forward, tenant enjoyed the showing</p>
+                  </div>
                 </div>
-              </div>
+              )}
               
               {/* Existing Updates */}
               <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
