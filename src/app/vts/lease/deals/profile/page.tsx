@@ -48,6 +48,11 @@ export default function DealProfilePage() {
     }
   };
 
+  // Function to show updates panel (this would be called from the assistant flow)
+  const showUpdatesPanel = () => {
+    setIsUpdatesPanelOpen(true);
+  };
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex flex-col gap-2 p-8">
@@ -388,10 +393,7 @@ export default function DealProfilePage() {
                 Updates
               </button>
               <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
-                Relationships
-              </button>
-              <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
-                Documents
+                Docs
               </button>
               <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
                 Reminders
@@ -428,7 +430,7 @@ export default function DealProfilePage() {
                     <span className="text-sm font-medium text-gray-900">Taki Wong</span>
                     <span className="text-xs text-gray-500">just now</span>
                   </div>
-                  <p className="text-sm text-gray-700">Tenant is moving forward with the deal</p>
+                  <p className="text-sm text-gray-700">Deal is moving forward, tenant enjoyed the showing</p>
                 </div>
               </div>
               
