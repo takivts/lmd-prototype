@@ -371,82 +371,42 @@ export default function DealProfilePage() {
       {/* Updates Panel Toggle Button */}
       <button
         onClick={() => setIsUpdatesPanelOpen(!isUpdatesPanelOpen)}
-        className="fixed right-4 bottom-4 bg-vts-purple-600 hover:bg-vts-purple-700 text-white p-3 rounded-full shadow-lg transition-colors z-50"
+        className="fixed right-4 top-4 bg-vts-purple-600 hover:bg-vts-purple-700 text-white px-3 py-2 rounded-lg shadow-lg transition-colors z-50 text-sm font-medium"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M7.5 8.25h9m-9 3H12m-9.75 3h9m2.25-6H4.5m0 0a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Zm14.5 0a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Z"
-          />
-        </svg>
+        Updates
       </button>
       
-      {/* Collapsible Updates Panel with Arrow */}
-      <div className={`fixed right-0 top-0 h-full transition-all duration-300 ease-in-out z-40 ${isUpdatesPanelOpen ? 'w-80' : 'w-8'}`}>
-        {/* Collapsed State - Subtle Bar with Arrow */}
-        {!isUpdatesPanelOpen && (
-          <button
-            onClick={() => setIsUpdatesPanelOpen(true)}
-            className="h-full w-8 bg-vts-purple-800 hover:bg-vts-purple-900 text-white flex flex-col items-center justify-center transition-colors group"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-3 mb-1 group-hover:scale-110 transition-transform"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-            <span className="text-xs font-medium writing-mode-vertical transform -rotate-90 whitespace-nowrap">
-              Updates
-            </span>
-          </button>
-        )}
-        
-        {/* Expanded State - Full Panel */}
-        {isUpdatesPanelOpen && (
-          <div className="h-full w-80 bg-white border-l border-gray-300 flex">
-            {/* Main Panel Content */}
+      {/* Updates Panel */}
+      {isUpdatesPanelOpen && (
+        <div className="fixed right-0 top-0 h-full w-80 bg-white border-l border-gray-300 z-40">
+          <div className="h-full flex flex-col">
+            {/* Header with close button */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-300">
+              <h3 className="text-lg font-semibold text-gray-900">Updates</h3>
+              <button
+                onClick={() => setIsUpdatesPanelOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Panel Content */}
             <div className="flex-1 p-6 overflow-y-auto">
               <div className="flex flex-col gap-4">
-                {/* Header with close button */}
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-900">Updates</h3>
-                  <button
-                    onClick={() => setIsUpdatesPanelOpen(false)}
-                    className="text-gray-500 hover:text-gray-700"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                
                 {/* Tabs */}
                 <div className="flex border-b border-gray-300">
                   <button className="px-4 py-2 text-sm font-medium text-vts-purple-700 border-b-2 border-vts-purple-700">
@@ -551,33 +511,9 @@ export default function DealProfilePage() {
                 </div>
               </div>
             </div>
-            
-            {/* Collapse Arrow - Subtle */}
-            <button
-              onClick={() => setIsUpdatesPanelOpen(false)}
-              className="w-8 bg-vts-purple-800 hover:bg-vts-purple-900 text-white flex flex-col items-center justify-center transition-colors group"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-3 mb-1 group-hover:scale-110 transition-transform"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-              <span className="text-xs font-medium writing-mode-vertical transform -rotate-90 whitespace-nowrap">
-                Updates
-              </span>
-            </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
