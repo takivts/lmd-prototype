@@ -371,7 +371,7 @@ export default function DealProfilePage() {
       {/* Updates Panel Toggle Button */}
       <button
         onClick={() => setIsUpdatesPanelOpen(!isUpdatesPanelOpen)}
-        className="fixed right-4 top-4 bg-vts-purple-600 hover:bg-vts-purple-700 text-white px-3 py-2 rounded-lg shadow-lg transition-colors z-50 text-sm font-medium"
+        className="fixed right-6 top-20 bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800 px-2 py-1.5 rounded text-xs font-normal transition-colors z-50 border border-gray-200"
       >
         Updates
       </button>
