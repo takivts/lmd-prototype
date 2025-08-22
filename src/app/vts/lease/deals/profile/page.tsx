@@ -9,14 +9,12 @@ import { useEffect, useRef, useState } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import vtsAiSparkle from "../../../../../../public/sparkle.json";
 import vtsAiSparkleWhite from "../../../../../../public/sparkle-white.json";
-import { useSearchParams } from "next/navigation";
 
 export default function DealProfilePage() {
   // Note: To show the updates panel with a comment from the assistant flow,
   // the assistant should generate a URL like: /vts/lease/deals/profile?showUpdates=true&comment=added
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell, setIsPromptError, setShowChatInput } =
     useAppContext();
-  const searchParams = useSearchParams();
 
   const [isUpdatesPanelOpen, setIsUpdatesPanelOpen] = useState(false);
   const [newUpdate, setNewUpdate] = useState("");
@@ -46,21 +44,27 @@ export default function DealProfilePage() {
     newProposalRef.current?.playSegments([0, 25], true);
   }, []);
 
-  // Check URL parameters for comment flow
+  // Check URL parameters for comment flow - using window.location.search for reliability
   useEffect(() => {
-    const showUpdates = searchParams.get('showUpdates');
-    const comment = searchParams.get('comment');
+    const urlParams = new URLSearchParams(window.location.search);
+    const showUpdates = urlParams.get('showUpdates');
+    const comment = urlParams.get('comment');
+    
+    console.log('URL params detected:', { showUpdates, comment }); // Debug log
     
     if (showUpdates === 'true' && comment) {
+      console.log('Opening updates panel and showing comment'); // Debug log
       setIsUpdatesPanelOpen(true);
       setCommentAdded(true);
+      
       // Clear the URL parameters after processing
       const url = new URL(window.location.href);
       url.searchParams.delete('showUpdates');
       url.searchParams.delete('comment');
       window.history.replaceState({}, '', url.toString());
+      console.log('URL cleaned up'); // Debug log
     }
-  }, [searchParams]);
+  }, []); // Empty dependency array to run only once on mount
 
   const handleAddUpdate = () => {
     if (newUpdate.trim()) {
@@ -80,6 +84,11 @@ export default function DealProfilePage() {
         <div className="text-xs text-gray-700">
           <span className="">VTS Lease</span> &gt; <span className="text-gray-700">Deals</span> &gt;{" "}
           <span className="font-bold text-gray-700">Deal Profile</span>
+          {commentAdded && (
+            <span className="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+              ✓ Comment Added
+            </span>
+          )}
         </div>
         
         {/* Deal Profile Header */}
@@ -378,6 +387,17 @@ export default function DealProfilePage() {
             d="M7.5 8.25h9m-9 3H12m-9.75 3h9m2.25-6H4.5m0 0a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Zm14.5 0a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0Z"
           />
         </svg>
+      </button>
+      
+      {/* Debug Button - Remove this after testing */}
+      <button
+        onClick={() => {
+          setIsUpdatesPanelOpen(true);
+          setCommentAdded(true);
+        }}
+        className="fixed right-4 bottom-20 bg-red-600 hover:bg-red-700 text-white p-3 rounded-lg shadow-lg transition-colors z-50 text-sm"
+      >
+        Test Comment Flow
       </button>
       
       {/* Right Panel - Updates Section */}
