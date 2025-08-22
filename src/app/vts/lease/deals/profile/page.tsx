@@ -390,12 +390,12 @@ export default function DealProfilePage() {
       </button>
       
       {/* Collapsible Updates Panel with Arrow */}
-      <div className={`fixed right-0 top-0 h-full transition-all duration-300 ease-in-out z-40 ${isUpdatesPanelOpen ? 'w-80' : 'w-12'}`}>
-        {/* Collapsed State - Just Arrow */}
+      <div className={`fixed right-0 top-0 h-full transition-all duration-300 ease-in-out z-40 ${isUpdatesPanelOpen ? 'w-80' : 'w-8'}`}>
+        {/* Collapsed State - Subtle Bar with Arrow */}
         {!isUpdatesPanelOpen && (
           <button
             onClick={() => setIsUpdatesPanelOpen(true)}
-            className="h-full w-12 bg-vts-purple-600 hover:bg-vts-purple-700 text-white flex items-center justify-center transition-colors"
+            className="h-full w-8 bg-vts-purple-800 hover:bg-vts-purple-900 text-white flex flex-col items-center justify-center transition-colors group"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -403,7 +403,7 @@ export default function DealProfilePage() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-5"
+              className="size-3 mb-1 group-hover:scale-110 transition-transform"
             >
               <path
                 strokeLinecap="round"
@@ -411,6 +411,9 @@ export default function DealProfilePage() {
                 d="M15.75 19.5L8.25 12l7.5-7.5"
               />
             </svg>
+            <span className="text-xs font-medium writing-mode-vertical transform -rotate-90 whitespace-nowrap">
+              Updates
+            </span>
           </button>
         )}
         
@@ -549,10 +552,10 @@ export default function DealProfilePage() {
               </div>
             </div>
             
-            {/* Collapse Arrow */}
+            {/* Collapse Arrow - Subtle */}
             <button
               onClick={() => setIsUpdatesPanelOpen(false)}
-              className="w-12 bg-vts-purple-600 hover:bg-vts-purple-700 text-white flex items-center justify-center transition-colors"
+              className="w-8 bg-vts-purple-800 hover:bg-vts-purple-900 text-white flex flex-col items-center justify-center transition-colors group"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -560,7 +563,7 @@ export default function DealProfilePage() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-5"
+                className="size-3 mb-1 group-hover:scale-110 transition-transform"
               >
                 <path
                   strokeLinecap="round"
@@ -568,6 +571,9 @@ export default function DealProfilePage() {
                   d="M8.25 4.5l7.5 7.5-7.5 7.5"
                 />
               </svg>
+              <span className="text-xs font-medium writing-mode-vertical transform -rotate-90 whitespace-nowrap">
+                Updates
+              </span>
             </button>
           </div>
         )}
