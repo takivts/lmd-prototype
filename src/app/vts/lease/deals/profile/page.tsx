@@ -26,6 +26,7 @@ export default function DealProfilePage() {
   const [isUpdatesPanelOpen, setIsUpdatesPanelOpen] = useState(false);
   const [newUpdate, setNewUpdate] = useState("");
   const [commentAdded, setCommentAdded] = useState(false);
+  const [currentURL, setCurrentURL] = useState("");
   
   // Deal information state
   const [dealInfo, setDealInfo] = useState({
@@ -120,71 +121,151 @@ export default function DealProfilePage() {
 
   // Check URL parameters for comment flow - using window.location.search for reliability
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const showUpdates = urlParams.get('showUpdates');
-    const comment = urlParams.get('comment');
-    const newComment = urlParams.get('newComment');
-    const companyName = urlParams.get('companyName');
-    const propertyAddress = urlParams.get('propertyAddress');
-    const assetSize = urlParams.get('assetSize');
-    const industry = urlParams.get('industry');
-    const requirementSize = urlParams.get('requirementSize');
-    
-    console.log('URL params detected:', { showUpdates, comment, newComment, companyName, propertyAddress, assetSize, industry, requirementSize }); // Debug log
-    
-    if (showUpdates === 'true' && comment) {
-      console.log('Opening updates panel and showing comment'); // Debug log
-      setIsUpdatesPanelOpen(true);
-      setCommentAdded(true);
+    // Function to process URL parameters
+    const processURLParams = () => {
+      const currentSearch = window.location.search;
+      setCurrentURL(currentSearch); // Track URL changes
       
-      // Clear the URL parameters after processing
-      const url = new URL(window.location.href);
-      url.searchParams.delete('showUpdates');
-      url.searchParams.delete('comment');
-      window.history.replaceState({}, '', url.toString());
-      console.log('URL cleaned up'); // Debug log
-    }
-
-    // Handle new comment from assistant
-    if (newComment) {
-      const newCommentObj = {
-        id: Date.now(),
-        author: "Taki Wong",
-        initials: "TW",
-        message: decodeURIComponent(newComment),
-        timestamp: "just now",
-        isNew: true
-      };
-      setComments(prev => [newCommentObj, ...prev]);
-      setIsUpdatesPanelOpen(true);
+      const urlParams = new URLSearchParams(currentSearch);
+      const showUpdates = urlParams.get('showUpdates');
+      const comment = urlParams.get('comment');
+      const newComment = urlParams.get('newComment');
+      const companyName = urlParams.get('companyName');
+      const propertyAddress = urlParams.get('propertyAddress');
+      const assetSize = urlParams.get('assetSize');
+      const industry = urlParams.get('industry');
+      const requirementSize = urlParams.get('requirementSize');
       
-      // Clear the newComment parameter
-      const url = new URL(window.location.href);
-      url.searchParams.delete('newComment');
-      window.history.replaceState({}, '', url.toString());
-    }
+      console.log('URL params detected:', { showUpdates, comment, newComment, companyName, propertyAddress, assetSize, industry, requirementSize }); // Debug log
+      
+      if (showUpdates === 'true' && comment) {
+        console.log('Opening updates panel and showing comment'); // Debug log
+        setIsUpdatesPanelOpen(true);
+        setCommentAdded(true);
+        
+        // Clear the URL parameters after processing
+        const url = new URL(window.location.href);
+        url.searchParams.delete('showUpdates');
+        url.searchParams.delete('comment');
+        window.history.replaceState({}, '', url.toString());
+        console.log('URL cleaned up'); // Debug log
+      }
 
-    // Handle deal info updates from assistant
-    if (companyName || propertyAddress || assetSize || industry || requirementSize) {
-      setDealInfo(prev => ({
-        ...prev,
-        ...(companyName && { companyName: decodeURIComponent(companyName) }),
-        ...(propertyAddress && { propertyAddress: decodeURIComponent(propertyAddress) }),
-        ...(assetSize && { assetSize: decodeURIComponent(assetSize) }),
-        ...(industry && { industry: decodeURIComponent(industry) }),
-        ...(requirementSize && { requirementSize: decodeURIComponent(requirementSize) })
-      }));
+      // Handle new comment from assistant
+      if (newComment) {
+        console.log('Processing new comment:', newComment);
+        const newCommentObj = {
+          id: Date.now(),
+          author: "Taki Wong",
+          initials: "TW",
+          message: decodeURIComponent(newComment),
+          timestamp: "just now",
+          isNew: true
+        };
+        setComments(prev => [newCommentObj, ...prev]);
+        setIsUpdatesPanelOpen(true);
+        
+        // Clear the newComment parameter
+        const url = new URL(window.location.href);
+        url.searchParams.delete('newComment');
+        window.history.replaceState({}, '', url.toString());
+      }
 
-      // Clear the deal info parameters
-      const url = new URL(window.location.href);
-      url.searchParams.delete('companyName');
-      url.searchParams.delete('propertyAddress');
-      url.searchParams.delete('assetSize');
-      url.searchParams.delete('industry');
-      url.searchParams.delete('requirementSize');
-      window.history.replaceState({}, '', url.toString());
-    }
+      // Handle deal info updates from assistant
+      if (companyName || propertyAddress || assetSize || industry || requirementSize) {
+        console.log('Processing deal info updates:', { companyName, propertyAddress, assetSize, industry, requirementSize });
+        
+        setDealInfo(prev => {
+          const newDealInfo = {
+            ...prev,
+            ...(companyName && { companyName: decodeURIComponent(companyName) }),
+            ...(propertyAddress && { propertyAddress: decodeURIComponent(propertyAddress) }),
+            ...(assetSize && { assetSize: decodeURIComponent(assetSize) }),
+            ...(industry && { industry: decodeURIComponent(industry) }),
+            ...(requirementSize && { requirementSize: decodeURIComponent(requirementSize) })
+          };
+          console.log('Updated deal info:', newDealInfo);
+          return newDealInfo;
+        });
+
+        // Clear the deal info parameters
+        const url = new URL(window.location.href);
+        url.searchParams.delete('companyName');
+        url.searchParams.delete('propertyAddress');
+        url.searchParams.delete('assetSize');
+        url.searchParams.delete('industry');
+        url.searchParams.delete('requirementSize');
+        window.history.replaceState({}, '', url.toString());
+      }
+    };
+
+    // Process URL parameters immediately
+    processURLParams();
+
+    // Also listen for popstate events (when user navigates back/forward)
+    const handlePopState = () => {
+      setTimeout(processURLParams, 100); // Small delay to ensure URL is updated
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, []); // Empty dependency array to run only once on mount
+
+  // Additional effect to monitor URL changes
+  useEffect(() => {
+    if (currentURL !== window.location.search) {
+      console.log('URL changed, reprocessing parameters');
+      const processURLParams = () => {
+        const currentSearch = window.location.search;
+        setCurrentURL(currentSearch);
+        
+        const urlParams = new URLSearchParams(currentSearch);
+        const companyName = urlParams.get('companyName');
+        const propertyAddress = urlParams.get('propertyAddress');
+        const assetSize = urlParams.get('assetSize');
+        const industry = urlParams.get('industry');
+        const requirementSize = urlParams.get('requirementSize');
+        const newComment = urlParams.get('newComment');
+        
+        if (companyName || propertyAddress || assetSize || industry || requirementSize) {
+          console.log('Processing deal info updates from URL change:', { companyName, propertyAddress, assetSize, industry, requirementSize });
+          
+          setDealInfo(prev => {
+            const newDealInfo = {
+              ...prev,
+              ...(companyName && { companyName: decodeURIComponent(companyName) }),
+              ...(propertyAddress && { propertyAddress: decodeURIComponent(propertyAddress) }),
+              ...(assetSize && { assetSize: decodeURIComponent(assetSize) }),
+              ...(industry && { industry: decodeURIComponent(industry) }),
+              ...(requirementSize && { requirementSize: decodeURIComponent(requirementSize) })
+            };
+            console.log('Updated deal info from URL change:', newDealInfo);
+            return newDealInfo;
+          });
+        }
+        
+        if (newComment) {
+          console.log('Processing new comment from URL change:', newComment);
+          const newCommentObj = {
+            id: Date.now(),
+            author: "Taki Wong",
+            initials: "TW",
+            message: decodeURIComponent(newComment),
+            timestamp: "just now",
+            isNew: true
+          };
+          setComments(prev => [newCommentObj, ...prev]);
+          setIsUpdatesPanelOpen(true);
+        }
+      };
+      
+      processURLParams();
+    }
+  }, [currentURL]);
 
   const handleAddUpdate = () => {
     if (newUpdate.trim()) {
@@ -502,6 +583,18 @@ export default function DealProfilePage() {
         className="fixed right-6 top-20 bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800 px-2 py-1.5 rounded text-xs font-normal transition-colors z-50 border border-gray-200"
       >
         Updates
+      </button>
+      
+      {/* Debug Button - Test URL Parameter Processing */}
+      <button
+        onClick={() => {
+          console.log('Current deal info:', dealInfo);
+          console.log('Current URL:', window.location.href);
+          console.log('Current search params:', window.location.search);
+        }}
+        className="fixed right-6 top-32 bg-blue-100 hover:bg-blue-200 text-blue-600 hover:text-blue-800 px-2 py-1.5 rounded text-xs font-normal transition-colors z-50 border border-blue-200"
+      >
+        Debug Info
       </button>
       
       {/* Updates Panel */}
