@@ -11,14 +11,88 @@ import vtsAiSparkle from "../../../../../../public/sparkle.json";
 import vtsAiSparkleWhite from "../../../../../../public/sparkle-white.json";
 
 export default function DealProfilePage() {
-  // Note: To show the updates panel with a comment from the assistant flow,
-  // the assistant should generate a URL like: /vts/lease/deals/profile?showUpdates=true&comment=added
+  // Note: The assistant can now update deal information and add comments via URL parameters:
+  // 
+  // For new comments: ?newComment=Your%20comment%20message
+  // For company updates: ?companyName=New%20Company%20Name
+  // For property updates: ?propertyAddress=New%20Address&assetSize=New%20Size
+  // For industry updates: ?industry=New%20Industry
+  // For requirement updates: ?requirementSize=New%20Size%20Range
+  // 
+  // Example URL: /vts/lease/deals/profile?newComment=Tenant%20approved%20the%20deal&companyName=Microsoft&industry=Software
   const { setVtsAiContentType, setIsVtsAiOpen, isVtsAiOpen, setIsUpsell, setIsPromptError, setShowChatInput } =
     useAppContext();
 
   const [isUpdatesPanelOpen, setIsUpdatesPanelOpen] = useState(false);
   const [newUpdate, setNewUpdate] = useState("");
   const [commentAdded, setCommentAdded] = useState(false);
+  
+  // Deal information state
+  const [dealInfo, setDealInfo] = useState({
+    companyName: "Google",
+    dealLead: "Taki Wong",
+    stage: "Inquiry",
+    standardizedTenant: "Structured Finance Industry Group, Inc",
+    tenantRelationship: "16 deals | 0 leases",
+    probability: "Add",
+    dealType: "New Deal",
+    reqType: "Add",
+    inquiryType: "Add",
+    totalSize: "10,000 sf",
+    propertyAddress: "1001 Front Street, New York, NY",
+    assetSize: "15,000 sf",
+    industry: "Technology",
+    requirementSize: "5000 - 10000",
+    requirementDesks: "Add",
+    targetPrice: "Add",
+    targetLCD: "05/03/25",
+    citySubmarket: "Add",
+    contact: "Add"
+  });
+
+  // Comments/updates state
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      author: "Taki Wong",
+      initials: "TW",
+      message: "Deal is moving forward, tenant enjoyed the showing",
+      timestamp: "just now",
+      isNew: true
+    },
+    {
+      id: 2,
+      author: "John Doe",
+      initials: "JD",
+      message: "John Doe attached a file black-swatch.png",
+      timestamp: "3 days ago",
+      isNew: false
+    },
+    {
+      id: 3,
+      author: "Jane Doe",
+      initials: "JD",
+      message: "Jane Doe moved this deal to Legal",
+      timestamp: "50 days ago",
+      isNew: false
+    },
+    {
+      id: 4,
+      author: "John Doe",
+      initials: "JD",
+      message: "John Doe moved this deal to Proposal",
+      timestamp: "295 days ago",
+      isNew: false
+    },
+    {
+      id: 5,
+      author: "Jane Doe",
+      initials: "JD",
+      message: "Jane Doe moved this deal to Inquiry",
+      timestamp: "359 days ago",
+      isNew: false
+    }
+  ]);
 
   const mainTabs = [
     { label: "Info", isActive: true },
@@ -49,8 +123,14 @@ export default function DealProfilePage() {
     const urlParams = new URLSearchParams(window.location.search);
     const showUpdates = urlParams.get('showUpdates');
     const comment = urlParams.get('comment');
+    const newComment = urlParams.get('newComment');
+    const companyName = urlParams.get('companyName');
+    const propertyAddress = urlParams.get('propertyAddress');
+    const assetSize = urlParams.get('assetSize');
+    const industry = urlParams.get('industry');
+    const requirementSize = urlParams.get('requirementSize');
     
-    console.log('URL params detected:', { showUpdates, comment }); // Debug log
+    console.log('URL params detected:', { showUpdates, comment, newComment, companyName, propertyAddress, assetSize, industry, requirementSize }); // Debug log
     
     if (showUpdates === 'true' && comment) {
       console.log('Opening updates panel and showing comment'); // Debug log
@@ -64,11 +144,59 @@ export default function DealProfilePage() {
       window.history.replaceState({}, '', url.toString());
       console.log('URL cleaned up'); // Debug log
     }
+
+    // Handle new comment from assistant
+    if (newComment) {
+      const newCommentObj = {
+        id: Date.now(),
+        author: "Taki Wong",
+        initials: "TW",
+        message: decodeURIComponent(newComment),
+        timestamp: "just now",
+        isNew: true
+      };
+      setComments(prev => [newCommentObj, ...prev]);
+      setIsUpdatesPanelOpen(true);
+      
+      // Clear the newComment parameter
+      const url = new URL(window.location.href);
+      url.searchParams.delete('newComment');
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    // Handle deal info updates from assistant
+    if (companyName || propertyAddress || assetSize || industry || requirementSize) {
+      setDealInfo(prev => ({
+        ...prev,
+        ...(companyName && { companyName: decodeURIComponent(companyName) }),
+        ...(propertyAddress && { propertyAddress: decodeURIComponent(propertyAddress) }),
+        ...(assetSize && { assetSize: decodeURIComponent(assetSize) }),
+        ...(industry && { industry: decodeURIComponent(industry) }),
+        ...(requirementSize && { requirementSize: decodeURIComponent(requirementSize) })
+      }));
+
+      // Clear the deal info parameters
+      const url = new URL(window.location.href);
+      url.searchParams.delete('companyName');
+      url.searchParams.delete('propertyAddress');
+      url.searchParams.delete('assetSize');
+      url.searchParams.delete('industry');
+      url.searchParams.delete('requirementSize');
+      window.history.replaceState({}, '', url.toString());
+    }
   }, []); // Empty dependency array to run only once on mount
 
   const handleAddUpdate = () => {
     if (newUpdate.trim()) {
-      // Here you would typically add the update to your data store
+      const newCommentObj = {
+        id: Date.now(),
+        author: "Taki Wong",
+        initials: "TW",
+        message: newUpdate,
+        timestamp: "just now",
+        isNew: true
+      };
+      setComments(prev => [newCommentObj, ...prev]);
       setNewUpdate("");
     }
   };
@@ -95,9 +223,9 @@ export default function DealProfilePage() {
         <div className="flex justify-between gap-2">
           <div className="flex items-center gap-2 truncate">
             <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-300 align-middle font-bold text-white bg-blue-600">
-              G
+              {dealInfo.companyName.charAt(0).toUpperCase()}
             </span>
-            <h1 className="truncate text-4xl font-bold">Google</h1>
+            <h1 className="truncate text-4xl font-bold">{dealInfo.companyName}</h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -153,12 +281,12 @@ export default function DealProfilePage() {
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Deal Lead</span>
-            <span className="text-vts-purple-700 cursor-pointer">Taki Wong</span>
+            <span className="text-vts-purple-700 cursor-pointer">{dealInfo.dealLead}</span>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Stage</span>
             <span className="flex w-32 items-center justify-between rounded-lg border border-transparent px-2 py-0 transition-all duration-200 hover:border-gray-300">
-              Inquiry
+              {dealInfo.stage}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -173,7 +301,7 @@ export default function DealProfilePage() {
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Standardized tenant</span>
-            <span className="cursor-pointer">Structured Finance Industry Group, Inc</span>
+            <span className="cursor-pointer">{dealInfo.standardizedTenant}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -191,7 +319,7 @@ export default function DealProfilePage() {
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-gray-500">Tenant relationship</span>
-            <span className="">16 deals | 0 leases</span>
+            <span className="">{dealInfo.tenantRelationship}</span>
           </div>
         </div>
         
@@ -231,23 +359,23 @@ export default function DealProfilePage() {
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Prob.</span>
-              <span className="text-sm font-medium">Add</span>
+              <span className="text-sm font-medium">{dealInfo.probability}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Type</span>
-              <span className="text-sm font-medium">New Deal</span>
+              <span className="text-sm font-medium">{dealInfo.dealType}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Req Type</span>
-              <span className="text-sm font-medium">Add</span>
+              <span className="text-sm font-medium">{dealInfo.reqType}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Inquiry Type</span>
-              <span className="text-sm font-medium">Add</span>
+              <span className="text-sm font-medium">{dealInfo.inquiryType}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Total Size</span>
-              <span className="text-sm font-medium">10,000 sf</span>
+              <span className="text-sm font-medium">{dealInfo.totalSize}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -289,8 +417,8 @@ export default function DealProfilePage() {
                 />
               </svg>
               <div>
-                <div className="font-medium text-gray-900">1001 Front Street, New York, NY</div>
-                <div className="text-sm text-gray-600">Asset size: 15,000 sf</div>
+                <div className="font-medium text-gray-900">{dealInfo.propertyAddress}</div>
+                <div className="text-sm text-gray-600">Asset size: {dealInfo.assetSize}</div>
                 <div className="text-sm text-gray-500 mt-1">No spaces</div>
               </div>
             </div>
@@ -307,7 +435,7 @@ export default function DealProfilePage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Industry:</span>
-                <span className="text-sm font-medium">Technology</span>
+                <span className="text-sm font-medium">{dealInfo.industry}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Current Address:</span>
@@ -315,7 +443,7 @@ export default function DealProfilePage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Requirement Size (SF):</span>
-                <span className="text-sm font-medium">5000 - 10000</span>
+                <span className="text-sm font-medium">{dealInfo.requirementSize}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Current Size:</span>
@@ -323,7 +451,7 @@ export default function DealProfilePage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Requirement Size (Desks):</span>
-                <span className="text-sm font-medium text-gray-400">Add</span>
+                <span className="text-sm font-medium text-gray-400">{dealInfo.requirementDesks}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Current Rent:</span>
@@ -331,7 +459,7 @@ export default function DealProfilePage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Target Price:</span>
-                <span className="text-sm font-medium text-gray-400">Add</span>
+                <span className="text-sm font-medium text-gray-400">{dealInfo.targetPrice}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Current LXD:</span>
@@ -339,15 +467,15 @@ export default function DealProfilePage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Target LCD:</span>
-                <span className="text-sm font-medium">05/03/25</span>
+                <span className="text-sm font-medium">{dealInfo.targetLCD}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">City/Submarket:</span>
-                <span className="text-sm font-medium text-gray-400">Add</span>
+                <span className="text-sm font-medium text-gray-400">{dealInfo.citySubmarket}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-gray-500">Contact:</span>
-                <span className="text-sm font-medium text-gray-400">Add</span>
+                <span className="text-sm font-medium text-gray-400">{dealInfo.contact}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -440,74 +568,27 @@ export default function DealProfilePage() {
                 
                 {/* Updates Feed */}
                 <div className="flex flex-col gap-4">
-                  {/* New Comment Update - Only show when comment was added via assistant flow */}
-                  {commentAdded && (
-                    <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border-l-4 border-vts-purple-500">
-                      <div className="w-8 h-8 bg-vts-purple-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                        TW
+                  {comments.map((comment) => (
+                    <div 
+                      key={comment.id}
+                      className={`flex items-start gap-3 p-3 bg-gray-50 rounded-lg ${
+                        comment.isNew ? 'border-l-4 border-vts-purple-500' : ''
+                      }`}
+                    >
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
+                        comment.isNew ? 'bg-vts-purple-600 text-white' : 'bg-gray-600 text-white'
+                      }`}>
+                        {comment.initials}
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="text-sm font-medium text-gray-900">Taki Wong</span>
-                          <span className="text-xs text-gray-500">just now</span>
+                          <span className="text-sm font-medium text-gray-900">{comment.author}</span>
+                          <span className="text-xs text-gray-500">{comment.timestamp}</span>
                         </div>
-                        <p className="text-sm text-gray-700">Deal is moving forward, tenant enjoyed the showing</p>
+                        <p className="text-sm text-gray-700">{comment.message}</p>
                       </div>
                     </div>
-                  )}
-                  
-                  {/* Existing Updates */}
-                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                      JD
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-medium text-gray-900">John Doe</span>
-                        <span className="text-xs text-gray-500">3 days ago</span>
-                      </div>
-                      <p className="text-sm text-gray-700">John Doe attached a file black-swatch.png</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                      JD
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-medium text-gray-900">Jane Doe</span>
-                        <span className="text-xs text-gray-500">50 days ago</span>
-                      </div>
-                      <p className="text-sm text-gray-700">Jane Doe moved this deal to Legal</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                      JD
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-medium text-gray-900">John Doe</span>
-                        <span className="text-xs text-gray-500">295 days ago</span>
-                      </div>
-                      <p className="text-sm text-gray-700">John Doe moved this deal to Proposal</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center text-sm font-medium">
-                      JD
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-medium text-gray-900">Jane Doe</span>
-                        <span className="text-xs text-gray-500">359 days ago</span>
-                      </div>
-                      <p className="text-sm text-gray-700">Jane Doe moved this deal to Inquiry</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -517,3 +598,5 @@ export default function DealProfilePage() {
     </div>
   );
 }
+
+
